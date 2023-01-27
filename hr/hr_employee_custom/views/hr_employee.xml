@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+
+<!-- Hr   Religion     -->
+    <record id="hr_religion_view_form" model="ir.ui.view">
+            <field name="name">hr.religion.form</field>
+            <field name="model">hr.religion</field>
+            <field name="arch" type="xml">
+                <form string="Religion">
+                 <sheet>
+                         <div class="oe_button_box" name="button_box"></div>
+
+                        <group >
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="company_id"/>
+                        </group>
+
+                     </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_religion_view_tree" model="ir.ui.view">
+            <field name="name">hr.religion.tree</field>
+            <field name="model">hr.religion</field>
+            <field name="arch" type="xml">
+                <tree string="Religion">
+                <field name="name"/>
+                <field name="description"/>
+
+            </tree>
+            </field>
+        </record>
+
+        <record id="hr_religion_view_search" model="ir.ui.view">
+            <field name="name">hr.religion.search</field>
+            <field name="model">hr.religion</field>
+            <field name="arch" type="xml">
+                <search string="Religion">
+                <field name="name"/>
+                <group expand="0" string="Group By">
+                        <filter string="Name" name="group_by_name"  context="{'group_by': 'name'}"/>
+
+               </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="action_hr_religion" model="ir.actions.act_window">
+            <field name="name">Religions</field>
+            <field name="res_model">hr.religion</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_religion_view_search"/>
+        </record>
+
+
+            
+            <menuitem
+            id="hr_menu_religion"
+            action="action_hr_religion"
+            parent="hr.menu_human_resources_configuration_employee"
+            sequence="5"
+            />
+
+        <!-- Inherit Employee View -->
+
+     <record id="hr_employee_custom_view_form" model="ir.ui.view">
+        <field name="name">payroll.hr.employee.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+                <xpath expr="//h1[1]" position="after">
+                    <h1 class="d-flex">
+                                <field name="name_eng" placeholder="Employee's Name English" required="True"/>
+                                <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
+                    </h1>
+                </xpath>
+                            <xpath expr="//field[@name='country_id']" position="after">
+                                 <field name="religion_id"  string="Religion"/>
+                            </xpath>
+
+        </field>
+    </record>
+
+<!--     <record id="act_res_employee_2_project_task_opened" model="ir.actions.act_window">-->
+<!--            <field name="name">Assigned Tasks</field>-->
+<!--            <field name="res_model">project.task</field>-->
+<!--            <field name="view_mode">tree,form,calendar,graph</field>-->
+<!--            <field name="context">{'search_default_user_id': [active_id], 'default_user_id': active_id}</field>-->
+<!--            <field name="binding_model_id" ref="hr.model_hr_employee"/>-->
+<!--            <field name="binding_view_types">form</field>-->
+<!--        </record>-->
+
+
+</odoo>

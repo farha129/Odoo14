@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+
+<!--    forms     -->
+    <record id="hr_forms_view_form" model="ir.ui.view">
+            <field name="name">hr.forms.form</field>
+            <field name="model">hr.forms</field>
+            <field name="arch" type="xml">
+                <form string="forms">
+
+                     <sheet>
+                         <div class="oe_button_box" name="button_box"></div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+
+
+                        <group  >
+                            <field name="name_forms" />
+                            <field name="categroy_id" />
+                            <field name="attachment_id" />
+                            <field name="note" />
+                            <field name="company_id" />
+
+                        </group>
+
+                     </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_forms_view_tree" model="ir.ui.view">
+            <field name="name">hr.forms.tree</field>
+            <field name="model">hr.forms</field>
+            <field name="arch" type="xml">
+                <tree string="forms">
+                <field name="name"/>
+                <field name="name_forms"/>
+                <field name="categroy_id"/>
+                <field name="attachment_id"/>
+                <field name="note"/>
+                <field name="company_id"/>
+
+            </tree>
+            </field>
+        </record>
+
+        <record id="hr_forms_view_search" model="ir.ui.view">
+            <field name="name">hr.forms.search</field>
+            <field name="model">hr.forms</field>
+            <field name="arch" type="xml">
+                <search string="forms">
+                <field name="name"/>
+                <field name="name_forms"/>
+                <field name="categroy_id"/>
+                <field name="company_id"/>
+                <group expand="0" string="Group By">
+                        <filter string="Name" name="group_by_name"  context="{'group_by': 'name'}"/>
+                        <filter string="Form Name" name="group_by_name_forms"  context="{'group_by': 'name_forms'}"/>
+                        <filter string="Categroy" name="group_by_categroy_id"  context="{'group_by': 'categroy_id'}"/>
+                        <filter string="Company" name="group_by_company_id"  context="{'group_by': 'company_id'}"/>
+
+               </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="action_hr_forms" model="ir.actions.act_window">
+            <field name="name">Forms</field>
+            <field name="res_model">hr.forms</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_forms_view_search"/>
+        </record>
+
+
+            <menuitem
+            id="hr_menu_forms"
+            action="action_hr_forms"
+            parent="hr.menu_hr_employee_payroll"
+            groups="hr.group_hr_user"
+            sequence="5"
+            />
+
+
+<!--    Category Forms-->
+    !--    forms     -->
+    <record id="hr_forms_categroy_view_form" model="ir.ui.view">
+            <field name="name">hr.forms.form</field>
+            <field name="model">hr.forms.categroy</field>
+            <field name="arch" type="xml">
+                <form string="forms categroy">
+
+                     <sheet>
+                         <div class="oe_button_box" name="button_box"></div>
+
+
+                        <group>
+                            <field name="name" />
+                            <field name="note" />
+                             <field name="company_id"/>
+                        </group>
+
+                     </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_forms_categroy_view_tree" model="ir.ui.view">
+            <field name="name">hr.forms.tree</field>
+            <field name="model">hr.forms.categroy</field>
+            <field name="arch" type="xml">
+                <tree string="forms">
+                <field name="name"/>
+                <field name="note"/>
+                <field name="company_id"/>
+
+            </tree>
+            </field>
+        </record>
+
+        <record id="hr_forms_categroy_view_search" model="ir.ui.view">
+            <field name="name">hr.forms.search</field>
+            <field name="model">hr.forms.categroy</field>
+            <field name="arch" type="xml">
+                <search string="forms">
+                <field name="name"/>
+
+                <group expand="0" string="Group By">
+                        <filter string="Name" name="group_by_name"  context="{'group_by': 'name'}"/>
+
+               </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="action_hr_forms_categroy" model="ir.actions.act_window">
+            <field name="name">Forms Categroy</field>
+            <field name="res_model">hr.forms.categroy</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_forms_categroy_view_search"/>
+        </record>
+
+
+            <menuitem
+            id="hr_menu_forms_cat"
+            action="action_hr_forms_categroy"
+            parent="hr.menu_human_resources_configuration_employee"
+            sequence="5"
+            />
+
+</odoo>

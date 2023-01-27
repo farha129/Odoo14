@@ -1,0 +1,437 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_accommodation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-23 22:57+0000\n"
+"PO-Revision-Date: 2023-01-23 22:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الجنسية:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الديانة:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الرقم:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>المهنة:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الميلاد:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>تاريخ الإصدار:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>صاحب العمل:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>مكان الإصدار:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_accommodation
+msgid "Accommodation"
+msgstr "الاقامة"
+
+#. module: hr_accommodation
+#: model:ir.actions.act_window,name:hr_accommodation.action_hr_accommodation
+#: model:ir.ui.menu,name:hr_accommodation.hr_menu_accommodation
+msgid "Accommodations"
+msgstr "الإقامات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.actions.server,name:hr_accommodation.ir_cron_notifcation_id_ir_actions_server
+#: model:ir.cron,cron_name:hr_accommodation.ir_cron_notifcation_id
+#: model:ir.cron,name:hr_accommodation.ir_cron_notifcation_id
+msgid "Alarm for End Accommodation"
+msgstr "تنبهه لاخر يوم في الاقامة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__cancel
+msgid "Canceled"
+msgstr "تم الالغاء"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__create_uid
+msgid "Created by"
+msgstr "أنشاءه بواسطة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__date_issue
+msgid "Date Issue"
+msgstr "تاريخ الإصدار"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__date_birth
+msgid "Date Of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__employee_id
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Employee's Name"
+msgstr "اسم الموظف باللغة العربية"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Employee's Name English"
+msgstr "اسم الموظف باللغة الانجليزيه"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__employer
+msgid "Employer"
+msgstr "صاحب العمل"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__date_end
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__end
+msgid "Expired"
+msgstr "منتهية الصلاحية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_needaction
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_has_error
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__job_position
+msgid "Job Position"
+msgstr "الوظيفة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__name_eng
+msgid "Name English"
+msgstr "اسم الموظف بالانجليزي"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__country_id
+msgid "Nationality"
+msgstr "الجنسية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__draft
+msgid "New"
+msgstr "جديد"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__number
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Number"
+msgstr "الرقم"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__place_issue
+msgid "Place Issue"
+msgstr "مكان الإصدار"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__name
+msgid "Ref"
+msgstr "المرجع"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__religion_id
+msgid "Religion"
+msgstr "الديانه"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤل"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Run"
+msgstr "ساري"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__run
+msgid "Running"
+msgstr "ساري"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__state
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "State"
+msgstr "حالة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:mail.message.subtype,description:hr_accommodation.mt_task_new
+#: model:mail.message.subtype,name:hr_accommodation.mt_project_task_new
+#: model:mail.message.subtype,name:hr_accommodation.mt_task_new
+msgid "Task Created"
+msgstr "تم انشاء المهمه"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_tree
+msgid "accommodation"
+msgstr "الاقامة"
+
+#. module: hr_accommodation
+#: model:ir.actions.report,name:hr_accommodation.action_accommodation_template
+msgid "accommodation Report"
+msgstr "الاقامة"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "alarm_expiar"
+msgstr "تاريخ الانتهاء"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "هوية مقيم"
+msgstr ""

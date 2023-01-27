@@ -1,0 +1,671 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_accommodation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 21:26+0000\n"
+"PO-Revision-Date: 2023-01-18 21:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<span>المبلغ</span>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<span>تاريخ الدفع</span>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الاسم:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>التاريخ:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>العملة :</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>القسم :</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>المبلغ المتبقي</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>المبلغ المدفوع</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>المجموع</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>الوظيفة:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>تاريخ بداية الدفع:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>عدد اقساط الدفع:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "<strong>مبلغ السلفية:</strong>"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__move_id
+msgid "Accont Move"
+msgstr "القيود"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_inherited
+msgid "معلومات الحسابات"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_inherited
+msgid "Account Information"
+msgstr "معلومات الحسابات"
+
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.view_account_config_inherit
+msgid "Allows you to Add approval from accounting department."
+msgstr "يسمح اضافة الموافقة من إدارة الحسابات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_res_config_settings__accommodation_approve
+msgid "Approval from Accounting Department"
+msgstr "موافقة من إدارة الحسابات"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Approve"
+msgstr "الموافقة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__approve
+msgid "Approved"
+msgstr "تمت الموافقة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__balance_amount
+msgid "Balance Amount"
+msgstr "المبلغ المتبقي"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__cancel
+msgid "Canceled"
+msgstr "تم الالغاء"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Compute Installment"
+msgstr "حساب الاقساط"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الاعدادات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__create_uid
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__create_uid
+msgid "Created by"
+msgstr "أنشاءه بواسطة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__create_date
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__department_id
+msgid "Department"
+msgstr "القسم"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Departmet"
+msgstr "القسم"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip_input__display_name
+#: model:ir.model.fields,field_description:hr_accommodation.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__draft
+msgid "Draft"
+msgstr "مسوده"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_employee
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__employee_id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__employee_id
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.view_account_config_inherit
+msgid "Enable Approval from Accounting Department"
+msgstr "يسمح الموافقة من إدارة الحسابات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_account_move_line__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_employee__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip_input__id
+#: model:ir.model.fields,field_description:hr_accommodation.field_res_config_settings__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_needaction
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_accommodation_line
+msgid "Installment Line"
+msgstr "عناصر الاقساط"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Installments"
+msgstr "الاقساط"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Account Information"
+msgstr "معلومات الحسابات"
+
+
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__job_position
+msgid "Job Position"
+msgstr "الوظيفة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__journal_id
+msgid "Journal"
+msgstr "اليومية"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر اليومية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip_input____last_update
+#: model:ir.model.fields,field_description:hr_accommodation.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__write_uid
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__write_date
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_account_move_line__accommodation_id
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "accommodation"
+msgstr "السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__emp_account_id
+msgid "accommodation Account"
+msgstr "حساب السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__accommodation_amount
+msgid "accommodation Amount"
+msgstr "مبلغ السلفية"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.view_account_config_inherit
+msgid "accommodation Approval"
+msgstr "موافقة السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_res_config_settings__accommodation_approve
+msgid "accommodation Approval from account manager"
+msgstr "موافقة السلفية من مدير الحسابات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_employee__accommodation_count
+msgid "accommodation Count"
+msgstr "عدد السلفيات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_payslip_input__accommodation_line_id
+msgid "accommodation Installment"
+msgstr "اقساط السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__accommodation_lines
+msgid "accommodation Line"
+msgstr "عناصر السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__name
+msgid "accommodation Name"
+msgstr "اسم السلفية"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__accommodation_id
+msgid "accommodation Ref."
+msgstr "الرقم المرجعي"
+
+#. module: hr_accommodation
+#: model:ir.actions.report,name:hr_accommodation.action_accommodation_template
+msgid "accommodation Report"
+msgstr "تقرير السلفيات"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "accommodation Request"
+msgstr "طلب سلفية"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid "accommodation Request must be approved"
+msgstr "طلب السلفية يجب الموافقه عليه"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_tree
+msgid "accommodation Requests"
+msgstr "طلبات السلفيات"
+
+#. module: hr_accommodation
+#: model:ir.actions.act_window,name:hr_accommodation.act_hr_employee_accommodation_request
+#: model:ir.actions.act_window,name:hr_accommodation.action_hr_accommodation
+#: model:ir.ui.menu,name:hr_accommodation.hr_menu_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.view_employee_form_accommodation_inherit
+msgid "accommodations"
+msgstr "السلفيات"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__installment
+msgid "No Of Installments"
+msgstr "عدد الاقساط"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__paid
+msgid "Paid"
+msgstr "مدفوعه"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_payslip
+msgid "Pay Slip"
+msgstr "قسيمة المرتب"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__date
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__payment_date
+msgid "Payment Start Date"
+msgstr "تاريخ بداية الدفع"
+
+#. module: hr_accommodation
+#: model:ir.model,name:hr_accommodation.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "مدخلات المرتب"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation_line__payslip_id
+msgid "Payslip Ref."
+msgstr "الرقم المرجعي للقسيمه"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation.py:0
+#, python-format
+msgid "Please Compute installment."
+msgstr "الرجاء حساب الاقساط"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__refuse
+msgid "Refused"
+msgstr "مرفوضة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤل"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_payroll.py:0
+#, python-format
+msgid "Salary Slip of %s for %s"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__state
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_search
+msgid "State"
+msgstr "حالة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.hr_accommodation_view_form
+msgid "Submit"
+msgstr "تأكيد"
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__waiting_approval_1
+msgid "Submitted"
+msgstr "مؤكده"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__total_amount
+msgid "Total Amount"
+msgstr "المبلغ الاجمالي"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__total_paid_amount
+msgid "Total Paid Amount"
+msgstr "مجموع المبلغ المدفوع"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__treasury_account_id
+msgid "Treasury Account"
+msgstr "حساب الخزينة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields.selection,name:hr_accommodation.selection__hr_accommodation__state__waiting_approval_2
+msgid "Waiting Approval"
+msgstr "انتظار الموافقة"
+
+#. module: hr_accommodation
+#: model:ir.model.fields,field_description:hr_accommodation.field_hr_accommodation__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: hr_accommodation
+#: model:ir.model.fields,help:hr_accommodation.field_hr_accommodation__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation.py:0
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid "You must Define a contract for employee."
+msgstr "يجب تعريف العقد للموظف"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid "You must compute accommodation Request before Approved"
+msgstr "يجب حساب السلفية قيل الموافقة"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid "You must compute accommodation Request before Approved."
+msgstr "يجب حساب السلفية قيل الموافقة"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid "You must compute installment before Approved."
+msgstr "يجب حساب السلفية قيل الموافقة"
+
+#. module: hr_accommodation
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#: code:addons/hr_accommodation/models/hr_accommodation_acc.py:0
+#, python-format
+msgid ""
+"You must enter employee account & Treasury account and journal to approve."
+msgstr "يجب ادخل حساب الموظف او حساب الخزينة او اليومية للموافقة"
+
+#. module: hr_accommodation
+#: model_terms:ir.ui.view,arch_db:hr_accommodation.report_accommodation_template
+msgid "إستمارة طلب سلفية"
+msgstr ""

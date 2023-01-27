@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="view_task_form2" model="ir.ui.view">
+     <field name="name">project.task.form</field>
+     <field name="model">project.task</field>
+     <field name="inherit_id" ref="project.view_task_form2"/> 
+     <field name="arch" type="xml">
+         <xpath expr="//field[@name='user_id']" position="after"> <!--- Added one field employee_id -->
+             <field name="employee_id" invisible="1"/>
+         </xpath>
+     </field>		
+     </record>
+
+     <record id="view_timesheet_form" model="ir.ui.view">
+     <field name="name">hr.employee.form</field>
+     <field name="model">hr.employee</field>
+     <field name="inherit_id" ref="hr.view_employee_form"/> 
+     <field name="arch" type="xml">
+         <xpath expr="//page[2]" position="after">
+             <page string="Task">
+
+                 <field name="task_ids" />
+
+             </page>
+         </xpath>
+
+         <xpath expr="//field[@name='work_email']" position="after">
+
+                  <field name="sum_performance" invisible="1" />
+                  <field name="performance" invisible="0" groups = "hr.group_hr_manager"/>
+
+		      <field name="total_spent_hours" invisible="1" />
+		     <field name="total_planned_hours" invisible="1" />
+		     <field name="late_time" invisible="1" />
+		     <field name="late_count" invisible="1" />
+		     <field name="on_time_count" invisible="1" />
+		     <field name="on_work_count" invisible="1" />
+	  </xpath>
+     </field>		
+</record>
+<!-- Hr  employee Performance     -->
+    <record id="employee_performance_view_form" model="ir.ui.view">
+            <field name="name">employee.performance.form</field>
+            <field name="model">employee.performance</field>
+            <field name="arch" type="xml">
+                <form string="Performance">
+                 <sheet>
+
+                        <group >
+                            <field name="name"/>
+                            <field name="min_rang"/>
+                            <field name="max_rang"/>
+                        </group>
+
+                     </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_performance_view_tree" model="ir.ui.view">
+            <field name="name">employee.performance.tree</field>
+            <field name="model">employee.performance</field>
+            <field name="arch" type="xml">
+                <tree string="Performance">
+                <field name="name"/>
+                <field name="min_rang"/>
+                <field name="max_rang"/>
+
+            </tree>
+            </field>
+        </record>
+
+        <record id="employee_performance_view_search" model="ir.ui.view">
+            <field name="name">employee.performance.search</field>
+            <field name="model">employee.performance</field>
+            <field name="arch" type="xml">
+                <search string="Performance">
+                <field name="name"/>
+                <group expand="0" string="Group By">
+                        <filter string="Name" name="group_by_name"  context="{'group_by': 'name'}"/>
+
+               </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="action_employee_performance" model="ir.actions.act_window">
+            <field name="name">Rang Performances</field>
+            <field name="res_model">employee.performance</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="employee_performance_view_search"/>
+        </record>
+
+
+            <menuitem
+            id="hr_menu_action_employee_performanc"
+            action="action_employee_performance"
+            parent="hr.menu_human_resources_configuration_employee"
+            sequence="5"
+            />
+
+</odoo>
+
+
+

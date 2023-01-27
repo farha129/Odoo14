@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="paysheet_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-if="not o and doc">
+                        <t t-set="o" t-value="doc"/>
+                    </t>
+                    <t t-if="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id"></t>
+                    </t>
+                    <t t-if="not o or not 'company_id' in o">
+                        <t t-set="company" t-value="res_company"></t>
+                    </t>
+                    <div class="page">
+                        <t t-foreach="docs" t-as="r">
+                            <table style="width:100%;align:center;direction:ltr">
+                                <tr>
+                                    <td>
+                                        <center>
+                                                <h3> Salaries of: <span t-field="r.name"/>  from <span t-field="r.date_start"/> to <span t-field="r.date_end"/> </h3>
+
+
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <t t-set="counter" t-value="0"/>
+                            <t t-set="gross_salary" t-value="0"/>
+                                                        <t t-set="basic_salary" t-value="0"/>
+                                                        <t t-set="travel_allowance" t-value="0"/>
+                                                        <t t-set="cola" t-value="0"/>
+                            <t t-set="overtime" t-value="0" />
+
+                            <t t-set="loan" t-value="0"/>
+                            <t t-set="inc" t-value="0"/>
+                            <t t-set="absent" t-value="0"/>
+
+                           <t t-set="net_salary" t-value="0" digits="(10,3)"/>
+
+                            <t t-set="medical" t-value="0"/>
+                            <t t-set="trans_allowance" t-value="0"/>
+
+                            <t t-set="total_deduction" t-value="0"/>
+                            <t t-set="dearness_allowance" t-value="0"/>
+                            <t t-set="meal_allowance" t-value="0"/>
+                            <t t-set="medical_allowance" t-value="0"/>
+                            <t t-set="other_allowance" t-value="0"/>
+                            <!--<div  style="width:100%;border: 1px solid black;">-->
+                            <table  class="table-bordered" style="align:right;direction:ltr" border="1" >
+                                <tr style ="background-color:gray; border:1px solid black">
+                                    <th style="align:right;font-size: 100%;direction:center"><center>#</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>ID NO#</center></th>
+                                   <th style="align:right;font-size: 100%;direction:center"><center>Employee</center></th>
+                                   <th style="align:right;font-size: 100%;direction:center"><center>Position</center></th>
+                                   <th style="align:right;font-size: 100%;direction:center"><center>Starting Date</center></th>
+                                   <th style="align:right;font-size: 100%;direction:center"><center>Ending Date</center></th>
+
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Basic Salary</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Travel Allowance</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Meal Allowance</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Medical Allowance</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Other Allowance</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Overtime</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Gross</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Incentive</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Loan</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Absent</center></th>
+
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Total Deduction</center></th>
+                                    <th style="align:right;font-size: 100%;direction:center"><center>Net Salary</center></th>
+
+
+                                   
+                                </tr>
+                                <tr t-foreach="r.slip_ids.sorted(key=lambda x: x.employee_id.location_id)" t-as="slip" >
+                                    <td  style="border:1px solid black"> <span t-field="slip.employee_id.contract_id.exemption_amount"/></td>
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="counter+1"/>
+                                        <t t-set="counter" t-value="counter+1"/>
+                                    </td>
+                                    <td  style="border:1px solid black"> <span t-field="slip.employee_id.id_no"/></td>
+                                    <td  style="border:1px solid black"> <span t-field="slip.employee_id.name"/></td>
+                                    <td  style="border:1px solid black"> <span t-field="slip.employee_id.job_id"/></td>
+                                    <td  style="border:1px solid black"> <span t-field="slip.date_from"/></td>
+                                    <td  style="border:1px solid black"> <span t-field="slip.date_to"/></td>
+
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'BASIC'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="basic_salary" t-value="basic_salary + line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'Travel'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="travel" t-value="travel+line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'Meal'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="meal_allowance" t-value="meal_allowance+line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'Medical'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="medical" t-value="medical + line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code =='Other'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="other_allowance" t-value="other_allowance + line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'OVT'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="overtime" t-value="overtime+line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-set="days" t-value="slip.worked_days"/>
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'GROSS'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="gross_salary" t-value="gross_salary+line.amount"/>
+
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code == 'INC'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="inc" t-value="inc+line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <!--Deductions-->
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code =='LO'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="loan" t-value="loan+line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code =='ABS'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="absent" t-value="absent+line.amount"/>
+                                                
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code =='DED'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="total_deduction" t-value="total_deduction + line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-foreach="slip.line_ids" t-as="line">
+                                            <t t-if="line.code =='NET'">
+                                                <span t-field="line.amount"/>
+                                                <t t-set="net_salary" t-value="net_salary + line.amount"/>
+                                            </t>
+                                        </t>
+                                    </td>
+
+                                    </tr>
+
+                                <tr>
+                                    <td style="border:1px solid black" class="text-center">
+                                    </td><td style="border:1px solid black" class="text-center">
+                                    </td><td style="border:1px solid black" class="text-center">
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                    </td>
+                                    <td style="border:1px solid black" class="text-center">
+                                    </td>
+                                    <td style="border:1px solid black" class="text-center">
+                                    </td>
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(basic_salary)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(travel)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(meal_allowance)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(medical)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(other_allowance)"/>
+                                    </td>
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(overtime)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(gross_salary)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(inc)"/>
+                                    </td>
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(loan)"/>
+                                    </td>
+
+                                     <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(absent)"/>
+                                    </td>
+
+
+
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(total_deduction)"/>
+                                    </td>
+
+
+
+                                    
+                                    <td style="border:1px solid black" class="text-center">
+                                        <t t-esc="'{0:,.2f}'.format(net_salary)"/>
+                                    </td>
+
+                                    
+                                </tr>
+                            </table>
+                            <!--</div>-->
+
+                        </t>
+                    </div>
+                </t>
+
+            </t>
+        </template>
+    </data>
+</odoo>

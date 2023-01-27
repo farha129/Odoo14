@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_forms_manager,hr.forms.manager,model_hr_forms,hr.group_hr_manager,1,1,1,1
+access_hr_forms_user,hr.forms.user,model_hr_forms,base.group_user,1,1,1,0
+access_hr_forms_categroy_manager,hr.forms.manager,model_hr_forms_categroy,hr.group_hr_manager,1,1,1,1
+access_hr_forms_categroy_user,hr.forms.user,model_hr_forms_categroy,base.group_user,1,1,1,0
+

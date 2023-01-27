@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_loan_template">
+                <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+           <t t-foreach="docs" t-as="o">
+
+
+
+               <h2  class="text-center">إستمارة طلب سلفية</h2>
+
+<br></br><br></br>
+
+                <div class="col-auto col-3 mw-100 mb-2" >                        <center>
+                            <table style="align:right;direction:rtl;width:800pt; height:150pt ;margin: 0px;padding: 0px;" class="pull-right">
+                                <tbody>
+
+                    <tr style="height:10%">
+                        <td  ><strong>الاسم:</strong></td>
+                        <td  ><span t-field="o.employee_id.name"/></td>
+                        <td   style="width:20%;"  ><strong>التاريخ:</strong></td>
+                        <td  ><span t-field="o.date"/></td>
+                    </tr>
+
+                    <tr  style="height:10%">
+                         <td   style="width:20%; 100px;"><strong>الوظيفة:</strong></td>
+                         <td  ><span t-field="o.employee_id.job_id.name"/></td>
+                         <td  style="width:20%;" ><strong>القسم :</strong></td>
+                        <td><span t-field="o.department_id.name"/></td>
+
+                    </tr>
+
+                     <tr  style="height:10%">
+                        <td ><strong>مبلغ السلفية:</strong></td>
+                        <td  ><span t-field="o.loan_amount"/></td>
+                          <td ><strong>عدد اقساط الدفع:</strong></td>
+                        <td  ><span t-field="o.installment"/></td>
+                    </tr>
+                    <tr  style="height:10%">
+                       <td  ><strong>تاريخ بداية الدفع:</strong></td>
+                        <td  ><span t-field="o.payment_date"/></td>
+                        <td  ><strong>العملة :</strong></td>
+                        <td><span t-field="o.currency_id.name"/></td>
+                    </tr>
+
+                                </tbody>
+                            </table>
+                        </center>
+               </div>
+
+<br></br><br></br><br></br>
+               <br></br><br></br><br></br>
+
+
+
+                    <table class="table table-sm o_main_table" name="control_payment_line_table">
+                        <thead>
+                            <tr>
+                                <th name="th_mileston" class="text-right"><span>المبلغ</span></th>
+                                <th name="th_date" class="text-right"><span>تاريخ الدفع</span></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <t t-set="lines" t-value="o.loan_lines"/>
+                                <t t-foreach="lines" t-as="line">
+                                     <tr>
+                                     <td class="text-right">
+                                            <span  t-field="line.amount"/>
+                                        </td>
+                                    <td class="text-right">
+                                         <span  t-field="line.date" />
+
+                                    </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+                        <div class="clearfix">
+                        <div id="total" class="row">
+                            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                                <table class="table table-sm" style="page-break-inside: avoid;">
+                                    <tr class="border-black o_subtotal" style="">
+                                        <td class="text-right">
+                                            <span t-field="o.total_amount"/>
+                                        </td>
+                                        <td class="text-right"><strong>المجموع</strong></td>
+
+                                    </tr>
+                                <tr class="border-black o_subtotal" style="">
+                                        <td class="text-right">
+                                            <span t-field="o.total_paid_amount"/>
+                                        </td>
+                                         <td class="text-right"><strong>المبلغ المدفوع</strong></td>
+                                    </tr>
+                               <tr class="border-black o_subtotal" style="">
+                                        <td class="text-right">
+                                            <span t-field="o.balance_amount"/>
+                                        </td>
+                                         <td class="text-right"><strong>المبلغ المتبقي</strong></td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+
+
+
+<!--                           &lt;!&ndash;      <td>-->
+<!--                                <span t-esc="o.company_id.currency_id.name" t-options='{"widget": "currency_id"}'/>-->
+
+<!--                            </td>-->
+<!--                               <td>-->
+<!--                                <span t-esc="payment_vals['currency']" t-options='{"widget": "currency"}'/>-->
+
+<!--                            </td> &ndash;&gt;-->
+
+<!--                             <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">-->
+
+<!--                                        </td>-->
+<!--                                 </tr>-->
+
+
+<!--                             </t>-->
+<!--                            <br></br>-->
+<!--                            <br></br>-->
+<!--                            <br></br>-->
+<!--                            <br></br>-->
+<!--<t>-->
+<!--                             <tr>-->
+
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+
+<!--                                <td  t-if="payments_vals_obj">    <span t-esc="payments_vals_obj[counter-1]['total_amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>-->
+
+
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--</t>-->
+<!--                            <tr>-->
+
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td>-->
+<!--                                  <strong  class="text-left">Remaning Balance</strong>  <span t-esc="o.amount_residual" />-->
+
+<!--                                </td>-->
+<!--                            </tr>-->
+
+<!--                        </tbody>-->
+<!--                    </table>-->
+                    <br/>
+
+           </t>
+        </t>
+            </t>
+        </template>
+
+
+        <report
+            id="action_loan_template"
+            string="Loan Report"
+            model="hr.loan"
+            report_type="qweb-pdf"
+            name="hr_loan.report_loan_template"
+            file="hr_loan.report_loan_template"
+            />
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- performance -->
+        <record id="performance_very_good_data_id" model="employee.performance">
+            <field name="name">Very Good</field>
+            <field name="min_rang">80</field>
+            <field name="max_rang">100</field>
+            
+        </record>
+       <record id="performance_good_data_id" model="employee.performance">
+            <field name="name">Good</field>
+            <field name="min_rang">50</field>
+            <field name="max_rang">79</field>     
+        </record>
+      <record id="performance_bad_data_id" model="employee.performance">
+            <field name="name">Bad</field>
+            <field name="min_rang">0</field>
+            <field name="max_rang">49</field>     
+        </record>
+
+
+    </data>
+</odoo>
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <!-- Shortcuts -->
+
+
+    <record id="hr_loan_inherited" model="ir.ui.view">
+        <field name="name">HR LOAN</field>
+        <field name="model">hr.loan</field>
+        <field name="inherit_id" ref="hr_loan.hr_loan_view_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='emp_account_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='treasury_account_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//page[1]" position="after">
+                <page string="Account Information">
+                    <group>
+                                    <field name="move_id"  readonly = '1'/>
+                    </group>
+                </page>
+
+            </xpath>
+            <xpath expr="//field[@name='journal_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_inherit_move_line_form" model="ir.ui.view">
+            <field name="name">view.inherit.move.line.form</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="loan_id" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+</odoo>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_incentive_template_id">
+                <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+           <t t-foreach="docs" t-as="o">
+
+
+
+               <h2  class="text-center">إستمارة الحوافز</h2>
+
+<br></br><br></br>
+
+                <div class="col-auto col-3 mw-100 mb-2" >                        <center>
+                            <table style="align:right;direction:rtl;width:800pt; height:70pt ;margin: 0px;padding: 0px;" class="pull-right">
+                                <tbody>
+
+                    <tr style="height:10%">
+                        <td  ><strong>تاريخ الطلب:</strong></td>
+                        <td  ><span t-field="o.date"/></td>
+                        <td   style="width:20%;"  ><strong>تاريخ دفع الحافز:</strong></td>
+                        <td  ><span t-field="o.payment_date"/></td>
+                    </tr>
+
+                   <tr  style="height:10%">
+                         <td   style="width:20%; 100px;"><strong>المبلغ:</strong></td>
+                         <td  ><span t-field="o.incentive_amount"/></td>
+                         <td  style="width:20%;" ><strong>القسم :</strong></td>
+                        <td><span t-field="o.department_id.name" t-if="o.department_id.name"/></td>
+                    </tr>
+                     <tr  style="height:10%" t-if="o.descripton">
+
+                         <td   style="width:20%; 100px;"><strong>الوصف:</strong></td>
+                         <td  ><span t-field="o.descripton"/></td>
+                     </tr>
+
+                                </tbody>
+                            </table>
+                        </center>
+               </div>
+
+<br></br><br></br><br></br>
+               <br></br><br></br><br></br>
+
+
+
+                    <table class="table table-sm o_main_table" name="control_payment_line_table_inc">
+                        <thead>
+                            <tr>
+                                <th name="th_mileston" class="text-right"><span>المبلغ</span></th>
+                                <th name="th_date" class="text-right"><span>اسم الموظف</span></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <t t-set="lines" t-value="o.incentive_lines"/>
+                                <t t-foreach="lines" t-as="line">
+                                     <tr>
+                                     <td class="text-right">
+                                            <span  t-field="line.amount"/>
+                                        </td>
+                                    <td class="text-right">
+                                         <span  t-field="line.employee_id.name" />
+
+                                    </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+                        <div class="clearfix">
+                        <div id="total" class="row">
+                            <div t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                                <table class="table table-sm" style="page-break-inside: avoid;">
+                                    <tr class="border-black o_subtotal" style="">
+                                        <td class="text-right">
+                                            <span t-field="o.total_amount"/>
+                                        </td>
+                                        <td class="text-right"><strong>المجموع</strong></td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+
+
+                    <br/>
+
+           </t>
+        </t>
+            </t>
+        </template>
+
+
+        <report
+            id="action_incentive_template_id"
+            string="Incentive Report"
+            model="hr.incentive"
+            report_type="qweb-pdf"
+            name="hr_incentive.report_incentive_template_id"
+            file="hr_incentive.report_incentive_template_id"
+            />
+
+
+
+
+    </data>
+</odoo>
