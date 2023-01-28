@@ -19,9 +19,7 @@
     ],
     'data': [
         'security/hr_payroll_security.xml',
-        'security/ir.model.access.csv',
-        'wizard/hr_payroll_payslips_by_employees_views.xml',
-        'wizard/pay_sheet_view.xml',
+        'security/ir.model.access.csv', 
         'views/hr_contract_views.xml',
         'report/pay_sheet_report.xml',
         'views/hr_salary_rule_views.xml',
@@ -35,6 +33,8 @@
         'views/report_contributionregister_templates.xml',
         'views/report_payslip_templates.xml',
         'views/report_payslipdetails_templates.xml',
+        'wizard/hr_payroll_payslips_by_employees_views.xml',
+        'wizard/pay_sheet_view.xml',
     ],
     'license': 'AGPL-3',
 }
