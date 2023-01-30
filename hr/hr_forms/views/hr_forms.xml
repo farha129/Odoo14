@@ -84,9 +84,9 @@
             <menuitem
             id="hr_menu_forms"
             action="action_hr_forms"
-            parent="hr.menu_hr_employee_payroll"
+            parent="hr.menu_hr_root"
             groups="hr.group_hr_user"
-            sequence="5"
+            sequence="1"
             />
 
 

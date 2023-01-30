@@ -36,7 +36,7 @@ class HrResignation(models.Model):
     state = fields.Selection(
         [('draft', 'Draft'), ('confirm', 'Confirm'), ('approved', 'Approved'), ('cancel', 'Rejected')],
         string='Status', default='draft', track_visibility="always")
-    resignation_type = fields.Selection(selection=RESIGNATION_TYPE, help="Select the type of resignation: normal "
+    resignation_type = fields.Selection(selection=RESIGNATION_TYPE,required=True, help="Select the type of resignation: normal "
                                                                          "resignation or fired by the company")
     read_only = fields.Boolean(string="check field")
     employee_contract = fields.Many2one('hr.contract',String="Contract")
@@ -77,11 +77,11 @@ class HrResignation(models.Model):
         # Check whether any resignation request already exists
         for rec in self:
             if rec.employee_id:
-                # resignation_request = self.env['hr.resignation'].search([('employee_id', '=', rec.employee_id.id),
-                #                                                          ('state', 'in', ['confirm', 'approved'])])
-                # if resignation_request:
-                #     raise ValidationError(_('There is a resignation request in confirmed or'
-                #                             ' approved state for this employee'))
+                resignation_request = self.env['hr.resignation'].search([('employee_id', '=', rec.employee_id.id),
+                                                                         ('state', 'in', ['confirm', 'approved'])])
+                if resignation_request:
+                    raise ValidationError(_('There is a resignation request in confirmed or'
+                                            ' approved state for this employee'))
                 if rec.employee_id:
                     no_of_contract = self.env['hr.contract'].search([('employee_id', '=', self.employee_id.id)])
                     for contracts in no_of_contract:
@@ -97,7 +97,26 @@ class HrResignation(models.Model):
 
             for rec in self:
                 rec.state = 'confirm'
+
                 rec.resign_confirm_date = str(datetime.now())
+                group_id = self.env.ref('hr.group_hr_user').users
+                print("bbbbbbbbbbbbbbb", group_id)
+                partners_ids = group_id.mapped('partner_id').ids
+                print('hhhhhhhhhhhhhhhhhhhhhh', partners_ids)
+
+                for partenr in partners_ids:
+                    obj_name = rec.employee_id.name
+                    masaage = 'This Employee' + ': ' + format(
+                        obj_name) + '  ' + 'Submited a Request for resignation'
+
+                    message_id = self.message_post(body=masaage, subtype_id=self.env.ref('mail.mt_comment').id,
+                                                   subject=masaage,
+                                                   author_id=self.create_uid.partner_id.id,
+                                                   partner_ids=[partenr])
+                    self.env['mail.notification'].create({
+                        'mail_message_id': message_id.id,
+                        'res_partner_id': partenr,
+                    })
         else:
             raise ValidationError(_('Please set joining date for employee'))
 
@@ -115,6 +134,8 @@ class HrResignation(models.Model):
             rec.employee_id.active = True
             rec.employee_id.resigned = False
             rec.employee_id.fired = False
+            rec.employee_id.user_id.active = True
+            rec.employee_id.contract_id.state = 'open'
 
     def approve_resignation(self):
         for rec in self:
@@ -141,7 +162,7 @@ class HrResignation(models.Model):
                     # Removing and deactivating user
                     if rec.employee_id.user_id:
                         rec.employee_id.user_id.active = False
-                        rec.employee_id.user_id = None
+                        # rec.employee_id.user_id = None
 
             else:
                 raise ValidationError(_('Please enter valid dates.'))
@@ -153,16 +174,14 @@ class HrResignation(models.Model):
 
                 rec.employee_id.contract_id.state = 'close'
                 rec.employee_id.active = False
-                # Changing fields in the employee table with respect to resignation
                 rec.employee_id.resign_date = rec.expected_revealing_date
                 if rec.resignation_type == 'resigned':
                     rec.employee_id.resigned = True
                 else:
                     rec.employee_id.fired = True
-                # Removing and deactivating user
                 if rec.employee_id.user_id:
                     rec.employee_id.user_id.active = False
-                    rec.employee_id.active = None
+                    # rec.employee_id.active = None
 
 
 class HrEmployee(models.Model):

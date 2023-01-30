@@ -28,8 +28,7 @@ class HrincentiveAcc(models.Model):
         if incentive_approve:
             self.write({'state': 'waiting_approval_2'})
         else:
-            if not self.emp_account_id or not self.treasury_account_id or not self.journal_id:
-                raise UserError(_('You must enter employee account & Treasury account and journal to approve.'))
+
             if not self.incentive_lines:
                 raise UserError(_('You must compute incentive Request before Approved.'))
             timenow = time.strftime('%Y-%m-%d')

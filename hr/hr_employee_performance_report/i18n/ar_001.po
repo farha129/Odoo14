@@ -1,0 +1,474 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_employee_performance_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-30 16:24+0000\n"
+"PO-Revision-Date: 2023-01-30 16:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "<span>Task Performance Report of </span>"
+msgstr "تقرير اداء لموظف"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "<strong>التقييم:</strong>"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_blocked:hr_employee_performance_report.project_stage_0
+msgid "Blocked"
+msgstr "محجوب"
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_done:hr_employee_performance_report.project_stage_1
+msgid "Buzz or set as done"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,name:hr_employee_performance_report.project_stage_3
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__create_uid
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__create_uid
+msgid "Created by"
+msgstr "أنشاءه بواسطه"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__create_date
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_project_task__date_deadline
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Deadline"
+msgstr "الموعد النهائي"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__display_name
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__display_name
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_project_task__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,name:hr_employee_performance_report.project_stage_2
+msgid "Done"
+msgstr "تمت"
+
+#. module: hr_employee_performance_report
+#: model:ir.model,name:hr_employee_performance_report.model_hr_employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_employee_performance_report
+#: model:ir.model,name:hr_employee_performance_report.model_hr_employee_task
+msgid "Employee Task"
+msgstr "مهام الموظف"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__employee_id
+msgid "Employee name"
+msgstr "اسم الموظف"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Estimated Hours"
+msgstr "ساعات المقدره"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Extra Spent Hours"
+msgstr "ساعات إضافية"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.employee_performance_view_search
+msgid "Group By"
+msgstr "تجمع حسب"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__id
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__id
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__id
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_project_task__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_needaction
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_has_error
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,name:hr_employee_performance_report.project_stage_1
+msgid "In Progress"
+msgstr  "قيد التنفيذ"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance____last_update
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task____last_update
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_project_task____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__write_uid
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__write_date
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee_task__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Late Completion Task"
+msgstr "مهمات متأخره الإنجاز"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__max_rang
+msgid "Maximum Percentage"
+msgstr "اقصي نسبة مئوية"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__min_rang
+msgid "Minimum Percentage"
+msgstr "اقل نسبة مئوية"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__name
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.employee_performance_view_search
+msgid "Name"
+msgstr "اسم التقدير"
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_blocked:hr_employee_performance_report.project_stage_1
+msgid "Need functional or technical help"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,name:hr_employee_performance_report.project_stage_0
+msgid "New"
+msgstr "جديد"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__on_work_count
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Not Work"
+msgstr "مهمات لم تنجز"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__on_time_count
+msgid "On Time"
+msgstr "في وقتها"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "On Time Completion Task"
+msgstr "مهمات تمت في وقتها"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__performance
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__sum_performance
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.employee_performance_view_form
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.employee_performance_view_search
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.employee_performance_view_tree
+msgid "Performance"
+msgstr "تقييم الاداء"
+
+#. module: hr_employee_performance_report
+#: model:ir.actions.act_window,name:hr_employee_performance_report.action_employee_performance
+#: model:ir.ui.menu,name:hr_employee_performance_report.hr_menu_action_employee_performanc
+msgid "Rang Performances"
+msgstr "مدى تقييم الاداء"
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_done:hr_employee_performance_report.project_stage_3
+msgid "Ready to reopen"
+msgstr "جاهز لإعادة الفتح"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤل"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Spent Hours"
+msgstr "الوقت المستغرق"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Stage"
+msgstr "المرحله"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model,name:hr_employee_performance_report.model_project_task
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.view_timesheet_form
+msgid "Task"
+msgstr "المهام"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Task Name"
+msgstr "اسم المهمه"
+
+#. module: hr_employee_performance_report
+#: model:ir.actions.report,name:hr_employee_performance_report.report_emp_performance
+msgid "Task Performance Report"
+msgstr "تقرير تقييم اداء المهام"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "Total Spent Hours"
+msgstr "مجموع الساعات المستغرقه"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_employee_performance__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,help:hr_employee_performance_report.field_employee_performance__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_project_task__employee_id
+msgid "employee"
+msgstr "الموظف"
+
+#. module: hr_employee_performance_report
+#: model:ir.model,name:hr_employee_performance_report.model_employee_performance
+msgid "employee.performance"
+msgstr "اداء الموظف"
+
+#. module: hr_employee_performance_report
+#: model_terms:ir.ui.view,arch_db:hr_employee_performance_report.report_emp_performace_document
+msgid "hours"
+msgstr "ساعات"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__late_count
+msgid "late count"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__late_time
+msgid "late time"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__task_ids
+msgid "task"
+msgstr "المهام"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__total_spent_hours
+msgid "total hours"
+msgstr "مجموع الساعات"
+
+#. module: hr_employee_performance_report
+#: model:ir.model.fields,field_description:hr_employee_performance_report.field_hr_employee__total_planned_hours
+msgid "total planned hours"
+msgstr "مجموع الساعات المخططه"
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_done:hr_employee_performance_report.project_stage_0
+#: model:project.task.type,legend_done:hr_employee_performance_report.project_stage_2
+msgid "جاهز"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_normal:hr_employee_performance_report.project_stage_0
+#: model:project.task.type,legend_normal:hr_employee_performance_report.project_stage_1
+#: model:project.task.type,legend_normal:hr_employee_performance_report.project_stage_2
+#: model:project.task.type,legend_normal:hr_employee_performance_report.project_stage_3
+msgid "قيد التنفيذ"
+msgstr ""
+
+#. module: hr_employee_performance_report
+#: model:project.task.type,legend_blocked:hr_employee_performance_report.project_stage_2
+#: model:project.task.type,legend_blocked:hr_employee_performance_report.project_stage_3
+msgid "محجوب"
+msgstr ""

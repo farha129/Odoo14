@@ -12,9 +12,9 @@
                      <header>
                         <button name="action_submit" type="object" string="Submit" states="draft" class="oe_highlight"/>
                         <button name="action_cancel" type="object" string="Cancel" states="waiting_approval_1" />
-                        <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager"/>
                         <button name="action_double_approve" type="object" string="Approve" states="waiting_approval_2" class="oe_highlight" groups="account.group_account_user,account.group_account_manager"/>
-                        <button name="action_refuse" type="object" string="Refuse" states="draft,waiting_approval_1,waiting_approval_2" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_refuse" type="object" string="Refuse" states="draft,waiting_approval_1,waiting_approval_2" class="oe_highlight" groups="hr.group_hr_manager"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,waiting_approval_1,approve" />
                      </header>
                      <sheet>
@@ -35,11 +35,11 @@
                             <field name="employee_ids" widget="many2many_tags" attrs="{'invisible':[('type_selection','!=','many_emp')],'readonly': [('state', '!=', 'draft')]}" />
 
                         </group>
-                         <group col="4" attrs="{'invisible': [['state', 'in', ('waiting_approval_1', 'draft')]]}">
-                             <field name="emp_account_id" />
-                            <field name="treasury_account_id" />
-                            <field name="journal_id"/>
-                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                         <group col="4" attrs="{'invisible': [('state', 'in', ('waiting_approval_1', 'draft','cancel'))]}">
+                             <field name="emp_account_id"   attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="treasury_account_id"   attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="journal_id"  attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"  attrs="{'readonly':[('state','=','approve')]}"/>
                          </group>
                          <group>
                              <field name="descripton" attrs="{'readonly':[('state','!=','draft')]}"/>
@@ -51,7 +51,7 @@
 <!--                                    <field name="date"/>-->
                                     <field name="employee_id"/>
                                     <field name="amount"/>
-                                    <field name="paid" readonly="1" invisible="1"/>
+                                    <field name="paid" readonly="1" invisible="0"/>
                                 </tree>
                             </field>
                             <group class="oe_subtotal_footer oe_right" colspan="2" >
@@ -131,7 +131,7 @@
 
                 <xpath expr="//div[@name='button_box']" position="inside">
                     <button name="%(act_hr_employee_incentive_request)d" type="action" string="incentives" class="oe_stat_button"
-                            icon="fa-usd" groups="hr.group_hr_user">
+                            icon="fa-usd" groups="hr.group_hr_user,hr.group_hr_manager">
                         <field name="incentive_count"/>
                     </button>
                 </xpath>
@@ -144,7 +144,7 @@
             id="hr_menu_incentive"
             action="action_hr_incentive"
             parent="hr.menu_hr_root"
-            sequence="5"
+            sequence="18"
             groups="hr.group_hr_user"
             />
 </odoo>

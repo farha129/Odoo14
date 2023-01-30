@@ -57,8 +57,8 @@
                     <table class="table table-sm o_main_table" name="control_payment_line_table">
                         <thead>
                             <tr>
-                                <th name="th_mileston" class="text-right"><span>المبلغ</span></th>
-                                <th name="th_date" class="text-right"><span>تاريخ الدفع</span></th>
+                                 <th name="th_date" class="text-left"><span>تاريخ الدفع</span></th>
+                                <th name="th_mileston" class="text-left"><span>المبلغ</span></th>
 
                             </tr>
                         </thead>
@@ -66,13 +66,14 @@
                                 <t t-set="lines" t-value="o.loan_lines"/>
                                 <t t-foreach="lines" t-as="line">
                                      <tr>
-                                     <td class="text-right">
-                                            <span  t-field="line.amount"/>
-                                        </td>
-                                    <td class="text-right">
+                                          <td class="text-left">
                                          <span  t-field="line.date" />
 
                                     </td>
+                                     <td class="text-left">
+                                            <span  t-field="line.amount"/>
+                                        </td>
+
                                      </tr>
                                 </t>
 
@@ -80,26 +81,29 @@
                     </table>
                         <div class="clearfix">
                         <div id="total" class="row">
-                            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                            <div t-attf-class="#{'col-12' if report_type != 'html' ">
                                 <table class="table table-sm" style="page-break-inside: avoid;">
                                     <tr class="border-black o_subtotal" style="">
-                                        <td class="text-right">
+
+                                        <td class="text-left"><strong>المجموع</strong></td>
+                                        <td class="text-left">
                                             <span t-field="o.total_amount"/>
                                         </td>
-                                        <td class="text-right"><strong>المجموع</strong></td>
 
                                     </tr>
                                 <tr class="border-black o_subtotal" style="">
-                                        <td class="text-right">
+
+                                         <td class="text-left"><strong>المبلغ المدفوع</strong></td>
+                                    <td class="text-left">
                                             <span t-field="o.total_paid_amount"/>
                                         </td>
-                                         <td class="text-right"><strong>المبلغ المدفوع</strong></td>
                                     </tr>
                                <tr class="border-black o_subtotal" style="">
-                                        <td class="text-right">
+
+                                         <td class="text-left"><strong>المبلغ المتبقي</strong></td>
+                                   <td class="text-left">
                                             <span t-field="o.balance_amount"/>
                                         </td>
-                                         <td class="text-right"><strong>المبلغ المتبقي</strong></td>
 
                                     </tr>
                                 </table>

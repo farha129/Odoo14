@@ -19,6 +19,7 @@ class Hrincentive(models.Model):
         ('many_emp', 'Many Employee'),
         ('all_staff_dep', 'All Staff in Department'),
         ('all_staff', 'All Staff'),
+
     ], string="Staff Payments",  track_visibility='onchange', copy=False, required=True)
     employee_id = fields.Many2one('hr.employee', string="Employee",)
     employee_ids = fields.Many2many('hr.employee', string="Employees",)
@@ -39,6 +40,8 @@ class Hrincentive(models.Model):
                                   default=lambda self: self.env.user.company_id.currency_id)
     incentive_amount = fields.Float(string="Incentive Amount", required=True)
     total_amount = fields.Float(string="Total Amount", readonly=True, store=True,)
+    total_paid_amount = fields.Float(string="Total Paid Amount", store=True, compute='_compute_incentive_amount')
+
 
 
     state = fields.Selection([
@@ -73,7 +76,13 @@ class Hrincentive(models.Model):
         else:
             ts_user_id = self.env.context.get('user_id', self.env.user.id)
         result['employee_id'] = self.env['hr.employee'].search([('user_id', '=', ts_user_id)], limit=1).id
+
         return result
+
+    def _compute_incentive_amount(self):
+        for incentive in self:
+            for line in incentive.incentive_lines:
+                line.paid == True
 
 
 

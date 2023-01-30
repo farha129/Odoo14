@@ -12,9 +12,9 @@
                      <header>
                         <button name="action_submit" type="object" string="Submit" states="draft" class="oe_highlight"/>
                         <button name="action_cancel" type="object" string="Cancel" states="waiting_approval_1" />
-                        <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_approve" type="object" string="Approve" states="waiting_approval_1" class="oe_highlight" groups="hr.group_hr_manager"/>
                         <button name="action_double_approve" type="object" string="Approve" states="waiting_approval_2" class="oe_highlight" groups="account.group_account_user,account.group_account_manager"/>
-                        <button name="action_refuse" type="object" string="Refuse" states="draft,waiting_approval_1,waiting_approval_2" class="oe_highlight" groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_refuse" type="object" string="Refuse" states="draft,waiting_approval_1,waiting_approval_2" class="oe_highlight" groups="hr.group_hr_manager"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,waiting_approval_1,approve" />
                      </header>
                      <sheet>
@@ -25,22 +25,23 @@
                             </h1>
                         </div>
                         <group col="4">
-                             <field name="employee_id" attrs="{'readonly':[('state','=','waiting_approval_1')]}" />
+                             <field name="employee_id" attrs="{'readonly':[('state','!=','draft')]}" />
                             <field name="date"/>
                             <field name="department_id"/>
                             <field name="job_position"/>
-                            <field name="loan_amount" attrs="{'readonly':[('state','=','waiting_approval_1')]}"/>
-                            <field name="installment" attrs="{'readonly':[('state','=','waiting_approval_1')]}"/>
-                            <field name="payment_date" attrs="{'readonly':[('state','=','waiting_approval_1')]}"/>
-                            <field name="journal_id"  attrs="{'invisible':[('state', '=','draft')]}"/>
-                            <field name="treasury_account_id"  attrs="{'invisible': [['state', 'in', ('waiting_approval_1', 'draft')]]}"/>
-                             <field name="emp_account_id"  attrs="{'invisible': [['state', 'in', ('waiting_approval_1', 'draft')]]}"/>
-                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
-                            <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_company"/>
-                        </group>
+                            <field name="loan_amount" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="installment" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="payment_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+                         </group >
+                            <group col="4" attrs="{'invisible': [('state', 'in', ('waiting_approval_1', 'draft','cancel'))]}">
+                             <field name="emp_account_id"   attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="treasury_account_id"   attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="journal_id"  attrs="{'readonly':[('state','=','approve')]}"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"  attrs="{'readonly':[('state','=','approve')]}"/>
+                         </group>
                          <notebook>
-                        <page string="Installments">
-                            <field name="loan_lines">
+                        <page string="Installments" >
+                            <field name="loan_lines" readonly = "1">
                                 <tree string="Installments" editable="bottom">
                                     <field name="date"/>
                                     <field name="amount"/>
@@ -183,6 +184,6 @@
             action="action_hr_loan"
             parent="hr.menu_hr_root"
             groups="hr.group_hr_user"
-            sequence="5"
+            sequence="15"
             />
 </odoo>

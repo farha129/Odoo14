@@ -8,15 +8,15 @@
             <field name="arch" type="xml">
                 <div id="invoicing_settings" position="after">
                     <h2 groups="account.group_account_user">Loan Approval</h2>
-                    <div class="row mt16 o_settings_container" id="loan_approval" groups="account.group_account_user">
+                    <div class="row mt16 o_settings_container" id="loan_approval" groups="account.group_account_user" eval="True">
                        <div class="col-xs-12 col-md-6 o_setting_box" title="Allows you to Add approval from accounting department." groups="account.group_account_user">
 
 
                            <div class="o_setting_left_pane">
-                        <field name="loan_approve"/>
+                        <field name="loan_approve" eval="True"/>
                     </div>
                             <div class="o_setting_right_pane">
-                                <label string="Loan Approval" for="loan_approve"/>
+                                <label string="Loan Approval" for="loan_approve"  eval="True"/>
                                 <div class="text-muted">
                                     Enable Approval from Accounting Department
                                 </div>

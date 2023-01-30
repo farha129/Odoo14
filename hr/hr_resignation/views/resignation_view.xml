@@ -27,9 +27,9 @@
                 <form string="Employee Resignation">
                     <header>
                         <button string="Confirm" type="object" name="confirm_resignation" states='draft' class="oe_highlight"/>
-                        <button string="Cancel" type="object" name="cancel_resignation" states='draft'/>
-                        <button string="Approve" type="object" groups="hr.group_hr_user" name="approve_resignation" states='confirm'/>
-                        <button string="Reject" type="object" groups="hr.group_hr_user" name="reject_resignation" states='confirm'/>
+                        <button string="Cancel" type="object" name="cancel_resignation" states='draft,confirm'/>
+                        <button string="Approve" type="object" groups="hr.group_hr_manager,hr.group_hr_user" name="approve_resignation" states='confirm'/>
+                        <button string="Reject" type="object" groups="hr.group_hr_manager" name="reject_resignation" states='confirm'/>
                         <button string="Set to Draft" type="object" groups="hr.group_hr_manager" name="reset_to_draft" states='approved'/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
                     </header>
@@ -42,23 +42,23 @@
                         <group>
                             <group string="Employee Details">
                                 <field name="read_only" invisible="1"/>
-                                <field name="employee_id" attrs="{'readonly': ['|',('read_only','=',False),('state','=','approved')]}"/>
+                                <field name="employee_id" attrs="{'readonly': ['|',('read_only','=',False),('state','!=','draft')]}"/>
                                 <field name="department_id"/>
-                                <field name="employee_contract"/>
+                                <field name="employee_contract"  attrs="{'readonly': [('state','!=','draft')]}"/>
                             </group>
                             <group string="Dates">
-                                <field name="joined_date"/>
+                                <field name="joined_date"  attrs="{'readonly': [('state','!=','draft')]}"/>
                                 <field name="resign_confirm_date"
                                        readonly="1"
                                        attrs="{'invisible':[('resign_confirm_date','=',False)]}"/>
-                                <field name="expected_revealing_date" attrs="{'readonly': [('state','=','approved')]}"/>
+                                <field name="expected_revealing_date" attrs="{'readonly': [('state','!=','draft')]}"/>
                                 <field name="approved_revealing_date"
-                                        groups="hr.group_hr_user"/>
-                                <field name="notice_period"/>
+                                        groups="hr.group_hr_user"  attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="notice_period"  attrs="{'readonly': [('state','!=','draft')]}"/>
                             </group>
                             <group string="Resignation Details">
-                                <field name="resignation_type" string="Type" groups="hr.group_hr_user" attrs="{'readonly': [('state','=','approved')]}"/>
-                                <field name="reason" attrs="{'readonly': [('state','=','approved')]}"/>
+                                <field name="resignation_type" string="Type" groups="hr.group_hr_user" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="reason" attrs="{'readonly': [('state','!=','draft')]}"/>
                             </group>
                         </group>
                     </sheet>
@@ -81,11 +81,11 @@
         </record>
         <menuitem id="employee_resignation" name="Resignation"
                   groups="base.group_user"
-                  web_icon="hr_resignation,static/description/resignation_web.png"
+                  parent="hr.menu_hr_root"
                   sequence="21"/>
 
         <menuitem id="employee_resignation_request" parent="employee_resignation" name="Resignation Request"
-                  action="view_employee_resignation" groups="base.group_user" sequence="4"/>
+                  action="view_employee_resignation" groups="base.group_user" sequence="1"/>
     </data>
 </odoo>
 

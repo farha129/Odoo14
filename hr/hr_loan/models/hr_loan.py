@@ -89,6 +89,7 @@ class HrLoan(models.Model):
 
 
     def action_submit(self):
+        self.compute_installment()
         self.write({'state': 'waiting_approval_1'})
 
 

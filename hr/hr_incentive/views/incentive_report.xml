@@ -48,8 +48,8 @@
                     <table class="table table-sm o_main_table" name="control_payment_line_table_inc">
                         <thead>
                             <tr>
-                                <th name="th_mileston" class="text-right"><span>المبلغ</span></th>
-                                <th name="th_date" class="text-right"><span>اسم الموظف</span></th>
+                                <th name="th_date" class="text-left"><span>اسم الموظف</span></th>
+                                <th name="th_mileston" class="text-left"><span>المبلغ</span></th>
 
                             </tr>
                         </thead>
@@ -57,13 +57,14 @@
                                 <t t-set="lines" t-value="o.incentive_lines"/>
                                 <t t-foreach="lines" t-as="line">
                                      <tr>
-                                     <td class="text-right">
-                                            <span  t-field="line.amount"/>
-                                        </td>
-                                    <td class="text-right">
+                                         <td class="text-left">
                                          <span  t-field="line.employee_id.name" />
 
                                     </td>
+                                     <td class="text-left">
+                                            <span  t-field="line.amount"/>
+                                        </td>
+
                                      </tr>
                                 </t>
 
@@ -74,10 +75,11 @@
                             <div t-attf-class="#{'col-12' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
                                 <table class="table table-sm" style="page-break-inside: avoid;">
                                     <tr class="border-black o_subtotal" style="">
-                                        <td class="text-right">
+                                         <td class="text-left"><strong>المجموع</strong></td>
+
+                                        <td class="text-left">
                                             <span t-field="o.total_amount"/>
                                         </td>
-                                        <td class="text-right"><strong>المجموع</strong></td>
 
                                     </tr>
                                 </table>

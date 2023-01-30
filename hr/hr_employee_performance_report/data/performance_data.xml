@@ -4,18 +4,18 @@
 
         <!-- performance -->
         <record id="performance_very_good_data_id" model="employee.performance">
-            <field name="name">Very Good</field>
+            <field name="name">ممتاز</field>
             <field name="min_rang">80</field>
             <field name="max_rang">100</field>
             
         </record>
        <record id="performance_good_data_id" model="employee.performance">
-            <field name="name">Good</field>
+            <field name="name">جيد جدا</field>
             <field name="min_rang">50</field>
             <field name="max_rang">79</field>     
         </record>
       <record id="performance_bad_data_id" model="employee.performance">
-            <field name="name">Bad</field>
+            <field name="name">سيئ</field>
             <field name="min_rang">0</field>
             <field name="max_rang">49</field>     
         </record>

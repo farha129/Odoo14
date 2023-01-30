@@ -123,6 +123,15 @@ class Hraccommodation(models.Model):
                         #     })],
                         # })
 
+class HrEmployee(models.Model):
+    _inherit = "hr.employee"
+
+    def _compute_employee_accommodation(self):
+        """This compute the Accommodtion amount  count of an employee.
+            """
+        self.acc_count = self.env['hr.accommodation'].search_count([('employee_id', '=', self.id)])
+
+    acc_count = fields.Integer(string="Accommodation Count", compute='_compute_employee_accommodation')
 
 
 
