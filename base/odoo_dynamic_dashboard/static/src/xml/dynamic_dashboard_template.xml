@@ -6,8 +6,7 @@
             </button>
             <button class="btn btn-primary add_block" data-type="graph" type="button">Add Graph
             </button>
-            <button class="btn btn-primary" data-type="tile" type="button">Select Date
-            </button>
+
             <div class=" o_dynamic_dashboard row">
             </div>
             <div style="padding-top: 100px" class="o_dynamic_chart row">

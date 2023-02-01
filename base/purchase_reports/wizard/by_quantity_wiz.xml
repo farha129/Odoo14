@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_wiz_quantity" model="ir.ui.view">
+              <field name="name">Report By Quantity</field>
+              <field name="model">by.quantity.wizard</field>
+              <field name="arch" type="xml">
+                <form > 
+			<group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="partner_id"/>
+                            <field name="product_id"/>
+                            <field name="warehouse_id"/>
+                           
+
+			</group>
+
+                 	<footer>
+                   	    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                   	    <button string="Cancel" special="cancel" class="oe_link"/>
+                 	</footer>
+                </form>
+              </field>
+        </record>
+
+        
+ <record id="action_wiz_quantity" model="ir.actions.act_window">
+            <field name="name">Report By Quantity</field>
+            <field name="res_model">by.quantity.wizard</field>
+
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+ </record>
+
+<!--<menuitem-->
+<!--        id="menu_report_quan_id"-->
+<!--        name="تقرير المطابقة بالكمية"-->
+<!--        parent="purchase.menu_purchase_report"-->
+
+<!--        action="action_wiz_quantity"-->
+<!--       />-->
+
+
+<!--
+<menuitem
+        id="menu_report_quanrty_menu"
+        name="تقرير للعميل"
+        parent="menu_report_cust_id"
+
+        action="action_wiz_quantity"
+       />-->
+</odoo>

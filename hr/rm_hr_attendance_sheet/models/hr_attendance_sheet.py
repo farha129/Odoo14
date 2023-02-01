@@ -655,23 +655,29 @@ class AttendanceSheet(models.Model):
         payslips = payslip_obj
         for sheet in self:
             contracts = sheet.employee_id._get_contracts(sheet.date_from,
-                                                         sheet.date_to)
+                                                         sheet.date_to,states=['open'])
             if not contracts:
+                print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&conyr",contracts)
+
                 raise ValidationError(_('There is no active contract for current employee'))
             if sheet.payslip_id:
+
                 raise ValidationError(_('Payslip Has Been Created Before'))
             new_payslip = payslip_obj.new({
                 'employee_id': sheet.employee_id.id,
                 'date_from': sheet.date_from,
                 'date_to': sheet.date_to,
                 'contract_id':contracts[0].id,
-                'struct_id':contracts[0].structure_type_id.default_struct_id.id
+                'struct_id':contracts[0].struct_id.id
             })
-            new_payslip._onchange_employee()
+
+            new_payslip.onchange_employee()
             payslip_dict = new_payslip._convert_to_write({
                 name: new_payslip[name] for name in new_payslip._cache})
 
             payslip_id = payslip_obj.create(payslip_dict)
+            print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&payslip_idpayslip_idpayslip_idpayslip_idpayslip_id",payslip_id)
+
             worked_day_lines = self._get_workday_lines()
             payslip_id.worked_days_line_ids = [(0, 0, x) for x in
                                                worked_day_lines]
@@ -682,6 +688,10 @@ class AttendanceSheet(models.Model):
 
     def _get_workday_lines(self):
         self.ensure_one()
+        print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&_get_workday_lines")
+        for sheet in self:
+            contracts = sheet.employee_id._get_contracts(sheet.date_from,
+                                                         sheet.date_to,states=['open'])
 
         work_entry_obj = self.env['hr.work.entry.type']
         overtime_work_entry = work_entry_obj.search([('code', '=', 'ATTSHOT')])
@@ -704,7 +714,7 @@ class AttendanceSheet(models.Model):
         overtime = [{
             'name': "Overtime",
             'code': 'OVT',
-            'work_entry_type_id': overtime_work_entry[0].id,
+            'contract_id': contracts[0].id,
             'sequence': 30,
             'number_of_days': self.no_overtime,
             'number_of_hours': self.tot_overtime,
@@ -712,7 +722,7 @@ class AttendanceSheet(models.Model):
         absence = [{
             'name': "Absence",
             'code': 'ABS',
-            'work_entry_type_id': absence_work_entry[0].id,
+            'contract_id': contracts[0].id,
             'sequence': 35,
             'number_of_days': self.no_absence,
             'number_of_hours': self.tot_absence,
@@ -720,7 +730,7 @@ class AttendanceSheet(models.Model):
         late = [{
             'name': "Late In",
             'code': 'LATE',
-            'work_entry_type_id': latin_work_entry[0].id,
+            'contract_id': contracts[0].id,
             'sequence': 40,
             'number_of_days': self.no_late,
             'number_of_hours': self.tot_late,
@@ -728,7 +738,7 @@ class AttendanceSheet(models.Model):
         difftime = [{
             'name': "Difference time",
             'code': 'DIFFT',
-            'work_entry_type_id': difftime_work_entry[0].id,
+            'contract_id': contracts[0].id,
             'sequence': 45,
             'number_of_days': self.no_difftime,
             'number_of_hours': self.tot_difftime,
@@ -749,6 +759,7 @@ class AttendanceSheet(models.Model):
                                                                     employee.id,
                                                                     contract_id=False)
             contract_id = slip_data['value'].get('contract_id')
+            print('99999999999999999999999999999999999999999900000000000000000',contract_id)
             if not contract_id:
                 raise exceptions.Warning(
                     'There is No Contracts for %s That covers the period of the Attendance sheet' % employee.name)

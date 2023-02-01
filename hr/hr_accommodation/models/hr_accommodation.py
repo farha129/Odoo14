@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+import  arabic_reshaper
 
 class Hraccommodation(models.Model):
     _name = 'hr.accommodation'
@@ -72,12 +73,12 @@ class Hraccommodation(models.Model):
                     print('hhhhhhhhhhhhhhhhhhhhhh', partners_ids)
 
                     for partenr in partners_ids:
-
-
-
                         obj_name = rec.employee_id.name
-                        masaage = 'This Employee' + ': ' + format(
-                            obj_name) + '  '+'End Accommodation'
+
+                        text = 'هذا الموظف انتهت اقامته'
+                        masaage = '(' + format(
+                            obj_name) + ')' + '  ' + arabic_reshaper.reshape(text)
+
 
                         message_id = self.message_post(body=masaage, subtype_id=self.env.ref('mail.mt_comment').id,
                                                        subject=masaage,

@@ -1,0 +1,351 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_reports
+# 	* purchase_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-01 06:17+0000\n"
+"PO-Revision-Date: 2023-02-01 06:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "<strong>From :</strong>"
+msgstr "من"
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "<strong>To :</strong>"
+msgstr "الي"
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "<strong>المجموع</strong>"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.view_wiz_vendor
+#: model_terms:ir.ui.view,arch_db:sale_reports.view_wiz_customer
+#: model_terms:ir.ui.view,arch_db:sale_reports.view_wiz_quantity
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__cancel
+#: model:ir.model.fields.selection,name:sale_reports.selection__by_custmomer_wizard__state__cancel
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__create_uid
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__create_uid
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__create_uid
+msgid "Created by"
+msgstr "أنشاءه بواسطه"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__create_date
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__create_date
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sale_reports
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__partner_id
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__partner_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: sale_reports
+#: model:ir.model,name:sale_reports.model_report_sale_reports_report_by_customer_temp
+msgid "Customer Report"
+msgstr "تقرير المبيعات"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Delivered"
+msgstr "مستلمه"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Describtion"
+msgstr "الوصف"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__display_name
+#: model:ir.model.fields,field_description:purchase_reports.field_report_purchase_reports_report_by_vendor_temp__display_name
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__display_name
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__display_name
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_customer_temp__display_name
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_quantity_temp__display_name
+msgid "Display Name"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__date_to
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__date_to
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__date_to
+msgid "End Date"
+msgstr "تاريخ النهاية "
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__id
+#: model:ir.model.fields,field_description:purchase_reports.field_report_purchase_reports_report_by_vendor_temp__id
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__id
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__id
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_customer_temp__id
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_quantity_temp__id
+msgid "ID"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard____last_update
+#: model:ir.model.fields,field_description:purchase_reports.field_report_purchase_reports_report_by_vendor_temp____last_update
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard____last_update
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard____last_update
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_customer_temp____last_update
+#: model:ir.model.fields,field_description:sale_reports.field_report_sale_reports_report_by_quantity_temp____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__write_uid
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__write_uid
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__write_date
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__write_date
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__done
+#: model:ir.model.fields.selection,name:sale_reports.selection__by_custmomer_wizard__state__done
+msgid "Locked"
+msgstr "محجب"
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.view_wiz_vendor
+#: model_terms:ir.ui.view,arch_db:sale_reports.view_wiz_customer
+#: model_terms:ir.ui.view,arch_db:sale_reports.view_wiz_quantity
+msgid "Print"
+msgstr "طباعه"
+
+#. module: sale_reports
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__purchase
+msgid "Purchase Order"
+msgstr "امر شراء"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: sale_reports
+#: model:ir.model,name:sale_reports.model_report_sale_reports_report_by_quantity_temp
+msgid "Quantity Report"
+msgstr ""
+
+#. module: sale_reports
+#: model:ir.model.fields.selection,name:sale_reports.selection__by_custmomer_wizard__state__draft
+msgid "Quotation"
+msgstr "عرض سعر"
+
+#. module: sale_reports
+#: model:ir.model.fields.selection,name:sale_reports.selection__by_custmomer_wizard__state__sent
+msgid "Quotation Sent"
+msgstr "ارسال عرض السعر "
+
+#. module: sale_reports
+#: model:ir.model,name:sale_reports.model_by_custmomer_wizard
+msgid "REport"
+msgstr "تقرير المبيعات"
+
+#. module: purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__draft
+msgid "RFQ"
+msgstr "عرض سعر"
+
+#. module: purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__sent
+msgid "RFQ Sent"
+msgstr "ارسال عرض السعر"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model,name:purchase_reports.model_by_vendor_wizard
+#: model:ir.model,name:sale_reports.model_by_quantity_wizard
+msgid "Report"
+msgstr "تقرير المشتريات"
+
+#. module: sale_reports
+#: model:ir.actions.act_window,name:sale_reports.action_wiz_customer
+#: model:ir.actions.report,name:sale_reports.report_sale_by_customer_id
+msgid "Report By Customer"
+msgstr "تقرير المبيعات"
+
+#. module: sale_reports
+#: model:ir.actions.act_window,name:sale_reports.action_wiz_quantity
+#: model:ir.actions.report,name:sale_reports.report_sale_by_quantity_id
+msgid "Report By Quantity"
+msgstr ""
+
+#. module: purchase_reports
+#: model:ir.actions.report,name:purchase_reports.report_purchase_by_customer_id
+msgid "Report By Vendor"
+msgstr "تقرير المشتريات"
+
+#. module: purchase_reports
+#: model:ir.actions.act_window,name:purchase_reports.action_wiz_vendor
+msgid "Report By vendor"
+msgstr "تقرير المشتريات"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "Report For"
+msgstr "تقرير ل "
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Report For:"
+msgstr "تقرير ل"
+
+#. module: sale_reports
+#: model:ir.model.fields.selection,name:sale_reports.selection__by_custmomer_wizard__state__sale
+msgid "Sales Order"
+msgstr "امر بيع"
+
+#. modules: sale_reports, purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__date_from
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__date_from
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__date_from
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__state
+msgid "State"
+msgstr "الحاله"
+
+#. module: sale_reports
+#: model:ir.model.fields,field_description:sale_reports.field_by_custmomer_wizard__state
+msgid "Status"
+msgstr "الحاله"
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "Subtotal"
+msgstr "المجموع الفرعي"
+
+#. module: purchase_reports
+#: model:ir.model.fields.selection,name:purchase_reports.selection__by_vendor_wizard__state__to_approve
+msgid "To Approve"
+msgstr "الي الموافقة"
+
+#. module: purchase_reports
+#: model:ir.model.fields,field_description:purchase_reports.field_by_vendor_wizard__partner_id
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: purchase_reports
+#: model:ir.model,name:purchase_reports.model_report_purchase_reports_report_by_vendor_temp
+msgid "Vendor Report"
+msgstr "تقرير المشتريات"
+
+#. module: sale_reports
+#: model:ir.model.fields,field_description:sale_reports.field_by_quantity_wizard__warehouse_id
+msgid "Warehouse"
+msgstr ""
+
+#. module: sale_reports
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_quantity_temp
+msgid "prouduct"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "التاريخ"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "الحاله"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "الكمية"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "المجموع الفرعي"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "المرجع"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "المنتج"
+msgstr ""
+
+#. module: purchase_reports
+#: model:ir.ui.menu,name:purchase_reports.menu_report_vendor_menu
+msgid "تقرير المشتربات"
+msgstr ""
+
+#. module: sale_reports
+#: model:ir.ui.menu,name:sale_reports.menu_report_quan_id
+msgid "تقرير المطابقة بالكمية"
+msgstr ""
+
+#. module: purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+msgid "تقرير ل"
+msgstr ""
+
+#. module: sale_reports
+#: model:ir.ui.menu,name:sale_reports.menu_report_cust_menu
+msgid "تقرير للعميل"
+msgstr ""
+
+#. modules: sale_reports, purchase_reports
+#: model_terms:ir.ui.view,arch_db:purchase_reports.report_by_vendor_temp
+#: model_terms:ir.ui.view,arch_db:sale_reports.report_by_customer_temp
+msgid "سعر الوحده"
+msgstr ""

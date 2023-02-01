@@ -71,13 +71,21 @@
 
         <!-- Inherit Employee View -->
 
+
      <record id="hr_employee_custom_view_form" model="ir.ui.view">
         <field name="name">payroll.hr.employee.view.form</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
+                <xpath expr="//h1[1]" position="before">
+                                                     <field name="number" readonly="1"/>
+
+                </xpath>
                 <xpath expr="//h1[1]" position="after">
+
                     <h1 class="d-flex">
+
+
                                 <field name="name_eng" placeholder="Employee's Name English" required="True"/>
                                 <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
                     </h1>

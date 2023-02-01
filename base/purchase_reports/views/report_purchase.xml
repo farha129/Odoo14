@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+
+     
+      <report
+            id="report_purchase_by_customer_id"
+            model="purchase.order.line"
+            string="Report By Vendor"
+            report_type="qweb-pdf"
+            name="purchase_reports.report_by_vendor_temp"
+            file="purchase_reports.report_by_vendor_temp"
+
+           
+        />
+        
+<!--        <report-->
+<!--            id="report_purchase_by_quantity_id"-->
+<!--            model="purchase.order.line"-->
+<!--            string="Report By Quantity"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="purchase_reports.report_by_quantity_temp"-->
+<!--            file="purchase_reports.report_by_quantity_temp"-->
+
+<!--           -->
+<!--        />-->
+
+
+</odoo>

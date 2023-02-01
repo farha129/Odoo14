@@ -38,7 +38,7 @@
     <menuitem name="Configuration" id="menu_dynamic_dashboard_configuration" parent="odoo_dynamic_dashboard.menu_dashboard"
               sequence="3"/>
     <menuitem name="Dashboards" id="menu_dynamic_dashboard_menu" parent="odoo_dynamic_dashboard.menu_dynamic_dashboard_configuration"
-              sequence="3" action="action_dashboard_menu"/>
+              sequence="1" action="action_dashboard_menu"/>
 
 
 </odoo>

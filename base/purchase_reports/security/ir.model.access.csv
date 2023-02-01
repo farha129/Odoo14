@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_purchase_report22_manager,purchase.report222,model_report_purchase_reports_report_by_vendor_temp,purchase.group_purchase_manager,1,1,1,1
+access_purchase_report22_user,purchase.report22user2,model_report_purchase_reports_report_by_vendor_temp,purchase.group_purchase_user,1,1,1,0
+access_purchase_report_wiz_purchasesman,purchase.report_wiz,model_by_vendor_wizard,purchase.group_purchase_manager,1,1,1,1
+access_purchase_report_wiz_manager,purchase.report_wiz,model_by_vendor_wizard,purchase.group_purchase_user,1,1,1,0

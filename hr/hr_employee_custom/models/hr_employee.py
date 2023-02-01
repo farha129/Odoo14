@@ -10,7 +10,15 @@ class HrEmployeePrivate(models.Model):
 
     _inherit ='hr.employee'
     name_eng = fields.Char(string='Name English')
+    number = fields.Char(string='number')
     religion_id = fields.Many2one('hr.religion', string='Religion')
+
+
+    @api.model
+    def create(self, vals):
+        vals['number'] = self.env['ir.sequence'].get('hr.employee.seq') or ' '
+        res = super(HrEmployeePrivate, self).create(vals)
+        return res
 
 
 class HrReligion(models.Model):

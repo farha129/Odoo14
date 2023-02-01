@@ -3,6 +3,8 @@ import datetime
 from datetime import datetime, timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+import  arabic_reshaper
+
 
 date_format = "%Y-%m-%d"
 RESIGNATION_TYPE = [('resigned', 'Normal Resignation'),
@@ -102,12 +104,11 @@ class HrResignation(models.Model):
                 group_id = self.env.ref('hr.group_hr_user').users
                 print("bbbbbbbbbbbbbbb", group_id)
                 partners_ids = group_id.mapped('partner_id').ids
-                print('hhhhhhhhhhhhhhhhhhhhhh', partners_ids)
-
                 for partenr in partners_ids:
                     obj_name = rec.employee_id.name
-                    masaage = 'This Employee' + ': ' + format(
-                        obj_name) + '  ' + 'Submited a Request for resignation'
+                    text = 'هذا الموظف قدم طلب استقاله'
+                    masaage = '(' + format(
+                        obj_name) + ')' + '  ' + arabic_reshaper.reshape(text)
 
                     message_id = self.message_post(body=masaage, subtype_id=self.env.ref('mail.mt_comment').id,
                                                    subject=masaage,
