@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_payslips">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="d">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Pay Slips</h2>
+                        <div class="row">
+                            <div class="col-6">
+                                <td>
+                                    <strong>From</strong>
+                                </td>
+                                <td>
+                                    <span t-field="d.date_from"/>
+                                </td>
+                                </div>
+                                <div class="col-6">
+                                <td>
+                                    <strong>To</strong>
+                                </td>
+                                <td>
+                                    <span t-field="d.date_to"/>
+                                </td>
+                            </div>
+                        </div>
+
+                        <t t-foreach="payslips" t-as="o">
+                            <table class="table table-sm table-bordered">
+                                <tr>
+                                    <td class="table-active">
+                                        <strong>Name</strong>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['name']"/>
+                                    </td>
+                                    <td class="table-active">
+                                        <strong>Designation</strong>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['job']"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-active">
+                                        <strong>Reference</strong>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['Refrence']"/>
+                                    </td>
+                                    <td class="table-active">
+                                        <strong>Bank Account</strong>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['Account']"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr class="bg-info">
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Quantity/rate</th>
+                                        <th>Amount</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o['line_ids'].filtered(lambda line: line.appears_on_payslip)" t-as="line">
+                                        <td>
+                                            <span t-field="line.code"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.quantity"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.amount" t-options='{"widget": "monetary", "display_currency": d.company_id.currency_id}'/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.total" t-options='{"widget": "monetary", "display_currency": d.company_id.currency_id}'/>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p class="text-right">
+                                <strong>Authorized signature</strong>
+                            </p>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

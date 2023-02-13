@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report
+            id="action_report_print_payslips"
+            model="payslip_report.wizard"
+            report_type="qweb-html"
+            string="Payslips"
+            name="hr_attendance_sheet.report_payslips"
+            file="hr_attendance_sheet.report_payslips"
+            menu="False"
+        />
+</odoo>

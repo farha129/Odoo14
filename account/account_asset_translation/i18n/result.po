@@ -1,0 +1,1509 @@
+#. extracted from xlsxcsv.csv
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-15 07:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid " (copy)"
+msgstr " (ينسخ)"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__total_depreciation_entries_count
+msgid "# Depreciation Entries"
+msgstr "# مقالات الاستهلاك"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__gross_increase_count
+msgid "# Gross Increases"
+msgstr "# الزيادات الإجمالي"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__depreciation_entries_count
+msgid "# Posted Depreciation Entries"
+msgstr "# مقالات الاستهلاك أرسلت"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "%s created from invoice"
+msgstr "ق خلق٪ من فاتورة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "(prorata entry)"
+msgstr "(دخول تناسبي)"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "A deferred expense has been created for this move:"
+msgstr "تم إنشاء حساب مؤجل لهذه الخطوة:"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "A deferred revenue has been created for this move:"
+msgstr "تم إنشاء الإيرادات المؤجلة لهذه الخطوة:"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "A document linked to %s has been deleted: "
+msgstr "لقد تم حذف وثيقة مرتبطة إلى٪ s:"
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid "A gross increase has been created"
+msgstr "تم إنشاء نسبة الزيادة الإجمالية"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Accelerated"
+msgstr "معجل"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__method__degressive_then_linear
+msgid "Accelerated Degressive"
+msgstr "تسارع تنازلية"
+
+#: model:ir.model,name:account_asset.model_account_account
+msgid "Account"
+msgstr "الحساب"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__account_asset_counterpart_id
+msgid "Account Asset Counterpart"
+msgstr "النظيرة حساب الأصول"
+
+#: model:ir.model,name:account_asset.model_account_assets_report
+msgid "Account Assets Report"
+msgstr "تقرير الأصول حساب"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__account_depreciation_id
+msgid "Account Depreciation"
+msgstr "الاستهلاك حساب"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__account_depreciation_expense_id
+msgid "Account Depreciation Expense"
+msgstr "حساب الاستهلاك النفقات"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__user_type_id
+msgid ""
+"Account Type is used for information purpose, to generate country-specific "
+"legal reports, and set the rules to close a fiscal year and generate opening "
+"entries."
+msgstr ""
+"يستخدم نوع الحساب لأغراض المعلومات، إلى توليد التقارير القانونية الخاصة بكل "
+"بلد، ووضع القواعد لإغلاق السنة المالية وتوليد إدخالات الافتتاح."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__account_depreciation_id
+msgid "Account used in the depreciation entries, to decrease the asset value."
+msgstr "حساب المستخدم في إدخالات الاستهلاك، إلى خفض قيمة الأصول."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__account_depreciation_expense_id
+msgid ""
+"Account used in the periodical entries, to record a part of the asset as "
+"expense."
+msgstr "حساب المستخدم في مقالات دورية، لتسجيل جزء من الأصول كمصروف."
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Account used to recognize the expense"
+msgstr "حساب يستخدم للتعرف على نفقة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Account used to recognize the revenue"
+msgstr "حساب يستخدم للتعرف على الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Account used to record the deferred expense"
+msgstr "حساب يستخدم لتسجيل حساب مؤجل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Account used to record the deferred income"
+msgstr "حساب يستخدم لتسجيل الإيرادات المؤجلة"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__account_asset_id
+msgid "Account used to record the purchase of the asset at its original price."
+msgstr "حساب يستخدم لتسجيل شراء الأصول بسعره الأصلي."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset_sell__gain_account_id
+msgid "Account used to write the journal item in case of gain"
+msgstr "حساب تستخدم لكتابة هذا البند مجلة في حالة الربح"
+
+#: model:ir.model.fields,help:account_asset.field_res_company__gain_account_id
+msgid ""
+"Account used to write the journal item in case of gain while selling an asset"
+msgstr ""
+"حساب تستخدم لكتابة هذا البند مجلة في حالة تحقيق مكاسب في حين بيع أحد الأصول"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset_sell__loss_account_id
+msgid "Account used to write the journal item in case of loss"
+msgstr "حساب تستخدم لكتابة هذا البند مجلة في حالة الخسارة"
+
+#: model:ir.model.fields,help:account_asset.field_res_company__loss_account_id
+msgid ""
+"Account used to write the journal item in case of loss while selling an asset"
+msgstr "حساب تستخدم لكتابة هذا البند مجلة في حالة فقدان حين بيع أحد الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Accounting"
+msgstr "محاسبة"
+
+#: code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__acquisition_date
+msgid "Acquisition Date"
+msgstr "اكتساب التسجيل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_sell__action
+msgid "Action"
+msgstr "فعل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_needaction
+msgid "Action Needed"
+msgstr "الإجراءات اللازمة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__active
+msgid "Active"
+msgstr "نشيط"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "آخر استثناء الديكور"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_state
+msgid "Activity State"
+msgstr "الدولة آخر"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "آخر نوع أيقونة"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0
+msgid "All the lines should be from the same account"
+msgstr "يجب أن تكون جميع الخطوط من نفس الحساب"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0
+msgid "All the lines should be posted"
+msgstr "يجب أن يتم نشر كل الخطوط"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__already_depreciated_amount_import
+msgid "Already Depreciated Amount Import"
+msgstr "إذا انخفضت قيمة الواردات"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__parent_id
+msgid "An asset has a parent when it is the result of gaining value"
+msgstr "أصل له أحد الوالدين عندما يكون نتيجة لاكتساب قيمة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "An asset has been created for this move:"
+msgstr "تم إنشاء الأصول لهذه الخطوة:"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__account_analytic_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__analytic_tag_ids
+msgid "Analytic Tag"
+msgstr "العلامات التحليلية"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Archived"
+msgstr "من الأرشيف"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__asset_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__asset_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__asset_id+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_account__asset_type__purchase+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search
+msgid "Asset"
+msgstr "أصل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Asset Account"
+msgstr "حساب الأصول"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__account_asset_id
+msgid "Asset Gross Increase Account"
+msgstr "حساب زيادة الأصول الإجمالي"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_id_display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_id_display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_id_display_name
+msgid "Asset Id Display Name"
+msgstr "الأصول معرف اسم العرض"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_ids_display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_ids_display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_ids_display_name
+msgid "Asset Ids Display Name"
+msgstr "الأصول معرفات اسم العرض"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_move_line__asset_ids
+msgid "Asset Linked"
+msgstr "الأصول المرتبطة"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_manually_modified+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_manually_modified+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_manually_modified
+msgid "Asset Manually Modified"
+msgstr "الأصول يدويا التعديل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account__asset_model+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_expense_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_form_asset_inherit+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Asset Model"
+msgstr "الأصول نموذج"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Asset Model name"
+msgstr "اسم الأصول نموذج"
+
+#: model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_asset_model_form+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_asset_model_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_purchase_tree
+msgid "Asset Models"
+msgstr "نماذج الأصول"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__name
+msgid "Asset Name"
+msgstr "اسم الأصل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Asset Options"
+msgstr "خيارات الأصول"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account__asset_type+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__asset_type+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_asset_type+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_asset_type+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_asset_type
+msgid "Asset Type"
+msgstr "نوع الأصول"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_value_change+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_value_change+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_value_change
+msgid "Asset Value Change"
+msgstr "قيمة الأصول تغيير"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Asset Values"
+msgstr "قيم الأصول"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Asset created"
+msgstr "خلق الأصول"
+
+#: model:ir.model.fields,help:account_asset.field_account_move_line__asset_ids
+msgid "Asset created from this Journal Item"
+msgstr "خلق الأصول من هذا البند مجلة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Asset paused"
+msgstr "توقف الأصول"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Asset sold or disposed. Accounting entry awaiting for validation."
+msgstr "باعت الأصول أو التخلص منها. يمثل دخول بانتظار المصادقة عليها."
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid "Asset unpaused"
+msgstr "لم يتم إيقافه مؤقتا الأصول"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Asset(s)"
+msgstr "أصول)"
+
+#: model:ir.model,name:account_asset.model_account_asset
+msgid "Asset/Revenue Recognition"
+msgstr "الأصول الاعتراف / الإيرادات"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_asset_form+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_ids+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_asset_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_purchase_tree
+msgid "Assets"
+msgstr "أصول"
+
+#: model:ir.ui.menu,name:account_asset.menu_finance_config_assets
+msgid "Assets and Revenues"
+msgstr "الأصول والإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Assets in closed state"
+msgstr "الأصول في حالة مغلقة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Assets in draft and open states"
+msgstr "الأصول في مشروع ومفتوحة الدول"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Automate Asset"
+msgstr "أتمتة الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Automate Deferred Expense"
+msgstr "أتمتة النفقات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Automate Deferred Revenue"
+msgstr "أتمتة المؤجلة الإيرادات"
+
+#: code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__book_value
+msgid "Book Value"
+msgstr "قيمة الكتاب"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_account__can_create_asset
+msgid "Can Create Asset"
+msgstr "يمكن إنشاء الأصول"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_modify_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_pause_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_sell_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Category of asset"
+msgstr "فئة الأصول"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Characteristics"
+msgstr "صفات"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__children_ids
+msgid "Children"
+msgstr "أطفال"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__method
+msgid ""
+"Choose the method to use to compute the amount of depreciation lines.\n"
+"  * Straight Line: Calculated on basis of: Gross Value / Number of "
+"Depreciations\n"
+"  * Degressive: Calculated on basis of: Residual Value * Degressive Factor\n"
+"  * Accelerated Degressive: Like Degressive but with a minimum depreciation "
+"value equal to the straight line value."
+msgstr ""
+"اختيار طريقة لاستخدام لحساب كمية من خطوط الاستهلاك.\n"
+"  * خط مستقيم: محسوبة على أساس: إجمالي القيمة / عدد التلفيات\n"
+"  * تنازلية: محسوبة على أساس: المتبقية القيمة * تنازلية عامل\n"
+"  * المعجل تنازلية: مثل التناقضية، ولكنها مع قيمة الحد الأدنى الاستهلاك "
+"يساوي قيمة خط مستقيم."
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__state__close+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search
+msgid "Closed"
+msgstr "مغلق"
+
+#: model:ir.model,name:account_asset.model_res_company
+msgid "Companies"
+msgstr "الشركات"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__company_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__company_id
+msgid "Company"
+msgstr "شركة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Compute Depreciation"
+msgstr "حساب الإهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Compute Expense"
+msgstr "حساب المصاريف"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Compute Revenue"
+msgstr "حساب الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Confirm"
+msgstr "يتأكد"
+
+#: model%3Air.actions.server%2Cname%3Aaccount_asset.action_account_aml_to_asset+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account__create_asset+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_move_line_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_move_line_tree_grouped_inherit
+msgid "Create Asset"
+msgstr "إنشاء الأصول"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_account__create_asset__validate
+msgid "Create and validate"
+msgstr "إنشاء والتحقق من صحة"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_account__create_asset__draft
+msgid "Create in draft"
+msgstr "إنشاء في مشروع"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__create_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__create_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__create_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__create_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__create_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__create_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_depreciated_value+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_depreciated_value+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_depreciated_value
+msgid "Cumulative Depreciation"
+msgstr "الاستهلاك التراكمي"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Cumulative Expense"
+msgstr "نفقات التراكمي"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Cumulative Revenue"
+msgstr "الإيرادات التراكمي"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__currency_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__currency_id
+msgid "Currency"
+msgstr "عملة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Current"
+msgstr "تيار"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Current Values"
+msgstr "القيم الحالية"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_sell__invoice_id
+msgid "Customer Invoice"
+msgstr "فاتورة العميل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__date+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search
+msgid "Date"
+msgstr "تاريخ"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_account__asset_type__expense+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__asset_type__expense
+msgid "Deferred Expense"
+msgstr "النفقات المؤجلة"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_expense_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_expense_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_expense_model_search
+msgid "Deferred Expense Account"
+msgstr "حساب المصاريف المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Deferred Expense Amount"
+msgstr "تأجيل المبلغ المصاريف"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Deferred Expense Model"
+msgstr "تأجيل المصروفات نموذج"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Deferred Expense Model name"
+msgstr "النفقات المؤجلة اسم النموذج"
+
+#: model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_expense_model_form+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_expense_model_recognition
+msgid "Deferred Expense Models"
+msgstr "نماذج النفقات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Deferred Expense Options"
+msgstr "خيارات النفقات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Deferred Expense name"
+msgstr "اسم المصروفات المؤجلة"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Deferred Expense(s)"
+msgstr "مصروفات مؤجلة)"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_expense_form+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_expense_recognition+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_expense_tree
+msgid "Deferred Expenses"
+msgstr "مصروفات مؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_model_expense_tree
+msgid "Deferred Expenses Models"
+msgstr "تأجيل المصروفات نماذج"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_account__asset_type__sale
+msgid "Deferred Revenue"
+msgstr "الإيرادات المؤجلة"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_sale_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_revenue_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Deferred Revenue Account"
+msgstr "حساب الإيرادات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Deferred Revenue Amount"
+msgstr "تأجيل الإيرادات المبلغ"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Deferred Revenue Model"
+msgstr "تأجيل الإيرادات نموذج"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Deferred Revenue Model name"
+msgstr "تأجيل اسم الإيرادات نموذج"
+
+#: model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_revenue_model_form+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_revenue_model_recognition
+msgid "Deferred Revenue Models"
+msgstr "تأجيل نماذج الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Deferred Revenue Options"
+msgstr "خيارات الإيرادات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Deferred Revenue name"
+msgstr "تأجيل اسم الإيرادات"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Deferred Revenue(s)"
+msgstr "الإيرادات المؤجلة)"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model%3Air.actions.act_window%2Cname%3Aaccount_asset.action_account_revenue_form+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_revenue_recognition+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_sale_tree
+msgid "Deferred Revenues"
+msgstr "الإيرادات المؤجلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_model_sale_tree
+msgid "Deferred Revenues Models"
+msgstr "تأجيل الإيرادات نماذج"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Deferred expense"
+msgstr "حساب مؤجل"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Deferred expense created"
+msgstr "حساب المؤجلة خلق"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Deferred revenue"
+msgstr "الإيرادات المؤجلة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Deferred revenue created"
+msgstr "الإيرادات المؤجلة خلق"
+
+#: code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__method__degressive
+msgid "Degressive"
+msgstr "تنازلية"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__method_progress_factor
+msgid "Degressive Factor"
+msgstr "تنازلية عامل"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__value_residual
+msgid "Depreciable Amount"
+msgstr "للاستهلاك المبلغ"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__value_residual+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__asset_remaining_value+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__asset_remaining_value+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__asset_remaining_value
+msgid "Depreciable Value"
+msgstr "القيمة للاستهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Depreciated Amount"
+msgstr "انخفضت قيمة المبلغ"
+
+#: code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form
+msgid "Depreciation"
+msgstr "الاستهلاك"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__account_depreciation_id+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search
+msgid "Depreciation Account"
+msgstr "حساب الإهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Depreciation Board"
+msgstr "مجلس الاستهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Depreciation Date"
+msgstr "انخفاض قيمة التسجيل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__depreciation_move_ids+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form
+msgid "Depreciation Lines"
+msgstr "خطوط الاستهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Depreciation Method"
+msgstr "طريقة الاستهلاك"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__depreciation_number_import
+msgid "Depreciation Number Import"
+msgstr "انخفاض عدد استيراد"
+
+#: model%3Air.actions.client%2Cname%3Aaccount_asset.action_account_report_assets+model%3Air.ui.menu%2Cname%3Aaccount_asset.menu_action_account_report_assets
+msgid "Depreciation Schedule"
+msgstr "جدول الاستهلاك"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Depreciation Table Report"
+msgstr "تقرير جدول الاستهلاك"
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid "Depreciation board modified"
+msgstr "مجلس الاستهلاك تعديل"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Depreciation entry %s posted (%s)"
+msgstr "دخول الاستهلاك٪ ق نشر (٪ ق)"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Depreciation entry %s reversed (%s)"
+msgstr "دخول الاستهلاك٪ ق عكس (٪ ق)"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__display_account_asset_id
+msgid "Display Account Asset"
+msgstr "عرض الأصول حساب"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__display_model_choice
+msgid "Display Model Choice"
+msgstr "عرض نموذج اختيار"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_assets_report__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move_line__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__display_name+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_res_company__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Disposal"
+msgstr "تصرف"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__disposal_date
+msgid "Disposal Date"
+msgstr "التخلص التسجيل"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Disposal Move"
+msgstr "التخلص نقل"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Disposal Moves"
+msgstr "التحركات التخلص"
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset_sell__action__dispose+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_sell_form
+msgid "Dispose"
+msgstr "تخلص"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__state__draft
+msgid "Draft"
+msgstr "مشروع"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__draft_asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__draft_asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__draft_asset_ids
+msgid "Draft Asset"
+msgstr "مشروع الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Duration"
+msgstr "مدة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Existing Depreciation Schedule"
+msgstr "القائمة جدول الاستهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Existing Depreciations"
+msgstr "التلفيات الموجودة"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_expense_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_expense_tree
+msgid "Expense"
+msgstr "مصروف"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__account_depreciation_expense_id+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_expense_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_expense_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_expense_model_search
+msgid "Expense Account"
+msgstr "حساب المصاريف"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Expense Board"
+msgstr "نفقة المجلس"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Expense Date"
+msgstr "تاريخ حساب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Expense Lines"
+msgstr "خطوط حساب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_model_expense_tree
+msgid "Expense Name"
+msgstr "اسم حساب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Expense Recognition"
+msgstr "المصاريف الاعتراف"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "First Depreciation"
+msgstr "الاستهلاك الأول"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__first_depreciation_date+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form
+msgid "First Depreciation Date"
+msgstr "الاستهلاك أولا التاريخ"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__first_depreciation_date_import
+msgid "First Depreciation Date Import"
+msgstr "الاستهلاك أولا التاريخ الاستيراد"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "First Recognition Date"
+msgstr "الاعتراف أولا التسجيل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__account_asset_id+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search
+msgid "Fixed Asset Account"
+msgstr "حساب الأصول الثابتة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_follower_ids
+msgid "Followers"
+msgstr "متابعون"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون (القنوات)"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "الخط رهيبة رمز على سبيل المثال كرة القدم-المهام"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_account__form_view_ref
+msgid "Form View Ref"
+msgstr "عرض النموذج المرجع"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Future Activities"
+msgstr "الأنشطة المستقبلية"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset_sell__gain_or_loss__gain
+msgid "Gain"
+msgstr "مكسب"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__gain_account_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_res_company__gain_account_id
+msgid "Gain Account"
+msgstr "حساب الربح"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_sell__gain_or_loss
+msgid "Gain Or Loss"
+msgstr "ربح أوخسارة"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__gain_value
+msgid "Gain Value"
+msgstr "قيمة ربح"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form
+msgid "Gross Increase"
+msgstr "الزيادة الإجمالية"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__gross_increase_value
+msgid "Gross Increase Value"
+msgstr "زيادة القيمة الإجمالية"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_expense_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Group By..."
+msgstr "مجموعة من..."
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_assets_report__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move_line__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_res_company__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_exception_icon
+msgid "Icon"
+msgstr "أيقونة"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز للإشارة إلى النشاط استثناء."
+
+#: model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_asset__message_needaction+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_asset__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم، تتطلب الرسائل الجديدة انتباهكم."
+
+#: model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_asset__message_has_error+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_asset__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم، بعض الرسائل لها خطأ التسليم."
+
+#: model:ir.model.fields,help:account_asset.field_account_account__asset_model
+msgid ""
+"If this is selected, an expense/revenue will be created automatically when "
+"Journal Items on this account are posted."
+msgstr ""
+"إذا تم تحديد هذا، سيتم إنشاء كمصروف / الإيرادات تلقائيا عندما يتم نشر مجلة "
+"البنود المدرجة في هذا الحساب."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__first_depreciation_date_import
+msgid ""
+"In case of an import from another software, provide the first depreciation "
+"date in it."
+msgstr "في حالة الاستيراد من برامج أخرى، تقديم موعد الاستهلاك الأولى في ذلك."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__depreciation_number_import
+msgid ""
+"In case of an import from another software, provide the number of "
+"depreciations already done before starting with Odoo."
+msgstr ""
+"في حالة الاستيراد من برامج أخرى، وتوفير عدد من انخفاض قيمة فعلت قبل البدء مع "
+"Odoo."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__already_depreciated_amount_import
+msgid ""
+"In case of an import from another software, you might need to use this field "
+"to have the right depreciation table report. This is the value that was "
+"already depreciated with entries not computed from this model"
+msgstr ""
+"في حالة الاستيراد من برامج أخرى، قد تحتاج إلى استخدام هذا الحقل لديك الحق في "
+"تقرير جدول الاستهلاك. هذه هي القيمة التي تم استهلاكها بالفعل مع إدخالات لا "
+"حسابها من هذا النموذج"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid ""
+"In percent.<br>For a linear method, the depreciation rate is computed per "
+"year.<br>For a degressive method, it is the degressive factor"
+msgstr ""
+"في المئة. <br> للطريقة الخطي، ويتم احتساب معدل الاستهلاك سنويا. <br> للطريقة "
+"تنازلية، هو عامل تنازلية"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_modify_form
+msgid "Increase Accounts"
+msgstr "الحسابات زيادة"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__prorata
+msgid ""
+"Indicates that the first depreciation entry for this asset have to be done "
+"from the asset date (purchase date) instead of the first January / Start "
+"date of fiscal year"
+msgstr ""
+"يشير إلى أن دخول الاستهلاك الأول لهذه الأصول لا بد من القيام به من تاريخ "
+"الأصول (تاريخ الشراء) بدلا من تاريخ أول يناير / بدء السنة المالية"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_sell__invoice_line_id
+msgid "Invoice Line"
+msgstr "خط الفاتورة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_is_follower
+msgid "Is Follower"
+msgstr "غير أتباع"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__salvage_value
+msgid "It is the amount you plan to have that you cannot depreciate."
+msgstr "هذا هو المبلغ الذي تخطط لأنه لا يمكن أن تنخفض."
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__journal_id+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_expense_model_search+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Journal"
+msgstr "مجلة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Journal Entries"
+msgstr "إدخالات دفتر اليومية"
+
+#: model%3Air.model%2Cname%3Aaccount_asset.model_account_move+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_form
+msgid "Journal Entry"
+msgstr "إفتتاحية المجلة"
+
+#: model:ir.model,name:account_asset.model_account_move_line
+msgid "Journal Item"
+msgstr "مجلة البند"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__original_move_line_ids
+msgid "Journal Items"
+msgstr "مجلة الأصناف"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid ""
+"Journal Items of {account} should have a label in order to generate an asset"
+msgstr "يجب أن يكون مجلة عناصر من {الحساب} تسمية من أجل توليد الأصول"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_account____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_assets_report____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move_line____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify____last_update+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_res_company____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل ل"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__write_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__write_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__write_uid+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__write_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_pause__write_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__write_date+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث:"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Late Activities"
+msgstr "الأنشطة في وقت متأخر"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Linear"
+msgstr "خطي"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset_sell__gain_or_loss__loss
+msgid "Loss"
+msgstr "خسارة"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset_sell__loss_account_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_res_company__loss_account_id
+msgid "Loss Account"
+msgstr "حساب خسارة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "مرفق الرئيسي"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_form_asset_inherit
+msgid "Manage Items"
+msgstr "إدارة العناصر"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_has_error
+msgid "Message Delivery error"
+msgstr "رسالة الخطأ تسليم"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#: code%3Aaddons%2Faccount_asset%2Freport%2Faccount_assets_report.py%3A0+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__method
+msgid "Method"
+msgstr "طريقة"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__model_id+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__state__model
+msgid "Model"
+msgstr "نموذج"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_modify_form
+msgid "Modification"
+msgstr "تعديل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_modify_form
+msgid "Modification reason"
+msgstr "التعديل السبب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_modify_form
+msgid "Modify"
+msgstr "تعديل"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+model%3Air.model%2Cname%3Aaccount_asset.model_asset_modify+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_modify_form
+msgid "Modify Asset"
+msgstr "تعديل الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Modify Depreciation"
+msgstr "تعديل الاستهلاك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Modify Expense"
+msgstr "تعديل النفقات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Modify Revenue"
+msgstr "تعديل الإيرادات"
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__method_period__1+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__asset_modify__method_period__1
+msgid "Months"
+msgstr "شهور"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_account__multiple_assets_per_line
+msgid "Multiple Assets per Line"
+msgstr "أصول متعددة لكل خط"
+
+#: model:ir.model.fields,help:account_asset.field_account_account__multiple_assets_per_line
+msgid ""
+"Multiple asset items will be generated depending on the bill line quantity "
+"instead of 1 global asset."
+msgstr ""
+"سيتم إنشاء وحدات الأصول متعددة اعتمادا على كمية خط فاتورة بدلا من 1 الأصول "
+"العالمية."
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__need_date
+msgid "Need Date"
+msgstr "ضرورة التسجيل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_modify_form
+msgid "New Values"
+msgstr "قيم جديدة"
+
+#: model:ir.model.fields,help:account_asset.field_asset_modify__value_residual
+msgid "New residual amount for the asset"
+msgstr "المبلغ المتبقي جديد للأصل"
+
+#: model:ir.model.fields,help:account_asset.field_asset_modify__salvage_value
+msgid "New salvage amount for the asset"
+msgstr "كمية إنقاذ جديدة للأصل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "آخر الموعد النهائي المقبل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص آخر المقبل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_type_id
+msgid "Next Activity Type"
+msgstr "التالي آخر نوع"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Next Period Expense"
+msgstr "فترة التالي النفقات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Next Period Revenue"
+msgstr "التالي الفترة الإيرادات"
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_account__create_asset__no+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset_sell__gain_or_loss__no
+msgid "No"
+msgstr "لا"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "No asset account"
+msgstr "ليس لديك حساب الأصول"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__salvage_value
+msgid "Not Depreciable Amount"
+msgstr "لا للاستهلاك المبلغ"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__salvage_value
+msgid "Not Depreciable Value"
+msgstr "لا للاستهلاك القيمة"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__first_depreciation_date
+msgid ""
+"Note that this date does not alter the computation of the first journal "
+"entry in case of prorata temporis assets. It simply changes its accounting "
+"date"
+msgstr ""
+"لاحظ أن هذا التاريخ لا يغير حساب إدخال دفتر اليومية الأولى في حالة تناسبي "
+"الزمني الأصول. ببساطة يغير تاريخ المحاسبية"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__number_asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__number_asset_ids+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__number_asset_ids
+msgid "Number Asset"
+msgstr "عدد الأصول"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد من تطبيقات"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__method_number+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__method_number+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_purchase_tree
+msgid "Number of Depreciations"
+msgstr "عدد من التلفيات"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_asset__method_period+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_asset_modify__method_period
+msgid "Number of Months in a Period"
+msgstr "عدد من شهرين في الفترة"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_expense_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_sale_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_revenue_form
+msgid "Number of Recognitions"
+msgstr "عدد من شهادات التقدير"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__gross_increase_count
+msgid "Number of assets made to increase the value of the asset"
+msgstr "قدم عدد من الأصول لزيادة قيمة الأصول"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__total_depreciation_entries_count
+msgid "Number of depreciation entries (posted or not)"
+msgstr "عدد الإدخالات الاستهلاك (نشر أم لا)"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد من الأخطاء"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي يتطلب العمل"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل مع الخطأ تسليم"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل غير المقروءة"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__state__paused
+msgid "On Hold"
+msgstr "في الانتظار"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.line_caret_options
+msgid "Open Asset"
+msgstr "توسيع الأصول"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__original_value
+msgid "Original Value"
+msgstr "القيمة الأصلية"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__parent_id
+msgid "Parent"
+msgstr "الأبوين"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.asset_pause_form
+msgid "Pause"
+msgstr "يوقف"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+model%3Air.model%2Cname%3Aaccount_asset.model_account_asset_pause+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_pause_form
+msgid "Pause Asset"
+msgstr "وقفة الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Pause Depreciation"
+msgstr "وقفة الاستهلاك"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_pause__date
+msgid "Pause date"
+msgstr "تاريخ وقفة"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_expense_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_purchase_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_sale_tree
+msgid "Period length"
+msgstr "طول الفترة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Posted Entries"
+msgstr "مقالات نشرت"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__prorata_date
+msgid "Prorata Date"
+msgstr "تناسبي التسجيل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__prorata
+msgid "Prorata Temporis"
+msgstr "تناسبي الزمني"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__asset_type__purchase
+msgid "Purchase: Asset"
+msgstr "شراء: الأصول"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Rate"
+msgstr "معدل"
+
+#: model:ir.model.fields,field_description:account_asset.field_asset_modify__name
+msgid "Reason"
+msgstr "سبب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "Related Expenses"
+msgstr "النفقات ذات الصلة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Related Purchase"
+msgstr "شراء ذات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Related Sales"
+msgstr "مبيعات ذات الصلة"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Report of reversal for {name}"
+msgstr "تقرير انعكاس ل{اسم}"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Reset to running"
+msgstr "إعادة تعيين إلى تشغيل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Residual Amount to Recognize"
+msgstr "المبلغ المتبقي على الاعتراف"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__activity_user_id
+msgid "Responsible User"
+msgstr "العضو المسؤول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Resume Depreciation"
+msgstr "استئناف الاستهلاك"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_move.py%3A0+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_revenue_form
+msgid "Revenue"
+msgstr "ربح"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_sale_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_revenue_form+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_revenue_model_search
+msgid "Revenue Account"
+msgstr "حساب الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Revenue Board"
+msgstr "مجلس الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Revenue Date"
+msgstr "الإيرادات التسجيل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Revenue Lines"
+msgstr "خطوط الإيرادات"
+
+#: model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_model_sale_tree+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.view_account_asset_sale_tree
+msgid "Revenue Name"
+msgstr "اسم الإيرادات"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "Revenue Recognition"
+msgstr "تحقق الإيرادات"
+
+#: model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_bank_statement_line__reversal_move_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_move__reversal_move_id+model%3Air.model.fields%2Cfield_description%3Aaccount_asset.field_account_payment__reversal_move_id
+msgid "Reversal Move"
+msgstr "انعكاس نقل"
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid ""
+"Reverse the depreciation entries posted in the future in order to modify the "
+"depreciation"
+msgstr "عكس الإدخالات الاستهلاك نشرت في المستقبل من أجل تعديل الاستهلاك"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__state__open
+msgid "Running"
+msgstr "ادارة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ SMS تسليم"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Sale"
+msgstr "تخفيض السعر"
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__asset_type__sale
+msgid "Sale: Revenue Recognition"
+msgstr "بيع: الإيرادات الاعتراف"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Save Model"
+msgstr "حفظ نموذج"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Save model"
+msgstr "حفظ نموذج"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset_sell__select_invoice_line_id
+msgid "Select Invoice Line"
+msgstr "اختر فاتورة الخط"
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset_sell__action__sell+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_sell_form
+msgid "Sell"
+msgstr "باع"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+model%3Air.model%2Cname%3Aaccount_asset.model_account_asset_sell+model_terms%3Air.ui.view%2Carch_db%3Aaccount_asset.asset_sell_form
+msgid "Sell Asset"
+msgstr "بيع الأصول"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Sell or Dispose"
+msgstr "بيع أو التخلص"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Set manually the original values or"
+msgstr "يدويا تعيين القيم الأصلية أو"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Set to Draft"
+msgstr "تعيين لمشروع"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Set to Running"
+msgstr "تعيين لتشغيل"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Show all records which has next action date is before today"
+msgstr "عرض كافة السجلات التي لديها تاريخ العمل المقبل هو قبل اليوم"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Some fields are missing {}"
+msgstr "بعض الحقول مفقودة {}"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Some required values are missing"
+msgstr "بعض القيم المطلوبة مفقودة"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "Start Depreciating"
+msgstr "بداية اطفاء"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__state
+msgid "Status"
+msgstr "حالة"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"وضع على أساس الأنشطة\n"
+"يتم تمرير تاريخ الاستحقاق بالفعل: تأخر\n"
+"اليوم: تاريخ آخر غير اليوم\n"
+"التخطيط: الأنشطة المستقبل."
+
+#: model:ir.model.fields.selection,name:account_asset.selection__account_asset__method__linear
+msgid "Straight Line"
+msgstr "خط مستقيم"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__book_value
+msgid ""
+"Sum of the depreciable value, the salvage value and the book value of all "
+"value increase items"
+msgstr ""
+"مجموع قيمة للاستهلاك، وقيمة الخردة والقيمة الدفترية لجميع العناصر زيادة قيمة"
+
+#: model:ir.model.fields,help:account_asset.field_account_account__can_create_asset
+msgid ""
+"Technical field specifying if the account can generate asset depending on "
+"it's type. It is used in the account form view."
+msgstr ""
+"المجال التقني تحديد إذا كان الحساب يمكن أن تولد الأصول بالاعتماد على انها "
+"نوع. فهو يستخدم في عرض النموذج حساب."
+
+#: model:ir.model.fields,help:account_asset.field_asset_modify__gain_value
+msgid ""
+"Technical field to know if we should display the fields for the creation of "
+"gross increase asset"
+msgstr ""
+"المجال التقني لمعرفة ما إذا كان علينا أن عرض حقول لإنشاء زيادة الأصول "
+"الإجمالي"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset_sell__gain_or_loss
+msgid ""
+"Technical field to know is there was a gain or a loss in the selling of the "
+"asset"
+msgstr "المجال التقني في المعرفة هو كان هناك ربح أو خسارة في بيع الأصول"
+
+#: model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_asset__method_period+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_asset_modify__method_period
+msgid "The amount of time between two depreciations"
+msgstr "مقدار الوقت بين اثنين من انخفاض قيمة"
+
+#: model:ir.model.fields,help:account_asset.field_asset_modify__asset_id
+msgid "The asset to be modified by this wizard"
+msgstr "الأصل إلى تعديل من قبل هذا المعالج"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__children_ids
+msgid "The children are the gains in value of this asset"
+msgstr "والأطفال هم مكاسب في قيمة هذه الأصول"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset_sell__invoice_id
+msgid ""
+"The disposal invoice is needed in order to generate the closing journal "
+"entry."
+msgstr "مطلوب فاتورة التخلص من أجل توليد إدخال دفتر اليومية الإغلاق."
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__method_number
+msgid "The number of depreciations needed to depreciate your asset"
+msgstr "ويحتاج عدد من انخفاض قيمة لتنخفض الأصول الخاصة بك"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "The remaining value on the last depreciation line must be 0"
+msgstr "يجب أن تكون القيمة المتبقية على خط الاستهلاك الماضي 0"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset_sell__invoice_line_id
+msgid "There are multiple lines that could be the related to this asset"
+msgstr "هناك خطوط المتعددة التي يمكن أن تتعلق هذه الأصول"
+
+#: model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_bank_statement_line__asset_value_change+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_move__asset_value_change+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_payment__asset_value_change
+msgid ""
+"This is a technical field set to true when this move is the result of the "
+"changing of value of an asset"
+msgstr ""
+"هذا هو المجال التقني لتعيين صحيح عندما يكون هذا التحرك هو نتيجة لتغيير قيمة "
+"الموجودات"
+
+#: model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_bank_statement_line__asset_manually_modified+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_move__asset_manually_modified+model%3Air.model.fields%2Chelp%3Aaccount_asset.field_account_payment__asset_manually_modified
+msgid ""
+"This is a technical field stating that a depreciation line has been manually "
+"modified. It is used to recompute the depreciation table of an asset/"
+"deferred revenue."
+msgstr ""
+"هذا هو المجال التقني مشيرا إلى أن خط الاستهلاك تم تعديل يدويا. فهو يستخدم "
+"لإعادة حساب جدول الاستهلاك ل/ الإيرادات المؤجلة الأصول."
+
+#: code:addons/account_asset/static/src/js/account_asset_reversed_widget.js:0
+msgid "This move has been reversed"
+msgstr "وقد عكس هذا التحرك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_search
+msgid "Today Activities"
+msgstr "نشاطات اليوم"
+
+#: code:addons/account_asset/report/account_assets_report.py:0
+msgid "Total"
+msgstr "مجموع"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "Trying to pause an asset without any future depreciation line"
+msgstr "في محاولة لإيقاف رصيدا دون أي خط الاستهلاك المستقبل"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Turn as a deferred expense"
+msgstr "نحول كما نفقة مؤجلة"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Turn as a deferred revenue"
+msgstr "بدوره باعتباره الإيرادات المؤجلة"
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid "Turn as an asset"
+msgstr "تحويل كأصل"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__user_type_id
+msgid "Type of the account"
+msgstr "اكتب الحساب"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "اكتب النشاط استثناء على الاطلاق."
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "الرسائل غير المقروءة عداد"
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid "Value decrease for: %(asset)s"
+msgstr "انخفاض قيمة لل:٪ (الأصول) ق"
+
+#: code:addons/account_asset/wizard/asset_modify.py:0
+msgid "Value increase for: %(asset)s"
+msgstr "زيادة قيمة:٪ (الأصول) ق"
+
+#: model:ir.model.fields,field_description:account_asset.field_account_asset__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__website_message_ids
+msgid "Website communication history"
+msgstr "موقع تاريخ الاتصال"
+
+#: model:ir.model.fields,help:account_asset.field_account_asset__state
+msgid ""
+"When an asset is created, the status is 'Draft'.\n"
+"If the asset is confirmed, the status goes in 'Running' and the depreciation "
+"lines can be posted in the accounting.\n"
+"The 'On Hold' status can be set manually when you want to pause the "
+"depreciation of an asset for some time.\n"
+"You can manually close an asset when the depreciation is over. If the last "
+"line of depreciation is posted, the asset automatically goes in that status."
+msgstr ""
+"عندما يتم إنشاء الأصول، ووضع هو \"مشروع\".\n"
+"واذا تأكدت هذه الأصول، ووضع يذهب في \"تشغيل\" وخطوط الاستهلاك يمكن نشر في "
+"المحاسبة.\n"
+"و\"قيد الانتظار\" الوضع يمكن تعيين يدويا عندما تريد إيقاف استهلاك الموجودات "
+"لبعض الوقت.\n"
+"يمكنك إغلاق يدويا الأصول عند الاستهلاك هو أكثر. إذا تم نشر السطر الأخير من "
+"الاستهلاك، والأصول يذهب تلقائيا في هذا الوضع."
+
+#: model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__account_asset__method_period__12+model%3Air.model.fields.selection%2Cname%3Aaccount_asset.selection__asset_modify__method_period__12
+msgid "Years"
+msgstr "سنوات"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "You cannot archive a record that is not closed"
+msgstr "لا يمكنك أرشفة السجلات التي لم يتم إغلاق"
+
+#: code%3Aaddons%2Faccount_asset%2Fmodels%2Faccount_asset.py%3A0+code%3Aaddons%2Faccount_asset%2Fwizard%2Fasset_sell.py%3A0
+msgid ""
+"You cannot automate the journal entry for an asset that has a running gross "
+"increase. Please use 'Dispose' on the increase(s)."
+msgstr ""
+"لا يمكنك أتمتة إدخال دفتر اليومية للموجودات التي تحتوي على نسبة الزيادة "
+"الإجمالية قيد التشغيل. يرجى استخدام 'تخلص' على الزيادة (ق)."
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid ""
+"You cannot create an asset from lines containing credit and debit on the "
+"account or with a null amount"
+msgstr ""
+"لا يمكنك إنشاء أصل من خطوط تحتوي على الائتمان والخصم على حساب أو مع كمية اغية"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "You cannot delete a document that is in %s state."
+msgstr "لا يمكنك حذف وثيقة هي في ولاية٪ الصورة."
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "You cannot pause an asset with posted depreciation lines in the future."
+msgstr "لا يمكنك قفة رصيدا مع خطوط الاستهلاك شارك في المستقبل."
+
+#: code:addons/account_asset/models/account_move.py:0
+msgid ""
+"You cannot reset to draft an entry having a posted deferred revenue/expense"
+msgstr "لا يمكنك إعادة تعيين لصياغة دخول وجود نشرها المؤجلة الإيرادات / حساب"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_revenue_form
+msgid "e.g. Annual Subscription"
+msgstr "مثلا اشتراك سنوي"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_expense_form
+msgid "e.g. Annually Paid Insurance"
+msgstr "مثلا دفعت سنويا التأمين"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "e.g. Laptop iBook"
+msgstr "مثلا كمبيوتر محمول إيبووك"
+
+#: model_terms:ir.ui.view,arch_db:account_asset.view_account_asset_form
+msgid "select the related purchases"
+msgstr "حدد مشتريات ذات الصلة"
+
+#: code:addons/account_asset/models/account_asset.py:0
+msgid "this move"
+msgstr "هذه الخطوة"

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="payslips_report_view" model="ir.ui.view">
+            <field name="name">payslip_report.wizard</field>
+            <field name="model">payslip_report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_from" required="1" string="From"/>
+                        </group>
+                        <group>
+                            <field name="date_to" required="1" string="To"/>
+                        </group>
+                        <footer>
+                            <button string="Print Payslips" name="print_payslips" type="object" class="btn-primary"/>
+                            <button string="Discard" class="btn-default" special="cancel"/>
+                        </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_print_payslips_wizard" model="ir.actions.act_window">
+            <field name="name">Payslips Report</field>
+            <field name="res_model">payslip_report.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="payslips_report_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem name="Payslips Report" id="print_payslips" action="action_print_payslips_wizard" parent="hr_attendance.menu_hr_attendance_root"/>
+    </data>
+</odoo>
+
+
+
