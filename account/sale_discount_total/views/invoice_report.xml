@@ -3,17 +3,17 @@
     <data>
 
         <template id="report_invoice_customized" inherit_id="account.report_invoice_document">
-<<<<<<< HEAD
+
            <!-- <xpath expr="//span[@t-field='line.discount']" position="replace">
                  <span t-esc="'%.2f'%(line.discount)"/>
             </xpath>-->
-=======
+
             
              <xpath expr="//span[@t-field='line.discount']" position="replace">
                  <span t-esc="'%.2f'%(line.discount)"/>
             </xpath> 
             
->>>>>>> 2ad4ba4d4a1653ff0242e8703f1e3f42a39a9231
+
             <xpath expr="//tr[hasclass('border-black')]" position="after">
                 <tr>
                     <td>Discount</td>
