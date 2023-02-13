@@ -10,9 +10,10 @@
 
             
             
+         <xpath expr="//div[@id='total']/div/table/t[@t-foreach='o.amount_by_group']/tr/t[2]/td[1]" position="after">
 
-            <xpath expr="//tr[hasclass('border-black')]" position="after">
-                <tr>
+
+            
                     <td>Discount</td>
                     <div style="display: initial;font-size:13px;">
                     <strong>الخصم</strong>
@@ -20,7 +21,7 @@
                     <td class="text-right">
                         <span t-field="o.amount_discount"/>
                     </td>
-                </tr>
+
             </xpath>
         </template>
 
