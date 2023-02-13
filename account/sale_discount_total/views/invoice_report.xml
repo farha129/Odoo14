@@ -9,9 +9,6 @@
             </xpath>-->
 
             
-             <xpath expr="//span[@t-field='line.discount']" position="replace">
-                 <span t-esc="'%.2f'%(line.discount)"/>
-            </xpath> 
             
 
             <xpath expr="//tr[hasclass('border-black')]" position="after">
