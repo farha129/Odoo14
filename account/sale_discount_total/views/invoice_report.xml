@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <template id="report_invoice_customized" inherit_id="account.report_invoice_document">
+        <template id="report_invoice_customizedd" inherit_id="era_tax_partner.invoice_document_report_inherit">
 
            <!-- <xpath expr="//span[@t-field='line.discount']" position="replace">
                  <span t-esc="'%.2f'%(line.discount)"/>
