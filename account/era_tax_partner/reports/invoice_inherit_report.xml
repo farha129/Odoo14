@@ -6,6 +6,7 @@
         <!--                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.get_qr_code_data(), 350,350)" alt="qr"  style="height:150px"/>-->
         <!--            </div>-->
         <!--        </xpath>-->
+
         <xpath expr="//div[hasclass('page')]/h2" position="replace">
             <div t-attf-class="text-center" style="font-size:20px;">
                 <span t-if="o.move_type in ('out_invoice', 'in_invoice') and o.state == 'posted'">Tax Invoice<br/></span>
@@ -162,6 +163,21 @@
                 </div>
             </div>
         </xpath>
+
+         <xpath expr="//div[@id='total']/div/table/tr[hasclass('o_subtotal')]" position="before">
+                    <tr>
+                        <td>
+                        <strong style="float: left;">Discount</strong>
+                        <div style="display: initial;font-size:13px;">
+                        <strong>الخصم</strong>
+                         </div>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.amount_discount"/>
+                        </td>
+                    </tr>
+                </xpath>
+
         <xpath expr="//div[@id='total']/div/table/tr[hasclass('o_subtotal')]/td[1]" position="replace">
             <td>
                 <strong style="float: left;">Total(Excluding VAT)</strong>
@@ -178,29 +194,22 @@
                     <strong>محموع ضريبة القيمة المضافة</strong>
                 </div>
             </td>
+
+
         </xpath>
-   
+
+
         <xpath expr="//div[@id='total']/div/table/t[@t-foreach='o.amount_by_group']/tr/t[2]/td[1]" position="replace">
             <td>
                 <strong style="float: left;">Total Vat</strong>
                 <div style="display: initial;font-size:13px;">
                     <strong>محموع ضريبة القيمة المضافة</strong>
                 </div>
+
+
             </td>
+
         </xpath>
-         <xpath expr="//div[@id='total']/div/table/t[@t-foreach='o.amount_by_group']/tr/t[2]/td[1]" position="after">
-
-
-            
-                    <td>Discount</td>
-                    <div style="display: initial;font-size:13px;">
-                    <strong>الخصم</strong>
-                     </div>
-                    <td class="text-right">
-                        <span t-field="o.amount_discount"/>
-                    </td>
-
-            </xpath>
 
         <xpath expr="//div[@id='total']/div/table/tr[hasclass('o_total')]/td[1]" position="replace">
             <td>

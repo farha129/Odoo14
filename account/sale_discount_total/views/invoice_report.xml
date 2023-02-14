@@ -2,18 +2,18 @@
 <odoo>
     <data>
 
-        <template id="report_invoice_customizedd" inherit_id="era_tax_partner.invoice_document_report_inherit">
+        <template id="report_invoice_customizedf" inherit_id="account.report_invoice_document">
 
-           <!-- <xpath expr="//span[@t-field='line.discount']" position="replace">
-                 <span t-esc="'%.2f'%(line.discount)"/>
-            </xpath>-->
+<!--           <xpath expr="//span[@t-field='line.discount']" position="replace">-->
+<!--                 <span t-esc="'%.2f'%(line.discount)"/>-->
+<!--            </xpath>-->
 
             
             
          <xpath expr="//div[@id='total']/div/table/t[@t-foreach='o.amount_by_group']/tr/t[2]/td[1]" position="after">
 
 
-            
+
                     <td>Discount</td>
                     <div style="display: initial;font-size:13px;">
                     <strong>الخصم</strong>
