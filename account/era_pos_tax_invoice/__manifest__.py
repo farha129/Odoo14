@@ -15,7 +15,7 @@
     'version': '0.1',
     'license': 'AGPL-3',
     'images': ['static/description/main_screenshot.png'],
-    'depends': ['base', 'account', 'point_of_sale','sale_discount_total'],
+    'depends': ['base', 'account', 'point_of_sale'],
     'data': [
         'views/pos_config.xml',
     ],

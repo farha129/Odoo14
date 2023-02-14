@@ -15,7 +15,7 @@
     'currency': 'USD',
     'license': 'AGPL-3',
     'images': ['static/description/main_screenshot.png'],
-    'depends': ['base', 'account', 'sale', 'purchase'],
+    'depends': ['base', 'account', 'sale', 'purchase','sale_discount_total'],
     'data': [
         'security/security_group.xml',
         'views/partner.xml',
