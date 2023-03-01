@@ -20,6 +20,7 @@
                 'hr',
                 'hr_holidays',
                 'hr_attendance',
+                'hr_holidays_attendance',
                 'hr_payroll_community',
                 ],
     'data': [

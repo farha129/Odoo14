@@ -183,7 +183,7 @@ class InstallmentLine(models.Model):
     amount = fields.Float(string="Amount", required=True)
     paid = fields.Boolean(string="Paid")
     incentive_id = fields.Many2one('hr.incentive', string="incentive Ref.")
-    payslip_id = fields.Many2one('hr.payslip', string="Payslip Ref.")
+
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"

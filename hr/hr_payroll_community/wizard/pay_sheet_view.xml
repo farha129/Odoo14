@@ -36,9 +36,6 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
-        <menuitem id="menu_hr_payroll_report_id" name="Reports" parent="hr_payroll_community.menu_hr_payroll_community_root"
-                  sequence="100" />
-        <menuitem action="action_payslip_report_excel" name="Pay-Sheet" id="menu_pay_sheet_reports" parent="menu_hr_payroll_report_id" sequence="5" />
-
+        
     </data>
 </odoo>

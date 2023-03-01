@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+<template id="report_by_payslips_temp">
+    <t t-call="web.html_container">
+       
+        <t t-call="web.external_layout">
+
+
+
+                <h4 class="text-center">
+                   <strong>Report for Insurance:</strong> 
+                    <strong>From :</strong> <span t-esc="st_date"/>
+                    <strong>To :</strong> <span t-esc="end_date"/>                   
+                </h4>
+
+            
+             <br></br>
+                     <div >
+                      <table class="table table-bordered" dir="ltr">
+                                                          <t  t-set="i" t-value="0"/> 
+                          <thead>
+				<tr>
+		                     <th class="text-center" style = "width: 20%">No</th>
+		                     <th class="text-center" style = "width: 20%">Date</th>
+				      <th class="text-center" style = "width: 20%">Emplyee Name</th>
+			              <th class="text-center" style = "width: 20%">Salary</th>
+				      <th class="text-center" style = "width: 20%">Travel Allowance</th>
+				       <th class="text-center" style = "width: 20%">Meal Allowance</th>
+				       <th class="text-center" style = "width: 20%">Medical Allowance</th>
+				       <th class="text-center" style = "width: 20%">House Rent Allowancee</th>
+				       <th class="text-center" style = "width: 20%">Dearness Allowance</th>
+				       <th class="text-center" style = "width: 20%">Other Allowance</th>
+				       				       				       				       <th class="text-center" style = "width: 20%">Gross</th>
+				       <th class="text-center" style = "width: 20%">Loan</th>
+				       <th class="text-center" style = "width: 20%">Incentive</th>
+				       <th class="text-center" style = "width: 20%">Net</th>
+					
+			         </tr>
+
+			</thead>
+                       <tbody>
+                            <t t-foreach="docs" t-as="inv">
+                                <tr>
+                               	       
+                                	       <t  t-set="i" t-value="i + 1"/>
+                                <td   class="text-center"> <span t-esc="i"/>
+                                </td>
+                             <td class="text-center" ><t t-esc="inv['date']"/></td>
+                             <td class="text-center" ><t t-esc="inv['employee_name']"/></td>
+                             <td class="text-center" ><t t-esc="inv['basic']"/></td>
+						    <td class="text-center" ><t t-esc="inv['Travel']"/></td>
+						    <td class="text-center" ><t t-esc="inv['Meal']"/></td>
+                             <td class="text-center" ><t t-esc="inv['Medical']"/></td>
+						    <td class="text-center" ><t t-esc="inv['House_Rent_Allowance']"/></td>
+						    <td class="text-center" ><t t-esc="inv['Dearness_Allowance']"/></td>
+						    <td class="text-center" ><t t-esc="inv['Other']"/></td>
+                            <td class="text-center" ><t t-esc="inv['Gross']"/></td>
+					        <td class="text-center" ><t t-esc="inv['loan']"/></td>
+					        <td class="text-center" ><t t-esc="inv['Incentive']"/></td>
+					        <td class="text-center" ><t t-esc="inv['net']"/></td>
+						              	
+			          </tr>
+                            </t>
+		       </tbody>
+		       
+		       <tbody>
+              <t t-foreach="docss" t-as="total">
+		       <tr class="border-black">
+                                        <td class="text-right" ><strong>Total</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        
+                                        <td class="text-right" >
+                                            <t t-esc="total['total_basic']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Travel']" />
+                                        </td>
+                                         <td class="text-right" >
+
+                                            <t t-esc="total['total_Meal']" />
+
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Medical']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_House_Rent_Allowance']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Dearness_Allowance']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Other']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Gross']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_loan']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_Incentive']" />
+                                        </td>
+                                         <td class="text-right" >
+                                             <t t-esc="total['total_net']" />
+                                        </td>
+                                    </tr>
+              </t>
+		       
+		       
+		       </tbody>
+                     </table>
+           
+                        
+                     
+                    
+</div>
+
+</t>
+
+</t>
+
+</template>
+</data>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_wiz_payslips" model="ir.ui.view">
+              <field name="name">Payslips Report</field>
+              <field name="model">by.payslips.wizard</field>
+              <field name="arch" type="xml">
+                <form > 
+			<group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+
+
+
+			</group>
+
+                 	<footer>
+                   	    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                   	    <button string="Cancel" special="cancel" class="oe_link"/>
+                 	</footer>
+                </form>
+              </field>
+        </record>
+
+        
+ <record id="action_wiz_payslips" model="ir.actions.act_window">
+            <field name="name">Payslips Report</field>
+            <field name="res_model">by.payslips.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+
+        </record>
+
+
+    <menuitem id="menu_hr_payroll_report_ids" name="Reports" parent="hr_payroll_community.menu_hr_payroll_community_root"
+                  sequence="100" />
+        <menuitem action="action_wiz_payslips" name="Pay-Sheet" id="menu_payslips_reports" parent="menu_hr_payroll_report_ids" sequence="5" />
+
+
+
+<!--
+<menuitem
+        id="menu_report_quanrty_menu"
+        name="تقرير للعميل"
+        parent="menu_report_cust_id"menu_hr_payroll_report_id
+
+        action="action_wiz_quantity"
+       />-->
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+
+     
+      <report
+            id="report_payslips_id"
+            model="hr.payslip"
+            string="Report By payslips"
+            report_type="qweb-pdf"
+            name="report_by_payslips.report_by_payslips_temp"
+            file="report_by_payslips.report_by_payslips_temp"
+            menu="True"
+
+
+           
+        />
+
+</odoo>

@@ -37,8 +37,8 @@ class HrincentiveAcc(models.Model):
                 incentive_name = incentive.employee_id.name
                 reference = incentive.name
                 journal_id = incentive.journal_id.id
-                debit_account_id = incentive.treasury_account_id.id
-                credit_account_id = incentive.emp_account_id.id
+                debit_account_id = incentive.emp_account_id.id 
+                credit_account_id = incentive.treasury_account_id.id
                 debit_vals = {
                     'name': incentive_name,
                     'account_id': debit_account_id,
@@ -88,8 +88,8 @@ class HrincentiveAcc(models.Model):
             incentive_name = incentive.employee_id.name
             reference = incentive.name
             journal_id = incentive.journal_id.id
-            debit_account_id = incentive.treasury_account_id.id
-            credit_account_id = incentive.emp_account_id.id
+            debit_account_id = incentive.emp_account_id.id  
+            credit_account_id = incentive.treasury_account_id.id
             debit_vals = {
                 'name': incentive_name,
                 'account_id': debit_account_id,

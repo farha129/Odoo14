@@ -15,7 +15,7 @@ class HrPayslipInput(models.Model):
 class HrPayslip(models.Model):
     _inherit = 'hr.payslip'
 
-    @api.onchange('employee_id', 'date_from', 'date_to','struct_id')
+    @api.onchange('employee_id', 'date_from', 'date_to')
     def onchange_employee(self):
         if (not self.employee_id) or (not self.date_from) or (not self.date_to):
             return
@@ -41,9 +41,8 @@ class HrPayslip(models.Model):
         if not self.contract_id.struct_id:
             return
         self.struct_id = self.contract_id.struct_id
-        print('ssssssssssssssss',self.struct_id)
-        print('sssssssssssssssscontract_id',self.contract_id)
-        # computation of the salary input
+        
+       # computation of the salary input
         contracts = self.env['hr.contract'].browse(contract_ids)
         worked_days_line_ids = self.get_worked_day_lines(contracts, date_from, date_to)
         worked_days_lines = self.worked_days_line_ids.browse([])
@@ -51,12 +50,13 @@ class HrPayslip(models.Model):
             worked_days_lines += worked_days_lines.new(r)
         self.worked_days_line_ids = worked_days_lines
         if contracts:
-            input_line_ids = self.get_inputs(contracts, date_from, date_to,)
+            input_line_ids = self.get_inputs(contracts, date_from, date_to)
             input_lines = self.input_line_ids.browse([])
             for r in input_line_ids:
                 input_lines += input_lines.new(r)
             self.input_line_ids = input_lines
-
+            print('input_line_idsinput_line_ids888888888888888888888888888888',input_line_ids)
+            
         return
 
     def get_inputs(self, contract_ids, date_from, date_to):
@@ -68,14 +68,14 @@ class HrPayslip(models.Model):
         inc_obj = self.env['hr.incentive'].search([('employee_id', '=', emp_id.id), ('state', '=', 'approve')])
         print('9999999iiiiiiiiiiiiiiiiiiiii999999999999inc_obj',inc_obj)
         for incentive in inc_obj:
-            if date_from <= incentive.date <= date_to and not incentive.incentive_lines.paid:
+            if date_from <= incentive.incentive_lines.date <= date_to and not incentive.incentive_lines.paid:
                 print('9999999iiiiiiiiiiiiiiiiiiiii999999999999paid')
 
                 for result in res:
                     if result.get('code') == 'INC':
                         result['amount'] = incentive.incentive_amount
                         result['incentive_line_id'] = incentive.id
-                        print('9999999iiiiiiiiiiiiiiiiiiiii9999999999999',result['amount'],result['incentive_line_id'])
+
 
         return res
 
