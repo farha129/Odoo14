@@ -212,7 +212,7 @@ msgstr "سياسات سجل الحضور"
 #: code:addons/hr_attendance_sheet/models/hr_attendance_sheet.py:0
 #, python-format
 msgid "Attendance Sheet of %s for %s"
-msgstr "سجل الحضور "
+msgstr  "سجيل الحضور %s لـ%s"
 
 #. module: hr_attendance_sheet
 #: model:ir.actions.act_window,name:hr_attendance_sheet.action_attendance_sheet

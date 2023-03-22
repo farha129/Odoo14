@@ -14,7 +14,7 @@
 
     'category': 'hr',
     'version': '14.001',
-    'images': ['static/description/bannar.jpg'],
+    'images': '',
 
     'depends': ['base',
                 'hr',
