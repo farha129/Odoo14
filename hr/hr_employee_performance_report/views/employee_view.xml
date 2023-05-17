@@ -17,13 +17,13 @@
      <field name="model">hr.employee</field>
      <field name="inherit_id" ref="hr.view_employee_form"/> 
      <field name="arch" type="xml">
-         <xpath expr="//page[2]" position="after">
+       <!--  <xpath expr="//page[2]" position="after">
              <page string="Task">
 
                  <field name="task_ids" />
 
              </page>
-         </xpath>
+         </xpath>-->
 
          <xpath expr="//field[@name='work_email']" position="after">
 
@@ -104,6 +104,13 @@
             sequence="5"
             />
 
+  <menuitem
+            id="hr_menu_project_task_emp"
+            action="project.action_view_all_task"
+            parent="hr.menu_hr_root"
+            groups="hr.group_hr_user"
+            sequence="14"
+            />
 </odoo>
 
 

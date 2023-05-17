@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "Sale Roh Alomrant",
+    'description': """
+    """,
+
+    'author': "",
+    'website': "",
+    'category': 'sale',
+    'version': '0.1',
+    'depends': ['sale'],
+
+    'data': [
+
+        'security/ir.model.access.csv',
+        'views/sale_views.xml',
+        
+    ],
+}
+

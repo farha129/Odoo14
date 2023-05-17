@@ -81,7 +81,7 @@ class Hraccommodation(models.Model):
 
 
                         message_id = self.message_post(body=masaage, subtype_id=self.env.ref('mail.mt_comment').id,
-                                                       subject=masaage,
+                                                       subject='Expired Accommodation',
                                                        author_id=self.create_uid.partner_id.id,
                                                        partner_ids=[partenr])
                         self.env['mail.notification'].create({

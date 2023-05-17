@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    
+      <template id="telenoc_backend_dashboard" name="Telenoc Backend Dashboard" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/telenoc_enterprise_theme/static/src/css/style.css" rel="stylesheet" type="text/css"/>
+        </xpath>
+    </template>
+    
+    </odoo>

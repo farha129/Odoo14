@@ -53,7 +53,7 @@ class Employee(models.Model):
                             print('000000000000000000000000000000000000000',record.date_deadline )
                             print('000000000000000000000000000000000000000time',time )
                             on_count+=1
-                        if (record.timesheet_ids[0].date > record.date_deadline and  record.stage_id.name == 'Done') or ( record.timesheet_ids[0].date >= record.date_deadline and record.stage_id.name != 'Done' ):
+                        if (record.timesheet_ids[0].date > record.date_deadline and  (record.stage_id.name == 'Done' or record.stage_id.name == 'Done' )) or ( record.timesheet_ids[0].date >= record.date_deadline and (record.stage_id.name != 'Done' or record.stage_id.name != 'Done' )):
                             l_count +=1
 
                             print('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaate time daye',

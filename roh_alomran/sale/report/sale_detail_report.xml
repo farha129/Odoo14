@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sale_detail_wiz_report" model="ir.actions.report">
+            <field name="name">Sales Details Report</field>
+            <field name="model">sale_categ.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale_fadil.report_sale_detail</field>
+            <field name="report_file">sale_fadil.report_sale_detail</field>
+            <!--<field name="binding_model_id" ref="model_account_common_journal_report"/>-->
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_sale_detail">
+            <t t-set="company" t-value="env.company"/>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+
+                        <div class="text-center">
+                            <h2>Sale Details on category base Report</h2>
+
+
+                        </div>
+                        <strong>Start Date:
+                            <t t-esc="start_date"/>
+                        </strong>
+                        <br/>
+                        <strong>End Date:
+                            <t t-esc="end_date"/>
+                        </strong>
+                        <br/>
+                        <strong>Warehouse:
+                            <t t-esc="warehouse_name"/>
+                        </strong>
+                        <br></br>
+                        <strong>Customer:
+                            <t t-esc="customer_name"/>
+                        </strong>
+                        <br></br>
+                        <strong>Sale person:
+                            <t t-esc="sale_person_name"/>
+                        </strong>
+                        <br></br>
+                        <strong>Categories:
+                            <t t-esc="categories"/>
+                        </strong>
+                        <br></br>
+                        <br/>
+                        <table class="table-bordered" style="width:100%;">
+                            <tr>
+                                <th>Product No</th>
+                                <th>Product Name</th>
+                                <th>Sold Quantity</th>
+                                <th>Unit of mesure</th>
+                                <th>Unit sale price</th>
+                                <th>Stock quantity</th>
+
+
+                            </tr>
+                            <t t-foreach='orders' t-as='order'>
+                                <tr>
+
+                                    <td>
+                                        <span t-esc="order['code']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order['product_name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order['order_qty']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order['uom']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order['price']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order['qty']"/>
+                                    </td>
+
+
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
