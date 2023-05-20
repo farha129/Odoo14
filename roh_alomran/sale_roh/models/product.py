@@ -31,8 +31,8 @@ class SupplementSector(models.Model):
     dimensions_number = fields.Selection([('one', 'One Dimension'), ('two', 'TWO Dimensions')],default='one',
                                          string='Dimensions Number')
     measured_from = fields.Selection(
-        [('height', 'Height'), ('width', 'Width'), ('h_w', 'High and Width'), ('side', 'Side'), ('heel', 'Heel'),
-         ('side_heel', 'Side Heel')], string='Measured From')
+        [('height', 'Height'), ('width', 'Width'), ('h_w', 'High and Width'),
+         ('side_heel', 'Side and Heel')], string='Measured From')
     height = fields.Float(string='Height', digits='Product Height', default=0)
     width = fields.Float(string='Width', digits='Product Width by mater', default=0)
     side = fields.Float(string='Side', digits='Side', default=0)

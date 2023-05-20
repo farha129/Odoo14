@@ -14,7 +14,6 @@
                                 <field name="is_sector"/>
                                 <label for="is_sector"/>
                             </div>
-                         
                                 <field name="is_supplement"/>
                                 <label for="is_supplement"/>
                             </div>
@@ -22,7 +21,7 @@
 
 
                 </xpath>
-                <xpath expr="//page[@name='inventory']" position="after">
+                <xpath expr="//page[@name='invoicing']" position="after">
                     <page string="Supplement" name="supplement"  attrs="{'invisible':[('is_sector','=',False)]}">
 <!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
 
