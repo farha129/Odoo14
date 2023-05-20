@@ -49,7 +49,7 @@ class SaleOrder(models.Model):
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
 
     state = fields.Selection(
-        selection_add=[('again', 'Try Again')])
+        selection_add=[('again', 'Try Again'),('compute', 'Computed')])
 
 
     # total_amount_in_words = fields.Char(string="Amount in Words", required=False, compute='_compute_amount_total')
@@ -98,6 +98,7 @@ class SaleOrder(models.Model):
                                                              'supplement_width': width,
                                                              'dimension_one': dimension_one,
                                                              'sale_id': rec.id, })
+            rec.state = 'compute'
 
     def action_try_agains(self):
         for rec in self:
@@ -118,16 +119,17 @@ class SaleOrder(models.Model):
                                              'author_id': self.env.user.partner_id.id,
                                              'model': 'mail.channel',
                                              'subtype_id': self.env.ref('mail.mt_comment').id,
-                                             'body': "Custody " +self.name+ " is late",
+                                             'body': 'Dear ALL ' + '<br/>This Quation Spent Three days need you action (Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                base_url, 'sale.order', self.id),
                                              'channel_ids': [(4, self.env.ref(
-                                                 'sale_roh.channel_accountant_group').id)],
+                                                 'sale_roh.channel_sale_group').id)],
                                              'res_id': self.env.ref(
-                                                 'sale_roh.channel_accountant_group').id,
+                                                 'sale_roh.channel_sale_group').id,
                                              })
             admin = self.env['res.users'].search([('id', '=', 2)])
             partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
             if partner_id_boolean:
-                group_id = self.env.ref('account.group_account_user').users
+                group_id = self.env.ref('sale.group_sale_salesman').users
                 partners_ids = group_id.mapped('partner_id').ids
                 for partenr in partners_ids:
                     partner_obj = self.env['res.partner'].search([('id','=',partenr)])
@@ -153,11 +155,12 @@ class SaleOrder(models.Model):
                                              'author_id': self.env.user.partner_id.id,
                                              'model': 'mail.channel',
                                              'subtype_id': self.env.ref('mail.mt_comment').id,
-                                             'body': "Custody " +self.name+ " is late",
+                                             'body':  'Dear ALL ' + '<br/>This Sale Quation Spent More Than Three days need you action(Confirm or Cancel)  <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                base_url, 'sale.order', self.id),
                                              'channel_ids': [(4, self.env.ref(
-                                                 'sale_roh.channel_accountant_group').id)],
+                                                 'sale_roh.channel_sale_group').id)],
                                              'res_id': self.env.ref(
-                                                 'sale_roh.channel_accountant_group').id,
+                                                 'sale_roh.channel_sale_group').id,
                                              })
             admin = self.env['res.users'].search([('id', '=', 2)])
             partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')

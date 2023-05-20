@@ -1,4 +1,7 @@
-<record id="availability_create_cron" model="ir.cron">
+<odoo>
+
+
+<record id="try_agin_cron" model="ir.cron">
         <field name="name">Reminder Try Again for Quotion</field>
         <field name="model_id" ref="sale.order"/>
         <field name="state">code</field>
@@ -9,3 +12,9 @@
         <field name="numbercall">-1</field>
         <field name="doall" eval="False"/>
     </record>
+    
+    
+
+    
+    </odoo>
+    

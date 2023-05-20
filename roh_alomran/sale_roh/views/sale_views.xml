@@ -2,7 +2,7 @@
     <data>
 
         <!-- Inherit Form View to Modify it Sale order-->
-        <record id="view_order_form_inherited" model="ir.ui.view">
+        <record id="view_order_form_inheriteds_id" model="ir.ui.view">
             <field name="name">view.order.form.inherited</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
