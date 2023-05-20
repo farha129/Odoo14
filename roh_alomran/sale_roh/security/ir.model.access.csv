@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplement.sector,access_supplement_sector,model_supplement_sector,sales_team.group_sale_salesman,1,1,1,1
+access_dimension_supplement,access_dimension_supplement,model_dimension_supplement,sales_team.group_sale_salesman,1,1,1,1

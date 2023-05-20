@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_inherit_product_template_form" model="ir.ui.view">
+            <field name="name">view.inherit.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="after">
+                     <div>
+                          <div>
+                                <field name="is_sector"/>
+                                <label for="is_sector"/>
+                            </div>
+                         
+                                <field name="is_supplement"/>
+                                <label for="is_supplement"/>
+                            </div>
+
+
+
+                </xpath>
+                <xpath expr="//page[@name='inventory']" position="after">
+                    <page string="Supplement" name="supplement"  attrs="{'invisible':[('is_sector','=',False)]}">
+<!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
+
+
+                        <field name="supplement_sector_ids" widget="one2many"  context="{'show_attribute': False}">
+                             <tree editable="bottom">
+                                 <field name="supplement_name"  domain="[('is_supplement', '=',  True)]" context="{'default_is_supplement': True,'default_type': 'product'}" />
+                               <field name="is_side" />
+                               <field name="is_heel" />
+                             <field name="dimensions_number" />
+                            <field name="measured_from" />
+                            <field name="height" />
+                             <field name="width" />
+                             <field name="division_number" />
+
+                                 <field name="side" />
+                             <field name="heel" />
+                              </tree>
+                          </field>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+

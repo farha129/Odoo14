@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+
+        <record id="sale_report_wizard_view_form" model="ir.ui.view">
+            <field name="name">sale.report.wizard.view.form</field>
+            <field name="model">sale.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Compose Email">
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="customer"/>
+                            <field name="sale_person"/>
+                        </group>
+                        <group>
+
+                            <field name="warehouse"/>
+                            <field name="type"/>
+                            <field name="include_return"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Print Report" name="print_sale_report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="sales_reports_wizard_action" model="ir.actions.act_window">
+            <field name="name">Invoices and Sale Returns Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.report.wizard</field>
+            <field name="view_id" ref="sale_report_wizard_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+<!--            <field name="binding_model_id" ref="sale.model_sale_order"/>-->
+        </record>
+
+        <menuitem name="Invoices and Sales Returns"
+                  id="sale_fadil.sales_reports_menu"
+                  parent="sale.menu_sale_report"
+                  action="sales_reports_wizard_action"
+                  groups="base.group_user"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sale_wizard_form">
+            <field name="name">sale_wizard_form</field>
+            <field name="model">sale_categ.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="customer_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="sale_person"/>
+                            <!--<field name="uom_id"/>-->
+                            <field name="category_id" widget="many2many_tags"/>
+
+                        </group>
+
+                    </sheet>
+                    <footer>
+                        <button name="print_excel" class="oe_highlight" string="Print Excel" type="object"/>
+                        <button name="generate_report" class="oe_highlight" string="Print PDF" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sale_categ_report_excel">
+            <field name="name">sale_categ_wizard_report_excel</field>
+            <field name="model">sale_categ.wizard.report.excel</field>
+            <field name="arch" type="xml">
+                <form string="File to Downloads">
+                    <field name="name" invisible="1"/>
+                    <field name="file_download" filename="name"/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_sale_categ_wizard_report" model="ir.actions.act_window">
+            <field name="name">Invoices and Sales Returns</field>
+            <field name="res_model">sale_categ.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Sale Invoices and returns Report" id="sale_categ_report" parent="sale.menu_sale_report"
+                  action="action_sale_categ_wizard_report"
+        />
+
+
+        <!--<record id="pos_wiz_report" model="ir.actions.report">-->
+        <!--<field name="name">POS invoices and returns report</field>-->
+        <!--<field name="model">report.fadil_pos_customization.report_pos</field>-->
+        <!--<field name="report_type">qweb-pdf</field>-->
+        <!--<field name="report_name">fadil_pos_customization.report_pos_wiz</field>-->
+        <!--</record>-->
+    </data>
+</odoo>

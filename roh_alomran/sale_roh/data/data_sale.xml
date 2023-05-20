@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="mail.channel" id="channel_accountant_group">
+            <field name="name">Sale</field>
+            <field name="group_ids" eval="[(4, ref('sale.group_sale_salesman'))]"/>
+            <field name="description">Message Sale Notifications.</field>
+        </record>
+    </data>
+</odoo>

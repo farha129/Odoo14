@@ -1,0 +1,124 @@
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_order_form_inherited" model="ir.ui.view">
+            <field name="name">view.order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='state']" position="replace">-->
+<!--                    <field name="state" widget="statusbar" statusbar_visible="draft,again,sent,sale"/>-->
+<!--                </xpath>-->
+
+<xpath expr="//header" position="replace">
+    <header>
+                    <field name="authorized_transaction_ids" invisible="1"/>
+                    <button name="payment_action_capture" type="object"
+                            string="Capture Transaction" class="oe_highlight"
+                            attrs="{'invisible': [('authorized_transaction_ids', '=', [])]}"/>
+                    <button name="payment_action_void" type="object"
+                            string="Void Transaction"
+                            confirm="Are you sure you want to void the authorized transaction? This action can't be undone."
+                            attrs="{'invisible': [('authorized_transaction_ids', '=', [])]}"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                        type="action" class="btn-primary"
+                        attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                        type="action" context="{'default_advance_payment_method': 'percentage'}"
+                        attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"/>
+                    <button name="action_quotation_send" string="Send by Email" type="object" states="draft,again" class="btn-primary"/>
+                    <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice"
+                      groups="sale.group_proforma_sales" class="btn-primary"
+                      attrs="{'invisible': ['|', ('state', 'not in', ['draft','again']), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
+<button name="compute_dimension_id"  type="object" string="Compute Dimension_id" states="sale" />
+<button name="action_try_agains"  type="object" string="Try Again"
+                            states="draft"/>
+                    <button name="action_confirm" id="action_confirm"
+                        string="Confirm" class="btn-primary" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
+                    <button name="action_confirm"
+                        string="Confirm" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['draft','again'])]}"/>
+                    <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" attrs="{'invisible': ['|', ('state', 'in', ['draft','again']), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
+                    <button name="action_quotation_send" string="Send by Email" type="object" states="sent,sale"/>
+                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'sent','sale','again']), ('id', '=', False)]}"/>
+                    <button name="action_draft" states="cancel" type="object" string="Set to Quotation"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,again,sale"/>
+                </header>
+
+                </xpath>
+
+
+
+
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                    <field name="product_width" />
+                    <field name="product_height" />
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+
+                    <field name="product_area" />
+                </xpath>
+
+
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <span class="o_form_label o_td_label" name="address_name">
+                        <b attrs="{'invisible': [('partner_id', '=', False)]}">Delivery
+                            Address
+                        </b>
+
+                    </span>
+
+                </xpath>
+                 <xpath expr="//page[3]" position="after">
+                    <page string="Supplement" name="supplement"  >
+<!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
+
+
+                        <field name="dimension_supplement_ids" widget="one2many" >
+                             <tree editable="bottom">
+                                     <field name="supplement_name" />
+                                     <field name="supplement_height" />
+                                     <field name="supplement_width" />
+                                     <field name="dimension_one" />
+                             </tree>
+                        </field>
+                    </page>
+                 </xpath>
+
+
+
+
+            </field>
+        </record>
+
+
+
+        <record id="view_inherit_sales_order_filter" model="ir.ui.view">
+            <field name="name">view.sale.order.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+
+
+
+
+                <xpath expr="//filter[@name='salesperson']" position="before">
+                    <filter string="Status" name="sales_states" context="{'group_by':'state'}"/>
+                </xpath>
+
+                <xpath expr="//filter[@name='salesperson']" position="after">
+                    <filter string="Sales Team" name="sales_team" context="{'group_by':'team_id'}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

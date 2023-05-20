@@ -1,0 +1,97 @@
+/***************************
+* Cusom Fonts
+* 1. Droid Arabic Kufi, by Google
+* 2. Droid Arabic Naskh, also by Google
+* 3. Beutiful Amiri, Opensource.
+****************************/
+.set-grey{
+  background: #aaa !important;
+}
+@font-face {
+    font-family: 'Calibri';
+    font-style: normal;
+    src: url('../fonts/Calibri.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Calibri.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/Calibri.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/Calibri.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/Calibri.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/Calibri.svg#Calibri') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Droid Arabic Kufi';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/estate/static/src/fonts/DroidKufi-Regular.eot);
+  src: url(/estate/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+       url(/estate/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+       url(/estate/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Arabic Kufi';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/estate/static/src/fonts/DroidKufi-Bold.eot);
+  src: url(/estate/static/src/fonts/DroidKufi-Bold.woff2) format('woff2'),
+       url(/estate/static/src/fonts/DroidKufi-Bold.woff) format('woff'),
+       url(/estate/static/src/fonts/DroidKufi-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/estate/static/src/fonts/DroidNaskh-Regular.eot);
+  src: url(/estate/static/src/fonts/DroidNaskh-Regular.woff2) format('woff2'),
+       url(/estate/static/src/fonts/DroidNaskh-Regular.woff) format('woff'),
+       url(/estate/static/src/fonts/DroidNaskh-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Arabic Naskh';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/estate/static/src/fonts/DroidNaskh-Bold.eot);
+  src: url(/estate/static/src/fonts/DroidNaskh-Bold.woff2) format('woff2'),
+       url(/estate/static/src/fonts/DroidNaskh-Bold.woff) format('woff'),
+       url(/estate/static/src/fonts/DroidNaskh-Bold.ttf) format('truetype');
+}
+
+/* 
+ * Amiri (Arabic) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Amiri';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/estate/static/src/fonts/Amiri-Slanted.eot);
+  src: url(/estate/static/src/fonts/Amiri-Slanted.woff2) format('woff2'),
+       url(/estate/static/src/fonts/Amiri-Slanted.woff) format('woff'),
+       url(/estate/static/src/fonts/Amiri-Slanted.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/estate/static/src/fonts/Amiri-Regular.eot);
+  src: url(/estate/static/src/fonts/Amiri-Regular.woff2) format('woff2'),
+       url(/estate/static/src/fonts/Amiri-Regular.woff) format('woff'),
+       url(/estate/static/src/fonts/Amiri-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Amiri';
+  font-style: italic;
+  font-weight: 700;
+  src: url(/estate/static/src/fonts/Amiri-BoldSlanted.eot);
+  src: url(/estate/static/src/fonts/Amiri-BoldSlanted.woff2) format('woff2'),
+       url(/estate/static/src/fonts/Amiri-BoldSlanted.woff) format('woff'),
+       url(/estate/static/src/fonts/Amiri-BoldSlanted.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/estate/static/src/fonts/Amiri-Bold.eot);
+  src: url(/estate/static/src/fonts/Amiri-Bold.woff2) format('woff2'),
+       url(/estate/static/src/fonts/Amiri-Bold.woff) format('woff'),
+       url(/estate/static/src/fonts/Amiri-Bold.ttf) format('truetype');
+}
