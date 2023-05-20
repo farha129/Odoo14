@@ -65,8 +65,8 @@ class SaleOrder(models.Model):
                         dimension_one = 0.0
                         height = 0.0
                         width = 0.0
-                        product_hight = line.product_height
-                        product_width = line.product_width
+                        product_hight = line.product_height * 1000
+                        product_width = line.product_width * 1000
                         if sect.dimensions_number == 'one':
                             if sect.measured_from == 'height':
                                 dimension_one = (product_hight + sect.height) / sect.division_number
@@ -106,85 +106,97 @@ class SaleOrder(models.Model):
 
             rec.state = 'again'
 
-    def send_message(self):
+
+    def auto_send_message(self):
         """ Create mail specific for recipient containing notably its access token """
+        sale_obj = self.env['sale.order'].search([])
 
-        today_s = fields.Date.today()
-        date_try_s  = self.date_order +  timedelta(days=3)
-        today = today_s.strftime('%Y-%m-%d')
-        date_try = date_try_s.strftime('%Y-%m-%d')
-        if today == date_try and self.state != 'sale':
-            base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-            mass = self.env['mail.message'].create({'email_from': self.env.user.partner_id.email,
-                                             'author_id': self.env.user.partner_id.id,
-                                             'model': 'mail.channel',
-                                             'subtype_id': self.env.ref('mail.mt_comment').id,
-                                             'body': 'Dear ALL ' + '<br/>This Quation Spent Three days need you action (Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
-                                             'channel_ids': [(4, self.env.ref(
-                                                 'sale_roh.channel_sale_group').id)],
-                                             'res_id': self.env.ref(
-                                                 'sale_roh.channel_sale_group').id,
-                                             })
-            admin = self.env['res.users'].search([('id', '=', 2)])
-            partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
-            if partner_id_boolean:
-                group_id = self.env.ref('sale.group_sale_salesman').users
-                partners_ids = group_id.mapped('partner_id').ids
-                for partenr in partners_ids:
-                    partner_obj = self.env['res.partner'].search([('id','=',partenr)])
-                    if partner_obj.email:
-                        massage_ids = self.env['mail.mail'].create({
-                            'subject': 'This record need you action (%s)' % (
-                                    str('sale.order') + ': ' + str(self.name)),
-                            'body_html': 'Dear  All'   + '<br/>This Sale Quation Spent Three days need you action(Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
-                            'email_from': admin.partner_id.email,
-                            'email_to': partner_obj.email,
-                            'auto_delete': True,
-                            'state': 'outgoing',
-                            'mail_message_id': mass.id,
-                            'body': 'Dear ALL ' + '<br/>This Quation Spent Three days need you action (Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
-                        })
-                        massage_ids.send()
+        for rec in sale_obj:
 
-        if today > date_try and self.state in ('draft', 'try_again'):
-            base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-            mass = self.env['mail.message'].create({'email_from': self.env.user.partner_id.email,
-                                             'author_id': self.env.user.partner_id.id,
-                                             'model': 'mail.channel',
-                                             'subtype_id': self.env.ref('mail.mt_comment').id,
-                                             'body':  'Dear ALL ' + '<br/>This Sale Quation Spent More Than Three days need you action(Confirm or Cancel)  <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
-                                             'channel_ids': [(4, self.env.ref(
-                                                 'sale_roh.channel_sale_group').id)],
-                                             'res_id': self.env.ref(
-                                                 'sale_roh.channel_sale_group').id,
-                                             })
-            admin = self.env['res.users'].search([('id', '=', 2)])
-            partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
-            if partner_id_boolean:
-                group_id = self.env.ref('sale.group_sale_salesman').users
-                partners_ids = group_id.mapped('partner_id').ids
-                for partenr in partners_ids:
-                    partner_obj = self.env['res.partner'].search([('id','=',partenr)])
-                    if partner_obj.email:
-                        massage_ids = self.env['mail.mail'].create({
-                            'subject': 'This record need you action (%s)' % (
-                                    str('sale.order') + ': ' + str(self.name)),
-                            'body_html': 'Dear  All'   + '<br/>This Sale Quation Spent More Than Three days need you action(Confirm or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
-                            'email_from': admin.partner_id.email,
-                            'email_to': partner_obj.email,
-                            'auto_delete': True,
-                            'state': 'outgoing',
-                            'mail_message_id': mass.id,
-                            'body': 'Dear ALL ' + '<br/>This Quation Spent More Than Three days need you action (Confirm or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-                                base_url, 'sale.order', self.id),
+            today_s = fields.Date.today()
+            date_try_s  = rec.date_order
+            today = today_s.strftime('%Y-%m-%d')
 
-                        })
-                        massage_ids.send()
+            date_try = (date_try_s + relativedelta(days=3)).strftime('%Y-%m-%d')
+
+
+            if today == date_try and rec.state != 'sale':
+                print('ffffffffffffffffffffftry', rec.name)
+                print('dayuuuuuuuuuuuuuuuuuuuuuuuuuu', date_try_s)
+                print('dayuuuuuuuuuuuuuuuuuuummmmmmmmmmmmmmmmmuuuuuuu', date_try)
+
+                base_url = rec.env['ir.config_parameter'].sudo().get_param('web.base.url')
+                mass = rec.env['mail.message'].create({'email_from': rec.env.user.partner_id.email,
+                                                 'author_id': rec.env.user.partner_id.id,
+                                                 'model': 'mail.channel',
+                                                 'subtype_id': rec.env.ref('mail.mt_comment').id,
+                                                 'body': 'Dear ALL ' + '<br/>This Quation'+'  '+ rec.name + '   Spent Three days need you action (Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id),
+                                                 'channel_ids': [(4, rec.env.ref(
+                                                     'sale_roh.channel_sale_group').id)],
+                                                 'res_id': rec.env.ref(
+                                                     'sale_roh.channel_sale_group').id,
+                                                 })
+                admin = rec.env['res.users'].search([('id', '=', 2)])
+                partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
+                if partner_id_boolean:
+                    group_id = rec.env.ref('sale.group_sale_salesman').users
+                    partners_ids = group_id.mapped('partner_id').ids
+                    for partenr in partners_ids:
+                        partner_obj = rec.env['res.partner'].search([('id','=',partenr)])
+                        if partner_obj.email:
+                            massage_ids = rec.env['mail.mail'].create({
+                                'subject': 'This record need you action (%s)' % (
+                                        str('sale.order') + ': ' + str(rec.name)),
+                                'body_html': 'Dear  All'   + '<br/>This Sale Quation'+'  '+ rec.name + '   Spent Three days need you action(Try Agin or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id),
+                                'email_from': admin.partner_id.email,
+                                'email_to': partner_obj.email,
+                                'auto_delete': True,
+                                'state': 'outgoing',
+                                'mail_message_id': mass.id,
+                                'body': 'Dear ALL ' + '<br/>This Quation'+'  '+ rec.name + '   Spent Three days need you action (Try Agin or Cancel)  <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id),
+                            })
+                            massage_ids.send()
+
+            if today > date_try and rec.state in ('draft', 'again'):
+
+                base_url = rec.env['ir.config_parameter'].sudo().get_param('web.base.url')
+                mass = rec.env['mail.message'].create({'email_from': rec.env.user.partner_id.email,
+                                                 'author_id': rec.env.user.partner_id.id,
+                                                 'model': 'mail.channel',
+                                                 'subtype_id': rec.env.ref('mail.mt_comment').id,
+                                                 'body':  'Dear ALL ' +  '<br/>This Sale Quation'+'  '+ rec.name + '  Spent More Than Three days need you action(Confirm or Cancel) <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id),
+                                                 'channel_ids': [(4, rec.env.ref(
+                                                     'sale_roh.channel_sale_group').id)],
+                                                 'res_id': rec.env.ref(
+                                                     'sale_roh.channel_sale_group').id,
+                                                 })
+                admin = rec.env['res.users'].search([('id', '=', 2)])
+                partner_id_boolean = rec.env.user.has_group('sale.group_sale_salesman')
+                if partner_id_boolean:
+                    group_id = rec.env.ref('sale.group_sale_salesman').users
+                    partners_ids = group_id.mapped('partner_id').ids
+                    for partenr in partners_ids:
+                        partner_obj = rec.env['res.partner'].search([('id','=',partenr)])
+                        if partner_obj.email:
+                            massage_ids = rec.env['mail.mail'].create({
+                                'subject': 'This record need you action (%s)' % (
+                                        str('sale.order') + ': ' + str(rec.name)),
+                                'body_html': 'Dear  All' + '<br/>This Sale Quation'+'  '+ rec.name + '   Spent More Than Three days need you action(Confirm or Cancel)<a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id) ,
+                                'email_from': admin.partner_id.email,
+                                'email_to': partner_obj.email,
+                                'auto_delete': True,
+                                'state': 'outgoing',
+                                'mail_message_id': mass.id,
+                                'body': 'Dear ALL ' +'<br/>This Quation'+'  '+ rec.name + '   Spent More Than Three days need you action (Confirm or Cancel)<a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
+                                    base_url, 'sale.order', rec.id),
+
+                            })
+                            massage_ids.send()
 
     # def prepare_massage(self):
     #

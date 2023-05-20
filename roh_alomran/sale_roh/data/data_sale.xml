@@ -9,17 +9,32 @@
          <data noupdate="1">
 
     </data>
-        <record id="try_agin_cron_id" model="ir.cron">
+        <record id="try_agin_cron_ids" model="ir.cron">
         <field name="name">Reminder Try Again for Quotion</field>
         <field name="model_id" ref="sale.model_sale_order"/>
         <field name="state">code</field>
-        <field name="code">model.send_message()</field>
+        <field name="code">model.auto_send_message()</field>
         <field name="user_id" ref="base.user_root" />
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="doall" eval="False"/>
     </record>
+
+
+
+         <record id="sector1" model="ir.cron">
+        <field name="name"></field>
+        <field name="model_id" ref="sale_roh.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_send_message()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
     
     </data>
     
