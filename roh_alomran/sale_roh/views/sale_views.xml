@@ -31,6 +31,25 @@
                     <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice"
                       groups="sale.group_proforma_sales" class="btn-primary"
                       attrs="{'invisible': ['|', ('state', 'not in', ['draft','again']), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
+                      <button 
+                    name="%(aos_whatsapp.action_whatsapp_compose_message_post)d"
+                    type="action"
+                    icon="fa-whatsapp"
+                    string="  Send By WhatsApp"
+                    class="btn-primary"
+                    title="Send By WhatsApp"
+                    states="draft"/>
+
+
+                <button 
+                	name="%(aos_whatsapp.action_whatsapp_compose_message_post)d"
+                    type="action"
+                    icon="fa-whatsapp"
+                    string="  Send By WhatsApp"
+                    aria-label="Send By WhatsApp"
+                    title="Send By WhatsApp"
+                    states="approved,to_confirm,sale"/>
+                    
 <button name="compute_dimension_id"  type="object" string="Compute Dimension_id" states="sale" />
 <button name="action_try_agains"  type="object" string="Try Again"
                             states="draft"/>
