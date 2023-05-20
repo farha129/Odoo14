@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sale_categ_wizard,sale_categ.wizard,model_sale_categ_wizard,base.group_user,1,1,1,1
-access_sale_categ.wizard.report.excel,sale_categ.wizard.report.excel,model_sale_categ_wizard_report_excel,base.group_user,1,1,1,1
-access_sale_report_wizard,Access Sale Report Wizard,sale_fadil.model_sale_report_wizard,base.group_user,1,1,1,1
-access_product_category,Product Category,product.model_product_category,sale_fadil.group_product,1,1,1,0
-access_product_template,Product Template,product.model_product_template,sale_fadil.group_product,1,1,1,0
-access_product_product,Product Product,product.model_product_product,sale_fadil.group_product,1,1,1,0
-sale.access_account_move_line_salesman,account_move_line salesman,account.model_account_move_line,sales_team.group_sale_salesman,1,1,1,1
-access_product_price,access_product_price,model_product_price,,1,1,1,1
