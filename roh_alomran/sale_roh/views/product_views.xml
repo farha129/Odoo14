@@ -9,24 +9,31 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='options']" position="after">
-                     <div>
                           <div>
+
                                 <field name="is_sector"/>
                                 <label for="is_sector"/>
-                            </div>
+                                                              </div>
+
+                               <div>
+                                <field name="is_accessory"/>
+                                <label for="is_accessory"/>
+                                                              </div>
+
+<div>
                                 <field name="is_supplement"/>
                                 <label for="is_supplement"/>
-                            </div>
-
+                          </div>
 
 
                 </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                                                       <field name="supplier_company"  />
+                </xpath>
                 <xpath expr="//page[@name='invoicing']" position="after">
                     <page string="Supplement" name="supplement"  attrs="{'invisible':[('is_sector','=',False)]}">
-<!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
 
-
-                        <field name="supplement_sector_ids" widget="one2many"  context="{'show_attribute': False}">
+                        <field name="supplement_sector_ids" widget="one2many"  >
                              <tree editable="bottom">
                                  <field name="supplement_name"  domain="[('is_supplement', '=',  True)]" context="{'default_is_supplement': True,'default_type': 'product'}" />
                                <field name="is_side" />
@@ -43,6 +50,16 @@
                           </field>
 
                     </page>
+                     <page string="Accessory" name="accessory"  attrs="{'invisible':[('is_sector','=',False)]}">
+
+                        <field name="accessory_ids" widget="one2many"  >
+                             <tree editable="bottom">
+                                 <field name="accessory_name"  domain="[('is_accessory', '=',  True)]" context="{'default_is_accessory': True,'default_type': 'product'}" />
+                                <field name="accessory_uom_qty" />
+                                <field name="product_acc_id" invisible="1"/>
+                             </tree>
+                        </field>
+                     </page>
                 </xpath>
             </field>
         </record>

@@ -99,10 +99,22 @@
 
                         <field name="dimension_supplement_ids" widget="one2many" >
                              <tree editable="bottom">
-                                     <field name="supplement_name" />
+                                     <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
                                      <field name="supplement_height" />
                                      <field name="supplement_width" />
                                      <field name="dimension_one" />
+                             </tree>
+                        </field>
+                    </page>
+                    <page string="Accessory" name="Accessory"  >
+
+
+                        <field name="sale_accessory_ids" widget="one2many" >
+                             <tree editable="bottom">
+                                     <field name="accessory_name" />
+                                     <field name="accessory_uom_qty" />
+                                  <field name="sale_id"  invisible="1"/>
+
                              </tree>
                         </field>
                     </page>

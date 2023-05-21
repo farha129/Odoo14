@@ -18,7 +18,21 @@ class ProductTemplate(models.Model):
     is_supplement = fields.Boolean(string = 'Is supplement')
 
     is_sector = fields.Boolean(string = 'Is Sector')
+    is_accessory = fields.Boolean(string = 'Is Accessory')
+    accessory_ids = fields.One2many('product.accessory', 'product_acc_id',string ='Accessorys')
     supplement_sector_ids = fields.One2many('supplement.sector','product_id',string = 'Supplement' )
+    supplier_company = fields.Many2one('res.company', string='Supplier Company')
+
+
+
+class ProductAccessory(models.Model):
+    _name = "product.accessory"
+    _description = "Accessory"
+
+    product_acc_id = fields.Many2one('product.template', string='product')
+    accessory_name = fields.Many2one('product.product', string='Accessory')
+    accessory_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
+    sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
 
 class SupplementSector(models.Model):
@@ -44,9 +58,6 @@ class SupplementSector(models.Model):
     # dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
 
 
-
-    
-    
    
 
     

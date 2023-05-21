@@ -37,6 +37,16 @@ class DimensionSupplement(models.Model):
 #                     line.order_id.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,})
 #
 
+class SaleAccessory(models.Model):
+    _name = "sale.accessory"
+    _description = "Accessory"
+
+    accessory_name = fields.Many2one('product.product', string='Accessory')
+    accessory_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
+    sale_id = fields.Many2one('sale.order', string = 'Accessory')
+
+
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -47,6 +57,7 @@ class SaleOrder(models.Model):
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
+    sale_accessory_ids = fields.One2many('sale.accessory','sale_id',string = 'Accessory' )
 
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
@@ -55,6 +66,48 @@ class SaleOrder(models.Model):
     # total_amount_in_words = fields.Char(string="Amount in Words", required=False, compute='_compute_amount_total')
     # amount_in_words_arabic = fields.Char(string="Amount in Words Arabic", required=False,
     #                                      compute='_compute_amount_total')
+
+    @api.onchange('order_line')
+    def _onchange_pro(self):
+        val= []
+        for rec in self.order_line:
+            acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
+            for obj in acc_obj:
+                # acc_obj = self.sale_accessory_ids.search([('accessory_name', '=', obj.accessory_name.id),('accessory_uom_qty','=',obj.accessory_uom_qty),('sale_id.id','=',self.id)])
+                # print('ppppppppppppppppp',acc_obj)
+                # if not acc_obj:
+                print('ggggggggggggggggggggggggggggggg',acc_obj)
+                self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
+                                                'accessory_uom_qty': obj.accessory_uom_qty,
+                                                'sale_id': self.id,
+
+                                                    })
+
+
+                # # obj_acc = self.sale_accessory_ids.search([('accessory_name', '=', obj.accessory_name.id),('accessory_uom_qty','!=',obj.accessory_uom_qty),('sale_id','=',self.id)])
+                # # for line in obj_acc:
+                # print('88888888888888888888888acc')
+                # #
+                # # for acc in self.sale_accessory_ids:
+                # #     if acc :
+                # #         print('88888888888888888888888acc',acc)
+                # #         if acc.accessory_name.id != obj.accessory_name.id and acc.accessory_uom_qty != obj.accessory_uom_qty :
+                # #             print('88888888888888888888888999999999', acc)
+                # #
+                #             self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
+                #                                                      'accessory_uom_qty': obj.accessory_uom_qty,
+                #                                                      'sale_id': self.id,
+                #
+                #                                          })
+                #     else:
+                #         print('goooooooooooooooooooooooooooooooooooooooooooooooooooood')
+                #         self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
+                #                                       'accessory_uom_qty': obj.accessory_uom_qty,
+                #                                       'sale_id': self.id,
+                #
+                #                                       })
+
+
 
     def compute_dimension_id(self):
 
@@ -88,11 +141,6 @@ class SaleOrder(models.Model):
                                 height =  sect.side + side
                                 width =  sect.heel + heel
 
-
-
-
-
-
                         rec.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
                                                              'supplement_height': height,
                                                              'supplement_width': width,
@@ -100,10 +148,9 @@ class SaleOrder(models.Model):
                                                              'sale_id': rec.id, })
             rec.state = 'compute'
 
+
     def action_try_agains(self):
         for rec in self:
-
-
             rec.state = 'again'
 
 
@@ -264,6 +311,3 @@ class SaleOrderLine(models.Model):
             rec.product_area = rec.product_height * rec.product_width * rec.product_uom_qty
 
 
-
-
-   
