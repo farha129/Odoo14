@@ -41,7 +41,7 @@ class SupplementSector(models.Model):
 
 
     product_id = fields.Many2one('product.template', string = 'product')
-    supplement_name = fields.Many2one('product.product', string='Supplement', required=True)
+    supplement_name = fields.Many2one('product.product', string='Supplement')
     dimensions_number = fields.Selection([('one', 'One Dimension'), ('two', 'TWO Dimensions')],default='one',
                                          string='Dimensions Number')
     measured_from = fields.Selection(
