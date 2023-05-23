@@ -1,5 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+
+
+
 
         <!-- Inherit Form View to Modify it Sale order-->
         <record id="view_order_form_inheriteds_id" model="ir.ui.view">
@@ -51,6 +56,7 @@
                     states="approved,to_confirm,sale"/>
                     
 <button name="compute_dimension_id"  type="object" string="Compute Dimension_id" states="sale" />
+
 <button name="action_try_agains"  type="object" string="Try Again"
                             states="draft"/>
                     <button name="action_confirm" id="action_confirm"
@@ -62,9 +68,26 @@
                     <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" attrs="{'invisible': ['|', ('state', 'in', ['draft','again']), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
                     <button name="action_quotation_send" string="Send by Email" type="object" states="sent,sale"/>
                     <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'sent','sale','again']), ('id', '=', False)]}"/>
-                    <button name="action_draft" states="cancel" type="object" string="Set to Quotation"/>
+                     <button name="action_create_purchase_order" string="Create Purchase Order" type="object" attrs="{'invisible': [('po_count', '=', 1)]}"
+                            class="btn-primary" />
+          <button name="action_draft" states="cancel" type="object" string="Set to Quotation"/>
+
+
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,again,sale"/>
                 </header>
+
+                </xpath>
+
+                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_open_purchase_order" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="po_count"/>
+                            </span>
+                            <span class="o_stat_text">Purchase</span>
+                            <span class="o_stat_text">Orders</span>
+                        </div>
+                    </button>
 
                 </xpath>
 
@@ -73,13 +96,21 @@
 
 
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
-                    <field name="product_width" />
-                    <field name="product_height" />
+                    <field name="product_widths" widget="many2many_tags" />
+                    <field name="product_heights" widget="many2many_tags"/>
+                    <field name="product_qty_new" />
+                    <field name="hi_wi" />
+                    <field name="is_5_80" />
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
 
                     <field name="product_area" />
                 </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace">
+                                                                <field name="product_uom_qty" string = 'Qty Purchase'/>
+
+                </xpath>
+
 
 
 
@@ -148,7 +179,20 @@
             </field>
         </record>
 
+ <!-- FORM VIEW  -->
+          <record id="purchase_order_view_inhinrt" model="ir.ui.view">
+            <field name="name">purchase.order.form.i</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+                          <field name="arch" type="xml">
 
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="after">
+                                                                <field name="is_5_80" />
+                                                                <field name="hi_wi"  invisible="0"/>
+
+                </xpath>
+                          </field>
+          </record>
 
 
     </data>

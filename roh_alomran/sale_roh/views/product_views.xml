@@ -61,6 +61,13 @@
                         </field>
                      </page>
                 </xpath>
+
+<!--                  <xpath expr="//filter[@name='type']" position="after">-->
+<!--                    <filter string="Sector" name="is_sector" context="{'group_by':'is_sector'}"/>-->
+<!--                    <filter string="Supplement" name="is_supplement" context="{'group_by':'is_supplement'}"/>-->
+<!--                    <filter string="Accessory" name="is_supplement" context="{'group_by':'is_accessory'}"/>-->
+<!--                </xpath>-->
+
             </field>
         </record>
     </data>
