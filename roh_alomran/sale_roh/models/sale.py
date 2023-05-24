@@ -61,8 +61,6 @@ class SaleAccessory(models.Model):
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-
-
     installation = fields.Boolean('Installation requested?')
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
@@ -85,118 +83,120 @@ class SaleOrder(models.Model):
             "target": "current",
         }
 
-    def _get_po(self):
-        for orders in self:
-            purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
-            print('iiiiiiiii8888888888888888888888iiiiii',purchase_ids)
-
-        orders.po_count = len(purchase_ids)
-
-    po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
-
-    def action_create_purchase_order(self):
-        self.ensure_one()
-        res = self.env['purchase.order'].browse(self._context.get('id', []))
-        so = self.env['sale.order'].browse(self._context.get('active_id'))
-        pricelist = self.partner_id.property_product_pricelist
-        partner_pricelist = self.partner_id.property_product_pricelist
-        sale_order_name = so.name
-        company_id = self.env.company
-
-        if self.partner_id.property_purchase_currency_id:
-            currency_id = self.partner_id.property_purchase_currency_id.id
-        else:
-            currency_id = self.env.company.currency_id.id
-
-        purchase_order = res.create({
-            'partner_id': self.partner_id.id,
-            'date_order': str(self.date_order),
-            'origin': sale_order_name,
-            'currency_id': currency_id,
-            'partner_ref': self.name,
-
-        })
-        # sale_order = self.env['sale.order'].browse(self._context.get('active_ids', []))
-        message = "Purchase Order created " + '<a href="#" data-oe-id=' + str(
-            purchase_order.id) + ' data-oe-model="purchase.order">@' + purchase_order.name + '</a>'
-        self.message_post(body=message)
-        for data in self.order_line:
-            sale_order_name = data.order_id.name
-            if not sale_order_name:
-                sale_order_name = so.name
-            product_quantity = data.product_uom_qty
-
-            purchase_qty_uom = data.product_uom._compute_quantity(product_quantity, data.product_id.uom_po_id)
-
-            # determine vendor (real supplier, sharing the same partner as the one from the PO, but with more accurate informations like validity, quantity, ...)
-            # Note: one partner can have multiple supplier info for the same product
-            supplierinfo = data.product_id._select_seller(
-                partner_id=purchase_order.partner_id,
-                quantity=purchase_qty_uom,
-                date=purchase_order.date_order and purchase_order.date_order.date(),
-                # and purchase_order.date_order[:10],
-                uom_id=data.product_id.uom_po_id
-            )
-            fpos = purchase_order.fiscal_position_id
-            taxes = fpos.map_tax(data.product_id.supplier_taxes_id)
-            if taxes:
-                taxes = taxes.filtered(lambda t: t.company_id.id == company_id.id)
-            if not supplierinfo:
-                po_line_uom = data.product_uom or data.product_id.uom_po_id
-                price_unit = self.env['account.tax']._fix_tax_included_price_company(
-                    data.product_id.uom_id._compute_price(data.product_id.standard_price, po_line_uom),
-                    data.product_id.supplier_taxes_id,
-                    taxes,
-                    company_id,
-                )
-                if price_unit and data.order_id.currency_id and data.order_id.company_id.currency_id != data.order_id.currency_id:
-                    price_unit = data.order_id.company_id.currency_id._convert(
-                        price_unit,
-                        data.order_id.currency_id,
-                        data.order_id.company_id,
-                        self.date_order or fields.Date.today(),
-                    )
-
-            # compute unit price
-            if supplierinfo:
-                price_unit = self.env['account.tax'].sudo()._fix_tax_included_price_company(supplierinfo.price,
-                                                                                            data.product_id.supplier_taxes_id,
-                                                                                            taxes, company_id)
-                if purchase_order.currency_id and supplierinfo.currency_id != purchase_order.currency_id:
-                    price_unit = supplierinfo.currency_id._convert(price_unit, purchase_order.currency_id,
-                                                                   purchase_order.company_id,
-                                                                   fields.datetime.today())
-
-            if self.partner_id.property_purchase_currency_id:
-
-                value = {
-                    'product_id': data.product_id.id,
-                    'name': data.name,
-                    'product_qty': data.product_qty,
-                    'order_id': purchase_order.id,
-                    'product_uom': data.product_uom.id,
-                    'taxes_id': data.product_id.supplier_taxes_id.ids,
-                    'date_planned': data.date_planned,
-                    'hi_wi': data.hi_wi,
-                    'is_5_80': data.is_5_80,
-
-                }
-            else:
-                value = {
-                    'product_id': data.product_id.id,
-                    'name': data.name,
-                    'product_qty': data.product_uom_qty,
-                    'order_id': purchase_order.id,
-                    'product_uom': data.product_uom.id,
-                    'taxes_id': data.product_id.supplier_taxes_id.ids,
-                    'price_unit': price_unit,
-                    'hi_wi': data.hi_wi,
-                    'is_5_80': data.is_5_80,
-                }
-
-            self.env['purchase.order.line'].create(value)
-
-        return purchase_order
+    # def _get_po(self):
+    #     for orders in self:
+    #         purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
+    #
+    #     orders.po_count = len(purchase_ids)
+    #
+    # po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
+    #
+    #
+    #
+    #
+    # def action_create_purchase_order(self):
+    #     self.ensure_one()
+    #     res = self.env['purchase.order'].browse(self._context.get('id', []))
+    #     so = self.env['sale.order'].browse(self._context.get('active_id'))
+    #     pricelist = self.partner_id.property_product_pricelist
+    #     partner_pricelist = self.partner_id.property_product_pricelist
+    #     sale_order_name = so.name
+    #     company_id = self.env.company
+    #
+    #     if self.partner_id.property_purchase_currency_id:
+    #         currency_id = self.partner_id.property_purchase_currency_id.id
+    #     else:
+    #         currency_id = self.env.company.currency_id.id
+    #
+    #     purchase_order = res.create({
+    #         'partner_id': self.partner_id.id,
+    #         'date_order': str(self.date_order),
+    #         'origin': sale_order_name,
+    #         'currency_id': currency_id,
+    #         'partner_ref': self.name,
+    #
+    #     })
+    #     # sale_order = self.env['sale.order'].browse(self._context.get('active_ids', []))
+    #     message = "Purchase Order created " + '<a href="#" data-oe-id=' + str(
+    #         purchase_order.id) + ' data-oe-model="purchase.order">@' + purchase_order.name + '</a>'
+    #     self.message_post(body=message)
+    #     for data in self.order_line:
+    #         sale_order_name = data.order_id.name
+    #         if not sale_order_name:
+    #             sale_order_name = so.name
+    #         product_quantity = data.product_uom_qty
+    #
+    #         purchase_qty_uom = data.product_uom._compute_quantity(product_quantity, data.product_id.uom_po_id)
+    #
+    #         # determine vendor (real supplier, sharing the same partner as the one from the PO, but with more accurate informations like validity, quantity, ...)
+    #         # Note: one partner can have multiple supplier info for the same product
+    #         supplierinfo = data.product_id._select_seller(
+    #             partner_id=purchase_order.partner_id,
+    #             quantity=purchase_qty_uom,
+    #             date=purchase_order.date_order and purchase_order.date_order.date(),
+    #             # and purchase_order.date_order[:10],
+    #             uom_id=data.product_id.uom_po_id
+    #         )
+    #         fpos = purchase_order.fiscal_position_id
+    #         taxes = fpos.map_tax(data.product_id.supplier_taxes_id)
+    #         if taxes:
+    #             taxes = taxes.filtered(lambda t: t.company_id.id == company_id.id)
+    #         if not supplierinfo:
+    #             po_line_uom = data.product_uom or data.product_id.uom_po_id
+    #             price_unit = self.env['account.tax']._fix_tax_included_price_company(
+    #                 data.product_id.uom_id._compute_price(data.product_id.standard_price, po_line_uom),
+    #                 data.product_id.supplier_taxes_id,
+    #                 taxes,
+    #                 company_id,
+    #             )
+    #             if price_unit and data.order_id.currency_id and data.order_id.company_id.currency_id != data.order_id.currency_id:
+    #                 price_unit = data.order_id.company_id.currency_id._convert(
+    #                     price_unit,
+    #                     data.order_id.currency_id,
+    #                     data.order_id.company_id,
+    #                     self.date_order or fields.Date.today(),
+    #                 )
+    #
+    #         # compute unit price
+    #         if supplierinfo:
+    #             price_unit = self.env['account.tax'].sudo()._fix_tax_included_price_company(supplierinfo.price,
+    #                                                                                         data.product_id.supplier_taxes_id,
+    #                                                                                         taxes, company_id)
+    #             if purchase_order.currency_id and supplierinfo.currency_id != purchase_order.currency_id:
+    #                 price_unit = supplierinfo.currency_id._convert(price_unit, purchase_order.currency_id,
+    #                                                                purchase_order.company_id,
+    #                                                                fields.datetime.today())
+    #
+    #         if self.partner_id.property_purchase_currency_id:
+    #
+    #             value = {
+    #                 'product_id': data.product_id.id,
+    #                 'name': data.name,
+    #                 'product_qty': data.product_qty,
+    #                 'order_id': purchase_order.id,
+    #                 'product_uom': data.product_uom.id,
+    #                 'taxes_id': data.product_id.supplier_taxes_id.ids,
+    #                 'date_planned': data.date_planned,
+    #                 'hi_wi': data.hi_wi,
+    #                 'is_5_80': data.is_5_80,
+    #
+    #             }
+    #         else:
+    #             value = {
+    #                 'product_id': data.product_id.id,
+    #                 'name': data.name,
+    #                 'product_qty': data.product_uom_qty,
+    #                 'order_id': purchase_order.id,
+    #                 'product_uom': data.product_uom.id,
+    #                 'taxes_id': data.product_id.supplier_taxes_id.ids,
+    #                 'price_unit': price_unit,
+    #                 'hi_wi': data.hi_wi,
+    #                 'is_5_80': data.is_5_80,
+    #             }
+    #
+    #         self.env['purchase.order.line'].create(value)
+    #
+    #     return purchase_order
 
     # total_amount_in_words = fields.Char(string="Amount in Words", required=False, compute='_compute_amount_total')
     # amount_in_words_arabic = fields.Char(string="Amount in Words Arabic", required=False,
@@ -454,6 +454,7 @@ class SaleOrderLine(models.Model):
         digits='Product Unit of Measure', required=True)
     product_area = fields.Float(string='Area(Mt2)', digits='Product Area(Width*Height*Quantity) by mater', default=1 , compute= 'compute_area')
 
+
     @api.depends('product_heights', 'product_widths','product_qty_new')
     def compute_area(self):
         for rec in self:
@@ -464,9 +465,13 @@ class SaleOrderLine(models.Model):
 
                 for i in range(len(height)):
 
+                    total +=  ((height[i]['name']  +  width[i]['name']) *2)
+                    if height[i]['name'] < 1 :
+                        height[i]['name'] = 1
+                    if width[i]['name'] < 1 :
+                        width[i]['name'] = 1
 
                     rec.product_area += height[i]['name']  *  width[i]['name'] * rec.product_qty_new
-                    total +=  ((height[i]['name']  +  width[i]['name']) *2)
                 rec.product_uom_qty = total / 5.80
                 rec.hi_wi = total
 
@@ -482,6 +487,53 @@ class SaleOrderLine(models.Model):
                 rec.product_uom_qty = rec.hi_wi / 5.80
             else:
                 rec.product_uom_qty = rec.hi_wi / 6
+
+    def _compute_amount(self):
+        """
+        Compute the amounts of the SO line.
+        """
+        for line in self:
+            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+            taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_area,
+                                            product=line.product_id, partner=line.order_id.partner_shipping_id)
+            line.update({
+                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
+                'price_total': taxes['total_included'],
+                'price_subtotal': taxes['total_excluded'],
+            })
+            if self.env.context.get('import_file', False) and not self.env.user.user_has_groups(
+                    'account.group_account_manager'):
+                line.tax_id.invalidate_cache(['invoice_repartition_line_ids'], [line.tax_id.id])
+
+    @api.depends('product_area', 'discount', 'price_unit', 'tax_id')
+    def _prepare_invoice_line(self, **optional_values):
+        """
+        Prepare the dict of values to create the new invoice line for a sales order line.
+
+        :param qty: float quantity to invoice
+        :param optional_values: any parameter that should be added to the returned invoice line
+        """
+        self.ensure_one()
+        res = {
+            'display_type': self.display_type,
+            'sequence': self.sequence,
+            'name': self.name,
+            'product_id': self.product_id.id,
+            'product_uom_id': self.product_uom.id,
+            'quantity': self.product_area,
+            'discount': self.discount,
+            'price_unit': self.price_unit,
+            'tax_ids': [(6, 0, self.tax_id.ids)],
+            'analytic_account_id': self.order_id.analytic_account_id.id if not self.display_type else False,
+            'analytic_tag_ids': [(6, 0, self.analytic_tag_ids.ids)],
+            'sale_line_ids': [(4, self.id)],
+        }
+        if optional_values:
+            res.update(optional_values)
+        if self.display_type:
+            res['account_id'] = False
+        return res
+
 
 
 
