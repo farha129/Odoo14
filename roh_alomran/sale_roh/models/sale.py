@@ -5,6 +5,8 @@ from odoo import models, fields, api, _
 import datetime
 from datetime import datetime
 from datetime import timedelta
+from odoo.exceptions import ValidationError
+
 
 from dateutil.relativedelta import relativedelta
 
@@ -35,18 +37,6 @@ class DimensionSupplement(models.Model):
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
 
 
-# class SaleOrderLine(models.Model):
-#     _inherit = 'sale.order.line'
-#
-#     @api.onchange('product_id')
-#     def _onchange_product_id_id(self):
-#         for line in self:
-#             if line.product_id.is_sector:
-#                 for sect in line.product_id.supplement_sector_ids:
-#                     print('hhhhhhhhhhhhhhhhh',line.order_id.id)
-#                     line.order_id.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,})
-#
-
 class SaleAccessory(models.Model):
     _name = "sale.accessory"
     _description = "Accessory"
@@ -55,9 +45,6 @@ class SaleAccessory(models.Model):
     accessory_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
     sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
-
-
-
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -65,10 +52,25 @@ class SaleOrder(models.Model):
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
-    sale_accessory_ids = fields.One2many('sale.accessory','sale_id',string = 'Accessory' )
+    sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory' )
+    number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
+    destination_payment  =  fields.Text(string = 'Description Payment')
+    implemented_period = fields.Integer(string = 'implemented period', digits = 'By The Days' )
 
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
+
+    @api.constrains('order_line')
+    def _order_line_null(self):
+        if not self.order_line :
+            raise ValidationError(_('Please Add products or Line' ))
+
+    # def action_confirm(self):
+    #     res = super(SaleOrder, self).action_confirm()
+    #
+    #     self.order_line._acc_in_move()
+    #
+    #     return res
 
     def action_open_purchase_order(self):
         tree_id = self.env.ref("purchase.purchase_order_kpis_tree").id
@@ -83,164 +85,53 @@ class SaleOrder(models.Model):
             "target": "current",
         }
 
-    # def _get_po(self):
-    #     for orders in self:
-    #         purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
-    #
-    #     orders.po_count = len(purchase_ids)
-    #
-    # po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
-    #
-    #
-    #
-    #
-    # def action_create_purchase_order(self):
-    #     self.ensure_one()
-    #     res = self.env['purchase.order'].browse(self._context.get('id', []))
-    #     so = self.env['sale.order'].browse(self._context.get('active_id'))
-    #     pricelist = self.partner_id.property_product_pricelist
-    #     partner_pricelist = self.partner_id.property_product_pricelist
-    #     sale_order_name = so.name
-    #     company_id = self.env.company
-    #
-    #     if self.partner_id.property_purchase_currency_id:
-    #         currency_id = self.partner_id.property_purchase_currency_id.id
-    #     else:
-    #         currency_id = self.env.company.currency_id.id
-    #
-    #     purchase_order = res.create({
-    #         'partner_id': self.partner_id.id,
-    #         'date_order': str(self.date_order),
-    #         'origin': sale_order_name,
-    #         'currency_id': currency_id,
-    #         'partner_ref': self.name,
-    #
-    #     })
-    #     # sale_order = self.env['sale.order'].browse(self._context.get('active_ids', []))
-    #     message = "Purchase Order created " + '<a href="#" data-oe-id=' + str(
-    #         purchase_order.id) + ' data-oe-model="purchase.order">@' + purchase_order.name + '</a>'
-    #     self.message_post(body=message)
-    #     for data in self.order_line:
-    #         sale_order_name = data.order_id.name
-    #         if not sale_order_name:
-    #             sale_order_name = so.name
-    #         product_quantity = data.product_uom_qty
-    #
-    #         purchase_qty_uom = data.product_uom._compute_quantity(product_quantity, data.product_id.uom_po_id)
-    #
-    #         # determine vendor (real supplier, sharing the same partner as the one from the PO, but with more accurate informations like validity, quantity, ...)
-    #         # Note: one partner can have multiple supplier info for the same product
-    #         supplierinfo = data.product_id._select_seller(
-    #             partner_id=purchase_order.partner_id,
-    #             quantity=purchase_qty_uom,
-    #             date=purchase_order.date_order and purchase_order.date_order.date(),
-    #             # and purchase_order.date_order[:10],
-    #             uom_id=data.product_id.uom_po_id
-    #         )
-    #         fpos = purchase_order.fiscal_position_id
-    #         taxes = fpos.map_tax(data.product_id.supplier_taxes_id)
-    #         if taxes:
-    #             taxes = taxes.filtered(lambda t: t.company_id.id == company_id.id)
-    #         if not supplierinfo:
-    #             po_line_uom = data.product_uom or data.product_id.uom_po_id
-    #             price_unit = self.env['account.tax']._fix_tax_included_price_company(
-    #                 data.product_id.uom_id._compute_price(data.product_id.standard_price, po_line_uom),
-    #                 data.product_id.supplier_taxes_id,
-    #                 taxes,
-    #                 company_id,
-    #             )
-    #             if price_unit and data.order_id.currency_id and data.order_id.company_id.currency_id != data.order_id.currency_id:
-    #                 price_unit = data.order_id.company_id.currency_id._convert(
-    #                     price_unit,
-    #                     data.order_id.currency_id,
-    #                     data.order_id.company_id,
-    #                     self.date_order or fields.Date.today(),
-    #                 )
-    #
-    #         # compute unit price
-    #         if supplierinfo:
-    #             price_unit = self.env['account.tax'].sudo()._fix_tax_included_price_company(supplierinfo.price,
-    #                                                                                         data.product_id.supplier_taxes_id,
-    #                                                                                         taxes, company_id)
-    #             if purchase_order.currency_id and supplierinfo.currency_id != purchase_order.currency_id:
-    #                 price_unit = supplierinfo.currency_id._convert(price_unit, purchase_order.currency_id,
-    #                                                                purchase_order.company_id,
-    #                                                                fields.datetime.today())
-    #
-    #         if self.partner_id.property_purchase_currency_id:
-    #
-    #             value = {
-    #                 'product_id': data.product_id.id,
-    #                 'name': data.name,
-    #                 'product_qty': data.product_qty,
-    #                 'order_id': purchase_order.id,
-    #                 'product_uom': data.product_uom.id,
-    #                 'taxes_id': data.product_id.supplier_taxes_id.ids,
-    #                 'date_planned': data.date_planned,
-    #                 'hi_wi': data.hi_wi,
-    #                 'is_5_80': data.is_5_80,
-    #
-    #             }
-    #         else:
-    #             value = {
-    #                 'product_id': data.product_id.id,
-    #                 'name': data.name,
-    #                 'product_qty': data.product_uom_qty,
-    #                 'order_id': purchase_order.id,
-    #                 'product_uom': data.product_uom.id,
-    #                 'taxes_id': data.product_id.supplier_taxes_id.ids,
-    #                 'price_unit': price_unit,
-    #                 'hi_wi': data.hi_wi,
-    #                 'is_5_80': data.is_5_80,
-    #             }
-    #
-    #         self.env['purchase.order.line'].create(value)
-    #
-    #     return purchase_order
+    def _get_acc(self):
+        # acc_ids = []
 
-    # total_amount_in_words = fields.Char(string="Amount in Words", required=False, compute='_compute_amount_total')
-    # amount_in_words_arabic = fields.Char(string="Amount in Words Arabic", required=False,
-    #                                      compute='_compute_amount_total')
-
-    @api.onchange('order_line')
-    def _onchange_pro(self):
-        val= []
         for rec in self.order_line:
-            acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
-            for obj in acc_obj:
-                # acc_obj = self.sale_accessory_ids.search([('accessory_name', '=', obj.accessory_name.id),('accessory_uom_qty','=',obj.accessory_uom_qty),('sale_id.id','=',self.id)])
-                # print('ppppppppppppppppp',acc_obj)
-                # if not acc_obj:
-                print('ggggggggggggggggggggggggggggggg',acc_obj)
-                self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
-                                                'accessory_uom_qty': obj.accessory_uom_qty,
-                                                'sale_id': self.id,
+            if not rec:
+                continue
+            else:
 
-                                                    })
+                acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
+                if acc_obj:
+
+                    for obj in acc_obj:
+                        acc_ids = self.env['sale.accessory'].create({'accessory_name': obj.accessory_name.id,
+                                                        'accessory_uom_qty': obj.accessory_uom_qty,
+                                                        'sale_id': self.id,
+
+                                                           })
+
+                    self.write({'sale_accessory_ids':[(4,acc_ids.id)]})
+                else :
+                    self.write({'sale_accessory_ids':[(4,0)]})
 
 
-                # # obj_acc = self.sale_accessory_ids.search([('accessory_name', '=', obj.accessory_name.id),('accessory_uom_qty','!=',obj.accessory_uom_qty),('sale_id','=',self.id)])
-                # # for line in obj_acc:
-                # print('88888888888888888888888acc')
-                # #
-                # # for acc in self.sale_accessory_ids:
-                # #     if acc :
-                # #         print('88888888888888888888888acc',acc)
-                # #         if acc.accessory_name.id != obj.accessory_name.id and acc.accessory_uom_qty != obj.accessory_uom_qty :
-                # #             print('88888888888888888888888999999999', acc)
-                # #
-                #             self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
-                #                                                      'accessory_uom_qty': obj.accessory_uom_qty,
-                #                                                      'sale_id': self.id,
-                #
-                #                                          })
-                #     else:
-                #         print('goooooooooooooooooooooooooooooooooooooooooooooooooooood')
-                #         self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
-                #                                       'accessory_uom_qty': obj.accessory_uom_qty,
-                #                                       'sale_id': self.id,
-                #
-                #                                       })
+    # def _get_acc(self):
+    #     acc_ids = []
+    #     for rec in self.order_line:
+    #         rec._onchange_discount()
+    #         discount = rec.discount
+    #         acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
+    #         print('pppppppppppppppppppppppppppppppppacc_obj', acc_obj)
+    #
+    #         for obj in acc_obj:
+    #             price_unit = rec._get_display_price(obj.accessory_name)
+    #
+    #             print('ppppppppppppppppppppppppppppppppp',obj)
+    #             acc_ids = self.env['sale.order.option'].create({'product_id': obj.accessory_name.id,
+    #                                             'quantity': obj.accessory_uom_qty,
+    #                                             'name': obj.accessory_name.name,
+    #                                             'discount': discount,
+    #                                             'price_unit': price_unit,
+    #                                             'is_present': True,
+    #                                             'uom_id': obj.accessory_name.uom_id.id,
+    #                                             'order_id': self.id,
+    #
+    #                                                 })
+    #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
+
 
 
 
@@ -374,55 +265,6 @@ class SaleOrder(models.Model):
                             })
                             massage_ids.send()
 
-    # def prepare_massage(self):
-    #
-    #     admin = self.env['res.users'].search([('id', '=', 2)])
-    #
-    #     subtype = self.env['mail.message.subtype'].search([('name', '=', 'Activities')])
-    #     # if rec.users.groups_id == rec.groups:
-    #     #     new_group = rec.users
-    #     # [(4, pid) for pid in create_values.get('partner_ids', [])]
-    #
-    #     for line in self:
-    #
-    #         mail_mass = self.env['mail.message'].create({
-    #             'email_from': admin.partner_id.email,
-    #             # 'email_to':6,
-    #             'author_id': admin.partner_id.id,
-    #             'model': 'sale.order',
-    #             'message_type': 'notification',
-    #             'body': "Record Need Action",
-    #             'res_id': line.id,
-    #             'channel_ids': [(6, 0, [subtype.id])],
-    #             'subtype_id': subtype.id,
-    #             'moderation_status': 'accepted',
-    #             # 'needaction_partner_ids':[(4, pid) for pid in rec.groups.users.partner_id],
-    #         })
-    #
-    #         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-    #
-    #         if self.partner_id:
-    #             list_partner = self.partner_id
-    #
-    #
-    #         for uid in list_partner:
-    #             massage_ids = self.env['mail.mail'].create({
-    #                 'subject': 'This record need you action (%s)' % (
-    #                         str('sale.order') + ': ' + str(line.name)),
-    #                 'body_html': 'Dear %s ' % uid.name + '<br/>This record need you action <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-    #                     base_url, 'sale.order', line.id),
-    #                 'email_from': admin.partner_id.email,
-    #                 'email_to': uid.email,
-    #                 'auto_delete': True,
-    #                 'state': 'outgoing',
-    #                 'mail_message_id': mail_mass.id,
-    #                 'body': 'Dear %s ' % uid.name + '<br/>This record need you action <a href="%s/web#model=%s&amp;id=%s&amp;view_type=form" target="_blank" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">Go record</a>' % (
-    #                     base_url, 'sale.order', line.id),
-    #
-    #             })
-    #             print('uuuuuuuuuuuuuuuuuuuu8888888888888888888888888888888',massage_ids)
-    #             massage_ids.send()
-    #
 
 class DimensionLineHeight(models.Model):
     _name = 'dimension.line.height'
@@ -448,6 +290,7 @@ class SaleOrderLine(models.Model):
     product_widths = fields.Many2many('dimension.line.width',string='Width(Mt')
     hi_wi = fields.Float(string = 'total_hi_wi',digits = 'total height and width /2')
     is_5_80 = fields.Boolean(string = '5.80' , default = True)
+    # note_glass = fields.Char(string = 'Description Glass')
 
     product_qty_new = fields.Float(
         'Quantity', default=1.0,
@@ -533,6 +376,27 @@ class SaleOrderLine(models.Model):
         if self.display_type:
             res['account_id'] = False
         return res
+
+    # def _acc_in_move(self):
+    #
+    #     for rec in self:
+    #
+    #         for obj in rec.order_id.sale_accessory_ids :
+    #             # for line in rec.order_line.move_ids:
+    #             #     line.append([(0, 0, {'product_id': obj.accessory_name.id, 'sale_line_id': rec.id,'product_uom': obj.accessory_name.uom_po_id.id,'product_uom_qty': obj.accessory_uom_qty})])
+    #             val = {'product_id': obj.accessory_name.id,
+    #                                             'name': rec.name or '',
+    #                                             'product_uom': obj.accessory_name.uom_po_id.id,
+    #                                             'product_uom_qty': obj.accessory_uom_qty,
+    #                                             'location_id': rec.warehouse_id.lot_stock_id.id,
+    #                                             'location_dest_id':  self.env.ref("stock.stock_location_customers").id,
+    #                                              'sale_line_id': rec.id,
+    # #
+    #                                                }
+    #         move_id = self.env['stock.move'].create(val)
+    #         rec.update({'move_ids': [(4, move_id.id)]})
+    #
+    #         print('00000000000000000000000000000000000000000000000000000000000000000000000000000000000rec.move_idsrec.move_ids',rec.move_ids)
 
 
 

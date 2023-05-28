@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="sale_document_report_inherit" inherit_id="sale.report_saleorder_document">
+           <xpath expr="//t[@t-set='address']" position="replace">
+
+                   <div t-attf-class="text-center" style="top: -1rem; center: -10rem;">
+
+                   <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+
+                    <span t-if="doc.state not in ['draft','sent']">Contract # </span>
+                    <span t-if="doc.state in ['draft','sent']">Quotation # </span>
+
+                        </t>
+
+                    </div>
+               </xpath>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+                    <table>
+                                            <tbody >
+                                                <tr>
+                                                    <td>
+                                                        <b>التاريخ/ </b>
+                                                       <span class="text-nowrap" t-field="doc.date_order"/>
+                                                    </td>
+                                                    </tr> <br></br>
+                                                <tr>
+                                                    <td >
+                                                        <b>الموقع/ </b>
+                                                        <span class="text-nowrap" t-field="doc.partner_id.street"/>
+                                                    </td>
+                                            </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b>الطرف الاول/ </b>
+                                                         <span class="text-nowrap" t-field="doc.company_id"/>
+
+                                                    </td>
+                                                    </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b>الطرف الثاني/ </b>
+                                                         <span class="text-nowrap" t-field="doc.partner_id"/>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+            <br></br>
+            <br></br>
+            <br></br>
+            <table class="table table-sm o_main_table">
+                <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                <thead style="display: table-row-group">
+                    <tr>
+                        <th name="th_description" class="text-left">القطاعات المستخدمة</th>
+                        <th name="th_glass" class="text-left">مواصفات الزجاج</th>
+                        <th name="th_priceunit" class="text-left">سعر المتر</th>
+
+                        <th name="th_taxes" class="text-left">اجمالي المساحه</th>
+                        <th name="th_subtotal" class="text-left">
+                            <span groups="account.group_show_line_subtotals_tax_excluded">المبلغ</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="sale_tbody">
+
+                    <t t-set="current_subtotal" t-value="0"/>
+
+                    <t t-foreach="doc.order_line" t-as="line">
+
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+
+                        <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                            <t t-if="not line.display_type">
+                                <td name="td_name"><span t-field="line.product_id.name"/></td>
+                                <td name="td_name"><span t-field="line.name"/></td>
+                                <td name="td_priceunit" class="text-left">
+                                    <span t-field="line.price_unit"/>
+                                </td>
+                                <td name="td_product_area" class="text-left">
+                                    <span t-field="line.product_area"/>
+                                    <span t-field="line.product_uom"/>
+                                </td>
+
+                                <td name="td_subtotal" class="text-right o_price_total">
+                                    <span t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    <span t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                </td>
+                            </t>
+                            <t t-if="line.display_type == 'line_section'">
+                                <td name="td_section_line" colspan="99">
+                                    <span t-field="line.name"/>
+                                </td>
+                                <t t-set="current_section" t-value="line"/>
+                                <t t-set="current_subtotal" t-value="0"/>
+                            </t>
+                            <t t-if="line.display_type == 'line_note'">
+                                <td name="td_note_line" colspan="99">
+                                    <span t-field="line.name"/>
+                                </td>
+                            </t>
+                        </tr>
+
+
+                    </t>
+                </tbody>
+            </table>
+
+            <div class="clearfix" name="so_total_summary">
+                <div id="total" class="row" name="total">
+                    <div >
+                        <table  class="text-left">
+                            <tr class="border-black o_subtotal" style="">
+                                <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
+
+                                <td name="td_amount_untaxed" class="text-left">
+                                    <span t-field="doc.amount_untaxed"/>
+                                </td>
+                            </tr>
+                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
+                                <tr style="">
+                                    <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">
+                                        <td name="td_amount_by_group_label_3">
+                                            <span t-esc="amount_by_group[0]"/>
+                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
+                                        </td>
+                                        <td name="td_amount_by_group_3" class="text-left o_price_total">
+                                            <span t-esc="amount_by_group[1]"
+                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                        </td>
+                                    </t>
+                                    <t t-else ="">
+                                        <td name="td_amount_by_group_label">
+                                            <span t-esc="amount_by_group[0]"/>
+                                        </td>
+                                        <td name="td_amount_by_group" class="text-left o_price_total">
+                                            <span t-esc="amount_by_group[1]"
+                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
+
+                                <td name="td_amount_total" class="text-left">
+                                    <span t-field="doc.amount_total"/>
+                                </td>
+                            </tr>
+                         </table>
+                         <br></br>
+                        <h3>
+                            <p class="text-left">
+                                <strong>
+                                    <font style="font-family:'serif';">: مواد التشطيب و الأكسسوارات</font>
+                                </strong>
+                            </p>
+                        </h3>
+
+                        <p class="text-left">
+*جميع الاكسسوارات و المفصلات إيطالي أصلي(راغني)
+                            <br class="text-left"></br>
+*كل الألمونيوم المستخدم يخضع لإختبارات المواصفات
+                            <br class="text-left"></br>
+*يتم الاتفاق عند أي إضافة للمواد ويتم إضافة قيمتها للدفعة الثانية
+                            <br class="text-left"></br>
+*مدة التنفيذ <span t-field="doc.implemented_period"/> يوم عمل من تاريخ أول دفعة
+                            <br class="text-left"></br>
+*عند تأخير الدفعة يتم إضافة التاخير لمدة العقد                       
+                            <br class="text-left"></br>
+*ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات
+                            <br class="text-left"></br>
+*تتم الدفعات عن طريق التحويل الى حساب المؤسسة بنك الرياض (ٍِSA4020000002362862629940) على الدفعات كالآتي:
+                            <br class="text-left"></br>
+                                                                                               <span t-field="doc.destination_payment"/>* 
+                                                                                                    
+                        </p>
+                      
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+
+
+    </template>
+</odoo>

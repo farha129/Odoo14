@@ -112,6 +112,19 @@
 
 
 
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <label for="implemented_period" string="implemented period"/>
+                    <div class="o_row">
+                    <field name="implemented_period"/>
+                    <span> days</span>
+                </div>
+
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                                                         <field name="number_payment" />
+                                                         <field name="destination_payment" />
+
+                </xpath>
 
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <span class="o_form_label o_td_label" name="address_name">
@@ -120,6 +133,7 @@
                         </b>
 
                     </span>
+
 
                 </xpath>
                  <xpath expr="//page[3]" position="after">
