@@ -181,7 +181,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -195,7 +195,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -210,7 +210,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
         </record>
 
         <record id="supplement_sector5" model="supplement.sector">
@@ -223,7 +223,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">4</field>
+             <field name="nmuber">4</field>
         </record>
 
         <record id="supplement_sector6" model="supplement.sector">
@@ -235,7 +235,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
             <field name="type">wire</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
         </record>
 
         <record id="supplement_sector8" model="supplement.sector">
@@ -265,7 +265,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -279,7 +279,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -294,7 +294,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -308,7 +308,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">4</field>
+             <field name="nmuber">4</field>
 
         </record>
 
@@ -321,7 +321,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -334,7 +334,7 @@
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -352,7 +352,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -366,7 +366,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -381,7 +381,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -395,7 +395,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">4</field>
+             <field name="nmuber">4</field>
 
         </record>
 
@@ -408,7 +408,7 @@
               <field name="height">-8.3</field>
                <field name="division_number">1</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -421,7 +421,7 @@
               <field name="side">-11</field>
               <field name="heel">-11</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -440,7 +440,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -454,7 +454,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -469,7 +469,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -483,7 +483,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">6</field>
+             <field name="nmuber">6</field>
 
         </record>
 
@@ -496,7 +496,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -509,7 +509,7 @@
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -527,7 +527,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -541,7 +541,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -556,7 +556,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -570,7 +570,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">6</field>
+             <field name="nmuber">6</field>
 
         </record>
 
@@ -583,7 +583,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -596,7 +596,7 @@
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -615,7 +615,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -629,7 +629,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -644,7 +644,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -658,7 +658,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">8</field>
+             <field name="nmuber">8</field>
 
         </record>
 
@@ -671,7 +671,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -684,7 +684,7 @@
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -703,7 +703,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -717,7 +717,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -732,7 +732,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -746,7 +746,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">8</field>
+             <field name="nmuber">8</field>
 
         </record>
 
@@ -759,7 +759,7 @@
               <field name="height">-8.3</field>
                <field name="division_number">2</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -772,7 +772,7 @@
               <field name="side">-11</field>
               <field name="heel">-11</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -791,7 +791,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">other</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -805,7 +805,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -820,7 +820,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">side</field>
-             <field name="number">2</field>
+             <field name="nmuber">2</field>
 
         </record>
 
@@ -834,7 +834,7 @@
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
              <field name="type">heel</field>
-             <field name="number">8</field>
+             <field name="nmuber">8</field>
 
         </record>
 
@@ -848,7 +848,7 @@
               <field name="side">.7</field>
               <field name="heel">9</field>
              <field name="type">wire</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 
@@ -861,7 +861,7 @@
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
              <field name="type">glass</field>
-             <field name="number">1</field>
+             <field name="nmuber">1</field>
 
         </record>
 

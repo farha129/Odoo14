@@ -161,7 +161,7 @@ class SaleOrder(models.Model):
             for rec in self.order_line:
                 heel = 0.0
                 side = 0.0
-                hight2 = 0.0
+
                 width2 = 0.0
 
                 if rec.product_id.is_sector:
