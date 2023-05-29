@@ -31,6 +31,7 @@
             <field name="uom_po_id" ref="uom.product_uom_meter"/>
             <field name="is_sector">True</field>
 
+
         </record>
 
         <record id="product_product_100004" model="product.template">
@@ -116,16 +117,16 @@
             <field name="name">الحلق</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
         <record id="product_product_14445" model="product.product">
             <field name="name">درف الجنب</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
 
@@ -133,32 +134,32 @@
             <field name="name">درف الشكل</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
         <record id="product_product_14447" model="product.product">
             <field name="name">درف الكعب</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
         <record id="product_product_14448" model="product.product">
             <field name="name">السلك</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
         <record id="product_product_14449" model="product.product">
             <field name="name">الزجاج</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_mile"/>
-            <field name="uom_po_id" ref="uom.product_uom_mile"/>
+                <field name="uom_id" ref="uom.product_uom_cm"/>
+            <field name="uom_po_id" ref="uom.product_uom_cm"/>
             </record>
 
 
@@ -179,8 +180,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -193,8 +194,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -208,9 +209,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
-
+             <field name="type">side</field>
+             <field name="number">2</field>
         </record>
 
         <record id="supplement_sector5" model="supplement.sector">
@@ -222,9 +222,8 @@
              <field name="division_number">2</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
-
+             <field name="type">heel</field>
+             <field name="number">4</field>
         </record>
 
         <record id="supplement_sector6" model="supplement.sector">
@@ -235,9 +234,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
-
+            <field name="type">wire</field>
+             <field name="number">2</field>
         </record>
 
         <record id="supplement_sector8" model="supplement.sector">
@@ -248,8 +246,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="is_heel">1</field>
 
         </record>
 
@@ -266,8 +264,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -280,8 +278,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -295,8 +293,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -309,8 +307,8 @@
              <field name="division_number">2</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">4</field>
 
         </record>
 
@@ -322,8 +320,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -335,8 +333,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -353,8 +351,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -367,8 +365,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -382,8 +380,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -396,8 +394,8 @@
              <field name="division_number">2</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">4</field>
 
         </record>
 
@@ -408,9 +406,9 @@
              <field name="measured_from">h_w</field>
               <field name="width">-3</field>
               <field name="height">-8.3</field>
-               <field name="division_number">2</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+               <field name="division_number">1</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -422,8 +420,8 @@
              <field name="division_number">1</field>
               <field name="side">-11</field>
               <field name="heel">-11</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -441,8 +439,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -455,8 +453,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -470,8 +468,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -484,8 +482,8 @@
              <field name="division_number">3</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">6</field>
 
         </record>
 
@@ -497,8 +495,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -510,8 +508,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -528,8 +526,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -542,8 +540,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -557,8 +555,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -571,8 +569,8 @@
              <field name="division_number">3</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">6</field>
 
         </record>
 
@@ -584,8 +582,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -597,8 +595,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -616,8 +614,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -630,8 +628,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -645,8 +643,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -659,8 +657,8 @@
              <field name="division_number">4</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">8</field>
 
         </record>
 
@@ -672,8 +670,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -685,8 +683,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -704,8 +702,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -718,8 +716,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -733,8 +731,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -747,8 +745,8 @@
              <field name="division_number">4</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">8</field>
 
         </record>
 
@@ -760,8 +758,8 @@
               <field name="width">-3</field>
               <field name="height">-8.3</field>
                <field name="division_number">2</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -773,8 +771,8 @@
              <field name="division_number">1</field>
               <field name="side">-11</field>
               <field name="heel">-11</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -792,8 +790,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">other</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -806,8 +804,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -821,8 +819,8 @@
              <field name="division_number">1</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_side">True</field>
-             <field name="is_heel">False</field>
+             <field name="type">side</field>
+             <field name="number">2</field>
 
         </record>
 
@@ -835,8 +833,8 @@
              <field name="division_number">4</field>
               <field name="side">0.0</field>
               <field name="heel">0.0</field>
-             <field name="is_heel">True</field>
-             <field name="is_side">False</field>
+             <field name="type">heel</field>
+             <field name="number">8</field>
 
         </record>
 
@@ -849,8 +847,8 @@
              <field name="division_number">1</field>
               <field name="side">.7</field>
               <field name="heel">9</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">wire</field>
+             <field name="number">1</field>
 
         </record>
 
@@ -862,8 +860,8 @@
              <field name="division_number">1</field>
               <field name="side">-10.6</field>
               <field name="heel">-.6</field>
-             <field name="is_side">False</field>
-             <field name="is_heel">False</field>
+             <field name="type">glass</field>
+             <field name="number">1</field>
 
         </record>
 

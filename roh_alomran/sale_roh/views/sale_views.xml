@@ -101,9 +101,17 @@
                     <field name="product_qty_new" />
                     <field name="hi_wi" invisible="1" />
                     <field name="is_5_80"  />
+                    <field name="is_active"  invisible="1" />
                    <field name="product_area" />
 
                 </xpath>
+
+
+<!--                 <xpath expr="//field[@name='order_line']/tree" position="attributes">-->
+<!--                     <attribute name="domain">[('is_active','=',False)]</attribute>-->
+
+<!--                    </xpath>-->
+
 
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace">
                                                                 <field name="product_uom_qty" string = 'Qty Purchase'/>
@@ -139,14 +147,13 @@
                  <xpath expr="//page[3]" position="after">
                     <page string="Supplement" name="supplement"  >
 <!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
-
-
                         <field name="dimension_supplement_ids" widget="one2many" >
                              <tree editable="bottom">
+                                     <field name="product_id" />
                                      <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
-                                     <field name="supplement_height" />
-                                     <field name="supplement_width" />
-                                     <field name="dimension_one" />
+                                     <field name="purchase_uom_qty" />
+                                     <field name="product_uom" />
+                                     <field name="price_unit" />
                              </tree>
                         </field>
                     </page>
@@ -155,13 +162,28 @@
 
                         <field name="sale_accessory_ids" widget="one2many" >
                              <tree editable="bottom">
-                                     <field name="accessory_name" />
+                                     <field name="accessory_name"  domain="[('is_accessory', '=',  True)]"/>
                                      <field name="accessory_uom_qty" />
+                                     <field name="price_unit" />
+                                     <field name="product_uom" />
                                   <field name="sale_id"  invisible="1"/>
 
                              </tree>
                         </field>
                     </page>
+<!--                     <page string="Supplement Dimantion" name="supplement Dimantion">-->
+<!--                        <field name="dimension_supplement_ids" widget="one2many" >-->
+<!--                             <tree editable="bottom">-->
+<!--                                     <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />-->
+<!--                                     <field name="supplement_height"  />-->
+<!--                                     <field name="supplement_width" />-->
+<!--                                     <field name="dimension_one"  />-->
+<!--                                     <field name="purchase_uom_qty" invisible="1" />-->
+<!--                                     <field name="product_uom" invisible="1" />-->
+<!--                                     <field name="price_unit" invisible="1" />-->
+<!--                             </tree>-->
+<!--                        </field>-->
+<!--                    </page>-->
                  </xpath>
 
 

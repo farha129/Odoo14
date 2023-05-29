@@ -23,7 +23,11 @@ class ProductTemplate(models.Model):
     supplement_sector_ids = fields.One2many('supplement.sector','product_id',string = 'Supplement' )
     supplier_company = fields.Many2one('res.company', string='Supplier Company')
 
-
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+    is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement')
+    is_sector = fields.Boolean(related='product_tmpl_id.is_sector')
+    is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory')
 
 class ProductAccessory(models.Model):
     _name = "product.accessory"
@@ -49,10 +53,15 @@ class SupplementSector(models.Model):
          ('side_heel', 'Side and Heel')], string='Measured From')
     height = fields.Float(string='Height', digits='Product Height', default=0)
     width = fields.Float(string='Width', digits='Product Width by mater', default=0)
+    nmuber = fields.Float(string='Number', digits='Number of Supplement', default=1)
+
     side = fields.Float(string='Side', digits='Side', default=0)
     heel = fields.Float(string='Heel', digits='Heel', default=0)
     is_side = fields.Boolean(string='Is Side')
     is_heel = fields.Boolean(string='Is Heel')
+    type = fields.Selection(
+        [('glass', 'Glass'), ('side', 'Side'), ('heel', 'Heel'),
+         ('wire', 'Wire'),('other','other')], string='Type')
 
     division_number = fields.Integer('/', default=1)
     # dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)

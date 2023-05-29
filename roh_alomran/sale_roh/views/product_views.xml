@@ -36,10 +36,10 @@
                         <field name="supplement_sector_ids" widget="one2many"  >
                              <tree editable="bottom">
                                  <field name="supplement_name"  domain="[('is_supplement', '=',  True)]" context="{'default_is_supplement': True,'default_type': 'product'}" />
-                               <field name="is_side" />
-                               <field name="is_heel" />
-                             <field name="dimensions_number" />
-                            <field name="measured_from" />
+                               <field name="type" />
+<!--                               <field name="is_heel" />-->
+                             <field name="nmuber" />
+<!--                            <field name="measured_from" />-->
                             <field name="height" />
                              <field name="width" />
                              <field name="division_number" />

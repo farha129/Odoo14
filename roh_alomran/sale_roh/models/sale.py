@@ -35,6 +35,11 @@ class DimensionSupplement(models.Model):
     supplement_height = fields.Float(string='Height', digits='Supplement Height', default=0)
     supplement_width = fields.Float(string='Width', digits='Supplement Width by mater', default=0)
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
+    price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
+    product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
+    product_id = fields.Many2one('product.template', string = 'product')
+    purchase_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
+
 
 
 class SaleAccessory(models.Model):
@@ -43,20 +48,25 @@ class SaleAccessory(models.Model):
 
     accessory_name = fields.Many2one('product.product', string='Accessory')
     accessory_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
+    price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
+    product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
     sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     installation = fields.Boolean('Installation requested?')
+    order_line = fields.One2many('sale.order.line', 'order_id',string='Order Lines',domain= [('is_active','=',True)],  states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True, auto_join=True)
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
+
+
+    # supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
-    sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory' )
+    sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory', readonly = False )
     number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
     destination_payment  =  fields.Text(string = 'Description Payment')
     implemented_period = fields.Integer(string = 'implemented period', digits = 'By The Days' )
-
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
 
@@ -65,12 +75,22 @@ class SaleOrder(models.Model):
         if not self.order_line :
             raise ValidationError(_('Please Add products or Line' ))
 
-    # def action_confirm(self):
-    #     res = super(SaleOrder, self).action_confirm()
-    #
-    #     self.order_line._acc_in_move()
-    #
-    #     return res
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+        for acc in self.sale_accessory_ids:
+            sale = self.order_line.create({
+                'order_id': self.id,
+                'product_id': acc.accessory_name.id,
+                'product_uom_qty': acc.accessory_uom_qty,
+                'name': acc.accessory_name.name,
+                'is_active': False,
+                'price_unit':acc.price_unit,
+            })
+
+
+
+
+        return res
 
     def action_open_purchase_order(self):
         tree_id = self.env.ref("purchase.purchase_order_kpis_tree").id
@@ -100,6 +120,9 @@ class SaleOrder(models.Model):
                         acc_ids = self.env['sale.accessory'].create({'accessory_name': obj.accessory_name.id,
                                                         'accessory_uom_qty': obj.accessory_uom_qty,
                                                         'sale_id': self.id,
+                                                        'product_uom': obj.accessory_name.uom_id.id,
+                                                        'price_unit':rec._get_display_price(obj.accessory_name),
+
 
                                                            })
 
@@ -133,47 +156,116 @@ class SaleOrder(models.Model):
     #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
 
 
-
-
     def compute_dimension_id(self):
 
-        for rec in self:
-            for line in rec.order_line:
-                if line.product_id.is_sector:
-                    for sect in line.product_id.supplement_sector_ids:
-                        dimension_one = 0.0
-                        height = 0.0
-                        width = 0.0
-                        product_hight = line.product_height * 1000
-                        product_width = line.product_width * 1000
-                        if sect.dimensions_number == 'one':
-                            if sect.measured_from == 'height':
-                                dimension_one = (product_hight + sect.height) / sect.division_number
-                                if sect.is_side == True:
-                                    side = dimension_one
-                            if sect.measured_from == 'width':
-                                dimension_one = (product_width + sect.width) / sect.division_number
-                                if sect.is_heel == True:
-                                    heel = dimension_one
+            for rec in self.order_line:
+                heel = 0.0
+                side = 0.0
+                hight2 = 0.0
+                width2 = 0.0
 
-                            if sect.measured_from == 'h_w':
-                                dimension_one =( (product_width + sect.width) + (product_hight + sect.height)) / sect.division_number
-                        if  sect.dimensions_number == 'two':
-                            if sect.measured_from == 'h_w':
-                                height = (product_hight + sect.height)/ sect.division_number
-                                width = (product_width + sect.width)/ sect.division_number
-                        if  sect.dimensions_number == 'two':
-                            if sect.measured_from == 'side_heel':
-                                height =  sect.side + side
-                                width =  sect.heel + heel
+                if rec.product_id.is_sector:
 
-                        rec.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
-                                                             'supplement_height': height,
-                                                             'supplement_width': width,
-                                                             'dimension_one': dimension_one,
-                                                             'sale_id': rec.id, })
-            rec.state = 'compute'
+                        for sect in rec.product_id.supplement_sector_ids:
 
+                            height = [{'name': res.name} for res in rec.product_heights]
+                            width = [{'name': res.name} for res in rec.product_widths]
+                            if height and width and range(len(height)) == range(len(width)):
+
+
+
+                                qyt = 0.0
+
+                                for i in range(len(height)):
+
+                                    product_hight = height[i]['name']  * 100
+                                    product_width = width[i]['name'] * 100
+                                    print('yyyyyyyyyyyyyyyyyyyy',product_hight)
+                                    if sect.type == 'side':
+
+                                       qyt += (product_hight + sect.height) * sect.nmuber
+                                       side = (product_hight + sect.height) * sect.nmuber
+
+                                    if sect.type == 'heel':
+                                        qyt += ((product_width + sect.width) / sect.division_number) * sect.nmuber
+                                        heel = ((product_width + sect.width) / sect.division_number) * sect.nmuber
+
+                                    if sect.type == 'glass':
+                                        hight2 = sect.side + side
+                                        print('hight2glass',hight2)
+                                        print('hight2glasssect.side',sect.side)
+                                        print('hight2glassside',side)
+                                        width2 = sect.heel + heel
+                                        qyt += (hight2 *width2) / 5
+                                    if sect.type == 'wire':
+                                        hight2 = sect.side + side
+                                        print('hight2wwww', hight2)
+                                        print('hight2www.side', sect.side)
+                                        print('hight2wwwwside', side)
+                                        width2 = sect.heel + heel
+                                        qyt += (hight2 + width2)
+
+
+                                rec.order_id.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
+                                                             'purchase_uom_qty': qyt,
+                                                             'product_id': sect.product_id.id,
+                                                             'product_uom': sect.product_id.uom_id.id,
+                                                             'sale_id': self.id, })
+
+                # rec.order_id.state = 'compute'
+
+
+    # def compute_dimension_id(self):
+    #
+    #     # for rec in self:
+    #         for rec in self.order_line:
+    #             height2 = 0.0
+    #             width2 = 0.0
+    #             product_hight = 0.0
+    #             product_width = 0.0
+    #             height = [{'name': res.name} for res in rec.product_heights]
+    #             width = [{'name': res.name} for res in rec.product_widths]
+    #             if height and width and range(len(height)) == range(len(width)):
+    #
+    #                 for i in range(len(height)):
+    #
+    #                     if rec.product_id.is_sector:
+    #                         for sect in rec.product_id.supplement_sector_ids:
+    #                             dimension_one = 0.0
+    #
+    #                             product_hight = height[i]['name']  * 1000
+    #                             product_width = width[i]['name'] * 1000
+    #                             if sect.dimensions_number == 'one':
+    #                                 if sect.measured_from == 'height':
+    #                                     dimension_one = (product_hight + sect.height) * 2
+    #                                     print('ggggggggggggggggggggggggggggggggggggggg',product_hight )
+    #                                     print('ggggggggggggggggggggggggggggggggggggggg',sect.height )
+    #                                     print('ggggggggggggggggggggggggggggggggggggggg',dimension_one)
+    #                                     if sect.is_side == True:
+    #                                         side = dimension_one
+    #                                 if sect.measured_from == 'width':
+    #                                     dimension_one = (product_width + sect.width) / sect.division_number
+    #                                     if sect.is_heel == True:
+    #                                         heel = dimension_one
+    #
+    #                                 if sect.measured_from == 'h_w':
+    #                                     dimension_one =( (product_width + sect.width) + (product_hight + sect.height)) / sect.division_number
+    #                             if  sect.dimensions_number == 'two':
+    #                                 if sect.measured_from == 'h_w':
+    #                                     height2 = (product_hight + sect.height)/ sect.division_number
+    #                                     width2 = (product_width + sect.width)/ sect.division_number
+    #                             if  sect.dimensions_number == 'two':
+    #                                 if sect.measured_from == 'side_heel':
+    #                                     height2 =  sect.side + side
+    #                                     width2 =  sect.heel + heel
+    #
+    #                             self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
+    #                                                                  'supplement_height': height2,
+    #                                                                  'supplement_width': width2,
+    #                                                                  'dimension_one': dimension_one,
+    #                                                              'sale_id': self.id, })
+    #         rec.state = 'compute'
+    #
 
     def action_try_agains(self):
         for rec in self:
@@ -290,6 +382,7 @@ class SaleOrderLine(models.Model):
     product_widths = fields.Many2many('dimension.line.width',string='Width(Mt')
     hi_wi = fields.Float(string = 'total_hi_wi',digits = 'total height and width /2')
     is_5_80 = fields.Boolean(string = '5.80' , default = True)
+    is_active = fields.Boolean(string = 'Is active', default = True)
     # note_glass = fields.Char(string = 'Description Glass')
 
     product_qty_new = fields.Float(
