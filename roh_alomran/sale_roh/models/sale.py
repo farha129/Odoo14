@@ -62,7 +62,7 @@ class SaleOrder(models.Model):
 
 
     # supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
-    dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
+    dimension_supplement_ids = fields.One2many('dimension.supplement',compute='_get_supp',string = 'Dimension' )
     sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory', readonly = False )
     number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
     destination_payment  =  fields.Text(string = 'Description Payment')
@@ -85,6 +85,16 @@ class SaleOrder(models.Model):
                 'name': acc.accessory_name.name,
                 'is_active': False,
                 'price_unit':acc.price_unit,
+            })
+
+        for sup in self.dimension_supplement_ids:
+            sale = self.order_line.create({
+                'order_id': self.id,
+                'product_id': sup.supplement_name.id,
+                'product_uom_qty': sup.purchase_uom_qty,
+                'name': sup.supplement_name.name,
+                'is_active': False,
+                'price_unit':sup.price_unit,
             })
 
 
@@ -156,11 +166,14 @@ class SaleOrder(models.Model):
     #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
 
 
-    def compute_dimension_id(self):
+    def _get_supp(self):
 
             for rec in self.order_line:
                 heel = 0.0
                 side = 0.0
+                area = 0.0
+                val = []
+                val_with = []
 
                 width2 = 0.0
 
@@ -171,46 +184,56 @@ class SaleOrder(models.Model):
                             height = [{'name': res.name} for res in rec.product_heights]
                             width = [{'name': res.name} for res in rec.product_widths]
                             if height and width and range(len(height)) == range(len(width)):
-
-
-
                                 qyt = 0.0
-
+                                sum = 0.0
                                 for i in range(len(height)):
-
-                                    product_hight = height[i]['name']  * 100
-                                    product_width = width[i]['name'] * 100
-                                    print('yyyyyyyyyyyyyyyyyyyy',product_hight)
+                                    product_hight = (height[i]['name']  * 100) + 30
+                                    product_width = (width[i]['name'] * 100) + 30
                                     if sect.type == 'side':
-
-                                       qyt += (product_hight + sect.height) * sect.nmuber
-                                       side = (product_hight + sect.height) * sect.nmuber
+                                       sum +=((product_hight + sect.height) * sect.nmuber)
+                                       side = product_hight + sect.height
+                                       val.append(side)
+                                    qyt = sum /5.80
 
                                     if sect.type == 'heel':
-                                        qyt += ((product_width + sect.width) / sect.division_number) * sect.nmuber
-                                        heel = ((product_width + sect.width) / sect.division_number) * sect.nmuber
+                                        sum +=( (product_width + sect.width) / sect.division_number) * sect.nmuber
+                                        heel = ((product_width + sect.width) / sect.division_number)
+                                        val_with.append(heel)
+                                    qyt = sum / 5.80
+
 
                                     if sect.type == 'glass':
-                                        hight2 = sect.side + side
-                                        print('hight2glass',hight2)
-                                        print('hight2glasssect.side',sect.side)
-                                        print('hight2glassside',side)
-                                        width2 = sect.heel + heel
-                                        qyt += (hight2 *width2) / 5
+                                        for i in range(len(height)):
+                                            side = val[i]
+                                            hight2 = sect.side + side
+                                            heel = val_with[i]
+                                            width2 = sect.heel + heel
+                                            area = hight2 *width2
+                                            sum += area
+                                        qyt = sum / 7.44
+                                        break
+
                                     if sect.type == 'wire':
-                                        hight2 = sect.side + side
-                                        print('hight2wwww', hight2)
-                                        print('hight2www.side', sect.side)
-                                        print('hight2wwwwside', side)
-                                        width2 = sect.heel + heel
-                                        qyt += (hight2 + width2)
-
-
-                                rec.order_id.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
+                                        print(val)
+                                        for i in range(len(height)):
+                                            side = val[i]
+                                            hight2 = (sect.side + side) * sect.nmuber
+                                            heel = val_with[i]
+                                            width2 =( sect.heel + heel) * sect.nmuber
+                                            total = hight2 + width2
+                                            sum += total
+                                        qyt = sum / 5.80
+                                        break
+                                sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
                                                              'purchase_uom_qty': qyt,
                                                              'product_id': sect.product_id.id,
-                                                             'product_uom': sect.product_id.uom_id.id,
+                                                             'product_uom': sect.supplement_name.uom_id.id,
                                                              'sale_id': self.id, })
+                                if sup_ids:
+                                    self.write({'dimension_supplement_ids': [(4, sup_ids.id)]})
+                                else:
+                                    self.write({'dimension_supplement_ids': [(4,0)]})
+
 
                 # rec.order_id.state = 'compute'
 
@@ -401,7 +424,7 @@ class SaleOrderLine(models.Model):
 
                 for i in range(len(height)):
 
-                    total +=  ((height[i]['name']  +  width[i]['name']) *2)
+                    total +=  ((height[i]['name']+ 0.3) + (width[i]['name']+ 0.3))*2
                     if height[i]['name'] < 1 :
                         height[i]['name'] = 1
                     if width[i]['name'] < 1 :

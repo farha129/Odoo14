@@ -13,7 +13,7 @@
     'depends': ['base_automation', 'sale', 'aos_whatsapp'],
     'data': [
         'data/sale_data.xml',
-        #'views/sale_order.xml',
+        'views/sale_order.xml',
         'wizard/whatsapp_compose_view.xml',
     ],
     'external_dependencies': {'python': ['html2text']},

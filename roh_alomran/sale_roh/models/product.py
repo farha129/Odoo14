@@ -16,7 +16,6 @@ from odoo.tools import float_is_zero, float_compare
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
     is_supplement = fields.Boolean(string = 'Is supplement')
-
     is_sector = fields.Boolean(string = 'Is Sector')
     is_accessory = fields.Boolean(string = 'Is Accessory')
     accessory_ids = fields.One2many('product.accessory', 'product_acc_id',string ='Accessorys')
