@@ -22,11 +22,11 @@ class ProductTemplate(models.Model):
     supplement_sector_ids = fields.One2many('supplement.sector','product_id',string = 'Supplement' )
     supplier_company = fields.Many2one('res.company', string='Supplier Company')
 
-class ProductProduct(models.Model):
-    _inherit = 'product.product'
-    is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement')
-    is_sector = fields.Boolean(related='product_tmpl_id.is_sector')
-    is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory')
+# class ProductProduct(models.Model):
+#     _inherit = 'product.product'
+#     is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement')
+#     is_sector = fields.Boolean(related='product_tmpl_id.is_sector')
+#     is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory')
 
 class ProductAccessory(models.Model):
     _name = "product.accessory"

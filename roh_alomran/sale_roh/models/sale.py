@@ -165,8 +165,9 @@ class SaleOrder(models.Model):
     #                                                 })
     #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
 
-
     def _get_supp(self):
+            if not self.order_line:
+                self.write({'dimension_supplement_ids': [(4, 0)]})
 
             for rec in self.order_line:
                 heel = 0.0
@@ -232,7 +233,7 @@ class SaleOrder(models.Model):
                                 if sup_ids:
                                     self.write({'dimension_supplement_ids': [(4, sup_ids.id)]})
                                 else:
-                                    self.write({'dimension_supplement_ids': [(4,0)]})
+                                    self.write({'dimension_supplement_ids': [(4, 0)]})
 
 
                 # rec.order_id.state = 'compute'
