@@ -226,7 +226,7 @@ class SaleOrder(models.Model):
                                             qyt = sum / 5.80
                                             break
                                     sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
-                                                                 'purchase_uom_qty': qyt,
+                                                                 'purchase_uom_qty': qyt/100,
                                                                  'product_id': sect.product_id.id,
                                                                  'product_uom': sect.supplement_name.uom_id.id,
                                                                  'sale_id': self.id, })

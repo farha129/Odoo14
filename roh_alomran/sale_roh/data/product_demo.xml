@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
 
 
 
@@ -117,15 +117,15 @@
             <field name="name">الحلق</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
-            <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
             </record>
 
         <record id="product_product_14445" model="product.product">
             <field name="name">درف الجنب</field>
                 <field name="type">product</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
-                <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
+                <field name="uom_po_id" ref="uom.product_uom_unit"/>
                 <field name="is_supplement">True</field>
 
             </record>
@@ -134,33 +134,33 @@
         <record id="product_product_14446" model="product.product">
             <field name="name">درف الشكل</field>
                 <field name="type">product</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
                  <field name="is_supplement">True</field>
-                <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_po_id" ref="uom.product_uom_unit"/>
             </record>
 
         <record id="product_product_14447" model="product.product">
             <field name="name">درف الكعب</field>
                 <field name="type">product</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
                 <field name="is_supplement">True</field>
-                <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_po_id" ref="uom.product_uom_unit"/>
             </record>
 
         <record id="product_product_14448" model="product.product">
             <field name="name">السلك</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
-               <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
+               <field name="uom_po_id" ref="uom.product_uom_unit"/>
             </record>
 
         <record id="product_product_14449" model="product.product">
             <field name="name">الزجاج</field>
                 <field name="type">product</field>
                 <field name="is_supplement">True</field>
-                <field name="uom_id" ref="uom.product_uom_cm"/>
-            <field name="uom_po_id" ref="uom.product_uom_cm"/>
+                <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
             </record>
 
 

@@ -3,5 +3,5 @@ access_supplement.sector,access_supplement_sector,model_supplement_sector,sales_
 access_dimension_supplement,access_dimension_supplement,model_dimension_supplement,sales_team.group_sale_salesman,1,1,1,1
 access_accessory,access_accessory,model_product_accessory,sales_team.group_sale_salesman,1,1,1,1
 access_accessory_sale,access_sale_accessory,model_sale_accessory,sales_team.group_sale_salesman,1,1,1,1
-access_whith_sale,access_whith_accessory,model_dimension_line_height,sales_team.group_sale_salesman,1,1,1,1
-access_hight_sale,access_hight_accessory,model_dimension_line_width,sales_team.group_sale_salesman,1,1,1,1
+access_whith_sale,access_whith_accessory,model_dimension_line_height,sales_team.group_sale_salesman,1,1,1,0
+access_hight_sale,access_hight_accessory,model_dimension_line_width,sales_team.group_sale_salesman,1,1,1,0
