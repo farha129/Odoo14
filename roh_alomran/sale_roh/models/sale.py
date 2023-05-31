@@ -53,6 +53,7 @@ class SaleAccessory(models.Model):
     sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
 class SaleOrder(models.Model):
+
     _inherit = 'sale.order'
 
     installation = fields.Boolean('Installation requested?')
@@ -62,7 +63,7 @@ class SaleOrder(models.Model):
 
 
     # supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
-    dimension_supplement_ids = fields.One2many('dimension.supplement',compute='_get_supp',string = 'Dimension' )
+    dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',compute='_get_supp', string = 'Dimension' )
     sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory', readonly = False )
     number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
     destination_payment  =  fields.Text(string = 'Description Payment')
@@ -164,79 +165,82 @@ class SaleOrder(models.Model):
     #
     #                                                 })
     #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
+
+
+    # @api.depends('order_line')
     def _get_supp(self):
-            if not self.order_line:
-                self.write({'dimension_supplement_ids': [(4, 0)]})
 
+        for rec in self.order_line:
+            if not rec:
+                continue
             else:
-                for rec in self.order_line:
-                    heel = 0.0
-                    side = 0.0
-                    area = 0.0
-                    val = []
-                    val_with = []
+                heel = 0.0
+                side = 0.0
+                area = 0.0
+                val = []
+                val_with = []
 
-                    width2 = 0.0
+                width2 = 0.0
 
-                    if rec.product_id.is_sector:
+                if rec.product_id.is_sector:
 
-                            for sect in rec.product_id.supplement_sector_ids:
+                        for sect in rec.product_id.supplement_sector_ids:
 
-                                height = [{'name': res.name} for res in rec.product_heights]
-                                width = [{'name': res.name} for res in rec.product_widths]
-                                if height and width and range(len(height)) == range(len(width)):
-                                    qyt = 0.0
-                                    sum = 0.0
-                                    for i in range(len(height)):
-                                        product_hight = (height[i]['name']  * 100) + 30
-                                        product_width = (width[i]['name'] * 100) + 30
-                                        if sect.type == 'side':
-                                           sum +=((product_hight + sect.height) * sect.nmuber)
-                                           side = product_hight + sect.height
-                                           val.append(side)
-                                        qyt = sum /5.80
+                            height = [{'name': res.name} for res in rec.product_heights]
+                            width = [{'name': res.name} for res in rec.product_widths]
+                            if height and width and range(len(height)) == range(len(width)):
+                                qyt = 0.0
+                                sum = 0.0
+                                for i in range(len(height)):
+                                    product_hight = (height[i]['name']  * 100) + 30
+                                    product_width = (width[i]['name'] * 100) + 30
+                                    if sect.type == 'side':
+                                       sum +=((product_hight + sect.height) * sect.nmuber)
+                                       side = product_hight + sect.height
+                                       val.append(side)
+                                    qyt = sum /5.80
 
-                                        if sect.type == 'heel':
-                                            sum +=( (product_width + sect.width) / sect.division_number) * sect.nmuber
-                                            heel = ((product_width + sect.width) / sect.division_number)
-                                            val_with.append(heel)
+                                    if sect.type == 'heel':
+                                        sum +=( (product_width + sect.width) / sect.division_number) * sect.nmuber
+                                        heel = ((product_width + sect.width) / sect.division_number)
+                                        val_with.append(heel)
+                                    qyt = sum / 5.80
+
+
+                                    if sect.type == 'glass':
+                                        for i in range(len(height)):
+                                            side = val[i]
+                                            hight2 = sect.side + side
+                                            heel = val_with[i]
+                                            width2 = sect.heel + heel
+                                            area = hight2 *width2
+                                            sum += area
+                                        qyt = sum / 7.44
+                                        break
+
+                                    if sect.type == 'wire':
+                                        print(val)
+                                        for i in range(len(height)):
+                                            side = val[i]
+                                            hight2 = (sect.side + side) * sect.nmuber
+                                            heel = val_with[i]
+                                            width2 =( sect.heel + heel) * sect.nmuber
+                                            total = hight2 + width2
+                                            sum += total
                                         qyt = sum / 5.80
+                                        break
+                                sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
+                                                             'purchase_uom_qty': qyt/100,
+                                                             'product_id': sect.product_id.id,
+                                                             'product_uom': sect.supplement_name.uom_id.id,
+                                                             'sale_id': self.id, })
+                                if sup_ids:
+                                    self.update({'dimension_supplement_ids': [(4, sup_ids.id)]})
+                                else:
+                                    self.update({'dimension_supplement_ids': [(4, 0)]})
 
 
-                                        if sect.type == 'glass':
-                                            for i in range(len(height)):
-                                                side = val[i]
-                                                hight2 = sect.side + side
-                                                heel = val_with[i]
-                                                width2 = sect.heel + heel
-                                                area = hight2 *width2
-                                                sum += area
-                                            qyt = sum / 7.44
-                                            break
-
-                                        if sect.type == 'wire':
-                                            print(val)
-                                            for i in range(len(height)):
-                                                side = val[i]
-                                                hight2 = (sect.side + side) * sect.nmuber
-                                                heel = val_with[i]
-                                                width2 =( sect.heel + heel) * sect.nmuber
-                                                total = hight2 + width2
-                                                sum += total
-                                            qyt = sum / 5.80
-                                            break
-                                    sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
-                                                                 'purchase_uom_qty': qyt/100,
-                                                                 'product_id': sect.product_id.id,
-                                                                 'product_uom': sect.supplement_name.uom_id.id,
-                                                                 'sale_id': self.id, })
-                                    if sup_ids:
-                                        self.write({'dimension_supplement_ids': [(4, sup_ids.id)]})
-                                    else:
-                                        self.write({'dimension_supplement_ids': [(4, 0)]})
-
-
-                # rec.order_id.state = 'compute'
+        # rec.order_id.state = 'compute'
 
 
     # def compute_dimension_id(self):

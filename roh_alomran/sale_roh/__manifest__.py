@@ -8,7 +8,7 @@
     'website': "",
     'category': 'sale',
     'version': '0.1',
-    'depends': ['aos_whatsapp_sale'],
+    'depends': ['sale'],
 
     'data': [
 
