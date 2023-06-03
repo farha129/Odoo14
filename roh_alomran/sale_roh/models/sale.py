@@ -37,7 +37,6 @@ class DimensionSupplement(models.Model):
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
     price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
-    product_id = fields.Many2one('product.template', string = 'product')
     purchase_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
 
 
@@ -64,9 +63,11 @@ class SaleOrder(models.Model):
 
     # supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',compute='_get_supp', string = 'Dimension' )
-    sale_accessory_ids = fields.One2many('sale.accessory',compute='_get_acc',string = 'Accessory', readonly = False )
+    sale_accessory_ids = fields.One2many('sale.accessory','sale_id',string = 'Accessory',  readonly = False )
     number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
     destination_payment  =  fields.Text(string = 'Description Payment')
+    destination_paint  =  fields.Char(string = 'Description paint')
+    destination_glass  =  fields.Char(string = 'Description glass')
     implemented_period = fields.Integer(string = 'implemented period', digits = 'By The Days' )
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
@@ -96,6 +97,7 @@ class SaleOrder(models.Model):
                 'name': sup.supplement_name.name,
                 'is_active': False,
                 'price_unit':sup.price_unit,
+
             })
 
 
@@ -115,8 +117,8 @@ class SaleOrder(models.Model):
             "type": "ir.actions.act_window",
             "target": "current",
         }
-
-    def _get_acc(self):
+    @api.onchange('order_line','order_line.product_id')
+    def _onchange_get_acc(self):
         # acc_ids = []
 
         for rec in self.order_line:
@@ -137,9 +139,11 @@ class SaleOrder(models.Model):
 
                                                            })
 
+                    break
+
                     self.write({'sale_accessory_ids':[(4,acc_ids.id)]})
                 else :
-                    self.write({'sale_accessory_ids':[(4,0)]})
+                    sef.write({'sale_accessory_ids':[(4,0)]})
 
 
     # def _get_acc(self):
@@ -231,7 +235,6 @@ class SaleOrder(models.Model):
                                         break
                                 sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
                                                              'purchase_uom_qty': qyt/100,
-                                                             'product_id': sect.product_id.id,
                                                              'product_uom': sect.supplement_name.uom_id.id,
                                                              'sale_id': self.id, })
                                 if sup_ids:
@@ -416,13 +419,14 @@ class SaleOrderLine(models.Model):
     product_qty_new = fields.Float(
         'Quantity', default=1.0,
         digits='Product Unit of Measure', required=True)
-    product_area = fields.Float(string='Area(Mt2)', digits='Product Area(Width*Height*Quantity) by mater', default=1 , compute= 'compute_area')
+    product_area = fields.Float(string='Area(Mt2)', digits='Product Area(Width*Height*Quantity) by mater', default=1 , compute= 'compute_area',store = True)
 
 
     @api.depends('product_heights', 'product_widths','product_qty_new')
     def compute_area(self):
         for rec in self:
             total = 0.0
+            area = 0.0
             height = [{'name': res.name} for res in  rec.product_heights]
             width = [{'name': res.name} for res in  rec.product_widths]
             if  height and width and  range(len(height)) == range(len(width)) :
@@ -435,7 +439,8 @@ class SaleOrderLine(models.Model):
                     if width[i]['name'] < 1 :
                         width[i]['name'] = 1
 
-                    rec.product_area += height[i]['name']  *  width[i]['name'] * rec.product_qty_new
+                    area += height[i]['name']  *  width[i]['name'] * rec.product_qty_new
+                rec.product_area = area
                 rec.product_uom_qty = total / 5.80
                 rec.hi_wi = total
 
@@ -452,6 +457,8 @@ class SaleOrderLine(models.Model):
             else:
                 rec.product_uom_qty = rec.hi_wi / 6
 
+
+    @api.depends('product_area', 'discount', 'price_unit', 'tax_id')
     def _compute_amount(self):
         """
         Compute the amounts of the SO line.

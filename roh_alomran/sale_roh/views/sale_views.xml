@@ -62,6 +62,8 @@
                     <field name="implemented_period"/>
                     <span> days</span>
                 </div>
+                    <field name="destination_paint"/>
+                    <field name="destination_glass"/>
                 </xpath>
 
                 <xpath expr="//field[@name='payment_term_id']" position="after">
@@ -83,7 +85,6 @@
 <!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
                         <field name="dimension_supplement_ids" widget="one2many" >
                              <tree editable="bottom">
-                                     <field name="product_id" />
                                      <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
                                      <field name="purchase_uom_qty" />
                                      <field name="product_uom" />
@@ -95,7 +96,7 @@
                     <page string="Accessory" name="Accessory"  >
                         <field name="sale_accessory_ids" widget="one2many" >
                              <tree editable="bottom">
-                                     <field name="accessory_name"  domain="[('is_accessory', '=',  True)]"/>
+                                     <field name="accessory_name"  domain="[('is_accessory', '=',  True)]" context="{'default_is_accessory': True,'default_type': 'product'}"/>
                                      <field name="accessory_uom_qty" />
                                      <field name="price_unit" />
                                      <field name="product_uom" />

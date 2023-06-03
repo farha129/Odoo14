@@ -7,14 +7,17 @@
 
                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
 
-                    <span t-if="doc.state not in ['draft','sent']">Contract # </span>
-                    <span t-if="doc.state in ['draft','sent']">Quotation # </span>
+                    <h3 t-if="doc.state not in ['draft','sent']">عقد توريد وتركيب شبابيك و قطاعات اﻻلمنيوم </h3>
+                    <h3 t-if="doc.state in ['draft','sent']">  عرض سعر :<span t-field="doc.name"/></h3>
+
 
                         </t>
 
                     </div>
                </xpath>
         <xpath expr="//div[hasclass('page')]" position="replace">
+        
+        <div class="page" style="background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:190mm 200mm; width:190mm; height:200mm;">
                     <table>
                                             <tbody >
                                                 <tr>
@@ -83,7 +86,7 @@
                                     <span t-field="line.product_uom"/>
                                 </td>
 
-                                <td name="td_subtotal" class="text-right o_price_total">
+                                <td name="td_subtotal" class="text-left o_price_total">
                                     <span t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
                                     <span t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
                                 </td>
@@ -159,27 +162,50 @@
                         </h3>
 
                         <p class="text-left">
+                            *الربلات و الفرش تمنع دخول الاتربة
+                                                        <t t-foreach="doc.sale_accessory_ids" t-as="acc">
+                                                                               <span t-field="acc.accessory_name.name"/>
+
+                                                        </t>
+                            <br class="text-left"></br>
+                                                        <t t-if="doc.destination_paint">
+
+                                                            *لون الدهان  <span t-field="doc.destination_paint"/>
+
+                 <br class="text-left"></br></t>
+                                                                                    <t t-if="doc.destination_glass">
+
+                  *الزجاج <span t-field="doc.destination_glass"/>
+                                                                                        <br class="text-left"></br></t>
+
+
 *جميع الاكسسوارات و المفصلات إيطالي أصلي(راغني)
                             <br class="text-left"></br>
 *كل الألمونيوم المستخدم يخضع لإختبارات المواصفات
                             <br class="text-left"></br>
 *يتم الاتفاق عند أي إضافة للمواد ويتم إضافة قيمتها للدفعة الثانية
                             <br class="text-left"></br>
-*مدة التنفيذ <span t-field="doc.implemented_period"/> يوم عمل من تاريخ أول دفعة
-                            <br class="text-left"></br>
-*عند تأخير الدفعة يتم إضافة التاخير لمدة العقد                       
+                            <t t-if="doc.implemented_period">
+                                *مدة التنفيذ <span t-field="doc.implemented_period"/> يوم عمل من تاريخ أول دفعة
+                            <br class="text-left"></br></t>
+*عند تأخير الدفعة يتم إضافة التاخير لمدة العقد
                             <br class="text-left"></br>
 *ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات
                             <br class="text-left"></br>
+                                                        <t t-if="doc.destination_payment">
+
 *تتم الدفعات عن طريق التحويل الى حساب المؤسسة بنك الرياض (ٍِSA4020000002362862629940) على الدفعات كالآتي:
                             <br class="text-left"></br>
-                                                                                               <span t-field="doc.destination_payment"/>* 
+                                                                                             *  <span t-field="doc.destination_payment"/>
+
+                                                        </t>
                                                                                                     
                         </p>
                       
                     </div>
                 </div>
             </div>
+                        </div>
         </xpath>
 
 
