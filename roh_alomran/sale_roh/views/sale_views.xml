@@ -12,14 +12,27 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+
+
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_open_purchase_order" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="po_count"/>
+                            </span>
+                            <span class="o_stat_text">Purchase</span>
+                            <span class="o_stat_text">Orders</span>
+                        </div>
+                    </button>
+
+                </xpath>
                 <xpath expr="//field[@name='state']" position="replace">
                     <field name="state" widget="statusbar" statusbar_visible="draft,again,sent,sale"/>
                 </xpath>
 
-    	<xpath expr="//button[@name='action_confirm']" position="before">
+<!--    	<xpath expr="//button[@name='action_confirm']" position="before">-->
 <!--            <button name="compute_dimension_id"  type="object" string="Compute Dimension_id" states="sale" />-->
-            <button name="action_try_agains"  type="object" string="Try Again" states="draft"/>
-        </xpath>
+
 
 <!--                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">-->
 <!--                    <button name="action_open_purchase_order" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">-->
@@ -34,27 +47,51 @@
 
 <!--                </xpath>-->
 
-               <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
-                    <attribute name="domain">[('is_sector', '=', True),('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]
-                    </attribute>
+                 <xpath expr="//page[1]" position="before">
+
+                    <page string="Sector" name="sector_order_line">
+                           <field name="sector_order_line"
+
+>
+                                       <tree editable="bottom">
+
+
+
+                                                <field name="product_id"/>
+                                                <field name="name"/>
+
+                                                    <field name="product_widths" widget="many2many_tags"  />
+                                                    <field name="product_heights" widget="many2many_tags"/>
+                                                    <field name="product_qty_new" />
+                                                    <field name="hi_wi" invisible="1" />
+                                                    <field name="is_5_80"  />
+                                                     <field name="product_uom_qty" string = 'Qty Purchase'/>
+                                                     <field name="product_uom_category_id" invisible="1" />
+                                                     <field name="product_uom" />
+                                                     <field name="product_area" />
+<!--                                                    <field name="is_active"  invisible="1" />-->
+
+
+                                       </tree>
+                           </field>
+                    </page>
+
                 </xpath>
 
 
 
-                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
-                    <field name="product_widths" widget="many2many_tags" />
-                    <field name="product_heights" widget="many2many_tags"/>
-                    <field name="product_qty_new" />
-                    <field name="hi_wi" invisible="1" />
-                    <field name="is_5_80"  />
-                    <field name="is_active"  invisible="1" />
-                   <field name="product_area" />
 
-                </xpath>
 
-                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace">
-                    <field name="product_uom_qty" string = 'Qty Purchase'/>
-                </xpath>
+
+<!--               <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">-->
+<!--                    <attribute name="domain">[('is_sector', '=', True),('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]-->
+<!--                    </attribute>-->
+<!--                </xpath>-->
+
+
+
+
+
 
                 <xpath expr="//field[@name='partner_shipping_id']" position="after">
                     <label for="implemented_period" string="implemented period"/>
@@ -138,20 +175,20 @@
             </field>
         </record>
 
-<!-- &lt;!&ndash; FORM VIEW  &ndash;&gt;-->
-<!--          <record id="purchase_order_view_inhinrt" model="ir.ui.view">-->
-<!--            <field name="name">purchase.order.form.i</field>-->
-<!--            <field name="model">purchase.order</field>-->
-<!--            <field name="inherit_id" ref="purchase.purchase_order_form"/>-->
-<!--                          <field name="arch" type="xml">-->
+ <!-- FORM VIEW  -->
+          <record id="purchase_order_view_inhinrt" model="ir.ui.view">
+            <field name="name">purchase.order.form.i</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+                          <field name="arch" type="xml">
 
-<!--&lt;!&ndash;                <xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="after">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                <field name="is_5_80" />&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                <field name="hi_wi"  invisible="0"/>&ndash;&gt;-->
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                                                                <field name="customer_id" />
+                                                                <field name="sale_id" />
 
-<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
-<!--                          </field>-->
-<!--          </record>-->
+                </xpath>
+                          </field>
+          </record>
 
 
     </data>

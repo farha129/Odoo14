@@ -3,12 +3,12 @@
     <template id="sale_document_report_inherit" inherit_id="sale.report_saleorder_document">
            <xpath expr="//t[@t-set='address']" position="replace">
 
-                   <div t-attf-class="text-center" style="top: -1rem; center: -10rem;">
+                   <div t-attf-class="text-center" style="top: -1rem; center: -10rem;font-family:Calibri;">
 
                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
 
                     <h3 t-if="doc.state not in ['draft','sent']">عقد توريد وتركيب شبابيك و قطاعات اﻻلمنيوم </h3>
-                    <h3 t-if="doc.state in ['draft','sent']">  عرض سعر :<span t-field="doc.name"/></h3>
+                    <h3   t-if="doc.state in ['draft','sent']">  عرض سعر :<span t-field="doc.name"/></h3>
 
 
                         </t>
@@ -17,7 +17,7 @@
                </xpath>
         <xpath expr="//div[hasclass('page')]" position="replace">
         
-        <div class="page" style="background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:190mm 200mm; width:190mm; height:200mm;">
+        <div class="page" style="background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:190mm 200mm; width:190mm; height:200mm">
                     <table>
                                             <tbody >
                                                 <tr>
@@ -53,9 +53,9 @@
             <br></br>
             <table class="table table-sm o_main_table">
                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
-                <thead style="display: table-row-group">
+                <thead style="display: table-row-group ;font-family:Arial;">
                     <tr>
-                        <th name="th_description" class="text-left">القطاعات المستخدمة</th>
+                        <th name="th_description" class="text-left">المنتجات </th>
                         <th name="th_glass" class="text-left">مواصفات الزجاج</th>
                         <th name="th_priceunit" class="text-left">سعر المتر</th>
 
@@ -82,7 +82,7 @@
                                     <span t-field="line.price_unit"/>
                                 </td>
                                 <td name="td_product_area" class="text-left">
-                                    <span t-field="line.product_area"/>
+                                    <span t-field="line.product_uom_qty"/>
                                     <span t-field="line.product_uom"/>
                                 </td>
 
@@ -154,17 +154,17 @@
                          </table>
                          <br></br>
                         <h3>
-                            <p class="text-left">
+                            <p class="text-left" style = "font-family:Arial;">
                                 <strong>
-                                    <font style="font-family:'serif';">: مواد التشطيب و الأكسسوارات</font>
+                                    <font style="font-family:Arial;">: مواد التشطيب و الأكسسوارات</font>
                                 </strong>
                             </p>
                         </h3>
 
-                        <p class="text-left">
+                        <p class="text-left" style = "font-family:Arial;color: black;">
                             *الربلات و الفرش تمنع دخول الاتربة
                                                         <t t-foreach="doc.sale_accessory_ids" t-as="acc">
-                                                                               <span t-field="acc.accessory_name.name"/>
+                                                                               <span t-field="acc.accessory_name.name"/> ,
 
                                                         </t>
                             <br class="text-left"></br>
