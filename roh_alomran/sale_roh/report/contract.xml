@@ -8,7 +8,7 @@
                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
 
                     <h3 t-if="doc.state not in ['draft','sent']">عقد توريد وتركيب شبابيك و قطاعات اﻻلمنيوم </h3>
-                    <h3   t-if="doc.state in ['draft','sent']">  عرض سعر :<span t-field="doc.name"/></h3>
+                    <h3   t-if="doc.state in ['draft','sent']"> عرض توريد وتركيب شبابيك و قطاعات اﻻلمنيوم :</h3>
 
 
                         </t>
@@ -20,6 +20,11 @@
         <div class="page" style="background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:190mm 200mm; width:190mm; height:200mm">
                     <table>
                                             <tbody >
+                                                <tr>
+                                                    <td>
+                                                                    <span  class="text-nowrap"  t-field="doc.name"/>
+                                                    </td>
+                                                </tr>
                                                 <tr>
                                                     <td>
                                                         <b>التاريخ/ </b>
@@ -80,6 +85,7 @@
                                 <td name="td_name"><span t-field="line.name"/></td>
                                 <td name="td_priceunit" class="text-left">
                                     <span t-field="line.price_unit"/>
+                                      <span t-field="doc.pricelist_id.currency_id"/>
                                 </td>
                                 <td name="td_product_area" class="text-left">
                                     <span t-field="line.product_uom_qty"/>
@@ -112,10 +118,14 @@
 
             <div class="clearfix" name="so_total_summary">
                 <div id="total" class="row" name="total">
-                    <div >
+
                         <table  class="text-left">
                             <tr class="border-black o_subtotal" style="">
                                 <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
 
                                 <td name="td_amount_untaxed" class="text-left">
                                     <span t-field="doc.amount_untaxed"/>
@@ -128,6 +138,10 @@
                                             <span t-esc="amount_by_group[0]"/>
                                             <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
                                         </td>
+                                         <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                         <td name="td_amount_by_group_3" class="text-left o_price_total">
                                             <span t-esc="amount_by_group[1]"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -137,6 +151,10 @@
                                         <td name="td_amount_by_group_label">
                                             <span t-esc="amount_by_group[0]"/>
                                         </td>
+                                         <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                         <td name="td_amount_by_group" class="text-left o_price_total">
                                             <span t-esc="amount_by_group[1]"
                                                 t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -146,14 +164,24 @@
                             </t>
                             <tr class="border-black o_total">
                                 <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
+                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
 
                                 <td name="td_amount_total" class="text-left">
                                     <span t-field="doc.amount_total"/>
                                 </td>
                             </tr>
                          </table>
-                         <br></br>
-                        <h3>
+
+
+                </div>
+            </div>
+
+                                     <br></br>
+
+                  <h3>
                             <p class="text-left" style = "font-family:Arial;">
                                 <strong>
                                     <font style="font-family:Arial;">: مواد التشطيب و الأكسسوارات</font>
@@ -199,13 +227,41 @@
                                                                                              *  <span t-field="doc.destination_payment"/>
 
                                                         </t>
-                                                                                                    
-                        </p>
-                      
-                    </div>
-                </div>
-            </div>
-                        </div>
+                         </p>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+
+                    <table class="table" style = "center" >
+
+                        <thead>
+                          <tr>
+                            <th  class="text-left">الطرف الاول </th>
+                              <th></th>
+                              <th></th>
+                            <th class="text-right">الطرف الثاني</th>
+                                                             </tr>
+
+                              </thead>
+                         <tbody >
+                             <tr></tr>
+                             <tr>
+                             <td class="text-left">...................................</td>
+                             <td></td>
+                             <td></td>
+                             <td class="text-right">...................................</td>
+</tr>
+
+                         </tbody>
+                    </table>
+
+
+
+
+
+
+           </div>
         </xpath>
 
 

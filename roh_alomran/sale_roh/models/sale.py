@@ -41,7 +41,6 @@ class DimensionSupplement(models.Model):
     supplement_height = fields.Float(string='Height', digits='Supplement Height', default=0)
     supplement_width = fields.Float(string='Width', digits='Supplement Width by mater', default=0)
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
-    price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
     purchase_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
 
@@ -53,7 +52,6 @@ class SaleAccessory(models.Model):
 
     accessory_name = fields.Many2one('product.product', string='Accessory')
     accessory_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
-    price_unit = fields.Float('Unit Price', required=True, digits='Product Price', default=0.0)
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
     sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
@@ -62,13 +60,9 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     installation = fields.Boolean('Installation requested?')
-    # order_line = fields.One2many('sale.order.line', 'order_id',string='Order Lines',domain= [('is_active','=',True)],  states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True, auto_join=True)
-    sector_order_line = fields.One2many('sector.order.line', 'sale_id',domain= [('is_active','=',True)],string='Sectors Order Lines')
+    sector_order_line = fields.One2many('sector.order.line', 'sale_id',domain= [('is_active','=',True)],string='Sectors Order Lines', copy=True)
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
-
-
-    # supplement_ids = fields.One2many('dimension.supplement','sale_id',string = 'Dimension' )
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',compute='_get_supp', string = 'Dimension' , store=False)
     sale_accessory_ids = fields.One2many('sale.accessory','sale_id',string = 'Accessory',  readonly = False )
     number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
@@ -76,15 +70,36 @@ class SaleOrder(models.Model):
     destination_paint  =  fields.Char(string = 'Description paint')
     destination_glass  =  fields.Char(string = 'Description glass')
     implemented_period = fields.Integer(string = 'implemented period', digits = 'By The Days' )
+    count = fields.Integer( string='Count')
+    po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
+    order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=False, auto_join=True)
+
+
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
+
+    # @api.model
+    # def create(self, vals):
+    #     order = super(SaleOrder,self.with_context(mail_create_nolog=True)).create(vals)
+    #     order.sudo().create_order_line()
+    #     return order
+
+
 
     def _get_po(self):
         for orders in self:
             purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
         orders.po_count = len(purchase_ids)
 
-    po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
+
+    def create_order_line(self):
+        for sect_obj in self.sector_order_line:
+            sale = self.order_line.create({'product_id': sect_obj.final_product.id,
+                           'name': sect_obj.name,
+                           'order_id': self.id,
+                           'product_uom_qty': sect_obj.product_area,
+                                           })
+        self.count = 1
 
     def action_create_purchase_order(self):
         value = []
@@ -378,29 +393,27 @@ class SaleOrder(models.Model):
         return res
 
 
-    @api.onchange('sector_order_line')
-    def _onchange_get_acc(self):
-        value = []
-        for rec in self.sector_order_line:
-
-            if not rec:
-                continue
-            else:
-                acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
-
-                if acc_obj:
-                    for obj in acc_obj:
-                        value.append({'accessory_name': obj.accessory_name.id,
-                                                        'accessory_uom_qty': obj.accessory_uom_qty,
-                                                        'sale_id': self.id,
-                                                        'product_uom': obj.accessory_name.uom_id.id,
-                                                           })
-
-                    continue
-        print('yyyyyyyyyyyyyyyyyyyyyyyyyy',value)
-        if not self.sale_accessory_ids :
-            self.sale_accessory_ids.create(value)
-
+    # @api.onchange('sector_order_line')
+    # def _onchange_get_acc(self):
+    #     value = []
+    #     for rec in self.sector_order_line:
+    #
+    #         if not rec:
+    #             continue
+    #         else:
+    #             acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', rec.product_id.name)])
+    #
+    #             if acc_obj:
+    #                 for obj in acc_obj:
+    #                     value.append({'accessory_name': obj.accessory_name.id,
+    #                                                     'accessory_uom_qty': obj.accessory_uom_qty,
+    #                                                     'sale_id': self.id,
+    #                                                     'product_uom': obj.accessory_name.uom_id.id,
+    #                                                        })
+    #
+    #
+    #                     self.sale_accessory_ids.create(value)
+    #
 
 
 
@@ -667,15 +680,16 @@ class SectorOderLine(models.Model):
     height = []
     width = []
 
-    name = fields.Char(string = "Description")
+    name = fields.Char(string = "Description", required=True)
 
-    product_id = fields.Many2one('product.product', string='Sector',domain="[('is_sector', '=', True)]")  # Unrequired company
+    product_id = fields.Many2one('product.product', string='Sector',domain="[('is_sector', '=', True)]", required=True) # Unrequired company
+    final_product = fields.Many2one('product.product', string='Final Product', required=True)
 
     product_heights = fields.Many2many('dimension.line.height', string='Height(Mt)', required=True)
     product_widths = fields.Many2many('dimension.line.width',string='Width(Mt)', required=True)
     hi_wi = fields.Float(string = 'total_hi_wi',digits = 'total height and width /2')
     is_5_80 = fields.Boolean(string = '5.80' , default = True)
-    sale_id = fields.Many2one('sale.order', string = 'Sectors')
+    sale_id = fields.Many2one('sale.order', string = 'Sectors' , ondelete='cascade', index=True, copy=False)
     is_active = fields.Boolean(string = 'Is active', default = True)
 
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',domain="[('category_id', '=', product_uom_category_id)]")
@@ -689,14 +703,33 @@ class SectorOderLine(models.Model):
         digits='Product Unit of Measure', required=True)
 
 
+
     product_area = fields.Float(string='Area(Mt2)', digits='Product Area(Width*Height*Quantity) by mater', default=1 , compute= 'compute_area',store = True)
 
     @api.onchange('product_id')
     def _onchange_product_id(self):
+        value=[]
         self.ensure_one()
         if self.product_id:
             self.product_uom = self.product_id.uom_id.id
             self.name = self.product_id.name
+    #         acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', self.product_id.name)])
+    #         print("ooooooooooooooooooooooooooooooooooooooooooooooooooooooobbbbbbbbbbbbbbbbb",self.sale_id.partner_id)
+    #
+    #         if acc_obj:
+    #             for obj in acc_obj:
+    #                 acc= self.env['sale.accessory'].create({'accessory_name': obj.accessory_name.id,
+    #                               'accessory_uom_qty': obj.accessory_uom_qty,
+    #                               'sale_id': self.sale_id.id,
+    #                               'product_uom': obj.accessory_name.uom_id.id,
+    #                               })
+    #             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",acc)
+    #             self.sale_id.write({'sale_order_option_ids': [(4, acc.id)]})
+    #
+    #             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxhhh",self.sale_id.sale_accessory_ids.sale_id.id)
+    #
+    #
+
 
     @api.depends('product_heights', 'product_widths','product_qty_new')
     def compute_area(self):
@@ -743,4 +776,8 @@ class SectorOderLine(models.Model):
             else:
                 rec.product_uom_qty = rec.hi_wi / 6
 
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+    product_number = fields.Float(string='Product Number', default=1)
 
