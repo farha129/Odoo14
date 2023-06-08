@@ -60,7 +60,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     installation = fields.Boolean('Installation requested?')
-    sector_order_line = fields.One2many('sector.order.line', 'sale_id',domain= [('is_active','=',True)],string='Sectors Order Lines', copy=True)
+    sector_order_line = fields.One2many('sector.order.line', 'sale_id',string='Sectors Order Lines', copy=True)
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
     dimension_supplement_ids = fields.One2many('dimension.supplement','sale_id',compute='_get_supp', string = 'Dimension' , store=False)
@@ -89,10 +89,11 @@ class SaleOrder(models.Model):
     def _get_po(self):
         for orders in self:
             purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
-        orders.po_count = len(purchase_ids)
+        self.po_count = len(purchase_ids)
 
 
     def create_order_line(self):
+        self.count = 0
         for sect_obj in self.sector_order_line:
             sale = self.order_line.create({'product_id': sect_obj.final_product.id,
                            'name': sect_obj.name,
@@ -100,6 +101,41 @@ class SaleOrder(models.Model):
                            'product_uom_qty': sect_obj.product_area,
                                            })
         self.count = 1
+        # for line in self.sector_order_line:
+        #     acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', line.product_id.name),('is_sector','=',True)],limit=1)
+        #     for obj in acc_obj
+        #     acc_obj = self.env['product.product'].search([('id', '=', line.product_id.id),('is_sector','=',True)],limit=1)
+        #
+        #     if acc_obj:
+        #         for obj in acc_obj.accessory_ids:
+        #
+        #             if not self.sale_accessory_ids:
+        #                 print('paaaaaaaaaaaaaaaaaaaaas1')
+        #                 acc = self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
+        #                                                       'accessory_uom_qty': obj.accessory_uom_qty,
+        #                                                       'sale_id': self.id,
+        #                                                       'product_uom': obj.accessory_name.uom_id.id,
+        #                                                       })
+        #             elif self.sale_accessory_ids:
+        #                 for is_acc in self.sale_accessory_ids:
+        #                     if  obj.accessory_name.id != is_acc.accessory_name.id:
+        #                         print('paaaaaaaaaaaaaaaaaaaaas4')
+        #
+        #                         acc= self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
+        #                                          'accessory_uom_qty': obj.accessory_uom_qty,
+        #                                           'sale_id': self.id,
+        #                                           'product_uom': obj.accessory_name.uom_id.id,
+        #                                           })
+        #                         break
+        #
+        #                     elif obj.accessory_name.id == is_acc.accessory_name.id:
+        #                         is_acc.update({'accessory_uom_qty': is_acc.accessory_uom_qty + obj.accessory_uom_qty})
+        #
+        #
+
+
+
+        self.count = 0
 
     def action_create_purchase_order(self):
         value = []
@@ -209,9 +245,6 @@ class SaleOrder(models.Model):
                         'price_unit': price_unit,
                     })
         for data in self.dimension_supplement_ids:
-            sale_order_name = data.sale_id.name
-            if not sale_order_name:
-                sale_order_name = so.name
             qty_ids = self.env['stock.quant'].search(
                 [('product_id', '=', data.supplement_name.id), ('location_id', '=', self.warehouse_id.lot_stock_id.id)])
             if qty_ids:
@@ -441,6 +474,7 @@ class SaleOrder(models.Model):
     #                                                 })
     #         self.write({'sale_order_option_ids':[(4,acc_ids.id)]})
 
+    # @api.depends('sector_order_line.is_edit')
     def _get_supp(self):
 
         for rec in self.sector_order_line:
@@ -449,68 +483,74 @@ class SaleOrder(models.Model):
             else:
                 heel = 0.0
                 side = 0.0
-                area = 0.0
+                qyt = 0.0
                 val = []
                 val_with = []
 
                 width2 = 0.0
 
-                if rec.product_id.is_sector:
+                if rec.product_id.supplement_sector_ids:
 
                         for sect in rec.product_id.supplement_sector_ids:
+                            qyt = 0.0
+                            sum = 0.0
+                            obj_ditails = self.env['ditals.sector'].search([('sector_id', '=', rec.id)])
+                            for obj in obj_ditails:
+                                product_hight = (obj.height * 100) + 30
+                                product_width = (obj.width * 100) + 30
 
-                            height = [{'name': res.name} for res in rec.product_heights]
-                            width = [{'name': res.name} for res in rec.product_widths]
-                            if height and width and range(len(height)) == range(len(width)):
-                                qyt = 0.0
-                                sum = 0.0
-                                for i in range(len(height)):
-                                    product_hight = (height[i]['name']  * 100) + 30
-                                    product_width = (width[i]['name'] * 100) + 30
-                                    if sect.type == 'side':
-                                       sum +=((product_hight + sect.height) * sect.nmuber)
-                                       side = product_hight + sect.height
-                                       val.append(side)
-                                    qyt = sum /5.80
+                                sum_hight = 0.0
+                                sum_with = 0.0
 
-                                    if sect.type == 'heel':
-                                        sum +=( (product_width + sect.width) / sect.division_number) * sect.nmuber
-                                        heel = ((product_width + sect.width) / sect.division_number)
-                                        val_with.append(heel)
+
+                                if sect.type == 'side':
+                                   sum +=((product_hight + sect.height) * sect.nmuber)
+                                   side = product_hight + sect.height
+                                   val.append(side)
+                                   qyt = sum /5.80
+
+                                if sect.type == 'heel':
+                                    sum +=( (product_width + sect.width) / sect.division_number) * sect.nmuber
+                                    heel = ((product_width + sect.width) / sect.division_number)
+                                    val_with.append(heel)
                                     qyt = sum / 5.80
 
 
-                                    if sect.type == 'glass':
-                                        for i in range(len(height)):
-                                            side = val[i]
-                                            hight2 = sect.side + side
-                                            heel = val_with[i]
-                                            width2 = sect.heel + heel
-                                            area = hight2 *width2
-                                            sum += area
-                                        qyt = sum / 7.44
-                                        break
+                                if sect.type == 'glass':
+                                    for i in range(len(obj_ditails)):
+                                        side = val[i]
+                                        hight2 = sect.side + side
+                                        heel = val_with[i]
+                                        width2 = sect.heel + heel
+                                        area = ((hight2 *width2)*4)/100
+                                        sum += area
+                                    qyt = sum / 7.42
+                                    break
 
-                                    if sect.type == 'wire':
-                                        print(val)
-                                        for i in range(len(height)):
-                                            side = val[i]
-                                            hight2 = (sect.side + side) * sect.nmuber
-                                            heel = val_with[i]
-                                            width2 =( sect.heel + heel) * sect.nmuber
-                                            total = hight2 + width2
-                                            sum += total
-                                        qyt = sum / 5.80
+                                if sect.type == 'wire':
+                                    print(val)
+                                    for i in range(len(obj_ditails)):
+                                        side = val[i]
+                                        sum_hight += (sect.side + side) * sect.nmuber
+                                        # sum_hight += hight2
 
-                                sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
-                                                             'purchase_uom_qty': qyt/100,
-                                                             'product_uom': sect.supplement_name.uom_id.id,
-                                                             'sale_id': self.id, })
-                                if sup_ids:
-                                    self.write({'dimension_supplement_ids': [(4, sup_ids.id)]})
+                                        heel = val_with[i]
+                                        sum_with +=( sect.heel + heel) * sect.nmuber
+                                    total = sum_hight/5.80 + sum_with/ 5.80
+                                    qyt = total
+
+                            sup_ids= self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
+                                                         'purchase_uom_qty': qyt/100,
+                                                         'product_uom': sect.supplement_name.uom_id.id,
+                                                         'sale_id': self.id, })
+                            if sup_ids:
+                                self.write({'dimension_supplement_ids': [(4,sup_ids.id)]})
+                else:
+                    self.write({'dimension_supplement_ids': [(4, 0)]})
+                    raise ValidationError(_('Please Configratin Dimension for this Sector'))
 
 
-
+            #
 
 
         # rec.order_id.state = 'compute'
@@ -670,9 +710,24 @@ class DimensionLineWidth(models.Model):
     _name = 'dimension.line.width'
     _description = "Width"
 
+
     name = fields.Float(string='Tag Name')
 
 # product_uom_qty
+class DitalsSector(models.Model):
+    _name = 'ditals.sector'
+    _description = "Detals"
+    name = fields.Char(string = 'Name' , )
+    width = fields.Float(string ='width', digits=(3,4),store= True)
+    height = fields.Float(string='height',digits=(3,4),store= True)
+    sector_id = fields.Many2one('sector.order.line',string='Sector')
+    is_edit = fields.Boolean(related ='sector_id.is_edit',readonly = False)
+
+    @api.onchange('width','height')
+    def onchange_width_height(self):
+        self.is_edit = False
+
+
 
 class SectorOderLine(models.Model):
     _name = 'sector.order.line'
@@ -681,16 +736,17 @@ class SectorOderLine(models.Model):
     width = []
 
     name = fields.Char(string = "Description", required=True)
+    detals_id = fields.One2many('ditals.sector','sector_id',string="Detils")
 
     product_id = fields.Many2one('product.product', string='Sector',domain="[('is_sector', '=', True)]", required=True) # Unrequired company
     final_product = fields.Many2one('product.product', string='Final Product', required=True)
 
-    product_heights = fields.Many2many('dimension.line.height', string='Height(Mt)', required=True)
-    product_widths = fields.Many2many('dimension.line.width',string='Width(Mt)', required=True)
+    product_heights = fields.Many2many('dimension.line.height', string='Height(Mt)', required=False, store = True)
+    product_widths = fields.Many2many('dimension.line.width',string='Width(Mt)', required=False,store = True)
     hi_wi = fields.Float(string = 'total_hi_wi',digits = 'total height and width /2')
     is_5_80 = fields.Boolean(string = '5.80' , default = True)
     sale_id = fields.Many2one('sale.order', string = 'Sectors' , ondelete='cascade', index=True, copy=False)
-    is_active = fields.Boolean(string = 'Is active', default = True)
+    is_edit = fields.Boolean(string = 'Is Edit', default = True)
 
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',domain="[('category_id', '=', product_uom_category_id)]")
     product_uom_category_id = fields.Many2one(related='product_id.uom_id.category_id', readonly=True)
@@ -701,6 +757,22 @@ class SectorOderLine(models.Model):
     product_qty_new = fields.Float(
         'Quantity', default=1.0,
         digits='Product Unit of Measure', required=True)
+
+    def action_open_ditals_order(self):
+        tree_id = self.env.ref("sale_roh.ditals_view_tree").id
+        form_id = self.env.ref("sale_roh.view_detial_form").id
+
+        return {
+            "name": _("Height And Width"),
+            "view_mode": "tree,form",
+            'views': [(tree_id, 'tree'),(form_id, 'form')],
+            "res_model": "ditals.sector",
+            "domain": [('sector_id', '=', self.id)],
+            "type": "ir.actions.act_window",
+            "target": "current",
+            "context": {'default_sector_id': self.id,'create':True},
+
+        }
 
 
 
@@ -713,58 +785,32 @@ class SectorOderLine(models.Model):
         if self.product_id:
             self.product_uom = self.product_id.uom_id.id
             self.name = self.product_id.name
-    #         acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', self.product_id.name)])
-    #         print("ooooooooooooooooooooooooooooooooooooooooooooooooooooooobbbbbbbbbbbbbbbbb",self.sale_id.partner_id)
-    #
-    #         if acc_obj:
-    #             for obj in acc_obj:
-    #                 acc= self.env['sale.accessory'].create({'accessory_name': obj.accessory_name.id,
-    #                               'accessory_uom_qty': obj.accessory_uom_qty,
-    #                               'sale_id': self.sale_id.id,
-    #                               'product_uom': obj.accessory_name.uom_id.id,
-    #                               })
-    #             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",acc)
-    #             self.sale_id.write({'sale_order_option_ids': [(4, acc.id)]})
-    #
-    #             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxhhh",self.sale_id.sale_accessory_ids.sale_id.id)
-    #
-    #
 
-
-    @api.depends('product_heights', 'product_widths','product_qty_new')
+    @api.depends('is_edit')
     def compute_area(self):
         for rec in self:
             total = 0.0
             area = 0.0
-            height = [{'name': res.name} for res in  rec.product_heights]
-            width = [{'name': res.name} for res in  rec.product_widths]
-            if  height and width and  range(len(height)) == range(len(width)) :
+            obj_ditails = self.env['ditals.sector'].search([('sector_id','=',rec.id)])
+            for obj in obj_ditails:
+                height = obj.height
+                width = obj.width
+                if  height and width :
+                    total += ((height + 0.3) * 2) + ((width + 0.3) * 2)
+                    if height < 1:
+                        height = 1
+                    if width < 1:
+                        width = 1
+                    area += height *  width * rec.product_qty_new
+                    rec.product_area = area
+                    rec.product_uom_qty = total / 5.80
+                    rec.hi_wi = total
 
-                for i in range(len(height)):
-
-                    total +=  ((height[i]['name']+ 0.3)*2 )+ ((width[i]['name']+ 0.3)*2)
-                    if height[i]['name'] < 1 :
-                        height[i]['name'] = 1
-                    if width[i]['name'] < 1 :
-                        width[i]['name'] = 1
-
-                    area += height[i]['name']  *  width[i]['name'] * rec.product_qty_new
-                rec.product_area = area
-                rec.product_uom_qty = total / 5.80
-                rec.hi_wi = total
-
-            else:
-                print('pllllllllllllllllease')
-                rec.product_area = 1
-                rec.product_uom_qty = 1
-
-    @api.constrains("product_heights", "product_widths")
-    def check_with_and_hight(self):
-        for rec in self:
-            height = [{'name': res.name} for res in rec.product_heights]
-            width = [{'name': res.name} for res in rec.product_widths]
-            if not (height and width and range(len(height)) == range(len(width))):
-                raise ValidationError(_('Enter Correct Height and Width'))
+                else:
+                    print('pllllllllllllllllease')
+                    rec.product_area = 1
+                    rec.product_uom_qty = 1
+        return True
 
 
 

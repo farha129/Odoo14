@@ -32,12 +32,12 @@
 
                  <xpath expr="//page[1]" position="before">
                     <page string="Sector" name="sector_order_line">
-                           <field name="sector_order_line">
-                                       <tree editable="bottom">
+                           <field name="sector_order_line" options="{'no_open': True}" >
+                                       <tree editable="bottom" options="{'no_open': True}">
                                                 <field name="product_id"/>
                                                 <field name="name"/>
-                                                <field name="product_widths" widget="many2many_tags"  />
-                                                <field name="product_heights" widget="many2many_tags"/>
+<!--                                                <field name="product_widths" widget="many2many_tags"  />-->
+<!--                                                <field name="product_heights" widget="many2many_tags"/>-->
                                                 <field name="product_qty_new" />
                                                 <field name="hi_wi" invisible="1" />
                                                 <field name="is_5_80"  />
@@ -45,7 +45,11 @@
                                                  <field name="product_uom_category_id" invisible="1" />
                                                  <field name="product_uom" />
                                                  <field name="product_area" />
+                                                 <field name="is_edit" invisible="1"/>
                                                  <field name="final_product" context="{'default_type': 'product'}"/>
+                                                                                     <button name="action_open_ditals_order"  type="object" string="add"  />
+
+
 
                                        </tree>
                            </field>
@@ -158,6 +162,50 @@
                 </xpath>
                           </field>
           </record>
+
+
+
+        <record id="view_detial_form" model="ir.ui.view">
+            <field name="name">ditals.sector</field>
+            <field name="model">ditals.sector</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order">
+                    <sheet>
+                    <group col="2">
+                            <field name="width" />
+                            <field name="height" />
+                            <field name="sector_id" invisible="1"/>
+                            <field name="is_edit" invisible="0"/>
+                    </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ditals_view_tree">
+        <field name="name">ditals.sector.tree</field>
+        <field name="model">ditals.sector</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="width" />
+                <field name="height" />
+                <field name="sector_id" invisible="1" />
+
+
+            </tree>
+        </field>
+    </record>
+
+
+        <record id="view_detial_action" model="ir.actions.act_window">
+        <field name="name">Ditals Sector</field>
+        <field name="res_model">ditals.sector</field>
+        <field name="view_mode">tree,form</field>
+                    <field name="view_id" ref="ditals_view_tree"/>
+    </record>
+
+
 
 
     </data>
