@@ -73,8 +73,6 @@ class SaleOrder(models.Model):
     count = fields.Integer( string='Count')
     po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
     order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=False, auto_join=True)
-
-
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
 
@@ -93,49 +91,40 @@ class SaleOrder(models.Model):
 
 
     def create_order_line(self):
-        self.count = 0
+
+        val= []
+        list = []
+
+        acc_all = self.env['product.product'].search([('is_accessory', '=', True)])
+        # for all in acc_all:
+        #     val.append(all.id)
+
         for sect_obj in self.sector_order_line:
             sale = self.order_line.create({'product_id': sect_obj.final_product.id,
                            'name': sect_obj.name,
                            'order_id': self.id,
                            'product_uom_qty': sect_obj.product_area,
                                            })
+
+
+        for all in acc_all:
+            qyt = 0
+            for sec in self.sector_order_line:
+
+                acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', sec.product_id.name),('accessory_name','=',all.id)])
+                if acc_obj:
+                    for obj in acc_obj:
+                        qyt += obj.accessory_uom_qty
+
+
+            if qyt != 0 :
+                self.sale_accessory_ids.create({'accessory_name': all.id,
+                                                      'accessory_uom_qty': qyt,
+                                                      'sale_id': self.id,
+                                                      'product_uom': all.uom_id.id,
+                                                  })
+
         self.count = 1
-        # for line in self.sector_order_line:
-        #     acc_obj = self.env['product.accessory'].search([('product_acc_id.name', '=', line.product_id.name),('is_sector','=',True)],limit=1)
-        #     for obj in acc_obj
-        #     acc_obj = self.env['product.product'].search([('id', '=', line.product_id.id),('is_sector','=',True)],limit=1)
-        #
-        #     if acc_obj:
-        #         for obj in acc_obj.accessory_ids:
-        #
-        #             if not self.sale_accessory_ids:
-        #                 print('paaaaaaaaaaaaaaaaaaaaas1')
-        #                 acc = self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
-        #                                                       'accessory_uom_qty': obj.accessory_uom_qty,
-        #                                                       'sale_id': self.id,
-        #                                                       'product_uom': obj.accessory_name.uom_id.id,
-        #                                                       })
-        #             elif self.sale_accessory_ids:
-        #                 for is_acc in self.sale_accessory_ids:
-        #                     if  obj.accessory_name.id != is_acc.accessory_name.id:
-        #                         print('paaaaaaaaaaaaaaaaaaaaas4')
-        #
-        #                         acc= self.sale_accessory_ids.create({'accessory_name': obj.accessory_name.id,
-        #                                          'accessory_uom_qty': obj.accessory_uom_qty,
-        #                                           'sale_id': self.id,
-        #                                           'product_uom': obj.accessory_name.uom_id.id,
-        #                                           })
-        #                         break
-        #
-        #                     elif obj.accessory_name.id == is_acc.accessory_name.id:
-        #                         is_acc.update({'accessory_uom_qty': is_acc.accessory_uom_qty + obj.accessory_uom_qty})
-        #
-        #
-
-
-
-        self.count = 0
 
     def action_create_purchase_order(self):
         value = []
@@ -489,9 +478,12 @@ class SaleOrder(models.Model):
 
                 width2 = 0.0
 
-                if rec.product_id.supplement_sector_ids:
+                if not rec.product_id.supplement_sector_ids:
+                    raise ValidationError(_('Please Configratin Dimension for this Sector'))
 
-                        for sect in rec.product_id.supplement_sector_ids:
+
+                else:
+                    for sect in rec.product_id.supplement_sector_ids:
                             qyt = 0.0
                             sum = 0.0
                             obj_ditails = self.env['ditals.sector'].search([('sector_id', '=', rec.id)])
@@ -545,10 +537,6 @@ class SaleOrder(models.Model):
                                                          'sale_id': self.id, })
                             if sup_ids:
                                 self.write({'dimension_supplement_ids': [(4,sup_ids.id)]})
-                else:
-                    self.write({'dimension_supplement_ids': [(4, 0)]})
-                    raise ValidationError(_('Please Configratin Dimension for this Sector'))
-
 
             #
 
@@ -729,6 +717,10 @@ class DitalsSector(models.Model):
 
 
 
+
+
+
+
 class SectorOderLine(models.Model):
     _name = 'sector.order.line'
     _description = "sector order line"
@@ -786,7 +778,7 @@ class SectorOderLine(models.Model):
             self.product_uom = self.product_id.uom_id.id
             self.name = self.product_id.name
 
-    @api.depends('is_edit')
+    @api.depends('is_edit','product_qty_new')
     def compute_area(self):
         for rec in self:
             total = 0.0
@@ -803,13 +795,12 @@ class SectorOderLine(models.Model):
                         width = 1
                     area += height *  width * rec.product_qty_new
                     rec.product_area = area
-                    rec.product_uom_qty = total / 5.80
+                    rec.product_uom_qty = (total / 5.80) * rec.product_qty_new
                     rec.hi_wi = total
 
                 else:
-                    print('pllllllllllllllllease')
-                    rec.product_area = 1
-                    rec.product_uom_qty = 1
+                    raise ValidationError(_('Please Enter Width and height Togter'))
+
         return True
 
 

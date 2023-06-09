@@ -84,12 +84,12 @@
                                 <td name="td_name"><span t-field="line.product_id.name"/></td>
                                 <td name="td_name"><span t-field="line.name"/></td>
                                 <td name="td_priceunit" class="text-left">
-                                    <span t-field="line.price_unit"/>
-                                      <span t-field="doc.pricelist_id.currency_id"/>
+                                    <span t-field="line.price_unit"  t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 </td>
                                 <td name="td_product_area" class="text-left">
-                                    <span t-field="line.product_uom_qty"/>
-                                    <span t-field="line.product_uom"/>
+                                    <span t-field="line.product_uom_qty" />
+                                    <t t-esc="'متر'"/>
+<!--                                    <span t-field="line.product_uom"/>-->
                                 </td>
 
                                 <td name="td_subtotal" class="text-left o_price_total">
@@ -116,68 +116,116 @@
                 </tbody>
             </table>
 
-            <div class="clearfix" name="so_total_summary">
-                <div id="total" class="row" name="total">
+<br></br>
 
-                        <table  class="text-left">
-                            <tr class="border-black o_subtotal" style="">
+                        <table  class="table">
+                            <tbody>
+                            <tr class="border-black o_total">
                                 <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <div style="display: initial;font-size:13px;">
+                                 </div>
 
-                                <td name="td_amount_untaxed" class="text-left">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right">
                                     <span t-field="doc.amount_untaxed"/>
                                 </td>
-                            </tr>
-                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
-                                <tr style="">
-                                    <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">
-                                        <td name="td_amount_by_group_label_3">
-                                            <span t-esc="amount_by_group[0]"/>
-                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
-                                        </td>
-                                         <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                        <td name="td_amount_by_group_3" class="text-left o_price_total">
-                                            <span t-esc="amount_by_group[1]"
-                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                        </td>
-                                    </t>
-                                    <t t-else ="">
-                                        <td name="td_amount_by_group_label">
-                                            <span t-esc="amount_by_group[0]"/>
-                                        </td>
-                                         <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                        <td name="td_amount_by_group" class="text-left o_price_total">
-                                            <span t-esc="amount_by_group[1]"
-                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                                        </td>
-                                    </t>
-                                </tr>
-                            </t>
-                            <tr class="border-black o_total">
-                                <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
-                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                        </tr>
+                             <tr class="border-black o_total">
 
-                                <td name="td_amount_total" class="text-left">
+                                <td name="td_amount_label"><strong>الضريبة</strong></td>
+                                    <div style="display: initial;font-size:13px;">
+                                     </div>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+
+                                <td class="text-right">
+                                    <span t-field="doc.amount_tax"/>
+                                </td>
+                             </tr>
+                             <tr class="border-black o_total">
+
+                                   <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
+                                        <div style="display: initial;font-size:13px;">
+                                         </div>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                <td class="text-right">
                                     <span t-field="doc.amount_total"/>
                                 </td>
-                            </tr>
-                         </table>
+                        </tr>
+                    </tbody>
+   </table>
 
 
-                </div>
-            </div>
+
+
+
+
+<!--                            <tr >-->
+<!--                                <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+
+<!--                                <td name="td_amount_untaxed" class="text-left">-->
+<!--                                    <span t-field="doc.amount_untaxed"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">-->
+<!--                                <tr style="">-->
+<!--                                    <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">-->
+<!--                                        <td >-->
+<!--                                            <span t-esc="amount_by_group[0]"/>-->
+<!--                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>-->
+<!--                                        </td>-->
+<!--                                         <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                        <td  class="text-left o_price_total">-->
+<!--                                            <span t-esc="amount_by_group[1]"-->
+<!--                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>-->
+<!--                                        </td>-->
+<!--                                    </t>-->
+<!--                                    <t t-else ="">-->
+<!--                                        <td name="td_amount_by_group_label">-->
+<!--                                            <span t-esc="amount_by_group[0]"/>-->
+<!--                                        </td>-->
+<!--                                         <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                        <td name="td_amount_by_group" class="text-left o_price_total">-->
+<!--                                            <span t-esc="amount_by_group[1]"-->
+<!--                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>-->
+<!--                                        </td>-->
+<!--                                    </t>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                            <tr class="border-black o_total">-->
+<!--                                <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>-->
+<!--                                 <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+<!--                                <td></td>-->
+
+<!--                                <td name="td_amount_total" class="text-left">-->
+<!--                                    <span t-field="doc.amount_total"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+
+
+
+
 
                                      <br></br>
 

@@ -41,7 +41,7 @@
                                                 <field name="product_qty_new" />
                                                 <field name="hi_wi" invisible="1" />
                                                 <field name="is_5_80"  />
-                                                 <field name="product_uom_qty" string = 'Qty Purchase'/>
+                                                 <field name="product_uom_qty" string = 'Qty Purchase' readonly="1"/>
                                                  <field name="product_uom_category_id" invisible="1" />
                                                  <field name="product_uom" />
                                                  <field name="product_area" />
