@@ -2,30 +2,30 @@
 body
 {
     /* this affects the margin on the content before sending to printer */
-    margin: 0px;
-    font-family: Calibri;
+    font-family: Arial;
+    color: black;
+
 }
 
 
 td {
   background: None;
-  border-collapse: None;
-  border:1px solid black;
-  font-family: Calibri;
+  font-family: Arial;
+  color: black;
 
   }
 tr {
-  border-collapse: None;
-  border:1px solid black;
-  font-family: Calibri;
+  font-family: Arial;
+  color: black;
 
   }
 
 th {
-  font-weight: bold;
   color: black;
-  border-collapse: None;
-  border-left:1px solid black;
-  font-family: Calibri;
+  font-family: Arial;
 }
 
+p {
+  color: black;
+  font-family: Arial;
+}

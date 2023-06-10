@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="sale_document_report_inherit" inherit_id="sale.report_saleorder_document">
-           <xpath expr="//t[@t-set='address']" position="replace">
 
-                   <div t-attf-class="text-center" style="top: -1rem; center: -10rem;font-family:Calibri;">
+           <xpath expr="//t[@t-set='address']" position="replace">
+                 <link rel="stylesheet" href="/sale_roh/static/src/css/font.css"/>
+         <link rel="stylesheet" href="/sale_roh/static/src/css/sale_report.css"/>
+
+
+                   <div t-attf-class="text-center" style="font-family: Arial, Helvetica, sans-serif;color: black;">
 
                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
 
@@ -15,20 +19,24 @@
 
                     </div>
                </xpath>
+
         <xpath expr="//div[hasclass('page')]" position="replace">
+  <link rel="stylesheet" href="/sale_roh/static/src/css/font.css"/>
+         <link rel="stylesheet" href="/sale_roh/static/src/css/sale_report.css"/>
+
         
-        <div class="page" style="background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:190mm 200mm; width:190mm; height:200mm">
-                    <table>
+        <div class="page" style="color: black;background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:250mm 250mm;font-family: Arial">
+                    <table  class="table table-sm o_main_table" style="background:white">
                                             <tbody >
                                                 <tr>
                                                     <td>
-                                                                    <span  class="text-nowrap"  t-field="doc.name"/>
+                                                                    <span    t-field="doc.name"/>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
+                                                <tr >
+                                                    <td >
                                                         <b>التاريخ/ </b>
-                                                       <span class="text-nowrap" t-field="doc.date_order"/>
+                                                       <span  class="text-nowrap"  t-field="doc.date_order" t-options="{'widget': 'date'}"/>
                                                     </td>
                                                     </tr> <br></br>
                                                 <tr>
@@ -39,38 +47,36 @@
                                             </tr>
                                                 <tr>
                                                     <td>
-                                                        <b>الطرف الاول/ </b>
-                                                         <span class="text-nowrap" t-field="doc.company_id"/>
+                                                        <b>الطرف اﻷول/ </b>
+                                                         <span class="text-nowrap"   t-field="doc.company_id"/>
 
                                                     </td>
                                                     </tr>
                                                 <tr>
                                                     <td>
                                                         <b>الطرف الثاني/ </b>
-                                                         <span class="text-nowrap" t-field="doc.partner_id"/>
+                                                         <span  class="text-nowrap"  t-field="doc.partner_id"/>
 
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-            <br></br>
-            <br></br>
-            <br></br>
-            <table class="table table-sm o_main_table">
+
+            <table class="table table-sm o_main_table" style="font-family: Arial" >
                 <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                 <thead style="display: table-row-group ;font-family:Arial;">
-                    <tr>
-                        <th name="th_description" class="text-left">المنتجات </th>
-                        <th name="th_glass" class="text-left">مواصفات الزجاج</th>
-                        <th name="th_priceunit" class="text-left">سعر المتر</th>
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المنتجات </th>
+                        <th name="th_glass" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">مواصفات الزجاج</th>
+                        <th name="th_priceunit"  style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">سعر المتر</th>
 
-                        <th name="th_taxes" class="text-left">اجمالي المساحه</th>
-                        <th name="th_subtotal" class="text-left">
+                        <th name="th_taxes" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اجمالي المساحه</th>
+                        <th name="th_subtotal" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">
                             <span groups="account.group_show_line_subtotals_tax_excluded">المبلغ</span>
                         </th>
                     </tr>
                 </thead>
-                <tbody class="sale_tbody">
+                <tbody class="sale_tbody" style="font-family: Arial">
 
                     <t t-set="current_subtotal" t-value="0"/>
 
@@ -116,48 +122,58 @@
                 </tbody>
             </table>
 
-<br></br>
 
-                        <table  class="table">
+                        <table  class="table  o_main_table" style = "color: # 555; font-size: 16px;">
                             <tbody>
                             <tr class="border-black o_total">
-                                <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
-                                <div style="display: initial;font-size:13px;">
-                                 </div>
+                                <td  name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
 
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td class="text-right">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center" style="color: black;">
                                     <span t-field="doc.amount_untaxed"/>
                                 </td>
                         </tr>
                              <tr class="border-black o_total">
 
-                                <td name="td_amount_label"><strong>الضريبة</strong></td>
-                                    <div style="display: initial;font-size:13px;">
-                                     </div>
+                                <td style = "color: # 555; font-size: 16px;" name="td_amount_label"><strong>الضريبة</strong></td>
+
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
 
-                                <td class="text-right">
+                                <td class="text-center" style="color: black;">
                                     <span t-field="doc.amount_tax"/>
                                 </td>
                              </tr>
                              <tr class="border-black o_total">
 
-                                   <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
-                                        <div style="display: initial;font-size:13px;">
-                                         </div>
+                                   <td style = "color: # 555; font-size: 16px;" name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
 
-                                <td class="text-right">
+                                <td class="text-center" style="color: black;">
                                     <span t-field="doc.amount_total"/>
                                 </td>
                         </tr>
@@ -227,17 +243,14 @@
 
 
 
-                                     <br></br>
 
                   <h3>
-                            <p class="text-left" style = "font-family:Arial;">
-                                <strong>
-                                    <font style="font-family:Arial;">: مواد التشطيب و الأكسسوارات</font>
-                                </strong>
+                            <p class="text-left" >
+                                    <font style="font-family:Arial;  font-weight: bold;color:black"> مواد التشطيب و الأكسسوارات :</font>
                             </p>
                         </h3>
 
-                        <p class="text-left" style = "font-family:Arial;color: black;">
+                        <p class="text-left" style = "font-family:Arial;">
                             *الربلات و الفرش تمنع دخول الاتربة
                                                         <t t-foreach="doc.sale_accessory_ids" t-as="acc">
                                                                                <span t-field="acc.accessory_name.name"/> ,
@@ -277,18 +290,16 @@
                                                         </t>
                          </p>
                             <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
 
-                    <table class="table" style = "center" >
+
+                    <table class="table table-sm o_main_table" style = "center;font-family:'Arial, Verdana, sans-serif;" >
 
                         <thead>
                           <tr>
                             <th  class="text-left">الطرف الاول </th>
                               <th></th>
                               <th></th>
-                            <th class="text-right">الطرف الثاني</th>
+                            <th class="text-left">الطرف الثاني</th>
                                                              </tr>
 
                               </thead>
@@ -298,7 +309,7 @@
                              <td class="text-left">...................................</td>
                              <td></td>
                              <td></td>
-                             <td class="text-right">...................................</td>
+                             <td class="text-left">...................................</td>
 </tr>
 
                          </tbody>
