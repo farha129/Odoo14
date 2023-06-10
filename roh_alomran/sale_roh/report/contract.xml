@@ -12,7 +12,7 @@
                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
 
                     <h3 t-if="doc.state not in ['draft','sent']">عقد توريد وتركيب شبابيك و قطاعات اﻻلمنيوم </h3>
-                    <h3   t-if="doc.state in ['draft','sent']"> عرض توريد وتركيب شبابيك و قطاعات اﻻلمنيوم :</h3>
+                    <h3   t-if="doc.state in ['draft','sent']"> عرض توريد وتركيب شبابيك و قطاعات اﻻلمنيوم </h3>
 
 
                         </t>
@@ -137,6 +137,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
                                 <td class="text-center" style="color: black;">
                                     <span t-field="doc.amount_untaxed"/>
                                 </td>
@@ -145,6 +147,8 @@
 
                                 <td style = "color: # 555; font-size: 16px;" name="td_amount_label"><strong>الضريبة</strong></td>
 
+                                 <td></td>
+                                 <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
@@ -163,6 +167,8 @@
 
                                    <td style = "color: # 555; font-size: 16px;" name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>
 
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
