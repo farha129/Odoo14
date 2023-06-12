@@ -36,6 +36,7 @@
                                        <tree editable="bottom" options="{'no_open': True}">
                                                 <field name="product_id"/>
                                                 <field name="name"/>
+                                                <field name="cutter_type"  />
 <!--                                                <field name="product_widths" widget="many2many_tags"  />-->
 <!--                                                <field name="product_heights" widget="many2many_tags"/>-->
                                                 <field name="product_qty_new" />
@@ -171,12 +172,18 @@
             <field name="arch" type="xml">
                 <form string="Sale Order">
                     <sheet>
-                    <group col="2">
+                    <group col="4" string = "Width And height">
                             <field name="width" />
                             <field name="height" />
+                             <field name="is_edit" invisible="0"/>
                             <field name="sector_id" invisible="1"/>
-                            <field name="is_edit" invisible="0"/>
+                            <field name="cutter_type" invisible="1"/>
+
                     </group>
+                        <group  attrs="{'invisible': [('cutter_type','=',False)]}" col="4" string = "Cutter Information" >
+                            <field name="var_cutter"  attrs="{'invisible': [('cutter_type','not in',('vertical','both'))]}"/>
+                            <field name="hor_cutter" attrs="{'invisible': [('cutter_type','not in',('hor','both'))]}" />
+                        </group>
                     </sheet>
 
                 </form>

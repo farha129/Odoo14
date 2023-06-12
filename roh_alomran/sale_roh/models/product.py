@@ -59,8 +59,8 @@ class SupplementSector(models.Model):
     is_side = fields.Boolean(string='Is Side')
     is_heel = fields.Boolean(string='Is Heel')
     type = fields.Selection(
-        [('glass', 'Glass'), ('side', 'Side'), ('heel', 'Heel'),
-         ('wire', 'Wire'),('other','other')], string='Type')
+        [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),
+         ('wire', 'Wire'),('glass', 'Glass'),('other','other')], string='Type')
 
     division_number = fields.Integer('/', default=1)
     # dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
