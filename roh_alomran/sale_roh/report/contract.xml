@@ -191,70 +191,9 @@
 
 
 
-<!--                            <tr >-->
-<!--                                <td name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-
-<!--                                <td name="td_amount_untaxed" class="text-left">-->
-<!--                                    <span t-field="doc.amount_untaxed"/>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">-->
-<!--                                <tr style="">-->
-<!--                                    <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">-->
-<!--                                        <td >-->
-<!--                                            <span t-esc="amount_by_group[0]"/>-->
-<!--                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>-->
-<!--                                        </td>-->
-<!--                                         <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                        <td  class="text-left o_price_total">-->
-<!--                                            <span t-esc="amount_by_group[1]"-->
-<!--                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>-->
-<!--                                        </td>-->
-<!--                                    </t>-->
-<!--                                    <t t-else ="">-->
-<!--                                        <td name="td_amount_by_group_label">-->
-<!--                                            <span t-esc="amount_by_group[0]"/>-->
-<!--                                        </td>-->
-<!--                                         <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                        <td name="td_amount_by_group" class="text-left o_price_total">-->
-<!--                                            <span t-esc="amount_by_group[1]"-->
-<!--                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>-->
-<!--                                        </td>-->
-<!--                                    </t>-->
-<!--                                </tr>-->
-<!--                            </t>-->
-<!--                            <tr class="border-black o_total">-->
-<!--                                <td name="td_amount_total_label"><strong>الاجمالي مع الضريبة</strong></td>-->
-<!--                                 <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-<!--                                <td></td>-->
-
-<!--                                <td name="td_amount_total" class="text-left">-->
-<!--                                    <span t-field="doc.amount_total"/>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-
-
-
-
-
-
-                  <h3>
-                            <p class="text-left" >
+                            <span class="text-left" >
                                     <font style="font-family:Arial;  font-weight: bold;color:black"> مواد التشطيب و الأكسسوارات :</font>
-                            </p>
-                        </h3>
+                            </span>
 
                         <p class="text-left" style = "font-family:Arial;">
                             *الربلات و الفرش تمنع دخول الاتربة
@@ -287,6 +226,10 @@
                             <br class="text-left"></br>
 *ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات
                             <br class="text-left"></br>
+                             <t t-if="doc.contract_note">
+                               * <span t-field="doc.contract_note"/>
+                              <br class="text-left"></br></t>
+
                                                         <t t-if="doc.destination_payment">
 
 *تتم الدفعات عن طريق التحويل الى حساب المؤسسة بنك الرياض (ٍِSA4020000002362862629940) على الدفعات كالآتي:

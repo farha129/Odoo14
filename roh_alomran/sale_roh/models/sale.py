@@ -74,6 +74,7 @@ class SaleOrder(models.Model):
     count = fields.Integer( string='Count')
     po_count = fields.Integer(compute='_get_po', string='Purchase Orders')
     order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=False, auto_join=True)
+    contract_note = fields.Text(string = "Nots")
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
 
@@ -87,8 +88,8 @@ class SaleOrder(models.Model):
 
     def _get_po(self):
         for orders in self:
-            purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', self.name)])
-        self.po_count = len(purchase_ids)
+            purchase_ids = self.env['purchase.order'].search([('partner_ref', '=', orders.name)])
+            self.po_count = len(purchase_ids)
 
 
     def create_order_line(self):
@@ -446,8 +447,6 @@ class SaleOrder(models.Model):
                             product_width = (obj.width * 100) + 30
                             var_cutter = obj.var_cutter
                             hor_cutter = obj.hor_cutter
-                            print('vvvvvvvvvvvvvvva',var_cutter)
-                            print('hhhhhhhhhhhhh',hor_cutter)
 
                             sum_hight = 0.0
                             sum_with = 0.0
@@ -456,42 +455,29 @@ class SaleOrder(models.Model):
                                 height = (product_hight + sect.height) * sect.nmuber
                                 width = (product_width + sect.width) * sect.nmuber
                                 sum += height + width
-                                qyt = sum / 5.80
-
-
-                            # if sect.type == 'cutter': and var_cutter != 0.0000 :
-                            #     toral_var += var_cutter
-                            #     if toral_var > 0:
-                            #         qyt = toral_var / 5.80
-                            #     print('cvvvvvvvvvvvvvvvvvvvvvvqyt',qyt)
-                            #     print('cvvvvvvvvvvvvvvvvvvvvvvqyt',toral_var)
-
+                                qyt = (sum / 5.80)/ 100
 
 
                             if sect.type == 'cutter_hor' and hor_cutter:
                                 if hor_cutter > 0 :
                                     sum += hor_cutter
                                 qyt = sum/5.80
-                                print('ssssssssummmm',sum)
-                                print('ssssssssummmm',sum)
+
                             if sect.type == 'cutter_var' and var_cutter:
                                 if var_cutter > 0 :
                                     sum += var_cutter
                                 qyt = sum/5.80
-                                print('ssssssssummmm',sum)
-                                print('ssssssssummmm',sum)
-
                             if sect.type == 'side':
                                 sum += ((product_hight + sect.height) * sect.nmuber)
                                 side = product_hight + sect.height
                                 val.append(side)
-                                qyt = sum / 5.80
+                                qyt = (sum / 5.80)/ 100
 
                             if sect.type == 'heel':
                                 sum += ((product_width + sect.width) / sect.division_number) * sect.nmuber
                                 heel = ((product_width + sect.width) / sect.division_number)
                                 val_with.append(heel)
-                                qyt = sum / 5.80
+                                qyt = (sum / 5.80)/ 100
 
                             if sect.type == 'glass':
                                 if val and val_with:
@@ -502,7 +488,7 @@ class SaleOrder(models.Model):
                                         width2 = sect.heel + heel
                                         area = ((hight2 * width2) * sect.nmuber) / 100
                                         sum += area
-                                    qyt = sum / 7.42
+                                    qyt = (sum / 7.42)/ 100
                                     break
 
 
@@ -512,7 +498,7 @@ class SaleOrder(models.Model):
 
                                     area = ((hight2 * width2) * sect.nmuber) / 100
                                     sum += area
-                                qyt = sum / 7.42
+                                qyt = (sum / 7.42)/ 100
 
 
                             if sect.type == 'wire':
@@ -525,10 +511,10 @@ class SaleOrder(models.Model):
                                         heel = val_with[i]
                                         sum_with += (sect.heel + heel) * sect.nmuber
                                 total = sum_hight / 5.80 + sum_with / 5.80
-                                qyt = total
+                                qyt = total/ 100
                         # if qyt !=0 :
                         sup_ids = self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
-                                                                           'purchase_uom_qty': qyt / 100,
+                                                                           'purchase_uom_qty': qyt ,
                                                                            'product_uom': sect.supplement_name.uom_id.id,
                                                                            'sale_id': self.id,
                                                                            })
@@ -811,12 +797,6 @@ class DitalsSector(models.Model):
     @api.onchange('width','height')
     def onchange_width_height(self):
         self.is_edit = False
-
-
-
-
-
-
 
 class SectorOderLine(models.Model):
     _name = 'sector.order.line'

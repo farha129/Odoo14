@@ -54,7 +54,11 @@
 
                                        </tree>
                            </field>
+                         <group colspan="4">
+                                    <field name="contract_note" nolabel="0" placeholder="Notes..."/>
+                                </group>
                     </page>
+
 
                 </xpath>
 
