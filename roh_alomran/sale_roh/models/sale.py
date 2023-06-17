@@ -516,6 +516,7 @@ class SaleOrder(models.Model):
                         sup_ids = self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
                                                                            'purchase_uom_qty': qyt ,
                                                                            'product_uom': sect.supplement_name.uom_id.id,
+                                                                           'sector_id': rec.id,
                                                                            'sale_id': self.id,
                                                                            })
                         if sup_ids:

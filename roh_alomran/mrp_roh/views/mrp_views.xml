@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+
+
+        <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_mrp_id" model="ir.ui.view">
+            <field name="name">mrp.productioninherited</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+
+                     <button name="action_sector_det" string="sector" type="object"
+                            class="btn-primary" />
+
+
+                </xpath>
+
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

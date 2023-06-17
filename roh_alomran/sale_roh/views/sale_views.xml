@@ -104,6 +104,7 @@
                                      <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
                                      <field name="purchase_uom_qty" />
                                      <field name="product_uom" />
+                                     <field name="sector_id" invisible="1" />
 
                              </tree>
                         </field>
