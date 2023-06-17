@@ -195,7 +195,7 @@
                                     <font style="font-family:Arial;  font-weight: bold;color:black"> مواد التشطيب و الأكسسوارات :</font>
                             </span>
 
-<!--                        <p class="text-left" style = "font-family:Arial;">-->
+                        <p class="text-left" style = "font-family:Arial;">
 <!--                            *الربلات و الفرش تمنع دخول الاتربة-->
 <!--                                                        <t t-foreach="doc.sale_accessory_ids" t-as="acc">-->
 <!--                                                                               <span t-field="acc.accessory_name.name"/> ,-->
