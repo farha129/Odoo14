@@ -11,6 +11,8 @@ from dateutil.relativedelta import relativedelta
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
+    partner_id = fields.Many2one('res.partner',string = 'Customer')
+
     def action_sector_det(self):
         tree_id = self.env.ref("sale_roh.ditals_view_tree").id
         for production in self:
@@ -52,6 +54,15 @@ class StockMove(models.Model):
 class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
+
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+        for order in self:
+            order.procurement_group_id.stock_move_ids.created_production_id.write(
+                {"partner_id": order.partner_id.id,
+                 "analytic_account_id": order.analytic_account_id}
+            )
+        return res
 
     def create_order_line(self):
 

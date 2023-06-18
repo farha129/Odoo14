@@ -19,6 +19,11 @@
 
 
                 </xpath>
+                            <xpath expr="//field[@name='user_id']" position="before">
+                                                <field name="partner_id" />
+
+                            </xpath>
+
 
 
             </field>
@@ -30,10 +35,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//field[@name='order_line']//tree//field[@name='name']"
-                position="after"
-            >
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
                 <field
                     name="bom_id"
                     context="{'default_product_id': product_id, 'default_product_tmpl_id': product_template_id}"

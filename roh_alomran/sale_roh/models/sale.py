@@ -60,7 +60,13 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
+    # def _default_end_date_order(self):
+    #     days = self.implemented_period end_date_order
+    #     if days > 0:
+    #
+
     installation = fields.Boolean('Installation requested?')
+    end_date_order = fields.Date(string = 'End Date',readonly=True)
     sector_order_line = fields.One2many('sector.order.line', 'sale_id',string='Sectors Order Lines', copy=True)
     destination = fields.Char(string='Destination', readonly=False)
     is_delivery = fields.Boolean('Delivery request?')
@@ -77,6 +83,9 @@ class SaleOrder(models.Model):
     contract_note = fields.Text(string = "Nots")
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
+
+
+
 
     # @api.model
     # def create(self, vals):
@@ -412,6 +421,10 @@ class SaleOrder(models.Model):
 
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
+        days = self.implemented_period
+
+        self.end_date_order =  fields.Date.to_string(self.date_order + timedelta(days))
+
         self.action_create_purchase_order()
 
         return res
