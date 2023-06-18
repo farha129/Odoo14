@@ -416,7 +416,7 @@ class SaleOrder(models.Model):
 
         return res
 
-
+    @api.depends('sector_order_line')
     def _get_supp(self):
         self.dimension_supplement_ids = [(5, 0)]
         for rec in self.sector_order_line:
@@ -512,15 +512,17 @@ class SaleOrder(models.Model):
                                         sum_with += (sect.heel + heel) * sect.nmuber
                                 total = sum_hight / 5.80 + sum_with / 5.80
                                 qyt = total/ 100
-                        # if qyt !=0 :
-                        sup_ids = self.env['dimension.supplement'].create({'supplement_name': sect.supplement_name.id,
+
+                        self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
                                                                            'purchase_uom_qty': qyt ,
                                                                            'product_uom': sect.supplement_name.uom_id.id,
                                                                            'sector_id': rec.id,
                                                                            'sale_id': self.id,
                                                                            })
-                        if sup_ids:
-                            self.write({'dimension_supplement_ids': [(4, sup_ids.id)]})
+                        # if sup_ids:
+                        #     self.update({'dimension_supplement_ids': [(4, sup_ids.id)]})
+
+
 
     # @api.depends('sector_order_line')
     # def _get_supp(self):
@@ -810,6 +812,11 @@ class SectorOderLine(models.Model):
 
     product_id = fields.Many2one('product.product', string='Sector',domain="[('is_sector', '=', True)]", required=True) # Unrequired company
     final_product = fields.Many2one('product.product', string='Final Product', required=True)
+    product_number = fields.Float(string='Product Number', required=True,default=1)
+
+    product_template_id = fields.Many2one(related="final_product.product_tmpl_id",
+                                          string="Template Id of Selected"
+                                                 " Product")
 
     product_heights = fields.Many2many('dimension.line.height', string='Height(Mt)', required=False, store = True)
     product_widths = fields.Many2many('dimension.line.width',string='Width(Mt)', required=False,store = True)
