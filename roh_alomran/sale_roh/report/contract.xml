@@ -229,7 +229,7 @@
 *ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات
                             <br class="text-left"></br>
                              <t t-if="doc.contract_note">
-                               * <span t-field="doc.contract_note"/>
+                               <span t-field="doc.contract_note"/>
                               <br class="text-left"></br></t>
 
                                                         <t t-if="doc.destination_payment">

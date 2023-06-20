@@ -12,6 +12,9 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     partner_id = fields.Many2one('res.partner',string = 'Customer')
+    project_id = fields.Many2one('project.project',string="project")
+
+
 
     def action_sector_det(self):
         tree_id = self.env.ref("sale_roh.ditals_view_tree").id
@@ -55,12 +58,18 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
+
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
+        project_id = self.env['project.project'].create({'name':self.name +'/'+ self.partner_id.name })
+        self.project_id = project_id
+        self.analytic_account_id = self.project_id .analytic_account_id
+
         for order in self:
             order.procurement_group_id.stock_move_ids.created_production_id.write(
                 {"partner_id": order.partner_id.id,
-                 "analytic_account_id": order.analytic_account_id}
+                 "analytic_account_id": order.analytic_account_id,
+                 "project_id": order.project_id}
             )
         return res
 
@@ -118,9 +127,6 @@ class SaleOrder(models.Model):
                      })
 
             self.env['mrp.bom.line'].create(val)
-
-
-
 
 
             self.order_line.create({'product_id': sect_obj.final_product.id,
