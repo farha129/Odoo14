@@ -25,8 +25,11 @@ class MrpProduction(models.Model):
         print('onnnnnnnnnnnnnnnnnnnnne day',one_day)
         print('onnnnnnnnnnnnnnnnnnnnne number_meter',self.company_id.number_meter )
         print('onnnnnnnnnnnnnnnnnnnnne  self.company_id.number_day', self.company_id.number_day)
-        self.day_number_work = self.product_qty /one_day
-        print('onnnnnnnnnnnnnnnnnnnnne  day_number_work',  self.product_qty /one_day)
+        if self.product_qty /one_day == 0:
+            self.day_number_work = 1
+        else:
+
+           self.day_number_work = self.product_qty /one_day
 
 
 
