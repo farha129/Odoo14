@@ -20,6 +20,7 @@ class MrpProduction(models.Model):
         self.task_number = task_obj.search_count([('mrp_id', 'in', [a.id for a in self])])
 
     task_number = fields.Integer(compute='task_count', string='Tasks')
+    day_number_work = fields.Integer(string='nu')
     day_number_cut = fields.Float(compute='_get_number_day_work', string='The days of Cut')
     day_number_install = fields.Float(compute='_get_number_day_work', string='The days Of Install')
     day_number_gathering = fields.Float(compute='_get_number_day_work', string='The days Of Gathering')
