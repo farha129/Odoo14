@@ -10,7 +10,7 @@ from odoo import api, fields, models, _
 class DeadLineReminder(models.Model):
     _inherit = "project.task"
 
-    task_reminder = fields.Boolean("Reminder")
+    task_reminder = fields.Boolean("Reminder",default=True)
 
     @api.model
     def _cron_deadline_reminder(self):

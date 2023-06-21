@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_mrp_config_worker_task_form" model="ir.ui.view">
+            <field name="name">config.worker.task</field>
+            <field name="model">config.worker.task</field>
+            <field name="arch" type="xml">
+                <form string="Create Task">
+                     <sheet>
+                        <group>
+                            <field name="name" />
+                        </group>
+                     <group col = '6'>
+                          <field name="one_work_in_day"  />
+
+                         <field name="one_work_in_month" />
+
+                          <field name="one_work_in_month"  invisible="1" />
+                          <field name="number_worker" />
+                           <field name="workers_in_day" />
+
+                            <field name="workers_in_month"  />
+                     </group>
+                     </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_view_worker_task_id" model="ir.actions.act_window">
+            <field name="name">Configration Tasks</field>
+            <field name="res_model">config.worker.task</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="menu_config_task_worker" name="Worker Task" parent="mrp.menu_mrp_configuration"
+            action="action_view_worker_task_id" groups="base.group_system"/>
+    </data>
+
+
+</odoo>

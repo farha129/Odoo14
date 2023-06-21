@@ -18,7 +18,7 @@
         'security/ir.model.access.csv',
         'views/mrp_views.xml',
         'views/mrp_task_views.xml',
-        'views/res_config_settings_views.xml',
+        'views/config_task_worker.xml',
 
 
         
