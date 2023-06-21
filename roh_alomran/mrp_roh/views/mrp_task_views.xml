@@ -68,13 +68,13 @@
 				</button>
                                                 <xpath expr="//page[2]" position="after">
                                                     <page string = "Number Day For Task">
-                                                        <group col = '4'>
+                                                        <group col = '2'>
 
 
-                                                             <field name="day_number_cut" /><span>Days</span>
-                                                             <field name="day_number_gathering" /><span>Days</span>
-                                                                 <field name="day_number_glass" /> <span>Days</span>
-                                                               <field name="day_number_install" /> <span>Days</span>
+                                                             <field name="day_number_cut" />
+                                                             <field name="day_number_gathering" />
+                                                                 <field name="day_number_glass" />
+                                                               <field name="day_number_install" />
                                                         </group>
 
                                                     </page>
