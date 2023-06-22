@@ -74,6 +74,7 @@ class SaleOrder(models.Model):
         return res
 
     def create_order_line(self):
+        self._get_supp()
 
         # self.env['mrp.bom'].create({
         #     'product_tmpl_id': kit.product_tmpl_id.id,
@@ -92,7 +93,7 @@ class SaleOrder(models.Model):
                     [('product_acc_id.name', '=', sec.product_id.name), ('accessory_name', '=', all.id)])
                 if acc_obj:
                     for obj in acc_obj:
-                        qyt += obj.accessory_uom_qty
+                        qyt += obj.accessory_uom_qty * sec.product_number
 
             if qyt != 0:
                 self.sale_accessory_ids.create({'accessory_name': all.id,

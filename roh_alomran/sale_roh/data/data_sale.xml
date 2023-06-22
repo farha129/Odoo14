@@ -23,45 +23,15 @@
 
 
 
+ <!-- Sequences for request purchase from Sale-->
+        <record id="seq_request_purchase" model="ir.sequence">
+            <field name="name">Request Purchase</field>
+            <field name="code">request.purchase</field>
+            <field name="prefix">R</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
 
-<!--  <record id="product_product_10000" model="product.template">-->
-<!--            <field name="name">قطاع 10 سم</field>-->
-<!--            -->
-
-<!--            <field name="type">product</field>-->
-
-<!--            <field name="uom_id" ref="uom.product_uom_unit"/>-->
-<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
-<!--            <field name="is_sector">True</field>-->
-
-<!--        </record>-->
-<!--        <record id="product_product_14444" model="product.product">-->
-<!--            <field name="name">الحلق</field>-->
-<!--                <field name="type">product</field>-->
-<!--                <field name="is_supplement">True</field>-->
-<!--                <field name="uom_id" ref="uom.product_uom_unit"/>-->
-<!--            <field name="uom_po_id" ref="uom.product_uom_unit"/>-->
-<!--            </record>-->
-<!--            -->
-<!--        -->
-<!--         <record id="supplement_sector2" model="supplement.sector">-->
-<!--                     <field name="product_id" ref="sale_roh.product_product_10000"/>-->
-<!--            <field name="supplement_name" ref="sale_roh.product_product_14444"/>-->
-
-<!--            <field name="dimensions_number">one</field>-->
-<!--                         <field name="measured_from">h_w</field>-->
-<!--             <field name="height">30</field>-->
-<!--              <field name="width">30</field>-->
-<!--             <field name="division_number">1</field>-->
-<!--              <field name="side">0.0</field>-->
-<!--              <field name="heel">0.0</field>-->
-
-<!--            -->
-<!--            <field name="is_side">False</field>-->
-<!--             <field name="is_heel">False</field>-->
-
-<!--        </record>-->
-<!--    -->
     </data>
     
 </odoo>

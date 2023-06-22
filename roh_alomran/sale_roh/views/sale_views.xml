@@ -11,13 +11,13 @@
 
 
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                    <button name="action_open_purchase_order" type="object" class="oe_stat_button" fa-th-list="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
+                    <button name="action_open_request" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
                         <div class="o_field_widget o_stat_info">
                             <span class="o_stat_value">
                                 <field name="po_count"/>
                             </span>
+                            <span class="o_stat_text">Request</span>
                             <span class="o_stat_text">Purchase</span>
-                            <span class="o_stat_text">Orders</span>
                         </div>
                     </button>
 
@@ -26,9 +26,7 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,again,sent,sale"/>
                 </xpath>
 
-    	<xpath expr="//button[@name='action_confirm']" position="before">
-            <button name="create_order_line"  type="object" string="Get Final Product"  attrs="{'invisible': [('count', '=', 1)]}" />
-        </xpath>
+
 
                  <xpath expr="//page[1]" position="before">
                     <page string="Sector" name="sector_order_line">
@@ -168,15 +166,15 @@
                           <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='partner_ref']" position="after">
-                                                                <field name="customer_id" />
-                                                                <field name="sale_id" />
+                   <field name="sale_id"  options="{'no_create': True}"/>
+                   <field name="customer_id" />
 
                 </xpath>
-                          </field>
+               </field>
           </record>
 
 
-
+<!-- Wiidth And Hieght in Button ADD -->
         <record id="view_detial_form" model="ir.ui.view">
             <field name="name">ditals.sector</field>
             <field name="model">ditals.sector</field>
@@ -220,7 +218,7 @@
         <field name="name">Ditals Sector</field>
         <field name="res_model">ditals.sector</field>
         <field name="view_mode">tree,form</field>
-                    <field name="view_id" ref="ditals_view_tree"/>
+        <field name="view_id" ref="ditals_view_tree"/>
     </record>
 
 
