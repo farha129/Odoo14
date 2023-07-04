@@ -27,12 +27,30 @@ class RequestPurchase(models.Model):
     po_count = fields.Integer(compute='_get_po', string='Request Purchase')
 
 
-    # state = fields.Selection([
-    #     ('draft', 'Draft'),
-    #     ('in_purchase', 'Purchase Order'),
-    #     ('cancel', 'Cancelled'),
-    #     ('done', 'Done')
-    # ], string='Status', readonly=True, index=True, copy=False, default='draft', tracking=True)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('in_purchase', 'Purchase Order'),
+        ('cancel', 'Cancelled'),
+        ('done', 'Done')
+    ], string='Status', readonly=True, index=True, copy=False, default='draft', tracking=True)
+
+    # def action_draft(self):
+    #     for rec in self:
+    #         rec.state = 'draft'
+
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+
+    def action_in_purchase(self):
+        for rec in self:
+            rec.state = 'in_purchase'
+
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+
+
 
     @api.model
     def create(self, vals):

@@ -88,6 +88,14 @@ class SaleOrder(models.Model):
     #     return order
 
 
+    def action_cancel(self):
+        res = super(SaleOrder, self).action_draft()
+        for orders in self:
+            request_ids = self.env['request.purchase'].search([('sale_id', '=', orders.id)])
+            if request_ids:
+                request_ids.write({'state':'cancel'})
+
+
 
     def _get_po(self):
         for orders in self:

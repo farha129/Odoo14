@@ -6,14 +6,14 @@
             <field name="model">request.purchase</field>
             <field name="arch" type="xml">
                 <form string="Purchase Order" class="o_purchase_order">
-<!--                <header>-->
-<!--&lt;!&ndash;                    <button name="button_draft" states="cancel" string="Set to Draft" type="object" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    <button name="button_done" type="object" string="Lock" states="purchase"/>&ndash;&gt;-->
-<!--                                        <field name="state" widget="statusbar" statusbar_visible="draft,in_purchase,done"/>-->
+                <header>
+                    <button name="action_in_purchase" states="draft" string="In Purchase" type="object" />
+<!--                    <button name="button_cancel"  string="Cancel" type="object" />-->
+                    <button name="action_done" type="object" string="Done" states="in_purchase"/>
+                     <field name="state" widget="statusbar" statusbar_visible="draft,in_purchase,done,cancel"/>
 
 
-<!--                </header>-->
+                </header>
 
                 <sheet>
                  <div class="oe_button_box" name="button_box">
@@ -42,6 +42,8 @@
                             <field name="date_order" readonly="1"/>
                             <field name="sale_id" readonly="1"/>
                             <field name="currency_id" groups="base.group_multi_currency" force_save="1" readonly="1"/>
+                            <field name="state" invisible="1"/>
+
                         </group>
                     <notebook>
                         <page string="Lines" name="Lines">
@@ -75,10 +77,11 @@
             <field name="name">request.purchase.tree</field>
             <field name="model">request.purchase</field>
             <field name="arch" type="xml">
-                <tree string="Request" >
+                <tree decoration-info="state=='draft'" decoration-danger="state == 'done'" decoration-success="state == 'in_purchase'" decoration-muted="state == 'cancel'" string="Request" >
                                         <field name="name" />
                                         <field name="date_order"/>
                                         <field name="customer_id"/>
+                                        <field name="state"/>
 
 
                 </tree>

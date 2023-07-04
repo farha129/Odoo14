@@ -31,16 +31,24 @@ class MrpProduction(models.Model):
        config_obj = self.env['config.worker.task'].search([])
        for config in config_obj:
            if config.name == 'cut':
-               self.day_number_cut = self.product_qty /config.workers_in_day
+               self.day_number_cut = round(self.product_qty /config.workers_in_day)
+               # if day_cut == 0:
+               #     self.day_number_cut = 1
+               # else:
+               #     self.day_number_cut = day_cut
+
+
            if config.name == 'gathering':
-               self.day_number_gathering = self.product_qty /config.workers_in_day
+               self.day_number_gathering =round(self.product_qty /config.workers_in_day)
            if config.name == 'installation':
-               self.day_number_install = self.product_qty /config.workers_in_day
+               self.day_number_install = round(self.product_qty /config.workers_in_day)
            if config.name == 'glass':
-               self.day_number_glass = self.product_qty /config.workers_in_day
+               self.day_number_glass = round(self.product_qty /config.workers_in_day)
 
-
-
+               # if day_glas == 0:
+               #     self.day_number_glass  = 1
+               # else:
+               #     self.day_number_glass = day_cut
 
 
 class mrp_task_wizard(models.TransientModel):

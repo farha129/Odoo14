@@ -18,17 +18,17 @@
                    <tbody>
 
                     <tr >
-                        <td   class="text-right"><span t-field="o.name"/></td>
-                        <td  class="text-right" ><strong>:المرجع</strong></td>
-                         <td   class="text-right"><span t-field="o.date_order"/></td>
-                        <td  class="text-right" ><strong>:التاريخ</strong></td>
+                       <td  class="text-left" ><strong>المرجع :</strong></td>
+                        <td   class="text-left"><span t-field="o.name"/></td>
+                        <td  class="text-left" ><strong>التاريخ :</strong></td>
+                         <td   class="text-left"><span t-field="o.date_order"/></td>
                     </tr>
 
                     <tr  >
-                         <td  class="text-right" ><span t-field="o.customer_id.name"/></td>
-                         <td  class="text-right"><strong> :اسم العميل</strong></td>
-                         <td class="text-right"><span t-field="o.sale_id"/></td>
-                         <td  class="text-right"><strong>:رقم العقد</strong></td>
+                        <td  class="text-left"><strong> اسم العميل :</strong></td>
+                         <td  class="text-left" ><span t-field="o.customer_id.name"/></td>
+                           <td  class="text-left"><strong>رقم العقد :</strong></td>
+                         <td class="text-left"><span t-field="o.sale_id"/></td>
 
                     </tr>
                    </tbody>
@@ -44,9 +44,9 @@
 
                            <thead style="display: table-row-group ;font-family:Arial;">
                     <tr style="font-family: Arial, Helvetica, sans-serif;" >
-                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-right">المنتجات </th>
-                        <th name="th_qyt" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-right">الكمية</th>
-                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-right">الوحدة</th>
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المنتجات </th>
+                        <th name="th_qyt" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الكمية</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الوحدة</th>
 
                             </tr>
                         </thead>
@@ -54,14 +54,14 @@
                                 <t t-set="lines" t-value="o.line_ids"/>
                                 <t t-foreach="lines" t-as="line">
                                      <tr>
-                                          <td class="text-right">
+                                          <td class="text-left">
                                          <span  t-field="line.product_id.name" />
 
                                     </td>
-                                     <td class="text-right">
+                                     <td class="text-left">
                                             <span  t-field="line.product_qty"/>
                                         </td>
-                                        <td class="text-right">
+                                        <td class="text-left">
                                             <span  t-field="line.product_uom.name"/>
                                         </td>
 

@@ -20,6 +20,13 @@ class ConfigWorkerTask(models.Model):
             rec.workers_in_month = rec.one_work_in_month * rec.number_worker
             rec.workers_in_day = rec.one_work_in_day * rec.number_worker
 
+class ResDiscountSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+    percent_period_date = fields.Integer(related='company_id.percent_period_date', readonly =False)
 
 
+
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+    percent_period_date = fields.Integer(string = 'Percent Calculation Mrp date',help ='Scheduled Date in MRP Calculation from This percent and implemented period in SO ')
 

@@ -64,11 +64,15 @@ class SaleOrder(models.Model):
         project_id = self.env['project.project'].create({'name':self.name +'/'+ self.partner_id.name })
         self.project_id = project_id
         self.analytic_account_id = self.project_id .analytic_account_id
+        days = self.implemented_period * (self.company_id.percent_period_date/100)
+
+        mrp_date = fields.Date.to_string(self.date_order + timedelta(days))
 
         for order in self:
             order.procurement_group_id.stock_move_ids.created_production_id.write(
                 {"partner_id": order.partner_id.id,
                  "analytic_account_id": order.analytic_account_id,
+                 "date_planned_start": mrp_date,
                  "project_id": order.project_id}
             )
         return res
