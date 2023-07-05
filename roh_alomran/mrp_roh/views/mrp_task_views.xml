@@ -66,20 +66,31 @@
 				<button name="action_assign" position="after">
 					<button name="%(action_view_mrp_production_task_form)d" string="Create Task" type="action"/>
 				</button>
-                                                <xpath expr="//page[2]" position="after">
-                                                    <page string = "Number Day For Task">
-                                                        <group col = '2'>
+                 <xpath expr="//group[1]" position="after">
+                     <group >
+                          <label for="day_number_cut" string="The days of Cut"/>
+                            <div class="o_row">
+                            <field name="day_number_cut"/>
+                            <span attrs="{'invisible':[('day_number_cut','!=',0.0)]}">OverTime</span>
+                            </div>
+                         <label for="day_number_gathering" string="The days of Gathering"/>
+                            <div class="o_row">
+                            <field name="day_number_gathering"/>
+                            <span attrs="{'invisible':[('day_number_gathering','!=',0.0)]}">OverTime</span>
+                            </div>
+                         <label for="day_number_glass" string="The days of Glass"/>
+                            <div class="o_row">
+                            <field name="day_number_glass"/>
+                            <span attrs="{'invisible':[('day_number_glass','!=',0.0)]}">OverTime</span>
+                            </div>
+                         <label for="day_number_install" string="The days of Install"/>
+                            <div class="o_row">
+                            <field name="day_number_install"/>
+                            <span attrs="{'invisible':[('day_number_install','!=',0.0)]}">OverTime</span>
+                            </div>
 
-
-                                                             <field name="day_number_cut" />
-                                                             <field name="day_number_gathering" />
-                                                                 <field name="day_number_glass" />
-                                                               <field name="day_number_install" />
-                                                        </group>
-
-                                                    </page>
-
-                                                </xpath>
+                     </group>
+                </xpath>
 
 			</field>
 		</record>
@@ -93,13 +104,7 @@
                                      <field name="task_type" />
                                 </xpath>
                         </field>
-
-
-
-
         </record>
-
-
 	</data>
 </odoo>
 

@@ -25,30 +25,43 @@ class MrpProduction(models.Model):
     day_number_install = fields.Float(compute='_get_number_day_work', string='The days Of Install')
     day_number_gathering = fields.Float(compute='_get_number_day_work', string='The days Of Gathering')
     day_number_glass = fields.Float(compute='_get_number_day_work', string='The days Of Glass')
+    total_day = fields.Float(compute='_get_number_day_work', string='Manufactur Period')
+    day_in_factory = fields.Float(compute='_get_number_day_work', string='Period In Factory')
+    day_out_factory = fields.Float(compute='_get_number_day_work', string='Period Out Factory')
+
 
 
     def _get_number_day_work(self):
-       config_obj = self.env['config.worker.task'].search([])
-       for config in config_obj:
-           if config.name == 'cut':
-               self.day_number_cut = round(self.product_qty /config.workers_in_day)
-               # if day_cut == 0:
-               #     self.day_number_cut = 1
-               # else:
-               #     self.day_number_cut = day_cut
+       # self.ensure_one()
+       for rec in self :
+
+           config_obj = self.env['config.worker.task'].search([])
+           for config in config_obj:
+               if config.name == 'cut':
+                   rec.day_number_cut = round(rec.product_qty /config.workers_in_day)
+                   # if day_cut == 0:
+                   #     self.day_number_cut = 1
+                   # else:
+                   #     self.day_number_cut = day_cut
 
 
-           if config.name == 'gathering':
-               self.day_number_gathering =round(self.product_qty /config.workers_in_day)
-           if config.name == 'installation':
-               self.day_number_install = round(self.product_qty /config.workers_in_day)
-           if config.name == 'glass':
-               self.day_number_glass = round(self.product_qty /config.workers_in_day)
+               if config.name == 'gathering':
+                   rec.day_number_gathering =round(rec.product_qty /config.workers_in_day)
+               if config.name == 'installation':
+                   rec.day_number_install = round(rec.product_qty /config.workers_in_day)
+               if config.name == 'glass':
+                   rec.day_number_glass = round(rec.product_qty /config.workers_in_day)
 
-               # if day_glas == 0:
-               #     self.day_number_glass  = 1
-               # else:
-               #     self.day_number_glass = day_cut
+           rec.total_day = rec.day_number_cut + rec.day_number_gathering + rec.day_number_install + rec.day_number_glass
+           rec.day_in_factory = rec.day_number_cut + rec.day_number_gathering  + rec.day_number_glass
+           rec.day_out_factory = rec.day_number_install
+
+    def _get_days(self):
+
+        for rec in self:
+            rec.total_day = 0.0 #rec.day_number_cut + rec.day_number_gathering + rec.day_number_install + rec.day_number_glass
+            rec.day_in_factory = 0.0 #rec.day_number_cut + rec.day_number_gathering + rec.day_number_glass
+            rec.day_out_factory =0.0 # rec.day_number_install
 
 
 class mrp_task_wizard(models.TransientModel):
