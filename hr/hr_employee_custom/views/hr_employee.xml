@@ -69,7 +69,35 @@
             sequence="5"
             />
 
-        <!-- Inherit Employee View -->
+        <!-- Inherit Employee Tag View -->
+
+
+    <record id="hr_employee_tag_custom_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.category.form</field>
+        <field name="model">hr.employee.category</field>
+        <field name="inherit_id" ref="hr.view_employee_category_form"/>
+        <field name="arch" type="xml">
+                 <xpath expr="//field[@name='name']" position="after">
+                                 <field name="tech_type"  />
+
+                 </xpath>
+        </field>
+     </record>
+
+ <record id="hr_employee_tag_custom_view_list" model="ir.ui.view">
+        <field name="name">hr.employee.category.list</field>
+        <field name="model">hr.employee.category</field>
+        <field name="inherit_id" ref="hr.view_employee_category_list"/>
+        <field name="arch" type="xml">
+                 <xpath expr="//field[@name='name']" position="after">
+                                 <field name="tech_type"  />
+
+                 </xpath>
+        </field>
+     </record>
+
+
+         <!-- Inherit Employee View -->
 
 
      <record id="hr_employee_custom_view_form" model="ir.ui.view">
@@ -92,6 +120,7 @@
                 </xpath>
                             <xpath expr="//field[@name='country_id']" position="after">
                                  <field name="religion_id"  string="Religion"/>
+                                 <field name="tech_type"  />
                             </xpath>
 
         </field>

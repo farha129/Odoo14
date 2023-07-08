@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_create_mrp_task_id" model="ir.cron">
+        <field name="name">Create MRP Tasks</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_mrp_production"/>
+        <field name="code">model.create_task_mrp()</field>
+        <field name="state">code</field>
+    </record>
+
+
+
+</odoo>

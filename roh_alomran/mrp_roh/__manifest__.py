@@ -16,6 +16,7 @@
 
 
         'security/ir.model.access.csv',
+        'data/task_cron.xml',
         'views/mrp_views.xml',
         'views/mrp_task_views.xml',
         'views/config_mrp.xml',

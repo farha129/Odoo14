@@ -5,6 +5,8 @@ from odoo import models, fields, api, _
 import datetime
 from datetime import datetime
 from datetime import timedelta
+import  arabic_reshaper
+
 
 from dateutil.relativedelta import relativedelta
 
@@ -69,12 +71,17 @@ class SaleOrder(models.Model):
         mrp_date = fields.Date.to_string(self.date_order + timedelta(days))
 
         for order in self:
+            pro = order.procurement_group_id.stock_move_ids.created_production_id
             order.procurement_group_id.stock_move_ids.created_production_id.write(
                 {"partner_id": order.partner_id.id,
                  "analytic_account_id": order.analytic_account_id,
                  "date_planned_start": mrp_date,
                  "project_id": order.project_id}
             )
+
+
+
+
         return res
 
     def create_order_line(self):
