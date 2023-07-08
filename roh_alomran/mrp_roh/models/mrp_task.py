@@ -80,9 +80,13 @@ class MrpProduction(models.Model):
                 employees_glass = []
                 employees_install = []
                 day_number_cut = 0
+                overtime_cut = 0
                 day_number_install = 0
+                overtime_install = 0
                 day_number_gathering = 0
+                overtime_gath = 0
                 day_number_glass = 0
+                overtime_glass = 0
                 text = ''
                 qty= ''
 
@@ -100,6 +104,10 @@ class MrpProduction(models.Model):
                     day_number_install += p.day_number_install
                     day_number_gathering += p.day_number_gathering
                     day_number_glass += p.day_number_glass
+                    overtime_cut += p.overtime_cut
+                    overtime_install += p.overtime_install
+                    overtime_gath += p.overtime_gath
+                    overtime_glass += p.overtime_glass
 
                     qty= str(p.product_qty)
                     text += p.product_id.name + arabic_reshaper.reshape(' مساحتها ') + '      ' + qty + '      '+       "\n"
@@ -165,6 +173,23 @@ class MrpProduction(models.Model):
                         # 'mrp_id': p.id or False
                         }
                 self.env['project.task'].create(vals)
+                overtime = {
+                        # 'project_id': so.project_id.id,
+                        'note': text or False,
+                        'deadline_cut': deadline_cut,
+                        'deadline_gathering': deadline_gathering,
+                        'deadline_glass': deadline_glass,
+                        'deadline_install': deadline_install,
+                        'number_hours_cut': overtime_cut,
+                        'number_hours_gathering': overtime_gath,
+                        'number_hours_glass': overtime_glass,
+                        'number_hours_install': overtime_install,
+                        'customer_id': so.partner_id.id or False,
+                        'sale_id': so.id or False,
+                        # 'analytic_account_id': so.analytic_account_id.id or False,
+                        # 'mrp_id': p.id or False
+                        }
+                self.env['overtime.mrp'].create(overtime)
 
 
 

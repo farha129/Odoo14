@@ -2,5 +2,6 @@
 from . import mrp_sale
 from . import mrp_task
 from . import config_mrp
+from . import over_time
 
 
