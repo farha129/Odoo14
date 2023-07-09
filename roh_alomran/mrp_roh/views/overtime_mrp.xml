@@ -8,8 +8,8 @@
                 <form string="Overtime" >
                 <header>
                     <button name="action_confirmed" states="draft" string="Confirmed" type="object"   class="oe_highlight"/>
-                    <button name="action_cancel"  string="Cancel" type="object"  class="oe_highlight" />
                     <button name="action_done" type="object" string="Done" states="confirmed"  class="oe_highlight"/>
+                     <button name="action_cancel"  string="Cancel" type="object"  class="oe_highlight" />
                      <field name="state" widget="statusbar" />
 
 

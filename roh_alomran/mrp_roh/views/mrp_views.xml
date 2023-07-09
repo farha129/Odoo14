@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="replace">
-                    <tree string="Manufacturing Orders" default_order="priority desc, date_planned_start desc" multi_edit="1" sample="1">
+                    <tree string="Manufacturing Orders" default_order="priority desc, date_planned_start desc" multi_edit="1" sample="1"   >
                         <header>
                             <button name="button_plan" type="object" string="Plan"/>
                             <button name="do_unreserve" type="object" string="Unreserve"/>
@@ -17,10 +17,11 @@
                         <field name="message_needaction" invisible="1"/>
                         <field name="name" decoration-bf="1"/>
                         <field name="partner_id" />
-                        <field name="total_day" />
+                        <field name="total_day" optional="show" string="Tota"  />
                         <field name="date_planned_start"  />
-                        <field name="day_in_factory" />
-                        <field name="day_out_factory" />
+                        <field name="real_date_start"  />
+                        <field name="day_in_factory"  optional="show" readonly="1" sum="Total In Factory"/>
+                        <field name="day_out_factory"  optional="show"  readonly="1" sum="Total Out Factory"/>
                         <field name="product_qty" sum="Total Qty" string="Quantity" readonly="1" optional="show"/>
 
 <!--                        <field name="date_deadline" widget="remaining_days" attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}" optional="hide"/>-->
@@ -28,7 +29,11 @@
 <!--                        <field name="product_uom_id" string="Unit of Measure" options="{'no_open':True,'no_create':True}" groups="uom.group_uom" optional="show"/>-->
 <!--                        <field name="lot_producing_id" optional="hide"/>-->
 <!--                        <field name="bom_id" readonly="1" optional="hide"/>-->
-<!--                        <field name="origin" optional="show"/>-->
+
+                        <field name="reminder_day" decoration-info="reminder_day &gt;5" decoration-danger="reminder_day &lt;= 5 and state not in ('done')" />
+
+<!--                <tree decoration-info="state=='draft'" decoration-danger="state == 'end'" decoration-success="state == 'run'" decoration-muted="state == 'cancel'"  string="Accommodation">-->
+
 <!--                        <field name="user_id" optional="hide" widget="many2one_avatar_user"/>-->
 <!--                        <field name="reservation_state" optional="show"/>-->
 <!--                        <field name="company_id" readonly="1" groups="base.group_multi_company" optional="show"/>-->
@@ -53,6 +58,12 @@
 
                      <button name="action_sector_det" string="sector" type="object"
                             class="oe_stat_button" icon="fa-th-list" />
+<!--                     <div style="margin-top:10px;">-->
+<!--                    <widget name="web_ribbon" text="Started"-->
+<!--                                attrs="{'invisible': [('task_timer', '=', False)]}"/>-->
+<!--&lt;!&ndash;                        <widget name="web_ribbon" text="Stoped" style="color: red;"&ndash;&gt;-->
+<!--&lt;!&ndash;                                attrs="{'invisible': [('task_timer', '=', True)]}"/>&ndash;&gt;-->
+<!--                    </div>-->
                 </xpath>
 
                  <xpath expr="//page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="after">
@@ -60,9 +71,42 @@
                  </xpath>
 
                  <xpath expr="//field[@name='user_id']" position="before">
+                                            <field name="real_date_start" />
+
                                                 <field name="partner_id" />
 
                   </xpath>
+
+                     <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="is_user_working" invisible="1"/>
+                    <field name="end_date" invisible="0"/>
+                    <field name="reminder_day" invisible="0"/>
+                    <label for="duration"/>
+
+                    <div>
+                        <button style="pointer-events: none;" class="oe_inline label label-default">
+                            <field name="duration" id="duration" widget="timesheet_uoms" style="color: red;" />
+                        </button>
+                    </div>
+                         <label for="task_timer"/>
+                    <div class="o_row" style="display: inline-block;">
+                        <field name="task_timer" widget="boolean_toggle"/>
+                    </div>
+
+                </xpath>
+                <xpath expr="//button[@name='button_mark_done']" position="before">
+                    <button name="action_start" string="Start" type="object" style="color: red;"  attrs="{'invisible': ['|',('task_timer', '=', True),('state', '=', 'done')]}"/>
+<!--                    <button name="action_stop" string="Stop" type="object" style="color: red;"  attrs="{'invisible': [('task_timer', '=', False)]}"-->
+                           />
+                </xpath>
+ <xpath expr="//div[@name='button_box']" position="inside">
+                    <widget name="web_ribbon" text="Started"
+                                attrs="{'invisible': [('task_timer', '=', False)]}"/>
+<!--                        <widget name="web_ribbon" text="Stoped" style="color: red;"-->
+<!--                                attrs="{'invisible': [('task_timer', '=', True)]}"/>-->
+
+
+                </xpath>
 
             </field>
         </record>

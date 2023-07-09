@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_reminder_day_id" model="ir.cron">
+        <field name="name">Reminder MRP Day</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_mrp_production"/>
+        <field name="code">model._get_reminder_day()</field>
+        <field name="state">code</field>
+    </record>
+
+    <!-- Sequences for Overtime-->
+        <record id="seq_overtime_mrp" model="ir.sequence">
+            <field name="name">Overtime Mrp</field>
+            <field name="code">overtime.mrp</field>
+            <field name="prefix">Over</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+     <!-- Sequences for install-->
+        <record id="seq_install_mrp" model="ir.sequence">
+            <field name="name">Install Mrp</field>
+            <field name="code">install.mrp</field>
+            <field name="prefix">INS</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+
+</odoo>

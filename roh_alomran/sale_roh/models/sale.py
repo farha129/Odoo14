@@ -32,10 +32,11 @@ class DimensionSupplement(models.Model):
 
     sale_id = fields.Many2one('sale.order', string = 'Dimension Sector')
     sector_id = fields.Many2one('sector.order.line', string = 'Dimension Sector')
-    supplement_name = fields.Many2one('product.product', string='Supplement', required=True)
     supplement_height = fields.Float(string='Height', digits='Supplement Height', default=0)
     supplement_width = fields.Float(string='Width', digits='Supplement Width by mater', default=0)
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
+    supplement_name = fields.Many2one('product.product', string='Supplement', required=True)
+
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
     purchase_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
 
@@ -89,11 +90,12 @@ class SaleOrder(models.Model):
 
 
     def action_cancel(self):
-        res = super(SaleOrder, self).action_draft()
+        res = super(SaleOrder, self).action_cancel()
         for orders in self:
             request_ids = self.env['request.purchase'].search([('sale_id', '=', orders.id)])
             if request_ids:
                 request_ids.write({'state':'cancel'})
+        return res
 
 
 
