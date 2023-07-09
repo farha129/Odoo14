@@ -127,18 +127,18 @@
             parent="mrp.menu_mrp_root"
             sequence="70"/>
 
-<record id="action_stock_id" model="ir.actions.act_window">
-            <field name="name">stock.picking</field>
-            <field name="res_model">stock.picking</field>
-            <field name="view_mode">kanban,tree,form,calendar,pivot</field>
-             <field name="domain">[('install_id', '=', active_id)]</field>
-            <field name="context">{'search_default_install_id': active_id, 'default_install_id': active_id}</field>
-            <field name="help" type="html">
-                <p>
-                    Odoo's project management allows you to manage the pipeline of your tasks efficiently. You can track progress, discuss on tasks, attach documents, etc.
-                </p>
-            </field>
-        </record>
+<!--<record id="action_stock_id" model="ir.actions.act_window">-->
+<!--            <field name="name">stock.picking</field>-->
+<!--            <field name="res_model">stock.picking</field>-->
+<!--            <field name="view_mode">kanban,tree,form,calendar,pivot</field>-->
+<!--             <field name="domain">[('install_id', '=', active_id)]</field>-->
+<!--            <field name="context">{'search_default_install_id': active_id, 'default_install_id': active_id}</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p>-->
+<!--                    Odoo's project management allows you to manage the pipeline of your tasks efficiently. You can track progress, discuss on tasks, attach documents, etc.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
 
 
  <record id="view_stock_picking_form_inherit" model="ir.ui.view">
