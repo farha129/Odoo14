@@ -2,6 +2,27 @@
 <odoo>
     <data>
 
+         <record id="view_mrp_production_filter_inhirit" model="ir.ui.view">
+            <field name="name">mrp.production.select</field>
+            <field name="model">mrp.production</field>
+             <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='name']" position="before">
+                    <field name="name" string="Customer" filter_domain="[('partner_id', 'ilike', self)]"/>
+              </xpath>
+               <xpath expr="//filter[@name='filter_draft']" position="before">
+                    <filter string="Not Started" name="filter_start" domain="[('task_timer', '=', False)]"/>
+               </xpath>
+                <xpath expr="//filter[@name='status']" position="before">
+                      <filter string="Customer" name="partner_id" domain="[]" context="{'group_by': 'partner_id'}"/>
+
+              </xpath>
+
+
+            </field>
+        </record>
+
+
         <record id="mrp_production_tree_view_inherits" model="ir.ui.view">
             <field name="name">mrp.production.tree</field>
             <field name="model">mrp.production</field>
@@ -17,7 +38,7 @@
                         <field name="message_needaction" invisible="1"/>
                         <field name="name" decoration-bf="1"/>
                         <field name="partner_id" />
-                        <field name="total_day" optional="show" string="Tota"  />
+                        <field name="total_day" optional="show" string="Tota"  sum="Total Days"/>
                         <field name="date_planned_start"  />
                         <field name="real_date_start"  />
                         <field name="day_in_factory"  optional="show" readonly="1" sum="Total In Factory"/>
@@ -38,7 +59,7 @@
 <!--                        <field name="reservation_state" optional="show"/>-->
 <!--                        <field name="company_id" readonly="1" groups="base.group_multi_company" optional="show"/>-->
                         <field name="state" optional="show" widget='badge' decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
-<!--                        <field name="activity_exception_decoration" widget="activity_exception"/>-->
+                        <field name="activity_exception_decoration" widget="activity_exception"/>
 <!--                        <field name="delay_alert_date" invisible="1"/>-->
 <!--                        <field string=" " name="json_popover" widget="stock_rescheduling_popover" attrs="{'invisible': [('delay_alert_date', '=', False)]}"/>-->
                     </tree>

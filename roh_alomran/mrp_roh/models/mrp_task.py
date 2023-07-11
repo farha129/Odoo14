@@ -25,17 +25,17 @@ class MrpProduction(models.Model):
 
     task_number = fields.Integer(compute='task_count', string='Tasks')
     day_number_work = fields.Integer(string='nu')
-    day_number_cut = fields.Float(compute='_get_number_day_work', string='The days of Cut')
+    day_number_cut = fields.Float(compute='_get_number_day_work', string='The days of Cut',store=True)
     overtime_cut = fields.Integer(compute='_get_number_day_work')
-    day_number_install = fields.Float(compute='_get_number_day_work', string='The days Of Install')
-    overtime_install = fields.Integer(compute='_get_number_day_work')
-    day_number_gathering = fields.Float(compute='_get_number_day_work', string='The days Of Gathering')
-    overtime_gath = fields.Integer(compute='_get_number_day_work')
-    day_number_glass = fields.Float(compute='_get_number_day_work', string='The days Of Glass')
-    overtime_glass = fields.Integer(compute='_get_number_day_work')
-    total_day = fields.Float(compute='_get_number_day_work', string='Manufactur Period')
-    day_in_factory = fields.Float(compute='_get_number_day_work', string='Period In Factory')
-    day_out_factory = fields.Float(compute='_get_number_day_work', string='Period Out Factory')
+    day_number_install = fields.Float(compute='_get_number_day_work', string='The days Of Install',store=True)
+    overtime_install = fields.Integer(compute='_get_number_day_work',store=True)
+    day_number_gathering = fields.Float(compute='_get_number_day_work', string='The days Of Gathering',store=True)
+    overtime_gath = fields.Integer(compute='_get_number_day_work',store=True)
+    day_number_glass = fields.Float(compute='_get_number_day_work', string='The days Of Glass',store=True)
+    overtime_glass = fields.Integer(compute='_get_number_day_work',store=True)
+    total_day = fields.Float(compute='_get_number_day_work', string='Manufactur Period',store=True)
+    day_in_factory = fields.Float(compute='_get_number_day_work', string='Period In Factory',store=True)
+    day_out_factory = fields.Float(compute='_get_number_day_work', string='Period Out Factory',store=True)
 
     def action_get_task(self):
         form_id = self.env.ref("project.view_task_form2").id
@@ -183,8 +183,7 @@ class MrpProduction(models.Model):
     #                     }
     #             self.env['overtime.mrp'].create(overtime)
 
-
-
+    @api.depends('product_qty')
     def _get_number_day_work(self):
        # self.ensure_one()
        for rec in self :

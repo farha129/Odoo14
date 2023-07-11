@@ -27,12 +27,12 @@ from datetime import timedelta
 from datetime import datetime
 
 
-# class ProjectTaskTimeSheet(models.Model):
-#     _inherit = 'account.analytic.line'
-#
-#     date_start = fields.Datetime(string='Start Date')
-#     date_end = fields.Datetime(string='End Date', readonly=1)
-#     timer_duration = fields.Float(invisible=1, string='Time Duration (Minutes)')
+class ProjectTaskTimeSheet(models.Model):
+    _inherit = 'account.analytic.line'
+
+    date_start = fields.Datetime(string='Start Date')
+    date_end = fields.Datetime(string='End Date', readonly=1)
+    timer_duration = fields.Float(invisible=1, string='Time Duration (Minutes)')
 
 
 class MrpProduction(models.Model):
@@ -48,7 +48,6 @@ class MrpProduction(models.Model):
         'Real Start Date', copy=False,
         help="Date at which you plan to start the production.",
         index=True)
-    end_date = fields.Date(string = 'End Date',readonly=True)
     reminder_day = fields.Integer(string="Reminder Day")
 
     def _get_reminder_day(self):

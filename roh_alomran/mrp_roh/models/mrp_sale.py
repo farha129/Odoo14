@@ -15,6 +15,8 @@ class MrpProduction(models.Model):
 
     partner_id = fields.Many2one('res.partner',string = 'Customer')
     project_id = fields.Many2one('project.project',string="project")
+    end_date = fields.Date(string = 'End Date',readonly=True)
+
 
 
 
@@ -75,6 +77,7 @@ class SaleOrder(models.Model):
             order.procurement_group_id.stock_move_ids.created_production_id.write(
                 {"partner_id": order.partner_id.id,
                  "analytic_account_id": order.analytic_account_id,
+                 "end_date": order.end_date_order,
                  "date_planned_start": mrp_date,
                  "project_id": order.project_id}
             )
