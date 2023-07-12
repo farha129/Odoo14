@@ -244,6 +244,7 @@ class project_Task(models.Model):
     mrp_id =  fields.Many2one('mrp.production', 'mrp')
     task_type = fields.Selection([('cut','Cut'),('gathering','Gathering'),('installation','Installation'),('glass','Glass')],string = 'Task Name')
     employee_ids = fields.Many2many('hr.employee',string = 'Employees')
+    date_start = fields.Date(string = 'Start Date',readonly=True)
 
 
 

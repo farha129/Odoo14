@@ -137,6 +137,7 @@ class MrpProduction(models.Model):
                     datetime.strptime(deadline_gathering, "%Y-%m-%d").date() + timedelta(day_number_glass))
                 deadline_install = fields.Date.to_string(
                     datetime.strptime(deadline_glass, "%Y-%m-%d").date() + timedelta(day_number_install))
+                start_cut =  fields.Date.to_string(p[0].real_date_start)
 
                 print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 
@@ -148,6 +149,7 @@ class MrpProduction(models.Model):
                          'user_id': False,
                          'description': text or False,
 
+                         'date_start': deadline_glass or False,
                          'date_deadline': deadline_install or False,
                          'partner_id': so.partner_id.id or False,
                          'analytic_account_id': so.analytic_account_id.id or False,
@@ -163,6 +165,7 @@ class MrpProduction(models.Model):
                          'task_type': 'glass' or False,
                          'user_id': False,
                          'description': text or False,
+                         'date_start': deadline_gathering or False,
 
                          'date_deadline': deadline_glass or False,
                          'partner_id': so.partner_id.id or False,
@@ -177,7 +180,7 @@ class MrpProduction(models.Model):
                          'task_type': 'gathering' or False,
                          'user_id': False,
                          'description': text or False,
-
+                         'date_start': deadline_cut or False,
                          'date_deadline': deadline_gathering or False,
                          'partner_id': so.partner_id.id or False,
                          'analytic_account_id': so.analytic_account_id.id or False,
@@ -191,6 +194,7 @@ class MrpProduction(models.Model):
                         'employee_ids': employees_cut or False,
                         'task_type': 'cut' or False,
                         'description': text or False,
+                        'date_start': start_cut  or False,
                         'user_id': False,
                         'date_deadline': deadline_cut,
                         'partner_id': so.partner_id.id or False,
