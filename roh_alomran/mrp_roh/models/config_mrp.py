@@ -23,10 +23,12 @@ class ConfigWorkerTask(models.Model):
 class ResDiscountSettings(models.TransientModel):
     _inherit = 'res.config.settings'
     percent_period_date = fields.Integer(related='company_id.percent_period_date', readonly =False)
+    mrp_target_area = fields.Float(related='company_id.mrp_target_area', readonly =False)
 
 
 
 class ResCompany(models.Model):
     _inherit = 'res.company'
     percent_period_date = fields.Integer(string = 'Percent Calculation Mrp date',help ='Scheduled Date in MRP Calculation from This percent and implemented period in SO ')
+    mrp_target_area = fields.Float(string = 'Target is The number of Area to be manufactured per month ')
 
