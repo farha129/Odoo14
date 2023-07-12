@@ -246,7 +246,6 @@ class MrpProduction(models.Model):
     #         else:
     #             order.is_user_working = False
 
-    @api.model
     @api.constrains('task_timer')
     def toggle_start(self):
         if self.task_timer is True:
@@ -263,8 +262,8 @@ class MrpProduction(models.Model):
         else:
             self.write({'is_user_working': False})
             time_line_obj = self.env['account.analytic.line']
-            domain = [('task_id', 'in', self.ids), ('date_end', '=', False)]
-            for time_line in time_line_obj.search(domain):
+            # domain = [('date_end', '=', False)]
+            for time_line in time_line_obj:
                 time_line.write({'date_end': fields.Datetime.now()})
                 if time_line.date_end:
                     diff = fields.Datetime.from_string(time_line.date_end) - fields.Datetime.from_string(
