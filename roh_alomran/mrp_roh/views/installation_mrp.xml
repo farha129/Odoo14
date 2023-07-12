@@ -107,7 +107,7 @@
         </record>
         <menuitem action="install_action" id="menu_install_id"
             parent="mrp.menu_mrp_root"
-            sequence="70"/>
+            sequence="23"/>
 
 
 
