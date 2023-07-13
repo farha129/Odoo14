@@ -13,6 +13,22 @@ from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
 
+class crm_production_wizard(models.TransientModel):
+    _name = 'mrp.production.task.wizard'
+    _description = "CRM Task Wizard"
+
+    def get_name(self):
+        ctx = dict(self._context or {})
+        active_id = ctx.get('active_id')
+        crm_brw = self.env['crm.lead'].browse(active_id)
+        name = crm_brw.name
+        return name
+
+    project_id = fields.Many2one('project.project', 'Project')
+    dead_line = fields.Date('Deadline')
+    name = fields.Char('Task Name', default=get_name)
+    user_id = fields.Many2one('res.users', 'Assigned To', default=lambda self: self.env.uid,
+                              index=True)
 class MrpProduction(models.Model):
     """ MRP  Case """
     _inherit = "mrp.production"
