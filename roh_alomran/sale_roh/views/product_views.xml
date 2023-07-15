@@ -27,7 +27,11 @@
                 </xpath>
 
                 <xpath expr="//field[@name='company_id']" position="after">
-                          <field name="supplier_company"/>
+                                              <field name="supplier_company"/>
+
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="after">
+                          <field name="sector_type"/>
                 </xpath>
 
                 <xpath expr="//page[@name='invoicing']" position="after">

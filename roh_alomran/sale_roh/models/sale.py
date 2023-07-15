@@ -317,6 +317,7 @@ class SaleOrder(models.Model):
                 val = []
                 val_with = []
                 width2 = 0.0
+                bercluz_cutter = 0.0
                 if not rec.product_id.supplement_sector_ids:
                     continue
                     # raise ValidationError(_('Please Configratin Dimension for this Sector'))
@@ -333,8 +334,8 @@ class SaleOrder(models.Model):
                         for obj in obj_ditails:
                             product_hight = (obj.height * 100) + 30
                             product_width = (obj.width * 100) + 30
-                            var_cutter = obj.var_cutter
-                            hor_cutter = obj.hor_cutter
+                            var_cutter = obj.total_var_cutter
+                            hor_cutter = obj.total_hor_cutter
 
                             sum_hight = 0.0
                             sum_with = 0.0
@@ -349,12 +350,12 @@ class SaleOrder(models.Model):
                             if sect.type == 'cutter_hor' and hor_cutter:
                                 if hor_cutter > 0 :
                                     sum += hor_cutter
-                                qyt = sum/5.80
+                                qyt = sum
 
                             if sect.type == 'cutter_var' and var_cutter:
                                 if var_cutter > 0 :
                                     sum += var_cutter
-                                qyt = sum/5.80
+                                qyt = sum
                             if sect.type == 'side':
                                 sum += ((product_hight + sect.height) * sect.nmuber)
                                 side = product_hight + sect.height
@@ -388,7 +389,6 @@ class SaleOrder(models.Model):
                                     sum += area
                                 qyt = (sum / 7.42)/ 100
 
-
                             if sect.type == 'wire':
                                 print(val)
                                 if val and val_with:
@@ -401,7 +401,23 @@ class SaleOrder(models.Model):
                                 total = sum_hight / 5.80 + sum_with / 5.80
                                 qyt = total/ 100
 
-                        self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
+                            #####other supplement####
+                            if sect.type == 'tranzium':
+                                qyt += obj.tranzium
+
+                            if sect.type == 'tabsha':
+                                qyt += obj.tabsha
+
+                            if sect.type == 'bercluz':
+                                bercluz_cutter += obj.bercluz
+                                if rec.product_id.sector_type in ('fixed', 'hinges'):
+                                    qyt = bercluz_cutter + rec.product_uom_qty
+                                else:
+                                    qyt = bercluz_cutter
+
+
+                        if qyt != 0:
+                            self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,
                                                                            'purchase_uom_qty': qyt ,
                                                                            'product_uom': sect.supplement_name.uom_id.id,
                                                                            'sector_id': rec.id,
@@ -679,11 +695,55 @@ class DitalsSector(models.Model):
     name = fields.Char(string = 'Name' , )
     width = fields.Float(string ='width', digits=(3,4),store= True)
     height = fields.Float(string='height',digits=(3,4),store= True)
-    hor_cutter = fields.Float(string='Horizantol Cutter',digits=(3,4),store= True)
-    var_cutter = fields.Float(string='vertical Cutter',digits=(3,4),store= True)
+    hor_cutter = fields.Float(string='Number Horizantol',digits=(3,4),store= True)
+    var_cutter = fields.Float(string='Number vertical',digits=(3,4),store= True)
     cutter_type = fields.Selection(related ='sector_id.cutter_type')
     sector_id = fields.Many2one('sector.order.line',string='Sector')
     is_edit = fields.Boolean(related ='sector_id.is_edit',readonly = False)
+    total_var_cutter = fields.Float(string='Total vertical', compute='compute_total_var_hor')
+    total_hor_cutter = fields.Float(string='Total Horizantol', compute='compute_total_var_hor')
+    tranzium = fields.Float(string = 'Tranzium',compute = 'compute_supplement')
+    bercluz = fields.Float(string = 'Bercluz',compute = 'compute_supplement')
+    tabsha = fields.Float(string = 'Tabsha',compute = 'compute_supplement')
+
+
+    def compute_total_var_hor(self):
+        for rec in self:
+            if rec.hor_cutter:
+                rec.total_hor_cutter = (rec.hor_cutter * rec.width) / 5.80
+            else:
+                rec.total_hor_cutter = 0
+            if rec.var_cutter:
+                rec.total_var_cutter = (rec.var_cutter * rec.height) / 5.80
+            else:
+                rec.total_var_cutter = 0
+
+    def compute_supplement(self):
+        for rec in self:
+            if  rec.total_hor_cutter:
+                rec.bercluz = rec.total_hor_cutter * 2
+            if  rec.total_var_cutter:
+                rec.bercluz += rec.total_var_cutter * 2
+            if not rec.total_hor_cutter and  not rec.total_var_cutter:
+                rec.bercluz =0
+
+            if rec.sector_id.product_id.sector_type == 'drag_roll' and  rec.var_cutter :
+
+                rec.tabsha = rec.total_var_cutter
+            else:
+                rec.tabsha = 0
+
+            if rec.sector_id.product_id.sector_type == 'sketchure':
+                if rec.var_cutter :
+                    rec.tranzium = rec.total_var_cutter
+                if  rec.hor_cutter :
+                    rec.tranzium += rec.total_hor_cutter
+            else:
+                rec.tranzium = 0
+
+
+
+
 
     @api.onchange('width','height')
     def onchange_width_height(self):

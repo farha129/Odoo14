@@ -65,8 +65,9 @@ class SaleOrder(models.Model):
 
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
-        project_id = self.env['project.project'].create({'name':self.name +'/'+ self.partner_id.name })
-        self.project_id = project_id
+        if  not self.project_id :
+            project_id = self.env['project.project'].create({'name':self.name +'/'+ self.partner_id.name })
+            self.project_id = project_id
         self.analytic_account_id = self.project_id .analytic_account_id
         days = self.implemented_period * (self.company_id.percent_period_date/100)
 

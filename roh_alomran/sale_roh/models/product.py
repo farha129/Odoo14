@@ -21,12 +21,14 @@ class ProductTemplate(models.Model):
     accessory_ids = fields.One2many('product.accessory', 'product_acc_id',string ='Accessorys')
     supplement_sector_ids = fields.One2many('supplement.sector','product_id',string = 'Supplement' )
     supplier_company = fields.Many2one('res.company', string='Supplier Company')
+    sector_type = fields.Selection([('drag','Drag'),('drag_roll','Drag Roll'),('fixed','Fixed'),('sketchure','Sketchure'),('upside_down','Upside down'),('hinges','Hinges'),('tipper','Tipper'),('cartel_roll','Cartel Roll')],string ='Sector Type')
 #
 class ProductProduct(models.Model):
     _inherit = 'product.product'
     is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement')
     is_sector = fields.Boolean(related='product_tmpl_id.is_sector')
     is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory')
+    sector_type = fields.Selection(related = 'product_tmpl_id.sector_type')
 
 class ProductAccessory(models.Model):
     _name = "product.accessory"
@@ -59,7 +61,7 @@ class SupplementSector(models.Model):
     is_side = fields.Boolean(string='Is Side')
     is_heel = fields.Boolean(string='Is Heel')
     type = fields.Selection(
-        [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),
+        [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),('tranzium', 'Tranzium'),('bercluz', 'Bercluz'),('tabsha', 'Tabsha'),
          ('wire', 'Wire'),('glass', 'Glass'),('other','other')], string='Type')
 
     division_number = fields.Integer('/', default=1)

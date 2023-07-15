@@ -30,5 +30,5 @@ class ResDiscountSettings(models.TransientModel):
 class ResCompany(models.Model):
     _inherit = 'res.company'
     percent_period_date = fields.Integer(string = 'Percent Calculation Mrp date',help ='Scheduled Date in MRP Calculation from This percent and implemented period in SO ')
-    mrp_target_area = fields.Float(string = 'Target is The number of Area to be manufactured per month ')
+    mrp_target_area = fields.Float(string = 'Target Area' , help = 'Target is The number of Area to be manufactured per month ')
 

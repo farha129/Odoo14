@@ -190,8 +190,18 @@
 
                     </group>
                         <group  attrs="{'invisible': [('cutter_type','=',False)]}" col="4" string = "Cutter Information" >
+                                                        <field name="hor_cutter" attrs="{'invisible': [('cutter_type','not in',('hor','both'))]}" />
+
                             <field name="var_cutter"  attrs="{'invisible': [('cutter_type','not in',('vertical','both'))]}"/>
-                            <field name="hor_cutter" attrs="{'invisible': [('cutter_type','not in',('hor','both'))]}" />
+                        </group>
+                        <group string = 'Other Supliment'>
+                                                        <field name="total_var_cutter" invisible ="1"/>
+                                                        <field name="total_hor_cutter" invisible ="1" />
+                                                        <field name="tranzium" />
+                                                        <field name="bercluz" />
+                                                        <field name="tabsha" />
+
+
                         </group>
                     </sheet>
 
