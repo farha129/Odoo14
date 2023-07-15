@@ -31,7 +31,7 @@
 
                 </xpath>
                 <xpath expr="//field[@name='categ_id']" position="after">
-                          <field name="sector_type"/>
+                          <field name="sector_type" attrs="{'invisible':[('is_sector','=',False)], 'required':[('is_sector','=',True)]}"/>
                 </xpath>
 
                 <xpath expr="//page[@name='invoicing']" position="after">
