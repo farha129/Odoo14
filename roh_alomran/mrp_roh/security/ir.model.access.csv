@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_config_worker_task,access_config_worker_task,model_config_worker_task,base.group_user,1,1,1,1
-access_overtime_mrp,access_overtime_mrp,model_overtime_mrp,mrp.group_mrp_manager,1,1,1,1
-access_overtime_line,access_overtime_line,model_overtime_line,mrp.group_mrp_manager,1,1,1,1
-access_install_mrp,access_install_mrp,model_install_mrp,mrp.group_mrp_manager,1,1,1,1
-access_install_material_use__line,access_install_material_use_line_line,model_install_material_use_line,mrp.group_mrp_manager,1,1,1,1
-access_install_material_return_line,access_install_material_return_line_line,model_install_material_return_line,mrp.group_mrp_manager,1,1,1,1
