@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_order_form_inheriteds_id" model="ir.ui.view">
+            <field name="name">view.order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_open_request" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="po_count"/>
+                            </span>
+                            <span class="o_stat_text">Request</span>
+                            <span class="o_stat_text">Purchase</span>
+                        </div>
+                    </button>
+
+                </xpath>
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="draft,again,sent,sale"/>
+                </xpath>
+
+
+
+                 <xpath expr="//page[1]" position="before">
+                    <page string="Sector" name="sector_order_line">
+                           <field name="sector_order_line" options="{'no_open': True}" >
+                                       <tree editable="bottom" options="{'no_open': True}">
+                                                <field name="product_id"/>
+                                                <field name="name"/>
+                                                <field name="cutter_type"  />
+<!--                                                <field name="product_widths" widget="many2many_tags"  />-->
+<!--                                                <field name="product_heights" widget="many2many_tags"/>-->
+                                                <field name="product_qty_new" />
+                                                <field name="hi_wi" invisible="1" />
+                                                <field name="is_5_80"  />
+                                                 <field name="product_uom_qty" string = 'Qty Purchase' readonly="1"/>
+                                                 <field name="product_uom_category_id" invisible="1" />
+                                                 <field name="product_uom" />
+                                                 <field name="product_area" />
+                                                 <field name="is_edit" invisible="1"/>
+                                                 <field name="product_template_id" invisible="1"/>
+                                                 <field name="final_product" context="{'default_type': 'product'}"/>
+                                                 <field name="product_number" />
+                                                                                     <button name="action_open_ditals_order"  type="object" string="add"  />
+
+
+
+                                       </tree>
+                           </field>
+                         <group colspan="4">
+                                    <field name="contract_note" nolabel="0" placeholder="Notes..."/>
+                                </group>
+                    </page>
+
+
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                        <attribute name="string">Area(M2)
+                        </attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                     <field name="product_number" />
+                </xpath>
+
+
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <label for="implemented_period" string="implemented period"/>
+                    <div class="o_row">
+                    <field name="implemented_period"/>
+                    <span> days</span>
+                </div>
+                    <field name="destination_paint"/>
+                    <field name="destination_glass"/>
+                    <field name="count" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//label[@for='pricelist_id']" position="before">
+                                         <field name="end_date_order" />
+
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                     <field name="number_payment" />
+                     <field name="destination_payment" />
+
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <span class="o_form_label o_td_label" name="address_name">
+                        <b attrs="{'invisible': [('partner_id', '=', False)]}">Delivery
+                            Address
+                        </b>
+                    </span>
+
+                </xpath>
+                 <xpath expr="//page[3]" position="after">
+                    <page string="Supplement" name="supplement"  >
+<!--                        # attrs="{'invisible':[('type', '!=', 'is_supplement')]}-->
+                        <field name="dimension_supplement_ids" widget="one2many" >
+                             <tree editable="bottom">
+                                     <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
+                                     <field name="purchase_uom_qty" />
+                                     <field name="product_uom" />
+                                     <field name="sector_id" invisible="1" />
+
+                             </tree>
+                        </field>
+                    </page>
+
+                    <page string="Accessory" name="Accessory"  >
+                        <field name="sale_accessory_ids" widget="one2many" >
+                             <tree editable="bottom">
+                                     <field name="accessory_name"  domain="[('is_accessory', '=',  True)]" context="{'default_is_accessory': True,'default_type': 'product'}"/>
+                                     <field name="accessory_uom_qty" />
+                                     <field name="product_uom" />
+                                    <field name="sale_id"  invisible="1"/>
+                             </tree>
+                        </field>
+                    </page>
+<!--                     <page string="Supplement Dimantion" name="supplement Dimantion">-->
+<!--                        <field name="dimension_supplement_ids" widget="one2many" >-->
+<!--                             <tree editable="bottom">-->
+<!--                                     <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />-->
+<!--                                     <field name="supplement_height"  />-->
+<!--                                     <field name="supplement_width" />-->
+<!--                                     <field name="dimension_one"  />-->
+<!--                                     <field name="purchase_uom_qty" invisible="1" />-->
+<!--                                     <field name="product_uom" invisible="1" />-->
+<!--                                     <field name="price_unit" invisible="1" />-->
+<!--                             </tree>-->
+<!--                        </field>-->
+<!--                    </page>-->
+                 </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="view_inherit_sales_order_filter" model="ir.ui.view">
+            <field name="name">view.sale.order.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='salesperson']" position="before">
+                    <filter string="Status" name="sales_states" context="{'group_by':'state'}"/>
+                </xpath>
+
+                <xpath expr="//filter[@name='salesperson']" position="after">
+                    <filter string="Sales Team" name="sales_team" context="{'group_by':'team_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+ <!-- FORM VIEW  -->
+          <record id="purchase_order_view_inhinrt" model="ir.ui.view">
+            <field name="name">purchase.order.form.i</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+                          <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                   <field name="sale_id"  options="{'no_create': True}"/>
+                   <field name="customer_id" />
+
+                </xpath>
+               </field>
+          </record>
+
+
+<!-- Wiidth And Hieght in Button ADD -->
+        <record id="view_detial_form" model="ir.ui.view">
+            <field name="name">ditals.sector</field>
+            <field name="model">ditals.sector</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order">
+                    <sheet>
+                    <group col="4" string = "Width And height">
+                            <field name="width" />
+                            <field name="height" />
+                             <field name="is_edit" invisible="0"/>
+                            <field name="sector_id" invisible="1"/>
+                            <field name="cutter_type" invisible="1"/>
+
+                    </group>
+                        <group  attrs="{'invisible': [('cutter_type','=',False)]}" col="4" string = "Cutter Information" >
+                                                        <field name="hor_cutter" attrs="{'invisible': [('cutter_type','not in',('hor','both'))]}" />
+
+                            <field name="var_cutter"  attrs="{'invisible': [('cutter_type','not in',('vertical','both'))]}"/>
+                        </group>
+                        <group string = 'Other Supliment'>
+                                                        <field name="total_var_cutter" invisible ="1"/>
+                                                        <field name="total_hor_cutter" invisible ="1" />
+                                                        <field name="tranzium" />
+                                                        <field name="bercluz" />
+                                                        <field name="tabsha" />
+
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ditals_view_tree">
+        <field name="name">ditals.sector.tree</field>
+        <field name="model">ditals.sector</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="width" />
+                <field name="height" />
+                <field name="sector_id" invisible="1" />
+
+
+            </tree>
+        </field>
+    </record>
+
+
+        <record id="view_detial_action" model="ir.actions.act_window">
+        <field name="name">Ditals Sector</field>
+        <field name="res_model">ditals.sector</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="ditals_view_tree"/>
+    </record>
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,149 @@
+<odoo>
+	<data>
+
+<!--		<record id="view_mrp_production_task_form" model="ir.ui.view">-->
+<!--            <field name="name">mrp.production.task.wizard</field>-->
+<!--            <field name="model">mrp.production.task.wizard</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Create Task">-->
+<!--                       <div class="oe_title">-->
+<!--                        <h1>-->
+<!--                            <field name="name" placeholder="Project Task"/>-->
+<!--                        </h1>-->
+<!--                    </div>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--&lt;!&ndash;                            <field name="project_id" domain="[('active', '=', True)]" context="{'default_project_id':'project_id'}"/>&ndash;&gt;-->
+<!--                            <field name="user_id" class="o_task_user_field" options="{'no_open': True}"/>-->
+<!--                            <field name="task_type"/>-->
+<!--                             <field name="dead_line"/>-->
+
+<!--                        </group>-->
+
+<!--                    </group>-->
+<!--                    <footer>-->
+<!--                    	<button name="create_task" string="Create Task" type="object"/>-->
+<!--                    </footer>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="action_view_mrp_production_task_form" model="ir.actions.act_window">-->
+<!--            <field name="name">Create Task</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">mrp.production.task.wizard</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref="view_mrp_production_task_form"/>-->
+<!--            <field name="target">new</field>-->
+<!--        </record>-->
+
+<!--		<record id="action_view_task_id" model="ir.actions.act_window">-->
+<!--            <field name="name">Tasks</field>-->
+<!--            <field name="res_model">project.task</field>-->
+<!--            <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>-->
+<!--             <field name="domain">[('partner_id', '=', active_id)]</field>-->
+<!--            <field name="context">{'search_default_partner_id': active_id, 'default_partner_id': active_id}</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p>-->
+<!--                    Odoo's project management allows you to manage the pipeline of your tasks efficiently. You can track progress, discuss on tasks, attach documents, etc.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="action_view_task_id" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
+             <field name="domain">[('project_id', '=', active_id)]</field>
+            <field name="context">{'project_id': active_id}</field>
+<!--                        <field name="context">{'search_default_partner_id': active_id, 'default_user_id': uid}</field>-->
+
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline of your tasks efficiently. You can track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+
+
+		<record id="mrp_production_inherit_form" model="ir.ui.view">
+			<field name="name">mrp.production</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+			<field name="arch" type="xml">
+			<div name="button_box" position="inside">
+				<button class="oe_stat_button" type="object" name="action_get_task"
+                        icon="fa-tasks">
+                        <field  string="Tasks" name="task_number" widget="statinfo"/>
+                    </button>
+
+                <button class="oe_stat_button" type="object" name="action_get_task"
+                       >
+<!--                        <field  string="Tasks" name="task_number" widget="statinfo"/>-->
+                    </button>
+            </div>
+
+
+<!--				<button name="action_assign" position="after">-->
+<!--					<button name="create_task_mrp" string="Create Task" type="object"/>-->
+<!--				</button>-->
+                 <xpath expr="//group[1]" position="after">
+                     <group >
+                          <label for="day_number_cut" string="The days of Cut"/>
+                            <div class="o_row">
+                            <field attrs="{'invisible':[('day_number_cut','=',0)]}" name="day_number_cut"/>
+                             <span attrs="{'invisible':[('day_number_cut','=',0)]}">Days</span>
+                             <span attrs="{'invisible':[('overtime_cut','=',0)]}">OverTime</span>
+                             <field attrs="{'invisible':[('overtime_cut','=',0)]}" name="overtime_cut"/>
+                             <span attrs="{'invisible':[('overtime_cut','=',0)]}">Hours</span>
+                            </div>
+                         <label for="day_number_gathering" string="The days of Gathering"/>
+                            <div class="o_row">
+                            <field attrs="{'invisible':[('day_number_gathering','=',0)]}" name="day_number_gathering"/>
+                             <span attrs="{'invisible':[('day_number_gathering','=',0)]}">Days</span>
+                             <span attrs="{'invisible':[('overtime_gath','=',0)]}">OverTime</span>
+                             <field attrs="{'invisible':[('overtime_gath','=',0)]}" name="overtime_gath"/>
+                             <span attrs="{'invisible':[('overtime_gath','=',0)]}">Hours</span>
+                            </div>
+                         <label for="day_number_glass" string="The days of Glass"/>
+                            <div class="o_row">
+                             <field attrs="{'invisible':[('day_number_glass','=',0)]}" name="day_number_glass"/>
+                             <span attrs="{'invisible':[('day_number_glass','=',0)]}">Days</span>
+                             <span attrs="{'invisible':[('overtime_glass','=',0)]}">OverTime</span>
+                             <field attrs="{'invisible':[('overtime_glass','=',0)]}" name="overtime_glass"/>
+                             <span attrs="{'invisible':[('overtime_glass','=',0)]}">Hours</span>
+                            </div>
+                         <label for="day_number_install" string="The days of Install"/>
+                            <div class="o_row">
+                             <field attrs="{'invisible':[('day_number_install','=',0)]}" name="day_number_install"/>
+                             <span attrs="{'invisible':[('day_number_install','=',0)]}">Days</span>
+                             <span attrs="{'invisible':[('overtime_install','=',0)]}">OverTime</span>
+                             <field attrs="{'invisible':[('overtime_install','=',0)]}" name="overtime_install"/>
+                             <span attrs="{'invisible':[('overtime_install','=',0)]}">Hours</span>
+                            </div>
+                     </group>
+                </xpath>
+
+			</field>
+		</record>
+
+        <record id="project_task_inherit_form" model="ir.ui.view">
+			<field name="name">project.task</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="project.view_task_form2" />
+            			<field name="arch" type="xml">
+                                <xpath expr="//field[@name='partner_id']" position="after">
+                                                                         <field name="date_start" />
+
+                                </xpath>
+                                <xpath expr="//field[@name='user_id']" position="before">
+                                      <field name="employee_ids" widget="many2many_tags"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            />
+                                </xpath>
+                                <xpath expr="//field[@name='parent_id']" position="before">
+                                     <field name="task_type" />
+                                </xpath>
+                        </field>
+        </record>
+	</data>
+</odoo>
+
+        

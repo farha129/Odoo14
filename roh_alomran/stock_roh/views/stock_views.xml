@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+
+
+        <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_stock_inheriteds_id" model="ir.ui.view">
+            <field name="name">view.order.form.inherited</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[1]" position="after">
+
+
+                     <button name="action_create_purchase_order" string="Create Purchase Order" type="object"  attrs="{'invisible':[('state', '!=', 'confirmed')]}"
+                            class="btn-primary" />
+
+
+                </xpath>
+
+                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="action_open_purchase_order" type="object" class="oe_stat_button" icon="fa-th-list" attrs="{'invisible': [('po_count', '=', 0)]}">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="po_count"/>
+                            </span>
+                            <span class="o_stat_text">Purchase</span>
+                            <span class="o_stat_text">Orders</span>
+                        </div>
+                    </button>
+
+                </xpath>
+
+
+
+
+
+
+
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

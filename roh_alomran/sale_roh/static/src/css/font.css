@@ -1,0 +1,22 @@
+/***************************
+* Cusom Fonts
+* 1. Droid Arabic Kufi, by Google
+* 2. Droid Arabic Naskh, also by Google
+* 3. Beutiful Amiri, Opensource.
+****************************/
+
+
+
+
+@font-face {
+  font-family: 'Arial';
+      font-style: normal;
+
+
+
+  src: url(/sale_roh/static/src/fonts/Arial.ttf)
+
+
+}
+
+

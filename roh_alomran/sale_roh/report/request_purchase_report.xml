@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_request_purchase_template">
+                <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+           <t t-foreach="docs" t-as="o">
+
+
+
+               <h2  style="font-family: Arial;color:black"  class="text-center">طلب شراء</h2>
+
+<br></br><br></br>
+
+                <div class="col-auto col-3 mw-100 mb-2" >
+
+                 <table class="table table-sm o_main_table">
+                   <tbody>
+
+                    <tr >
+                       <td  class="text-left" ><strong>المرجع :</strong></td>
+                        <td   class="text-left"><span t-field="o.name"/></td>
+                        <td  class="text-left" ><strong>التاريخ :</strong></td>
+                         <td   class="text-left"><span t-field="o.date_order"/></td>
+                    </tr>
+
+                    <tr  >
+                        <td  class="text-left"><strong> اسم العميل :</strong></td>
+                         <td  class="text-left" ><span t-field="o.customer_id.name"/></td>
+                           <td  class="text-left"><strong>رقم العقد :</strong></td>
+                         <td class="text-left"><span t-field="o.sale_id"/></td>
+
+                    </tr>
+                   </tbody>
+                 </table>
+                </div>
+
+                     
+<br></br><br></br>
+
+
+
+                    <table  class="table table-sm o_main_table" style="font-family: Arial; ;direction:rtl" name="line_ids_table">
+
+                           <thead style="display: table-row-group ;font-family:Arial;">
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المنتجات </th>
+                        <th name="th_qyt" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الكمية</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الوحدة</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <t t-set="lines" t-value="o.line_ids"/>
+                                <t t-foreach="lines" t-as="line">
+                                     <tr>
+                                          <td class="text-left">
+                                         <span  t-field="line.product_id.name" />
+
+                                    </td>
+                                     <td class="text-left">
+                                            <span  t-field="line.product_qty"/>
+                                        </td>
+                                        <td class="text-left">
+                                            <span  t-field="line.product_uom.name"/>
+                                        </td>
+
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+                        
+
+
+
+           </t>
+        </t>
+            </t>
+        </template>
+
+
+        <report
+            id="action_request_purchase"
+            string="Request Purchase"
+            model="request.purchase"
+            report_type="qweb-pdf"
+            name="sale_roh.report_request_purchase_template"
+            file="sale_roh.report_request_purchase_template"
+            />
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="view_mrp_production_filter_inhirit" model="ir.ui.view">
+            <field name="name">mrp.production.select</field>
+            <field name="model">mrp.production</field>
+             <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='name']" position="before">
+                    <field name="name" string="Customer" filter_domain="[('partner_id', 'ilike', self)]"/>
+              </xpath>
+               <xpath expr="//filter[@name='filter_draft']" position="before">
+                    <filter string="Not Started" name="filter_start" domain="[('task_timer', '=', False)]"/>
+               </xpath>
+                <xpath expr="//filter[@name='status']" position="before">
+                      <filter string="Customer" name="partner_id" domain="[]" context="{'group_by': 'partner_id'}"/>
+
+              </xpath>
+
+
+            </field>
+        </record>
+
+
+        <record id="mrp_production_tree_view_inherits" model="ir.ui.view">
+            <field name="name">mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Manufacturing Orders" default_order="priority desc, date_planned_start desc" multi_edit="1" sample="1"   >
+                        <header>
+                            <button name="button_plan" type="object" string="Plan"/>
+                            <button name="do_unreserve" type="object" string="Unreserve"/>
+                        </header>
+                        <field name="priority" optional="show" widget="priority" nolabel="1"/>
+                        <field name="message_needaction" invisible="1"/>
+                        <field name="name" decoration-bf="1"/>
+                        <field name="partner_id" />
+                        <field name="total_day" optional="show" string="Tota"  sum="Total Days"/>
+                        <field name="date_planned_start"  />
+                        <field name="real_date_start"  />
+                        <field name="day_in_factory"  optional="show" readonly="1" sum="Total In Factory"/>
+                        <field name="day_out_factory"  optional="show"  readonly="1" sum="Total Out Factory"/>
+                        <field name="product_qty" sum="Total Qty" string="Quantity" readonly="1" optional="show"/>
+
+<!--                        <field name="date_deadline" widget="remaining_days" attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}" optional="hide"/>-->
+<!--                        <field name="product_id" readonly="1" optional="show"/>-->
+<!--                        <field name="product_uom_id" string="Unit of Measure" options="{'no_open':True,'no_create':True}" groups="uom.group_uom" optional="show"/>-->
+<!--                        <field name="lot_producing_id" optional="hide"/>-->
+<!--                        <field name="bom_id" readonly="1" optional="hide"/>-->
+
+                        <field name="reminder_day" decoration-info="reminder_day &gt;5" decoration-danger="reminder_day &lt;= 5 and state not in ('done')" />
+
+<!--                <tree decoration-info="state=='draft'" decoration-danger="state == 'end'" decoration-success="state == 'run'" decoration-muted="state == 'cancel'"  string="Accommodation">-->
+
+<!--                        <field name="user_id" optional="hide" widget="many2one_avatar_user"/>-->
+<!--                        <field name="reservation_state" optional="show"/>-->
+<!--                        <field name="company_id" readonly="1" groups="base.group_multi_company" optional="show"/>-->
+                        <field name="state" optional="show" widget='badge' decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+                        <field name="activity_exception_decoration" widget="activity_exception"/>
+<!--                        <field name="delay_alert_date" invisible="1"/>-->
+<!--                        <field string=" " name="json_popover" widget="stock_rescheduling_popover" attrs="{'invisible': [('delay_alert_date', '=', False)]}"/>-->
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_mrp_id" model="ir.ui.view">
+            <field name="name">mrp.production.inherited</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+
+                     <button name="action_sector_det" string="sector" type="object"
+                            class="oe_stat_button" icon="fa-th-list" />
+<!--                     <div style="margin-top:10px;">-->
+<!--                    <widget name="web_ribbon" text="Started"-->
+<!--                                attrs="{'invisible': [('task_timer', '=', False)]}"/>-->
+<!--&lt;!&ndash;                        <widget name="web_ribbon" text="Stoped" style="color: red;"&ndash;&gt;-->
+<!--&lt;!&ndash;                                attrs="{'invisible': [('task_timer', '=', True)]}"/>&ndash;&gt;-->
+<!--                    </div>-->
+                </xpath>
+
+                 <xpath expr="//page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="after">
+                            <field name="project_id" />
+                 </xpath>
+
+                 <xpath expr="//field[@name='user_id']" position="before">
+                                            <field name="real_date_start" />
+
+                                                <field name="partner_id" />
+
+                  </xpath>
+
+                     <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="is_user_working" invisible="1"/>
+                    <field name="end_date" invisible="0"/>
+                    <field name="reminder_day" invisible="0"/>
+                    <label for="duration"/>
+
+                    <div>
+                        <button style="pointer-events: none;" class="oe_inline label label-default">
+                            <field name="duration" id="duration" widget="timesheet_uoms" style="color: red;" />
+                        </button>
+                    </div>
+                         <label for="task_timer"/>
+                    <div class="o_row" style="display: inline-block;">
+                        <field name="task_timer" widget="boolean_toggle"/>
+                    </div>
+
+                </xpath>
+                <xpath expr="//button[@name='button_mark_done']" position="before">
+                    <button name="action_start" string="Start" type="object" style="color: red;"  attrs="{'invisible': ['|',('task_timer', '=', True),('state', '=', 'done')]}"/>
+<!--                    <button name="action_stop" string="Stop" type="object" style="color: red;"  attrs="{'invisible': [('task_timer', '=', False)]}"-->
+                           />
+                </xpath>
+ <xpath expr="//div[@name='button_box']" position="inside">
+                    <widget name="web_ribbon" text="Started"
+                                attrs="{'invisible': [('task_timer', '=', False)]}"/>
+<!--                        <widget name="web_ribbon" text="Stoped" style="color: red;"-->
+<!--                                attrs="{'invisible': [('task_timer', '=', True)]}"/>-->
+
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+         <record id="sale_order_form" model="ir.ui.view">
+            <field name="name">sale_mrp_bom.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_confirm']" position="before">
+                <button name="create_order_line"  type="object" string="Get Final Product"  attrs="{'invisible': [('count', '=', 1)]}" />
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field
+                    name="bom_id"
+                    context="{'default_product_id': product_id, 'default_product_tmpl_id': product_template_id}"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']//form//field[@name='customer_lead']"
+                position="after">
+
+                <field name="product_template_id" invisible="1" />
+                <field
+                    name="bom_id"
+                    context="{'default_product_id': product_id, 'default_product_tmpl_id': product_template_id}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+        <record id="sale_projecr_order_form_inhirt" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_project.view_order_form_inherit_sale_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']" position="replace">
+                    <field name="project_id" options="{'no_create': True}" />
+            </xpath>
+        </field>
+        </record>
+
+    </data>
+</odoo>

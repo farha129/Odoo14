@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_inherit_product_template_form_id" model="ir.ui.view">
+            <field name="name">view.inherit.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="after">
+                          <div>
+
+                                <field name="is_sector"/>
+                                <label for="is_sector"/>
+                          </div>
+
+                           <div>
+                                <field name="is_accessory"/>
+                                <label for="is_accessory"/>
+                           </div>
+
+                           <div>
+                                <field name="is_supplement"/>
+                                <label for="is_supplement"/>
+                           </div>
+                </xpath>
+
+                <xpath expr="//field[@name='company_id']" position="after">
+                                              <field name="supplier_company"/>
+
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="after">
+                          <field name="sector_type" attrs="{'invisible':[('is_sector','=',False)], 'required':[('is_sector','=',True)]}"/>
+                </xpath>
+
+                <xpath expr="//page[@name='invoicing']" position="after">
+                    <page string="Supplement" name="supplement"  attrs="{'invisible':[('is_sector','=',False)]}">
+                        <field name="supplement_sector_ids" widget="one2many"  >
+                             <tree editable="bottom">
+                                 <field name="supplement_name"  domain="[('is_supplement', '=',  True)]" context="{'default_is_supplement': True,'default_type': 'product'}" />
+                                 <field name="type" />
+                                 <field name="nmuber" />
+                                 <field name="height" />
+                                 <field name="width" />
+                                 <field name="division_number" />
+                                 <field name="side" />
+                                 <field name="heel" />
+                              </tree>
+                          </field>
+                    </page>
+
+                     <page string="Accessory" name="accessory"  attrs="{'invisible':[('is_sector','=',False)]}">
+                        <field name="accessory_ids" widget="one2many"  >
+                             <tree editable="bottom">
+                                 <field name="accessory_name"  domain="[('is_accessory', '=',  True)]" context="{'default_is_accessory': True,'default_type': 'product'}" />
+                                <field name="accessory_uom_qty" />
+                                <field name="product_acc_id" invisible="1"/>
+                             </tree>
+                        </field>
+                     </page>
+                </xpath>
+            </field>
+        </record>
+
+                  <!-- Inherit search View to Modify it -->
+        <record id="view_inherit_product_template_search_id" model="ir.ui.view">
+            <field name="name">view.inherit.product.template.sreach</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+
+                  <xpath expr="//filter[@name='services']" position="before">
+                    <filter string="Sector" name="is_sector" domain="[('is_sector','=','True')]"/>
+                    <filter string="Supplement" name="is_supplement" domain="[('is_supplement','=','True')]"/>
+                    <filter string="Accessory" name="is_accessory"  domain="[('is_accessory','=','True')]"/>
+                  </xpath>
+            </field>
+
+        </record>
+
+    </data>
+</odoo>
+
+
