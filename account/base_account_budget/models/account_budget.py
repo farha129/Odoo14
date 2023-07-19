@@ -40,6 +40,7 @@ class AccountBudgetPost(models.Model):
     def _check_account_ids(self, vals):
         if 'account_ids' in vals:
             account_ids = vals['account_ids']
+            # account_ids = self.resolve_2many_commands('account_ids', vals['account_ids'])
         else:
             account_ids = self.account_ids
         if not account_ids:

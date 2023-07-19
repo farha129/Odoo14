@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-        <record id="request_purchase_order_form" model="ir.ui.view">
+<!--        <record id="request_purchase_order_line_form" model="ir.ui.view">-->
+<!--            <field name="name">request.purchase.line.form</field>-->
+<!--            <field name="model">request.purchase.line</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Purchase Order" class="o_purchase_order">-->
+<!--                      <field name="product_id" readonly="1"/>-->
+<!--                                    <field name="name" readonly="1"/>-->
+<!--                                    <field name="product_qty" readonly="1"/>-->
+<!--                                    <field name="product_uom" readonly="1"/>-->
+<!--                                    <field name="state_line" readonly="1"/>-->
+<!--                                    <field name="product_uom_category_id" invisible="1"/>-->
+<!--                                    <field name="customer_id" />-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+     <record id="request_purchase_tree_line" model="ir.ui.view">
+            <field name="name">request.purchase.line.tree</field>
+            <field name="model">request.purchase.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                     <field name="product_id" readonly="1"/>
+                                    <field name="customer_id" />
+                                    <field name="product_qty" readonly="1"/>
+                                    <field name="state_line" readonly="1"/>
+
+                </tree>
+            </field>
+     </record>
+
+
+    <record id="request_purchase_order_form" model="ir.ui.view">
             <field name="name">request.purchase.form</field>
             <field name="model">request.purchase</field>
             <field name="arch" type="xml">
