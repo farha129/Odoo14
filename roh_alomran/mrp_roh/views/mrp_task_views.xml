@@ -133,6 +133,7 @@
             			<field name="arch" type="xml">
                                 <xpath expr="//field[@name='partner_id']" position="after">
                                                                          <field name="date_start" />
+                                                                         <field name="total_mater" />
 
                                 </xpath>
                                 <xpath expr="//field[@name='user_id']" position="before">

@@ -48,7 +48,7 @@ class MrpProduction(models.Model):
         'Real Start Date', copy=False,
         help="Date at which you plan to start the production.",
         index=True)
-    reminder_day = fields.Integer(string="Reminder Day")
+    reminder_day = fields.Integer(string="Reminder Day",readonly= True)
 
     def _get_reminder_day(self):
         mrp_object = self.env['mrp.production'].search([])
@@ -94,6 +94,7 @@ class MrpProduction(models.Model):
                 employees_glass = []
                 employees_install = []
                 day_number_cut = 0
+                total_mater = 0
                 overtime_cut = 0
                 day_number_install = 0
                 overtime_install = 0
@@ -125,6 +126,7 @@ class MrpProduction(models.Model):
                     p.task_timer = True
                     p.real_date_start = datetime.now()
                     p.end_date = so.end_date_order
+                    total_mater += p.product_qty
 
                     qty = str(p.product_qty)
                     text += p.product_id.name + arabic_reshaper.reshape(
@@ -148,6 +150,7 @@ class MrpProduction(models.Model):
                          'task_type': 'installation' or False,
                          'user_id': False,
                          'description': text or False,
+                         'total_mater': total_mater or False,
 
                          'date_start': deadline_glass or False,
                          'date_deadline': deadline_install or False,
@@ -165,6 +168,7 @@ class MrpProduction(models.Model):
                          'task_type': 'glass' or False,
                          'user_id': False,
                          'description': text or False,
+                         'total_mater': total_mater or False,
                          'date_start': deadline_gathering or False,
 
                          'date_deadline': deadline_glass or False,
@@ -180,6 +184,7 @@ class MrpProduction(models.Model):
                          'task_type': 'gathering' or False,
                          'user_id': False,
                          'description': text or False,
+                         'total_mater': total_mater or False,
                          'date_start': deadline_cut or False,
                          'date_deadline': deadline_gathering or False,
                          'partner_id': so.partner_id.id or False,
@@ -194,6 +199,7 @@ class MrpProduction(models.Model):
                         'employee_ids': employees_cut or False,
                         'task_type': 'cut' or False,
                         'description': text or False,
+                        'total_mater': total_mater or False,
                         'date_start': start_cut  or False,
                         'user_id': False,
                         'date_deadline': deadline_cut,

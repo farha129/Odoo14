@@ -13,8 +13,23 @@ from dateutil.relativedelta import relativedelta
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
-    sale_id = fields.Many2one('sale.order','sale order' ,required = True)
+    sale_id = fields.Many2one('sale.order','sale order' ,required = False)
     customer_id = fields.Many2one(related='sale_id.partner_id')
+
+
+class PurchaserderLine(models.Model):
+    _inherit = 'purchase.order.line'
+
+    def _compute_account_analytic_id(self):
+        res = super(PurchaserderLine, self)._compute_account_analytic_id()
+        if self.order_id.sale_id:
+            self.account_analytic_id = self.order_id.sale_id.analytic_account_id.id
+        return res
+
+
+
+
+
 
 
 # class PurchaserderLine(models.Model):

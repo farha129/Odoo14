@@ -94,6 +94,8 @@ class RequestPurchaseLine(models.Model):
     product_uom_category_id = fields.Many2one(related='product_id.uom_id.category_id')
     state_line = fields.Selection([('no','No Order'),('in_order','In Order'),('qty_no_match','Qty No Match'),('done','Done')],default = 'no',compute = '_get_state_line',string = 'State',readonly = False)
     request_id = fields.Many2one('request.purchase',string = 'Request Purchase')
+    customer_id = fields.Many2one(related='request_id.customer_id', string='Customer')
+
 
     def _get_state_line(self):
         for rec in self :

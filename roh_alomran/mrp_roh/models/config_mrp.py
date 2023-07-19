@@ -9,9 +9,25 @@ class ConfigWorkerTask(models.Model):
     name = fields.Selection([('cut','Cut'),('gathering','Gathering'),('installation','Installation'),('glass','Glass')],string = 'Task Name',required = True)
     one_work_in_day = fields.Float(string = 'One Worker in Day',required = True)
     one_work_in_month = fields.Float(string = 'One Worker in Month', readonly=True, compute='_get_mater')
-    number_worker = fields.Float(string = 'Number Worker',default = 1.0)
+    number_worker = fields.Float(string = 'Number Worker',default = 1.0,compute = 'compute_employee_number')
     workers_in_month = fields.Float(string='Workers In Month' , readonly=True,compute='_get_mater')
     workers_in_day = fields.Float(string='Workers In Day' , readonly=True,compute='_get_mater')
+
+    @api.depends('name')
+    def compute_employee_number(self):
+        for rec in self:
+            if rec.name =='cut':
+                obj_employees = self.env['hr.employee'].search([('tech_type','=','tech_cut')])
+                rec.number_worker = len(obj_employees)
+            if rec.name =='gathering':
+                obj_employees = self.env['hr.employee'].search([('tech_type','=','tech_gathering')])
+                rec.number_worker = len(obj_employees)
+            if rec.name =='glass':
+                obj_employees = self.env['hr.employee'].search([('tech_type','=','tech_glass')])
+                rec.number_worker = len(obj_employees)
+            if rec.name =='installation':
+                obj_employees = self.env['hr.employee'].search([('tech_type','=','tech_install')])
+                rec.number_worker = len(obj_employees)
 
     def _get_mater(self):
         number_day_in_month = 27
