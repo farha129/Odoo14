@@ -20,7 +20,7 @@
         'views/mrp_views.xml',
         'views/mrp_timer_static.xml',
         'views/mrp_task_views.xml',
-        'views/config_mrp.xml',
+        # 'views/config_mrp.xml',
         'views/overtime_mrp.xml',
         'views/installation_mrp.xml',
 
