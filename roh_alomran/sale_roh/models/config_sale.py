@@ -16,7 +16,7 @@ class ResDiscountSettings(models.TransientModel):
     _inherit = 'res.config.settings'
     
     percent_period_date = fields.Integer(related='company_id.percent_period_date', readonly =False)
-    contract_text = fields.Text(string = "Contract Text",related='company_id.contract_text', readonly =False)
+    # contract_text = fields.Text(string = "Contract Text",related='company_id.contract_text', readonly =False)
 
 
 
