@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="text-muted">
-<!--                                            <field name="contract_text" />-->
+                                            <field name="contract_text" />
                                     </div>
 
                                 </div>
