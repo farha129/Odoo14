@@ -20,7 +20,7 @@
         'report/contract.xml',
         'report/request_purchase_report.xml',
         'views/request_purchase_views.xml',
-        # 'views/config_sale.xml',
+        'views/config_sale.xml',
 
         
 
