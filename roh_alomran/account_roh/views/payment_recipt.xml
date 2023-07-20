@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_payment_receipt_document_inherit" inherit_id="account.report_payment_receipt_document">
+
+
+           <xpath expr="//div[1]" position="replace">
+
+                    <div class="page" dir="rtl">
+                        <div style='text-align: center;font-size: 18px;'>
+                                <h3>سند قبض </h3>
+                                <h3>Receipt Voucher</h3>
+                        </div>
+                        <table class="table" >
+                            <tr>
+                                <td style="border: none; text-align:right;">
+                                        <span t-esc="o.amount"/>ريال
+                                    </td>
+                                <td></td>
+                                 <td style="border: none;text-align:left;">
+                                        <strong>التاريخ :</strong>
+                                    </td>
+                                    <td style="border: none; text-align:left;">
+                                        <span t-esc="o.date"/>
+                                    </td>
+                            </tr>
+                             <tr>
+
+                                 <td style="border: none;text-align:right;">
+                                        <strong>استلمنا من السيد/السادة :</strong>
+                                    </td>
+                                    <td style="border: none; text-align:center;">
+                                        <span t-esc="o.partner_id.name"/>
+                                    </td>
+                                 <td></td>
+                                  <td style="border: none;text-align:left;">
+                                        <strong> Received From</strong>
+                                    </td>
+                            </tr>
+
+                             <tr>
+
+                                 <td style="border: none;text-align:right;">
+                                        <strong> مبلغ قدره:</strong>
+                                    </td>
+                                    <td style="border: none; text-align:center;">
+                                        <span t-esc="o.amount_arabic_word"/>
+                                    </td>
+
+<!--                                    </td><td style="border: none; text-align:center;">-->
+<!--                                        <span t-esc="o.check_amount_in_words"/>-->
+<!--                                    </td>-->
+                                 <td></td>
+                                  <td style="border: none;text-align:left;">
+                                        <strong>The Sum Of</strong>
+                                    </td>
+                            </tr>
+                             <tr>
+
+                                 <td style="border: none;text-align:right;">
+                                        <strong> نقدا/شيك:</strong>
+                                    </td>
+                                    <td style="border: none; text-align:right;">
+                                        <span t-esc="o.payment_method_id.name"/>
+                                        <span t-esc="o.cheque_reference"/>
+                                    </td>
+                                 <td style="border: none;text-align:right;">
+                                        <strong> Bank/بنك:</strong>
+                                    </td>
+
+                             <td style="border: none; text-align:right;">
+                                        <span t-esc="o.journal_id.name"/>
+                                    </td>
+
+                            </tr>
+                            <tr>
+
+                                 <td style="border: none;text-align:right;">
+                                        <strong> و ذلك مقابل:</strong>
+                                    </td>
+                                    <td style="border: none; text-align:center;">
+                                        <span t-esc="o.description"/>
+                                    </td>
+                                 <td></td>
+                                  <td style="border: none;text-align:left;">
+                                        <strong>For</strong>
+                                    </td>
+                            </tr>
+
+
+
+<tr>
+
+</tr>
+
+
+
+
+                           <br></br><br></br>
+                           <br></br><br></br>
+
+                            <tr>
+                                    <td style="border: none;text-align:right;">
+                                        <strong> المستلم Receiver</strong>
+                                    </td>
+
+                                <td style="border: none;text-align:right;">
+                                        <strong>المحاسب Accountant</strong>
+                                    </td>
+
+                                <td style="border: none;text-align:right;">
+                                        <strong>المدير Manager</strong>
+                                    </td>
+
+
+                                </tr>
+                            <tr>
+                                <td style="border: none; text-align:right;">
+                                        _____________________________
+                                    </td>
+                                <td style="border: none; text-align:right;">
+                                        _____________________________
+                                    </td>
+                                <td style="border: none; text-align:right;">
+                                        _____________________________
+                                    </td>
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                     </xpath>
+                
+        </template>
+        
+        </odoo>

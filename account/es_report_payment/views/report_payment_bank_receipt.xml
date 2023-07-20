@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_bank_receipt_document">
+        <t t-call="web.internal_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <style>
+                table, th, td {
+                border: 1px solid black;
+                }
+            </style>
+            <div class="page">
+                <h6 style="width:100%; text-align:center;">
+                    <strong>Төлбөрийн даалгавар:
+                        <span t-field="o.name"/>
+                    </strong>
+                </h6>
+
+                <div class="row mt32">
+                    <table style='width:100%; border-collapse: collapse;'>
+                        <tr>
+                            <td>
+                                <strong>Огноо:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.date"/>
+                            </td>
+                            <td>
+                                <strong>Дансны дугаар</strong>
+                            </td>
+                            <td>
+                                <strong>Дүн</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Төлөгчийн нэр:</strong>
+                            </td>
+                            <td>
+                                <span t-field="user.company_id.name"/>
+                            </td>
+                            <td>
+                                <strong>Дебит</strong>
+                            </td>
+                            <td rowspan='4' class="text-center">
+                                <span t-field="o.amount"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Төлөгчийн банк:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.journal_id.bank_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.journal_id.bank_account_id"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Хүлээн авагчийн нэр:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.partner_id"/>
+                            </td>
+                            <td>
+                                <strong>Кредит</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Хүлээн авагчийн банк:</strong>
+                            </td>
+                            <td>
+                                <span t-field="o.partner_id.bank_ids[0].bank_id"/>
+                            </td>
+                            <td>
+                                <span t-field="o.partner_id.bank_ids[0].acc_number"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <strong>Мөнгөн дүн (үсгээр):</strong>
+                            </td>
+                            <td>... хоногийн ... хувийн торгууль:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' style="padding-left: 5px">
+                                <span t-field="o.check_amount_in_words"/>
+                            </td>
+                            <td>Дүн (торгуулийн хамт):</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <strong>Гүйлгээний утга (төлбөрийн зориулалт):</strong>
+                            </td>
+                            <td>Төлөх хугацаа:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' style="padding-left: 5px">
+                                <span t-field="o.ref"/>
+                            </td>
+                            <td>Төлбөрийн ээлж:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2'>
+                                <strong>Барааг хүлээн авч үйлчилгээг гүйцэтгүүлсэн:</strong>
+                            </td>
+                            <td colspan='2'></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row mt32">
+                    <t t-set="ceo_name" t-value="user.company_id.ceo_id.name.split(' ')"/>
+                    Захирал: ................................... /<t t-esc="ceo_name[0]"/>/
+                </div>
+                <div class="row mt16">
+                    ТАМГА
+                </div>
+                <div class="row mt16">
+                    <div class="col-6">
+                        <t t-set="accountant_name" t-value="user.company_id.accountant_id.name.split(' ')"/>
+                        Ня-бо: ................................... /<t t-esc="accountant_name[0]"/>/
+                    </div>
+                    <div class="col-6">
+                        Банкинд гүйлгээ хийсэн огноо: ..... оны ..... сарын ..... өдөр
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_payment_bank_receipt">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-call="es_report_payment.report_payment_bank_receipt_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>

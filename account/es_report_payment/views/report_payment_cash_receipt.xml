@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_cash_receipt_document">
+        <t t-call="web.internal_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <div class="page">
+                <div class="row">
+                    <div class="col-7">
+                        <div>
+                            <div class="row">
+                                <p style="margin:0; width:100%;">
+                                    <strong>
+                                        <t t-if="user.company_id.name">
+                                            <span t-field="user.company_id.name"/>
+                                        </t>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="margin:0; width:100%; text-align:center;">
+                                    <strong>Кассын зарлагын ордер:
+                                        <span t-field="o.name"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="width:100%; text-align:center;">
+                                    <span t-field="o.date"/>
+                                </p>
+                            </div>
+                            <table style="width:100%; text-align:left;">
+                                <tr>
+                                    <th>Хэнд:</th>
+                                    <td>
+                                        <span t-field="o.partner_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Гүйлгээний утга:</th>
+                                    <td>
+                                        <span t-field="o.ref"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Мөнгөн дүн (тоогоор):</th>
+                                    <td>
+                                        <span t-field="o.amount"
+                                              t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Мөнгөн дүн (үсгээр):</th>
+                                    <td>
+                                        <span t-field="o.check_amount_in_words"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="row mt16">
+                                <p style="width:100%; text-align:center;">хүлээлгэн өгөв.</p>
+                            </div>
+                            <div class="row mt16">
+                                <t t-set="ceo_name" t-value="user.company_id.ceo_id.name.split(' ')"/>
+                                Захирал: .......................... /<t t-esc="ceo_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                <t t-set="accountant_name" t-value="user.company_id.accountant_id.name.split(' ')"/>
+                                Ерөнхий нягтлан: .......................... /<t t-esc="accountant_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                Мөнгө хүлээн авсан: ..........................
+                            </div>
+                            <div class="row">
+                                <t t-set="create_user_name" t-value="o.create_uid.name.split(' ')"/>
+                                Баримт бичсэн: .......................... /<t t-esc="create_user_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                Хүлээлгэн өгсөн нярав: ..........................
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5" style="border-left: 2px dotted #444;">
+                        <div style="margin-left: 10px">
+                            <div class="row">
+                                <p style="margin:0; width:100%;">
+                                    <strong>
+                                        <t t-if="user.company_id.name">
+                                            <span t-field="user.company_id.name"/>
+                                        </t>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="margin:0; width:100%; text-align:center;">
+                                    <strong>Кассын зарлагын ордер:
+                                        <span t-field="o.name"/>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="width:100%; text-align:center;">
+                                    <span t-field="o.date"/>
+                                </p>
+                            </div>
+                            <table style="width:100%; text-align:left;">
+                                <tr>
+                                    <th>Хэнд:</th>
+                                    <td>
+                                        <span t-field="o.partner_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Гүйлгээний утга:</th>
+                                    <td>
+                                        <span t-field="o.ref"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Мөнгөн дүн (тоогоор):</th>
+                                    <td>
+                                        <span t-field="o.amount"
+                                              t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Мөнгөн дүн (үсгээр):</th>
+                                    <td>
+                                        <span t-field="o.check_amount_in_words"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="row mt16">
+                                <p style="width:100%; text-align:center;">хүлээлгэн өгөв.</p>
+                            </div>
+                            <div class="row mt16">
+                                Захирал: .......................... /<t t-esc="ceo_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                Ерөнхий нягтлан: .......................... /<t t-esc="accountant_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                Мөнгө хүлээн авсан: ..........................
+                            </div>
+                            <div class="row">
+                                Баримт бичсэн: .......................... /<t t-esc="create_user_name[0]"/>/
+                            </div>
+                            <div class="row">
+                                Хүлээлгэн өгсөн нярав: ..........................
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_payment_cash_receipt">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-call="es_report_payment.report_payment_cash_receipt_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>

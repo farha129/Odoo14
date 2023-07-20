@@ -126,8 +126,8 @@ class AccountPayment(models.Model):
                 }
             }
         else:
-            self.filtered(lambda r: r.state == 'draft').post()
-            self.write({'state': 'sent'})
+            self.filtered(lambda r: r.state == 'draft').action_post()
+            self.write({'state': 'posted'})
             return self.do_print_checks()
 
     def _prepare_payment_moves(self):
