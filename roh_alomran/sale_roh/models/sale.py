@@ -748,7 +748,7 @@ class DitalsSector(models.Model):
             else:
                 rec.tabsha = 0
 
-            if rec.sector_id.product_id.sector_type == 'sketchure':
+            if rec.sector_id.product_id.sector_type == 'sketchure' and  (rec.var_cutter or rec.hor_cutter ):
                 if rec.var_cutter :
                     rec.tranzium = rec.total_var_cutter
                 if  rec.hor_cutter :

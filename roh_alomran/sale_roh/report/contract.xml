@@ -217,20 +217,25 @@
 
 <!--*جميع الاكسسوارات و المفصلات إيطالي أصلي(راغني)-->
 <!--                            <br class="text-left"></br>-->
-*كل الألمونيوم المستخدم يخضع لإختبارات المواصفات
-                            <br class="text-left"></br>
-*يتم الاتفاق عند أي إضافة للمواد ويتم إضافة قيمتها للدفعة الثانية
-                            <br class="text-left"></br>
+<!--*كل الألمونيوم المستخدم يخضع لإختبارات المواصفات-->
+<!--                            <br class="text-left"></br>-->
+<!--*يتم الاتفاق عند أي إضافة للمواد ويتم إضافة قيمتها للدفعة الثانية-->
+<!--                            <br class="text-left"></br>-->
                             <t t-if="doc.implemented_period">
                                 *مدة التنفيذ <span t-field="doc.implemented_period"/> يوم عمل من تاريخ أول دفعة
                             <br class="text-left"></br></t>
-*عند تأخير الدفعة يتم إضافة التاخير لمدة العقد
-                            <br class="text-left"></br>
-*ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات
-                            <br class="text-left"></br>
-                             <t t-if="doc.contract_note">
+<!--*عند تأخير الدفعة يتم إضافة التاخير لمدة العقد-->
+<!--                            <br class="text-left"></br>-->
+<!--*ضمان على الجودة و التسربات للمياة و دخول الهواء و الغبار لمدة 5 سنوات-->
+<!--                              <br class="text-left"></br>-->
+                            <t t-if="doc.contract_note">
                                <span t-field="doc.contract_note"/>
                               <br class="text-left"></br></t>
+
+                             <t t-if="doc.company_id.contract_text">
+                               <span t-field="doc.company_id.contract_text"/>
+                              <br class="text-left"></br></t>
+
 
                                                         <t t-if="doc.destination_payment">
 
