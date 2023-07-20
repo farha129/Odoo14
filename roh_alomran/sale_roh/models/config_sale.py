@@ -4,6 +4,14 @@
 from odoo import api, fields, models
 
 
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+
+    contract_text = fields.Text(string="Contract Text")
+    percent_period_date = fields.Integer(string='Percent Calculation Mrp date',
+                                         help='Scheduled Date in MRP Calculation from This percent and implemented period in SO ')
+
+
 class ResDiscountSettings(models.TransientModel):
     _inherit = 'res.config.settings'
     
@@ -13,10 +21,5 @@ class ResDiscountSettings(models.TransientModel):
 
 
 
-class ResCompany(models.Model):
-    _inherit = 'res.company'
-    
-    contract_text = fields.Text(string = "Contract Text")
-    percent_period_date = fields.Integer(string = 'Percent Calculation Mrp date',help ='Scheduled Date in MRP Calculation from This percent and implemented period in SO ')
 
     
