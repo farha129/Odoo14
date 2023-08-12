@@ -69,9 +69,11 @@ class HrPayslip(models.Model):
         print('9999999iiiiiiiiiiiiiiiiiiiii999999999999inc_obj',inc_obj)
         for incentive in inc_obj:
             if date_from <= incentive.incentive_lines.date <= date_to and not incentive.incentive_lines.paid:
-                print('9999999iiiiiiiiiiiiiiiiiiiii999999999999paid')
+                print('xxxxxxxxxxx',res)
 
                 for result in res:
+                    print('xxxxxxxxggggggggggggggggggggxxx', result)
+
                     if result.get('code') == 'INC':
                         result['amount'] = incentive.incentive_amount
                         result['incentive_line_id'] = incentive.id

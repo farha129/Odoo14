@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="hr_deduction_id" model="hr.salary.rule">
+            <field name="name">Dedection</field>
+            <field name="sequence" eval="6"/>
+            <field name="code">DE</field>
+            <field name="category_id" ref="hr_payroll_community.DED"/>
+            <field name="amount_select">code</field>
+<!--            <field name="amount_select">code</field>-->
+                       <field name="appears_on_payslip" eval="True"/>
+
+<!--                        <field name="amount_python_compute">result = inputs.DE and - (inputs.DE.amount)</field>-->
+
+            <field name="amount_python_compute">
+amount = 0
+try:
+    if inputs.DE:
+        amount = inputs.DE.amount
+except:
+    amount = 0
+result = -amount</field>
+        </record>
+
+ <record id="hr_rule_input_deduction" model="hr.rule.input">
+            <field name="code">DE</field>
+            <field name="name">Dedection</field>
+<!--            <field name="amount">30</field>-->
+            <field name="input_id" ref="hr_deduction_id"/>
+        </record>
+
+       
+    </data>
+</odoo>
