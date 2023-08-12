@@ -16,6 +16,55 @@ class MrpProduction(models.Model):
     partner_id = fields.Many2one('res.partner',string = 'Customer')
     project_id = fields.Many2one('project.project',string="project")
     end_date = fields.Date(string = 'End Date',readonly=True)
+    
+    def _create_deduction(self):
+        """ Create Deduction auto when MRP order leate """
+        mrp_obj = self.env['mrp.production'].search([])
+
+        for rec in mrp_obj:
+
+            today_s = fields.Date.today()
+            date_try_s  = rec.end_date
+            today = today_s.strftime('%Y-%m-%d')
+            if rec.end_date:
+                end_date = rec.end_date.strftime('%Y-%m-%d')
+                print('ennnnnnnd',end_date)
+                print('todyyyyyyyyyyyyyyyy',today)
+
+                if today >= end_date and rec.state != 'done':
+                    user_id_boolean = self.env.user.has_group('mrp_roh.group_mrp_officer')
+                    group_id = rec.env.ref('mrp_roh.group_mrp_officer').users
+
+                    print('Trueeeeeeeeeeee')
+                    print('grooooooooooooooooooooooop',group_id)
+                    m =  arabic_reshaper.reshape('خصم بسبب تاخر هذا الطلب')
+                    m2 = arabic_reshaper.reshape('للعميل')
+
+
+                    text =  format(rec.name) + ' ' + m +'\n' + m2 +'  '+ format(rec.partner_id.name)
+                    #
+                    # text += arabic_reshaper.reshape(m2) % (
+                    #         ':'+ str(rec.partner_id.name)),
+
+                    # if user_id_boolean:
+                    print('emmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmp')
+
+                    group_id = rec.env.ref('mrp_roh.group_mrp_officer').users
+                    employee_ids = group_id.mapped('employee_id').ids
+                    for emp in employee_ids:
+                        create_deduction = self.env['hr.deduction'].create({
+                            'employee_id': emp,
+                            'amount': rec.company_id.deduction_amount,
+                            'date': today,
+                            'description': text,
+
+                                                                            })
+
+
+
+
+
+            
 
 
 

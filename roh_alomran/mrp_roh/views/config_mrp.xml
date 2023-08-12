@@ -70,6 +70,30 @@
                         </div>
                     </div>
                 </xpath>
+                <xpath expr="//div[@data-key='hr']" position="inside">
+                    <h2>Deduction</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="deduction_amount"/>
+                                <div class="text-muted">
+                                </div>
+                                <div>
+                                    <div class="content-group mt16">
+                                        <!--                                       <group>-->
+                                        <field name="deduction_amount" colspan="4" nolabel="1"/>
+                                        <!--                                       </group>-->
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </xpath>
 
         </field>
  </record>

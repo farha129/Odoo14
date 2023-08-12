@@ -36,10 +36,11 @@ class ConfigWorkerTask(models.Model):
             rec.workers_in_month = rec.one_work_in_month * rec.number_worker
             rec.workers_in_day = rec.one_work_in_day * rec.number_worker
 
-class ResDiscountSettings(models.TransientModel):
+class ResSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     mrp_target_area = fields.Float(related='company_id.mrp_target_area', readonly =False)
+    deduction_amount = fields.Float(related='company_id.deduction_amount', readonly =False)
 
 
 
@@ -47,4 +48,5 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
     mrp_target_area = fields.Float(string = 'Target Area' , help = 'Target is The number of Area to be manufactured per month ')
+    deduction_amount = fields.Float(string = 'Deduction Amount' , help = 'An amount deducted when the request is delayed')
 
