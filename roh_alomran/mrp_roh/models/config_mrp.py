@@ -47,7 +47,7 @@ class ResSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     mrp_target_area = fields.Float(related='company_id.mrp_target_area', readonly =False)
-    deduction_amount = fields.Float(related='company_id.deduction_amount', readonly =False)
+    # deduction_amount = fields.Float(related='company_id.deduction_amount', readonly =False)
 
 
 
