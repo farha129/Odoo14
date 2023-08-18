@@ -40,7 +40,7 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
     mrp_target_area = fields.Float(string = 'Target Area' , help = 'Target is The number of Area to be manufactured per month ')
-    # deduction_amount = fields.Float(string = 'Deduction Amount' , help = 'An amount deducted when the request is delayed')
+    deduction_amount = fields.Float(string = 'Deduction Amount' , help = 'An amount deducted when the request is delayed')
 
 
 class ResSettings(models.TransientModel):

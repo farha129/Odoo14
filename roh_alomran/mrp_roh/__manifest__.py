@@ -8,7 +8,7 @@
     'website': "",
     'category': 'sale',
     'version': '0.1',
-    'depends': ['sale_mrp','sale_roh','mrp_analytic','project'],
+    'depends': ['sale_mrp','sale_roh','mrp_analytic','project','hr_deduction'],
 
     'data': [
 
