@@ -46,12 +46,9 @@
                                                  <field name="product_area" />
                                                  <field name="is_edit" invisible="1"/>
                                                  <field name="product_template_id" invisible="1"/>
-                                                 <field name="final_product" context="{'default_type': 'product'}"/>
+                                                 <field name="final_product" context="{'default_route_ids': '1'}" domain="[('is_sector', '=', False)]"/>
                                                  <field name="product_number" />
-                                                                                     <button name="action_open_ditals_order"  type="object" string="add"  />
-
-
-
+                                                  <button name="action_open_ditals_order"  type="object" string="add"  />
                                        </tree>
                            </field>
                          <group colspan="4">
@@ -218,11 +215,9 @@
                 <field name="height" />
                 <field name="sector_id" invisible="1" />
 
-
             </tree>
         </field>
     </record>
-
 
         <record id="view_detial_action" model="ir.actions.act_window">
         <field name="name">Ditals Sector</field>
@@ -230,8 +225,6 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="ditals_view_tree"/>
     </record>
-
-
 
 
     </data>

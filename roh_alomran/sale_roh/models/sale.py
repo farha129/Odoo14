@@ -6,8 +6,6 @@ import datetime
 from datetime import datetime
 from datetime import timedelta
 from odoo.exceptions import ValidationError
-
-
 from dateutil.relativedelta import relativedelta
 
 class PurchaseOrder(models.Model):
@@ -15,7 +13,6 @@ class PurchaseOrder(models.Model):
 
     sale_id = fields.Many2one('sale.order','sale order' ,required = False)
     customer_id = fields.Many2one(related='sale_id.partner_id')
-
 
 class PurchaserderLine(models.Model):
     _inherit = 'purchase.order.line'
@@ -25,21 +22,6 @@ class PurchaserderLine(models.Model):
         if self.order_id.sale_id:
             self.account_analytic_id = self.order_id.sale_id.analytic_account_id.id
         return res
-
-
-
-
-
-
-
-# class PurchaserderLine(models.Model):
-#     _inherit = 'purchase.order.line'
-#     hi_wi = fields.Float(string = 'total_hi_wi',digits = 'total height and width /2')
-#     is_5_80 = fields.Boolean(string = '5.80' , default = True)
-#
-#
-
-
 
 class DimensionSupplement(models.Model):
     _name = "dimension.supplement"
@@ -51,11 +33,8 @@ class DimensionSupplement(models.Model):
     supplement_width = fields.Float(string='Width', digits='Supplement Width by mater', default=0)
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
     supplement_name = fields.Many2one('product.product', string='Supplement', required=True)
-
     product_uom = fields.Many2one('uom.uom', string='Unit of Measure',)
     purchase_uom_qty = fields.Float(string='Quantity', digits='Accessory Unit of Measure', default=1.0)
-
-
 
 class SaleAccessory(models.Model):
     _name = "sale.accessory"
@@ -67,13 +46,7 @@ class SaleAccessory(models.Model):
     sale_id = fields.Many2one('sale.order', string = 'Accessory')
 
 class SaleOrder(models.Model):
-
     _inherit = 'sale.order'
-
-    # def _default_end_date_order(self):
-    #     days = self.implemented_period end_date_order
-    #     if days > 0:
-    #
 
     installation = fields.Boolean('Installation requested?')
     end_date_order = fields.Date(string = 'End Date',readonly=True)
@@ -94,16 +67,6 @@ class SaleOrder(models.Model):
     state = fields.Selection(
         selection_add=[('again', 'Try Again'),('compute', 'Computed')])
 
-
-
-
-    # @api.model
-    # def create(self, vals):
-    #     order = super(SaleOrder,self.with_context(mail_create_nolog=True)).create(vals)
-    #     order.sudo().create_order_line()
-    #     return order
-
-
     def action_cancel(self):
         res = super(SaleOrder, self).action_cancel()
         for orders in self:
@@ -111,8 +74,6 @@ class SaleOrder(models.Model):
             if request_ids:
                 request_ids.write({'state':'cancel'})
         return res
-
-
 
     def _get_po(self):
         for orders in self:
@@ -161,15 +122,12 @@ class SaleOrder(models.Model):
 
     def action_create_request_purchase(self):
         value = []
-
         self.ensure_one()
         res = self.env['request.purchase'].browse(self._context.get('id', []))
         so = self.env['sale.order'].browse(self._context.get('active_id'))
         sale_order_name = so.name
         company_id = self.env.company
         currency_id = self.env.company.currency_id.id
-
-
         request_id = res.create({
             'date_order': str(self.date_order),
             # 'name': sale_order_name,
@@ -195,15 +153,11 @@ class SaleOrder(models.Model):
             if ava_qty > 0:
 
                 if data.product_uom_qty > ava_qty :
-
                     product_quantity = data.product_uom_qty - ava_qty
-
                     purchase_qty_uom = data.product_uom._compute_quantity(product_quantity, data.product_id.uom_po_id)
 
                     # determine vendor (real supplier, sharing the same partner as the one from the PO, but with more accurate informations like validity, quantity, ...)
                     # Note: one partner can have multiple supplier info for the same product
-
-
                     value.append({
                         'product_id': data.product_id.id,
                         'name': data.product_id.name,
@@ -213,7 +167,6 @@ class SaleOrder(models.Model):
                     })
             else:
                 product_quantity = data.product_uom_qty
-
                 value.append({
                     'product_id': data.product_id.id,
                     'name': data.product_id.name,
@@ -231,9 +184,7 @@ class SaleOrder(models.Model):
                 ava_qty = 0.0
             if ava_qty > 0:
                 if data.purchase_uom_qty > ava_qty :
-
                     product_quantity = data.purchase_uom_qty - ava_qty
-
                     value.append({
                         'product_id': data.supplement_name.id,
                         'name': data.supplement_name.name,
@@ -243,7 +194,6 @@ class SaleOrder(models.Model):
                     })
             else:
                 product_quantity = data.purchase_uom_qty
-
                 value.append({
                     'product_id': data.supplement_name.id,
                     'name': data.supplement_name.name,
@@ -262,13 +212,10 @@ class SaleOrder(models.Model):
                 ava_qty = sum(qty_ids.mapped('available_quantity'))
             else :
                 ava_qty = 0.0
+
             if ava_qty > 0 :
-
-
                 if data.accessory_uom_qty > ava_qty :
-
                     product_quantity = data.accessory_uom_qty - ava_qty
-
                     value.append({
                         'product_id': data.accessory_name.id,
                         'name': data.accessory_name.name,
@@ -312,11 +259,8 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         days = self.implemented_period
-
         self.end_date_order =  fields.Date.to_string(self.date_order + timedelta(days))
-
         self.action_create_request_purchase()
-
         return res
 
     @api.depends('sector_order_line')
@@ -336,8 +280,6 @@ class SaleOrder(models.Model):
                 if not rec.product_id.supplement_sector_ids:
                     continue
                     # raise ValidationError(_('Please Configratin Dimension for this Sector'))
-
-
                 else:
                     for sect in rec.product_id.supplement_sector_ids:
                         qyt = 0.0
@@ -356,11 +298,16 @@ class SaleOrder(models.Model):
                             sum_with = 0.0
 
                             if sect.type == 'other':
-                                height = (product_hight + sect.height) * sect.nmuber
-                                width = (product_width + sect.width) * sect.nmuber
+                                if sect.height:
+                                    height = (product_hight + sect.height) * sect.number_height
+                                else:
+                                    height = 0
+                                if sect.width:
+                                    width = (product_width + sect.width) * sect.number_width
+                                else:
+                                    width = 0
                                 sum += height + width
                                 qyt = (sum / 5.80)/ 100
-
 
                             if sect.type == 'cutter_hor' and hor_cutter:
                                 if hor_cutter > 0 :
@@ -394,12 +341,9 @@ class SaleOrder(models.Model):
                                         sum += area
                                     qyt = (sum / 7.42)/ 100
                                     break
-
-
                                 else:
                                     hight2 = product_hight + sect.height
                                     width2 = product_width + sect.width
-
                                     area = ((hight2 * width2) * sect.nmuber) / 100
                                     sum += area
                                 qyt = (sum / 7.42)/ 100
@@ -430,6 +374,13 @@ class SaleOrder(models.Model):
                                 else:
                                     qyt = bercluz_cutter
 
+                            if sect.type == 'motor':
+                                sum += ((product_hight * product_width) * sect.nmuber) /100
+                                qyt = sum/5.80
+
+                            if sect.type == 'shater':
+                                sum += ((product_hight * product_width) / sect.division_number) /100
+                                qyt = sum/5.80
 
                         if qyt != 0:
                             self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,

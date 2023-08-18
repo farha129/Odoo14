@@ -140,7 +140,7 @@
             <field name="arch" type="xml">
 
             <xpath expr="//button[@name='action_confirm']" position="before">
-                <button name="create_order_line"  type="object" string="Get Final Product"  attrs="{'invisible': [('count', '=', 1)]}" />
+                <button name="create_order_line"  type="object" string="Get Final Product"  attrs="{'invisible': [('state', '!=', 'draft')]}" />
             </xpath>
 
             <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">

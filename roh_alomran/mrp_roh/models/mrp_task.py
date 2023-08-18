@@ -252,8 +252,6 @@ class MrpProduction(models.Model):
            rec.day_out_factory = rec.day_number_install
 
 
-
-
 class project_Task(models.Model):
     _inherit='project.task'
     
@@ -262,10 +260,5 @@ class project_Task(models.Model):
     employee_ids = fields.Many2many('hr.employee',string = 'Employees')
     date_start = fields.Date(string = 'Start Date',readonly=True)
     total_mater = fields.Float(string = 'Total Mater')
-
-
-
-
-
 
 

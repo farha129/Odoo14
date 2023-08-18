@@ -42,7 +42,9 @@
                                  <field name="type" />
                                  <field name="nmuber" />
                                  <field name="height" />
+                                 <field name="number_height" />
                                  <field name="width" />
+                                 <field name="number_width" />
                                  <field name="division_number" />
                                  <field name="side" />
                                  <field name="heel" />

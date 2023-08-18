@@ -25,10 +25,11 @@ class ProductTemplate(models.Model):
 #
 class ProductProduct(models.Model):
     _inherit = 'product.product'
-    is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement')
-    is_sector = fields.Boolean(related='product_tmpl_id.is_sector')
-    is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory')
-    sector_type = fields.Selection(related = 'product_tmpl_id.sector_type')
+    is_supplement = fields.Boolean(related='product_tmpl_id.is_supplement',readonly=False)
+    is_sector = fields.Boolean(related='product_tmpl_id.is_sector',readonly=False)
+    is_accessory = fields.Boolean(related='product_tmpl_id.is_accessory',readonly=False)
+    sector_type = fields.Selection(related = 'product_tmpl_id.sector_type',readonly=False)
+    
 
 class ProductAccessory(models.Model):
     _name = "product.accessory"
@@ -44,7 +45,6 @@ class SupplementSector(models.Model):
     _name = "supplement.sector"
     _description = "Supplement Sector"
 
-
     product_id = fields.Many2one('product.template', string = 'product')
     supplement_name = fields.Many2one('product.product', string='Supplement')
     dimensions_number = fields.Selection([('one', 'One Dimension'), ('two', 'TWO Dimensions')],default='one',
@@ -53,23 +53,16 @@ class SupplementSector(models.Model):
         [('height', 'Height'), ('width', 'Width'), ('h_w', 'High and Width'),
          ('side_heel', 'Side and Heel')], string='Measured From')
     height = fields.Float(string='Height', digits='Product Height', default=0)
+    number_height = fields.Float(string='Height Number', digits='Height Number', default=0)
+    number_width = fields.Float(string='Width Number', digits='width Number ', default=0)
     width = fields.Float(string='Width', digits='Product Width by mater', default=0)
     nmuber = fields.Float(string='Number', digits='Number of Supplement', default=1)
-
     side = fields.Float(string='Side', digits='Side', default=0)
     heel = fields.Float(string='Heel', digits='Heel', default=0)
     is_side = fields.Boolean(string='Is Side')
     is_heel = fields.Boolean(string='Is Heel')
     type = fields.Selection(
-        [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),('tranzium', 'Tranzium'),('bercluz', 'Bercluz'),('tabsha', 'Tabsha'),
+        [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),('tranzium', 'Tranzium'),('bercluz', 'Bercluz'),('tabsha', 'Tabsha'),('motor', 'Motor'),('shater', 'Shater'),
          ('wire', 'Wire'),('glass', 'Glass'),('other','other')], string='Type')
-
     division_number = fields.Integer('/', default=1)
     # dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
-
-
-   
-
-    
-
-   
