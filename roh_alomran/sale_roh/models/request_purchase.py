@@ -44,6 +44,34 @@ class RequestPurchase(models.Model):
 
     def action_in_purchase(self):
         for rec in self:
+            for partner in rec.line_ids.mapped('partner_id'):
+                print('dooooone')
+                purchase_order = self.env['purchase.order'].create({
+                    'partner_id': partner.id,
+                    'date_order': str(rec.date_order),
+                    'sale_id': rec.sale_id.id,
+                    'customer_id': rec.customer_id.id,
+                })
+                print('poooooooooooooooooo',purchase_order)
+                obj = rec.line_ids.search([('partner_id','=',partner.id)])
+                for po in obj:
+                # print('pooooooooooooooooooooooooo',po)
+
+                    value = {
+                        'product_id': po.product_id.id,
+                        'name': po.name,
+                        'product_qty': po.product_qty,
+                        'order_id': purchase_order.id,
+                        'product_uom': po.product_uom.id,
+                        'taxes_id': po.product_id.supplier_taxes_id.ids,
+                        'price_unit': po.price_unit,
+                        'state': 'draft',
+                    }
+                    print('liiiiiiiiiiiiiiiiiiiiiiiiiiiine',value)
+
+
+                self.env['purchase.order.line'].create(value)
+
             rec.state = 'in_purchase'
 
     def action_cancel(self):
@@ -95,6 +123,9 @@ class RequestPurchaseLine(models.Model):
     state_line = fields.Selection([('no','No Order'),('in_order','In Order'),('qty_no_match','Qty No Match'),('done','Done')],default = 'no',compute = '_get_state_line',string = 'State',readonly = False)
     request_id = fields.Many2one('request.purchase',string = 'Request Purchase')
     customer_id = fields.Many2one(related='request_id.customer_id', string='Customer')
+    partner_id = fields.Many2one('res.partner', string='Vendor')
+    price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
+
 
 
     def _get_state_line(self):

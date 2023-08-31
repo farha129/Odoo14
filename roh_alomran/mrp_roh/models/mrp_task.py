@@ -203,7 +203,7 @@ class MrpProduction(models.Model):
     def _get_number_day_work(self):
        # self.ensure_one()
        for rec in self :
-
+        #Calculate  over time Dates by (qantinty/worker day in config) after That divitione, The float number geve number after point if more than 5 ther Days work increse else overtime increse by the number after float
            config_obj = self.env['config.worker.task'].search([])
            for config in config_obj:
                if config.name == 'cut':

@@ -133,15 +133,72 @@ class MrpProduction(models.Model):
                         ' مساحتها ') + '      ' + qty + '      ' + "\n"
 
                 deadline_cut = fields.Date.to_string(p[0].real_date_start + timedelta(day_number_cut))
+
+                t1 = datetime.strptime(fields.Date.to_string(p[0].real_date_start) , '%Y-%m-%d')
+                t2 = datetime.strptime(str(deadline_cut), '%Y-%m-%d')
+                delta = timedelta(days=1)
+                count = 0
+                while t1 <= t2 + timedelta(count):
+                    t1 += delta
+                    if t1.weekday() in [4]:
+                        print('holiday',t1.strftime("%Y-%m-%d"))
+
+                        count += 1
+                deadline_cut = fields.Date.to_string(
+                    datetime.strptime(deadline_cut, "%Y-%m-%d").date() + timedelta(count))
+                #################################################################################################
                 deadline_gathering = fields.Date.to_string(
                     datetime.strptime(deadline_cut, "%Y-%m-%d").date() + timedelta(day_number_gathering))
-                deadline_glass = fields.Date.to_string(
-                    datetime.strptime(deadline_gathering, "%Y-%m-%d").date() + timedelta(day_number_glass))
+                t1 = datetime.strptime(str(deadline_cut), '%Y-%m-%d')
+                t2 = datetime.strptime(str(deadline_gathering), '%Y-%m-%d')
+                print('t1',t1)
+                print('t2',t2)
+                delta = timedelta(days=1)
+                count = 0
+                while t1 <=  t2 + timedelta(count):
+                    t1 += delta
+                    print('tttttttttttttttttttttttttt gather',t1)
+                    if t1.weekday() in [4] :
+                        print('holiday',t1.strftime("%Y-%m-%d"))
+                        count += 1
+
+                deadline_gathering = fields.Date.to_string(
+                    datetime.strptime(deadline_gathering, "%Y-%m-%d").date() + timedelta(count))
+
+
+                #################################################################################################
+
+                deadline_glass = fields.Date.to_string(datetime.strptime(deadline_gathering, "%Y-%m-%d").date() + timedelta(day_number_glass))
+                t1 = datetime.strptime(str(deadline_gathering), '%Y-%m-%d')
+                t2 = datetime.strptime(str(deadline_glass), '%Y-%m-%d')
+                # delta = timedelta(days=1)
+                count = 0
+                while t1 <= t2 + timedelta(count):
+                    t1 += delta
+                    if t1.weekday() in [4] :
+                        print('holiday',t1.strftime("%Y-%m-%d"))
+                        count += 1
+                    print('coooooooooooooooooooooooooouuuunt glass', count)
+                deadline_glass = fields.Date.to_string(datetime.strptime(deadline_glass, "%Y-%m-%d").date() + timedelta(count))
+
+                ###################################################################################################
                 deadline_install = fields.Date.to_string(
                     datetime.strptime(deadline_glass, "%Y-%m-%d").date() + timedelta(day_number_install))
-                start_cut =  fields.Date.to_string(p[0].real_date_start)
+                t1 = datetime.strptime(str(deadline_glass), '%Y-%m-%d')
+                t2 = datetime.strptime(str(deadline_install), '%Y-%m-%d')
+                # delta = timedelta(days=1)
+                count = 0
+                while t1 <= t2 + timedelta(count):
+                    t1 += delta
+                    if t1.weekday() in [4] :
+                        print('holiday',t1.strftime("%Y-%m-%d"))
+                        count += 1
+                    print('coooooooooooooooooooooooooouuuunt install', count)
+                deadline_install = fields.Date.to_string(
+                    datetime.strptime(deadline_install, "%Y-%m-%d").date()  + timedelta(count))
 
-                print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                ################################################################################################
+                start_cut =  fields.Date.to_string(p[0].real_date_start)
 
                 vals4 = {'name': arabic_reshaper.reshape('تركيب') + ' ' + arabic_reshaper.reshape(
                     'للعميل ') + ' ' + so.partner_id.name,

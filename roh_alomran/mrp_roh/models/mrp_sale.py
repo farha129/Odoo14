@@ -92,6 +92,23 @@ class SaleOrder(models.Model):
         self.analytic_account_id = self.project_id .analytic_account_id
         days = self.implemented_period * (self.company_id.percent_period_date/100)
         mrp_date = fields.Date.to_string(self.date_order + timedelta(days))
+        t1 = (self.date_order).strftime('%Y-%m-%d')
+        print('dte t14444444444444444444444444444444', t1)
+        t1 = datetime.strptime(str(t1), '%Y-%m-%d')
+        # t1 = datetime.strptime(str(self.date_order), '%Y-%m-%d')
+        t2 = datetime.strptime(str(mrp_date), '%Y-%m-%d')
+        print('ttttttttttttttttttttt2',t2)
+
+        delta = timedelta(days=1)
+        count = 0
+        while t1 <= t2 + timedelta(count):
+            t1 += delta
+            if t1.weekday() in [4]:
+                print('mrppppppppp', t1.strftime("%Y-%m-%d"))
+                count += 1
+        mrp_date = fields.Date.to_string(
+            datetime.strptime(mrp_date, "%Y-%m-%d").date() + timedelta(count))
+        print('llllllllllllasr',mrp_date)
 
         for order in self:
             pro = order.procurement_group_id.stock_move_ids.created_production_id

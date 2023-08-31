@@ -259,7 +259,21 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         days = self.implemented_period
-        self.end_date_order =  fields.Date.to_string(self.date_order + timedelta(days))
+        end_date_order =  fields.Date.to_string(self.date_order + timedelta(days))
+        t1 = (self.date_order).strftime('%Y-%m-%d')
+        t1 = datetime.strptime(str(t1), '%Y-%m-%d')
+        # t1 = datetime.strptime(str(self.date_order), '%Y-%m-%d')
+        t2 = datetime.strptime(str(end_date_order), '%Y-%m-%d')
+        delta = timedelta(days=1)
+        count = 0
+        while t1 <= t2 + timedelta(count):
+            t1 += delta
+            if t1.weekday() in [4]:
+                print('holiday sooo000oo', t1.strftime("%Y-%m-%d"))
+                count += 1
+        self.end_date_order = fields.Date.to_string(
+            datetime.strptime(end_date_order, "%Y-%m-%d").date() + timedelta(count))
+
         self.action_create_request_purchase()
         return res
 
