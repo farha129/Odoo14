@@ -15,6 +15,8 @@ from dateutil.relativedelta import relativedelta
 class RequestPurchase(models.Model):
     _name = 'request.purchase'
     _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
+    _order = 'date_order desc'
+
 
     name = fields.Char(strig= 'Name', default='New')
     date_order = fields.Date(string = 'Request Date')
@@ -45,6 +47,7 @@ class RequestPurchase(models.Model):
     def action_in_purchase(self):
         for rec in self:
             for partner in rec.line_ids.mapped('partner_id'):
+                # value = {}
                 print('dooooone')
                 purchase_order = self.env['purchase.order'].create({
                     'partner_id': partner.id,
@@ -53,7 +56,7 @@ class RequestPurchase(models.Model):
                     'customer_id': rec.customer_id.id,
                 })
                 print('poooooooooooooooooo',purchase_order)
-                obj = rec.line_ids.search([('partner_id','=',partner.id)])
+                obj = rec.line_ids.search([('partner_id','=',partner.id),('request_id','=',rec.id)])
                 for po in obj:
                 # print('pooooooooooooooooooooooooo',po)
 
@@ -70,7 +73,7 @@ class RequestPurchase(models.Model):
                     print('liiiiiiiiiiiiiiiiiiiiiiiiiiiine',value)
 
 
-                self.env['purchase.order.line'].create(value)
+                    self.env['purchase.order.line'].create(value)
 
             rec.state = 'in_purchase'
 
