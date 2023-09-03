@@ -102,13 +102,12 @@
                     <field name="is_user_working" invisible="1"/>
                     <field name="end_date" invisible="0"/>
                     <field name="reminder_day" invisible="0"/>
-                    <label for="duration"/>
 
-                    <div>
-                        <button style="pointer-events: none;" class="oe_inline label label-default">
-                            <field name="duration" id="duration" widget="timesheet_uoms" style="color: red;" />
-                        </button>
-                    </div>
+<!--                    <div>-->
+<!--                        <button style="pointer-events: none;" class="oe_inline label label-default">-->
+<!--                            <field name="duration" id="duration" widget="timesheet_uoms" style="color: red;" />-->
+<!--                        </button>-->
+<!--                    </div>-->
                          <label for="task_timer"/>
                     <div class="o_row" style="display: inline-block;">
                         <field name="task_timer" widget="boolean_toggle"/>

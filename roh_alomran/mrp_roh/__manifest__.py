@@ -23,6 +23,7 @@
         'views/config_mrp.xml',
         'views/overtime_mrp.xml',
         'views/installation_mrp.xml',
+        'views/request_daley.xml',
 
     ],
 }

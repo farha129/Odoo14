@@ -49,6 +49,7 @@ class MrpProduction(models.Model):
         help="Date at which you plan to start the production.",
         index=True)
     reminder_day = fields.Integer(string="Reminder Day",readonly= True)
+    # reminder_period = fields.Integer(string="Reminder Period",readonly= True)# reminder period after delay request for mrp order
 
     def _get_reminder_day(self):
         mrp_object = self.env['mrp.production'].search([])
@@ -62,11 +63,6 @@ class MrpProduction(models.Model):
 
                 mrp.reminder_day = (end_date - today_s).days
 
-
-
-    def _compute_duration(self):
-       self
-
     def button_mark_done(self):
         res = super(MrpProduction, self).button_mark_done()
         for mr in self:
@@ -77,6 +73,7 @@ class MrpProduction(models.Model):
 
     def action_start(self):
         for mr in self:
+
             mrp_object = self.env['mrp.production'].search([('origin', '=', mr.origin)])
             print('llllllllllllllllllllllllllllllllllllllxxxxxl', mrp_object)
             sale_obj = self.env['sale.order'].search([('name', '=', mr.origin)])
@@ -125,8 +122,26 @@ class MrpProduction(models.Model):
                     overtime_glass += p.overtime_glass
                     p.task_timer = True
                     p.real_date_start = datetime.now()
-                    p.end_date = so.end_date_order
                     total_mater += p.product_qty
+                    ###################################################################################
+                    #if the request delay must be calculated New End Date depandens real_date_start and Except fraiday
+                    if p.state == 'delay':
+                        end_date =   fields.Date.to_string(p.real_date_start + timedelta(p.reminder_day))
+                        t1 = datetime.strptime(fields.Date.to_string(p.real_date_start), '%Y-%m-%d')
+                        t2 = datetime.strptime(str(end_date), '%Y-%m-%d')
+                        delta = timedelta(days=1)
+                        count = 0
+                        while t1 <= t2 + timedelta(count):
+                            t1 += delta
+                            if t1.weekday() in [4]:
+                                print('holiday', t1.strftime("%Y-%m-%d"))
+                                count += 1
+                        p.end_date = fields.Date.to_string(
+                            datetime.strptime(end_date, "%Y-%m-%d").date() + timedelta(count))
+
+                        p.state = 'confirmed'
+                    ################################################################################
+
 
                     qty = str(p.product_qty)
                     text += p.product_id.name + arabic_reshaper.reshape(
@@ -151,13 +166,10 @@ class MrpProduction(models.Model):
                     datetime.strptime(deadline_cut, "%Y-%m-%d").date() + timedelta(day_number_gathering))
                 t1 = datetime.strptime(str(deadline_cut), '%Y-%m-%d')
                 t2 = datetime.strptime(str(deadline_gathering), '%Y-%m-%d')
-                print('t1',t1)
-                print('t2',t2)
                 delta = timedelta(days=1)
                 count = 0
                 while t1 <=  t2 + timedelta(count):
                     t1 += delta
-                    print('tttttttttttttttttttttttttt gather',t1)
                     if t1.weekday() in [4] :
                         print('holiday',t1.strftime("%Y-%m-%d"))
                         count += 1
@@ -178,7 +190,6 @@ class MrpProduction(models.Model):
                     if t1.weekday() in [4] :
                         print('holiday',t1.strftime("%Y-%m-%d"))
                         count += 1
-                    print('coooooooooooooooooooooooooouuuunt glass', count)
                 deadline_glass = fields.Date.to_string(datetime.strptime(deadline_glass, "%Y-%m-%d").date() + timedelta(count))
 
                 ###################################################################################################
@@ -193,7 +204,6 @@ class MrpProduction(models.Model):
                     if t1.weekday() in [4] :
                         print('holiday',t1.strftime("%Y-%m-%d"))
                         count += 1
-                    print('coooooooooooooooooooooooooouuuunt install', count)
                 deadline_install = fields.Date.to_string(
                     datetime.strptime(deadline_install, "%Y-%m-%d").date()  + timedelta(count))
 
@@ -215,7 +225,6 @@ class MrpProduction(models.Model):
                          'analytic_account_id': so.analytic_account_id.id or False,
                          # 'mrp_id': p.id or False
                          }
-                print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx222222222222222222', vals4)
 
                 self.env['project.task'].create(vals4)
                 vals3 = {'name': arabic_reshaper.reshape('زجاج') + ' ' + arabic_reshaper.reshape(
@@ -313,31 +322,8 @@ class MrpProduction(models.Model):
     def toggle_start(self):
         if self.task_timer is True:
             self.write({'is_user_working': True})
-            # time_line = self.env['account.analytic.line']
-            # for time_sheet in self:
-            #     time_line.create({
-            #         'name': self.env.user.name + ': ' + time_sheet.name,
-            #         'task_id': time_sheet.id,
-            #         'user_id': self.env.user.id,
-            #         'project_id': time_sheet.project_id.id,
-            #         'date_start': datetime.now(),
-            #     })
+
         else:
             self.write({'is_user_working': False})
-            time_line_obj = self.env['account.analytic.line']
-            # domain = [('date_end', '=', False)]
-            # for time_line in time_line_obj:
-            #     time_line.write({'date_end': fields.Datetime.now()})
-            #     if time_line.date_end:
-            #         diff = fields.Datetime.from_string(time_line.date_end) - fields.Datetime.from_string(
-            #             time_line.date_start)
-            #         time_line.timer_duration = round(diff.total_seconds() / 60.0, 2)
-            #         time_line.unit_amount = round(diff.total_seconds() / (60.0 * 60.0), 2)
-            #     else:
-            #         time_line.unit_amount = 0.0
-            #         time_line.timer_duration = 0.0
-            #
-            #
-            #
-            #
+
             #

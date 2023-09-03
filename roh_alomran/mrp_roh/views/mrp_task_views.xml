@@ -134,6 +134,7 @@
                                 <xpath expr="//field[@name='partner_id']" position="after">
                                                                          <field name="date_start" />
                                                                          <field name="total_mater" />
+                                                                         <field name="period" />
 
                                 </xpath>
                                 <xpath expr="//field[@name='user_id']" position="before">

@@ -5,5 +5,6 @@ from . import config_mrp
 from . import over_time
 from . import mrp_timer
 from . import installation
+from . import request_delay
 
 

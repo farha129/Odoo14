@@ -6,8 +6,6 @@ import datetime
 from datetime import datetime
 from datetime import timedelta
 from odoo.exceptions import ValidationError
-
-
 from dateutil.relativedelta import relativedelta
 
 #This Class For Request purchase From sale Before RFQ Because deffirent Vender
@@ -16,7 +14,6 @@ class RequestPurchase(models.Model):
     _name = 'request.purchase'
     _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
     _order = 'date_order desc'
-
 
     name = fields.Char(strig= 'Name', default='New')
     date_order = fields.Date(string = 'Request Date')
@@ -71,8 +68,6 @@ class RequestPurchase(models.Model):
                         'state': 'draft',
                     }
                     print('liiiiiiiiiiiiiiiiiiiiiiiiiiiine',value)
-
-
                     self.env['purchase.order.line'].create(value)
 
             rec.state = 'in_purchase'
@@ -129,8 +124,6 @@ class RequestPurchaseLine(models.Model):
     partner_id = fields.Many2one('res.partner', string='Vendor')
     price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
 
-
-
     def _get_state_line(self):
         for rec in self :
             rec.state_line = 'no'
@@ -148,13 +141,3 @@ class RequestPurchaseLine(models.Model):
 
                 if line.product_id.id == rec.product_id.id and line.product_qty != rec.product_qty:
                     rec.state_line = 'qty_no_match'
-
-
-
-
-
-
-
-
-
-

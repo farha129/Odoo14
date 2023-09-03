@@ -192,8 +192,6 @@ class StockPicking(models.Model):
 
     install_id = fields.Many2one("install.mrp", string="Install mrp", readonly=True)
 
-
-
 class StockMove(models.Model):
     _inherit = 'stock.move'
 

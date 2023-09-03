@@ -5,3 +5,4 @@ access_overtime_line,access_overtime_line,model_overtime_line,mrp.group_mrp_mana
 access_install_mrp,access_install_mrp,model_install_mrp,mrp.group_mrp_manager,1,1,1,1
 access_install_material_use__line,access_install_material_use_line_line,model_install_material_use_line,mrp.group_mrp_manager,1,1,1,1
 access_install_material_return_line,access_install_material_return_line_line,model_install_material_return_line,mrp.group_mrp_manager,1,1,1,1
+access_request_delay_id,access_request_delay,model_request_delay,mrp.group_mrp_manager,1,1,1,1

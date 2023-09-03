@@ -260,5 +260,20 @@ class project_Task(models.Model):
     employee_ids = fields.Many2many('hr.employee',string = 'Employees')
     date_start = fields.Date(string = 'Start Date',readonly=True)
     total_mater = fields.Float(string = 'Total Mater')
+    period = fields.Integer(string = 'Period',compute = 'get_period')
+
+
+    def get_period(self):
+        for rec in self:
+
+            if rec.date_deadline and rec.date_start:
+                  # rec.period = datetime.strptime(rec.date_deadline, "%Y-%m-%d") - datetime.strptime(rec.date_start, "%Y-%m-%d")
+                d1=datetime.strptime(str(rec.date_deadline),'%Y-%m-%d').date()
+                d2=datetime.strptime(str(rec.date_start),'%Y-%m-%d').date()
+                rec.period = abs((d1 - d2).days)
+            else:
+                rec.period = 0
+
+
 
 

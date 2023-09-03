@@ -16,7 +16,8 @@ class MrpProduction(models.Model):
     partner_id = fields.Many2one('res.partner',string = 'Customer')
     project_id = fields.Many2one('project.project',string="project")
     end_date = fields.Date(string = 'End Date',readonly=True)
-    
+    state = fields.Selection(selection_add=[('delay', 'Delay')])
+
     def _create_deduction(self):
         """ Create Deduction auto when MRP order leate """
         mrp_obj = self.env['mrp.production'].search([])
@@ -45,7 +46,6 @@ class MrpProduction(models.Model):
     def action_sector_det(self):
         tree_id = self.env.ref("sale_roh.ditals_view_tree").id
         for production in self:
-
             for sale in production.procurement_group_id.mrp_production_ids.move_dest_ids.group_id.sale_id:
                 sale_obj = self.env['sale.order'].search([('id','=',sale.id)])
                 for obj in sale_obj:
@@ -78,7 +78,6 @@ class StockMove(models.Model):
         if self.sale_line_id and self.sale_line_id.bom_id:
             values["bom_id"] = self.sale_line_id.bom_id
         return values
-
 
 class SaleOrder(models.Model):
 
@@ -176,7 +175,6 @@ class SaleOrder(models.Model):
                      })
 
             self.env['mrp.bom.line'].create(val)
-
 
             self.order_line.create({'product_id': sect_obj.final_product.id,
                                        'name': sect_obj.name,
