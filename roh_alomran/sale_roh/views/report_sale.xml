@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+
+     
+      <report
+            id="report_schedule_Work_ids"
+            model="sale.order"
+            string="Schedule Work"
+            report_type="qweb-pdf"
+            name="sale_roh.report_schedule_work_temp_id"
+            file="sale_roh.report_schedule_work_temp_id"
+
+           
+        />
+
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_schedule_work_temp_id">
+    <t t-call="web.html_container">
+       
+        <t t-call="web.external_layout">
+            <div >
+
+                <h4 class="text-center">
+                    <strong>من :</strong> <span t-esc="st_date"/>
+                    <strong>الي :</strong> <span t-esc="end_date"/>
+                </h4>
+                <br></br><br></br>
+
+
+
+
+                    <table  class="table table-sm o_main_table" style="font-family: Arial; ;direction:rtl" >
+
+                           <thead style="display: table-row-group ;font-family:Arial;">
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اسم العميل </th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المساحه</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">تاريخ الانتهاء</th>
+                        <th name="th_qyt" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الموقع</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="line">
+                                     <tr>
+                                          <td class="text-left">
+                                         <span  t-field="line.partner_id.name" />
+
+                                    </td>
+
+
+
+                                        <td class="text-left">
+                                            <span  t-field="line.project_id.task_ids[0].total_mater" t-if="line.project_id.task_ids"/>
+                                        </td>
+                                         <td class="text-left">
+                                            <span  t-field="line.end_date_order"/>
+                                        </td>
+                                          <td >
+                                <div t-field="line.partner_id"
+                                                 t-options='{"widget": "contact", "fields": ["address"] }'/>
+
+                            </td>
+
+
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+
+
+
+
+            </div>
+
+
+</t>
+
+</t>
+
+</template>
+
+
+
+</odoo>

@@ -51,10 +51,6 @@ class RequestDelay(models.Model):
                 # obj.reminder_period = rec.sale_id.implemented_period  - days_immpelmented_spent
 
                 obj.write({'state':'delay', 'task_timer':False,'end_date':False})
-                taks_object = self.env['project.task'].search([('project_id', '=', obj.project_id.id)])
-                if taks_object:
-                    for task in taks_object:
-                        task.unlink()
 
             rec.state = 'confirmed'
 

@@ -22,6 +22,11 @@
         'views/request_purchase_views.xml',
         'views/config_sale.xml',
 
+        'wizards/schedule_work_wiz.xml',
+        'views/report_schedule_template.xml',
+        'views/report_sale.xml',
+        
+
         
 
     ],

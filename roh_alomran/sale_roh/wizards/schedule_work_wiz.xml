@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_wiz_schedule_work" model="ir.ui.view">
+              <field name="name">Report By Schedule Work</field>
+              <field name="model">schedule.work.wizard</field>
+              <field name="arch" type="xml">
+                <form > 
+			<group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+
+			</group>
+
+                 	<footer>
+                   	    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                   	    <button string="Cancel" special="cancel" class="oe_link"/>
+                 	</footer>
+                </form>
+              </field>
+        </record>
+
+        
+ <record id="action_wiz_schedule_work" model="ir.actions.act_window">
+            <field name="name">Report By Schedule Work</field>
+            <field name="res_model">schedule.work.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+
+        </record>
+<menuitem
+        id="menu_report_schedule_work_id"
+        name="Schedule Work Report"
+        parent="sale.menu_sale_report"
+
+        action="action_wiz_schedule_work"
+       />
+</odoo>

@@ -126,6 +126,11 @@ class MrpProduction(models.Model):
                     ###################################################################################
                     #if the request delay must be calculated New End Date depandens real_date_start and Except fraiday
                     if p.state == 'delay':
+                        taks_object = self.env['project.task'].search([('project_id', '=', p.project_id.id)])
+                        if taks_object:
+                            for task in taks_object:
+                                task.unlink()
+
                         end_date =   fields.Date.to_string(p.real_date_start + timedelta(p.reminder_day))
                         t1 = datetime.strptime(fields.Date.to_string(p.real_date_start), '%Y-%m-%d')
                         t2 = datetime.strptime(str(end_date), '%Y-%m-%d')

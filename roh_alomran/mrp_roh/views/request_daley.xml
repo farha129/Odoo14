@@ -21,9 +21,8 @@
                             <field name="name" readonly="1"/>
                         </h1>
                     </div>
-                    <group col="4">
+                    <group >
                             <field name="date_order" readonly="1"/>
-                            <field name="date_delay" />
                             <field name="sale_id"/>
                             <field name="customer_id" readonly="1"/>
                             <field name="company_id" readonly="1"/>
@@ -41,16 +40,36 @@
                 </form>
             </field>
         </record>
+        <record id="request_delay_fillter" model="ir.ui.view">
+            <field name="name">request.delay.select</field>
+            <field name="model">request.delay</field>
+            <field name="arch" type="xml">
+                <search string = 'Search Request'>
+                    <field name="customer_id" string="Customer" filter_domain="[('customer_id', 'ilike', self)]"/>
+                    <field name="sale_id" string="Sale Order" filter_domain="[('sale_id', 'ilike', self)]"/>
+
+                    <group col="8" colspan="4" expand="0" string="Group By">
+                                       <filter string="Date" name="date_order" context="{'group_by': 'date_order'}"/>
+                                       <filter string="State" name="state" context="{'group_by': 'state'}"/>
+                    </group>
+
+                </search>
+
+
+            </field>
+        </record>
+
+
     <record id="request_delay_tree" model="ir.ui.view">
             <field name="name">request.delay.tree</field>
             <field name="model">request.delay</field>
             <field name="arch" type="xml">
                 <tree string="Request" >
-                                        <field name="name" />
-                                        <field name="date_order" />
-                                        <field name="customer_id"/>
-                                        <field name="sale_id"/>
-                                        <field name="state"/>
+                                <field name="name" />
+                                <field name="date_order" />
+                                <field name="customer_id"/>
+                                <field name="sale_id"/>
+                                <field name="state"/>
 
                 </tree>
             </field>
@@ -70,6 +89,5 @@
         <menuitem action="request_daley_action_id" id="menu_daley_ids"
             parent="mrp.menu_mrp_root"
             sequence="24"/>
-
 
 </odoo>
