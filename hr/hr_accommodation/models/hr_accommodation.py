@@ -8,7 +8,6 @@ class Hraccommodation(models.Model):
     _description = 'Accommodation'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-
     name = fields.Char(string="Ref", default="/", readonly=True)
     number = fields.Char(string="Number", required=True)
     date = fields.Date(string="Date",)
@@ -43,43 +42,29 @@ class Hraccommodation(models.Model):
         if self.employee_id.religion_id:
             self.religion_id =self.employee_id.religion_id
 
-        print('8888888888888888888888888888888888888888888888888888888',self.employee_id)
-
-
     def action_run(self):
         self.write({'state': 'run'})
-
-
 
     def action_cancel(self):
         self.write({'state': 'cancel'})
 
-
     def alarm_expiar(self):
         accom_obj = self.env['hr.accommodation'].search([])
-
         for rec in accom_obj:
-
             if rec.date_end:
                 today = fields.Date.today()
-
                 if rec.date_end == today and rec.state and rec.state == 'run':
                     print("bbbbbbbbbbbbbbb", today)
-
                     rec.update({'state': 'end'})
                     group_id = self.env.ref('hr.group_hr_manager').users
                     print("bbbbbbbbbbbbbbb",group_id)
                     partners_ids = group_id.mapped('partner_id').ids
-                    print('hhhhhhhhhhhhhhhhhhhhhh', partners_ids)
-
                     for partenr in partners_ids:
                         obj_name = rec.employee_id.name
 
                         text = 'هذا الموظف انتهت اقامته'
                         masaage = '(' + format(
                             obj_name) + ')' + '  ' + arabic_reshaper.reshape(text)
-
-
                         message_id = self.message_post(body=masaage, subtype_id=self.env.ref('mail.mt_comment').id,
                                                        subject='Expired Accommodation',
                                                        author_id=self.create_uid.partner_id.id,
@@ -133,11 +118,3 @@ class HrEmployee(models.Model):
         self.acc_count = self.env['hr.accommodation'].search_count([('employee_id', '=', self.id)])
 
     acc_count = fields.Integer(string="Accommodation Count", compute='_compute_employee_accommodation')
-
-
-
-
-
-
-
-

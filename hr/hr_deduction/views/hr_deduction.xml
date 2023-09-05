@@ -99,11 +99,17 @@
 
 
         <!-- MenuItems -->
-        <menuitem id="menu_hr_deduction_in" name="Deduction"
-            parent="hr.menu_hr_employee_payroll"
-                  action="hr_deduction_in_action"
-                  sequence="21"
-                  />
+       
+                  
+                  <menuitem
+                  
+            id="menu_hr_deduction_in2"
+            name="Deduction"
+            action="hr_deduction_in_action"
+            parent="hr.menu_hr_root"
+            sequence="22"
+            groups="hr.group_hr_user"
+            />
 
         <record id="hr_payslip_inherited_view_hr_deduction_in" model="ir.ui.view">
             <field name="name">hr_deduction_in.Inherited.View</field>

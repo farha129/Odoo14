@@ -118,11 +118,29 @@
                                 <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
                     </h1>
                 </xpath>
+                            <xpath expr="//field[@name='user_id']" position="after">
+                                                                 <field name="employee_partner_id"  />
+
+                            </xpath>
                             <xpath expr="//field[@name='country_id']" position="after">
                                  <field name="religion_id"  string="Religion"/>
                                  <field name="tech_type"  />
                             </xpath>
 
+        </field>
+    </record>
+     <record model="ir.ui.view" id="hr_employee_resigned_filter">
+        <field name="name">hr.employee.form.filter</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <field name="job_id" position="after">
+<!--                    <field  name="Type Technician" string="Type_Technician" filter_domain="[('tech_type', 'ilike', self)]"/>-->
+
+                <group expand="0" string="Group By">
+                        <filter name="Type_Technician" string="Type Technician" domain="[]" context="{'group_by': 'tech_type'}"/>
+                </group>
+            </field>
         </field>
     </record>
 
