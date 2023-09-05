@@ -7,6 +7,9 @@
         <t t-call="web.external_layout">
             <div >
 
+                <h2 class="text-center">
+                    <strong>جدول الاعمال :</strong>
+                </h2>
                 <h4 class="text-center">
                     <strong>من :</strong> <span t-esc="st_date"/>
                     <strong>الي :</strong> <span t-esc="end_date"/>
