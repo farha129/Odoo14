@@ -87,7 +87,7 @@ Dashboard Ninja v14.0,
 
     'images': ['static/description/Top_apps.gif'],
 
-    'depends': ['ks_dashboard_ninja', 'base', 'web', 'base_setup', 'bus'],
+    'depends': [ 'base', 'web', 'base_setup', 'bus'],
 
     'data': ['views/ks_dashboard_ninja_view_live_update.xml',
              'views/ks_dashboard_ninja_live_assets.xml'],
