@@ -302,6 +302,19 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function(requi
                                 let percentage = sum === 0 ? 0 + "%" : (value * 100 / sum).toFixed(2) + "%";
                                 if(self.recordData.ks_data_label_type == 'value'){
                                     percentage = value;
+                                    var ks_self = self;
+                                    var ks_selection = self.chart_data.ks_selection;
+                                    if (ks_selection === 'monetary') {
+                                        var ks_currency_id = self.chart_data.ks_currency;
+                                        var ks_data = KsGlobalFunction._onKsGlobalFormatter(value, self.recordData.ks_data_format, self.recordData.ks_precision_digits);
+                                            ks_data = KsGlobalFunction.ks_monetary(ks_data, ks_currency_id);
+                                        percentage =  ks_data;
+                                    } else if (ks_selection === 'custom') {
+                                        var ks_field = self.chart_data.ks_field;
+                                        percentage =  KsGlobalFunction._onKsGlobalFormatter(value, self.recordData.ks_data_format, self.recordData.ks_precision_digits) + ' ' + ks_field;
+                                    }else {
+                                        percentage =  KsGlobalFunction._onKsGlobalFormatter(value, self.recordData.ks_data_format, self.recordData.ks_precision_digits);
+                                    }
                                 }
                                 return percentage;
                             },

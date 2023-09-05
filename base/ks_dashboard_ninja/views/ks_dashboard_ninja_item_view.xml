@@ -195,7 +195,7 @@
                             <!--                            <field name="ks_company_id" invisible="1"/>-->
                             <!--                            <field name="ks_hide_legend" invisible="1"/>-->
                             <field name="name"/>
-                            <field name="ks_info"/>
+<!--                            <field name="ks_info"/>-->
                             <field name="ks_model_id"
                                    options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
                                    context="{'current_id': id}"
@@ -458,7 +458,7 @@
                                    attrs="{'invisible':['|','|','|',('ks_dashboard_item_type','=','ks_tile'),('ks_dashboard_item_type','=','ks_to_do'),('ks_dashboard_item_type','=','ks_list_view'),('ks_dashboard_item_type','=','ks_kpi')]}">
                                 <field name="ks_data_format"
                                        context="{'current_id':id}"
-                                       attrs="{'invisible':[('ks_dashboard_item_type','in',['ks_list_view', 'ks_pie_chart', 'ks_doughnut_chart', 'ks_polarArea_chart'])]}"
+                                       attrs="{'invisible':['!',('ks_dashboard_item_type','in',['ks_list_view']),('ks_data_label_type','=','percent')]}"
                                 />
                                 <field name="ks_chart_item_color" string="Chart Color Palette"
                                        context="{'current_id': id}"
@@ -599,6 +599,11 @@
                                 <field name="ks_multiplier_active" force_save="1"/>
                                 <field name="ks_multiplier" attrs="{'invisible':[('ks_multiplier_active','=',False)]}"/>
                            </group>
+                        </page>
+                       <page string="Item Description" name="ks_item_description">
+                            <group>
+                                <field name="ks_info"/>
+                            </group>
                         </page>
                     </notebook>
                 </form>

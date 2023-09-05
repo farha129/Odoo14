@@ -432,9 +432,10 @@
                             </div>
                         </div>
                     </t>
-                    <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                    <t t-if="item.ksIsUser">
+                        <div class="ks_chart_inner_buttons dropdown">
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -444,13 +445,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                   <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
 
                 <div class="ks_dashboard_item_main_body">
@@ -611,9 +621,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -623,14 +634,24 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                   <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
+
             </div>
         </div>
     </t>
@@ -748,9 +769,10 @@
                             </div>
                         </div>
                     </t>
+                   <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -760,13 +782,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                   </t>
                 </div>
                 <div class="ks_dashboard_item_main_body">
                     <div class="ks_dashboard_icon_l3">
@@ -925,9 +956,10 @@
                             </div>
                         </div>
                     </t>
+                   <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -937,13 +969,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                   </t>
                 </div>
             </div>
         </div>
@@ -1079,9 +1120,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -1091,13 +1133,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
             </div>
         </div>
@@ -1240,9 +1291,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -1252,13 +1304,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                   <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
             </div>
         </div>
@@ -1443,9 +1504,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -1455,13 +1517,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
 
             </div>
@@ -1624,9 +1695,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -1636,13 +1708,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
 
             </div>
@@ -1809,9 +1890,10 @@
                             </div>
                         </div>
                     </t>
+                    <t t-if="item.ksIsUser">
                     <div class="ks_chart_inner_buttons dropdown">
-                        <button title="Item description" data-toggle="dropdown"
-                                class="ks_item_info btn dropdown-toggle btn-xs o-no-caret btn"
+                        <button title="Info" data-toggle="dropdown"
+                                class="ks_item_description btn dropdown-toggle btn-xs o-no-caret btn"
                                 type="button"
                                 t-att-style="'color:'+ ks_rgba_button_color + ';'"
                                 aria-expanded="true">
@@ -1821,13 +1903,22 @@
                             <!--Dynamic Rendering-->
                             <div class="ks_chart_export_menu">
                                 <div class="ks_chart_export_menu_header" style="margin-left:-10px">
-                                    <span>Item Description</span>
+                                    <span>Info</span>
                                 </div>
                                 <div class="ks_info" style="margin-left:10px">
+                                    <span>Company: <t t-esc="item.ks_company"/></span>
+                                </div>
+                                <div class="ks_info" style="margin-left:10px">
+                                    <t t-if="ks_info">
+                                        <t t-foreach="ks_info" t-as="ks_description">
+                                            <span><t t-esc="ks_description"/></span> <br></br>
+                                         </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </t>
                 </div>
             </div>
         </div>

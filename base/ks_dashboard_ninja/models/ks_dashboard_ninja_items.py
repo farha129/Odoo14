@@ -169,9 +169,8 @@ class KsDashboardNinjaItems(models.Model):
                        translate=True,
                        help="The item will be represented by this unique name.")
 
-    ks_info = fields.Char(string="Item Description",
-                          translate=True,
-                          size=400)
+    ks_info = fields.Text(string="Item Description",
+                          translate=True)
     ks_model_id = fields.Many2one('ir.model', string='Model',
                                   domain="[('access_ids','!=',False),('transient','=',False),"
                                          "('model','not ilike','base_import%'),'|',('model','not ilike','ir.%'),('model','=ilike','_%ir.%'),"
@@ -268,6 +267,7 @@ class KsDashboardNinjaItems(models.Model):
         ('l_quarter', 'Last 90 days'),
         ('l_year', 'Last 365 days'),
         ('ls_past_until_now', 'Past Till Now'),
+        ('ls_pastuntil_lastmonth', 'Past Till: 30 days ago'),
         ('ls_pastwithout_now', ' Past Excluding Today'),
         ('n_future_starting_now', 'Future Starting Now'),
         ('n_futurestarting_tomorrow', 'Future Starting Tomorrow'),
@@ -320,6 +320,7 @@ class KsDashboardNinjaItems(models.Model):
         ('l_quarter', 'Last 90 days'),
         ('l_year', 'Last 365 days'),
         ('ls_past_until_now', 'Past Till Now'),
+        ('ls_pastuntil_lastmonth', 'Past Till: 30 days ago'),
         ('ls_pastwithout_now', ' Past Excluding Today'),
         ('n_future_starting_now', 'Future Starting Now'),
         ('n_futurestarting_tomorrow', 'Future Starting Tomorrow'),

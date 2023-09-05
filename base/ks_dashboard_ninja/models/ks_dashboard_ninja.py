@@ -60,6 +60,7 @@ class KsDashboardNinjaBoard(models.Model):
         ('l_quarter', 'Last 90 days'),
         ('l_year', 'Last 365 days'),
         ('ls_past_until_now', 'Past Till Now'),
+        ('ls_pastuntil_lastmonth', 'Past Till: 30 days ago'),
         ('ls_pastwithout_now', ' Past Excluding Today'),
         ('n_future_starting_now', 'Future Starting Now'),
         ('n_futurestarting_tomorrow', 'Future Starting Tomorrow'),
@@ -451,7 +452,9 @@ class KsDashboardNinjaBoard(models.Model):
             'ks_precision_digits': ks_precision_digits if ks_precision_digits else 2,
             'ks_data_label_type': rec.ks_data_label_type,
             'ks_as_of_now': rec.ks_as_of_now,
-            'ks_info':rec.ks_info,
+            'ks_info': rec.ks_info,
+            'ks_company': rec.ks_company_id.name if rec.ks_company_id else False,
+
         }
         return item
 
@@ -715,7 +718,7 @@ class KsDashboardNinjaBoard(models.Model):
             'ks_multiplier_lines': ks_multiplier_lines if ks_multiplier_lines else False,
             'ks_data_label_type': rec.ks_data_label_type,
             'ks_as_of_now': rec.ks_as_of_now,
-            'ks_info':rec.ks_info,
+            # 'ks_info':rec.ks_info,
         }
         if grid_corners:
             item.update({

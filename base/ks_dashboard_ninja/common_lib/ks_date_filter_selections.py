@@ -296,6 +296,17 @@ def ks_get_date_range_from_pastwithout(date_state, self_tz, type,self):
     else:
         ks_date_data["selected_end_date"] = ks_convert_into_utc(date, self_tz)
     return ks_date_data
+def ks_get_date_range_from_pastuntil(date_state, self_tz, type, self):
+    ks_date_data = {}
+    date = datetime.now(pytz.timezone(self_tz))
+    date = date - timedelta(days=30)
+    if type == 'date':
+        ks_date_data["selected_end_date"] = datetime.strptime(date.strftime("%Y-%m-%d"), '%Y-%m-%d')
+    else:
+        ks_date_data["selected_end_date"] = ks_convert_into_utc(date, self_tz)
+    ks_date_data["selected_start_date"] = False
+    return ks_date_data
+
 
 
 def ks_get_date_range_from_future(date_state, self_tz, type,self):
