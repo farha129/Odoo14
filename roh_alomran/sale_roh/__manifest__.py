@@ -24,6 +24,9 @@
 
         'wizards/schedule_work_wiz.xml',
         'views/report_schedule_template.xml',
+
+        'wizards/production_report_wiz.xml',
+        'views/report_production_template.xml',
         'views/report_sale.xml',
         
 

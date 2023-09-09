@@ -12,5 +12,21 @@
 
            
         />
+        
+        
+           <report
+            id="report_production_id2"
+            model="sale.order"
+            string="production"
+            report_type="qweb-pdf"
+            name="sale_roh.report_production_temp_ids"
+            file="sale_roh.report_production_temp_ids"
+
+           
+        />
+
 
 </odoo>
+
+
+

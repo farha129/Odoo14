@@ -735,7 +735,8 @@ class SectorOderLine(models.Model):
     height = []
     width = []
 
-    name = fields.Char(string = "Description", required=True)
+    name = fields.Char(string = "name")
+    description = fields.Char(string = "Description", required=True)
     detals_id = fields.One2many('ditals.sector','sector_id',string="Detils")
 
     product_id = fields.Many2one('product.product', string='Sector',domain="[('is_sector', '=', True)]", required=True) # Unrequired company

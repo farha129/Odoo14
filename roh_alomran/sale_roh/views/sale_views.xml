@@ -33,7 +33,7 @@
                            <field name="sector_order_line" options="{'no_open': True}" >
                                        <tree editable="bottom" options="{'no_open': True}">
                                                 <field name="product_id"/>
-                                                <field name="name"/>
+                                                <field name="description"/>
                                                 <field name="cutter_type"  />
 <!--                                                <field name="product_widths" widget="many2many_tags"  />-->
 <!--                                                <field name="product_heights" widget="many2many_tags"/>-->
