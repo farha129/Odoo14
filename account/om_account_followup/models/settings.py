@@ -10,7 +10,7 @@ class AccountConfigSettings(models.TransientModel):
         res_ids = self.env['followup.followup'].search([], limit=1)
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Payment Follow-ups',
+            'name': 'Follow-up Levels',
             'res_model': 'followup.followup',
             'res_id': res_ids and res_ids.id or False,
             'view_mode': 'form,tree',

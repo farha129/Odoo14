@@ -7,8 +7,9 @@ from odoo.exceptions import ValidationError
 class FollowupFollowup(models.Model):
     _name = 'followup.followup'
     _description = 'Account Follow-up'
+    _rec_name = 'name'
 
-    name = fields.Char(related='company_id.name', string="Name", readonly=True)
+    name = fields.Char(string="Name", related='company_id.name', readonly=True)
     followup_line = fields.One2many('followup.line', 'followup_id', 'Follow-up', copy=True)
     company_id = fields.Many2one('res.company', 'Company', required=True, default=lambda self: self.env.company)
 

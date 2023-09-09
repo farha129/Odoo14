@@ -101,7 +101,6 @@ class FollowupPrint(models.TransientModel):
         return result
 
     def do_update_followup_level(self, to_update, partner_list, date):
-        # update the follow-up level on account.move.line
         for id in to_update.keys():
             if to_update[id]['partner_id'] in partner_list:
                 self.env['account.move.line'].browse([int(id)]).write(
@@ -109,8 +108,6 @@ class FollowupPrint(models.TransientModel):
                      'followup_date': date})
 
     def clear_manual_actions(self, partner_list):
-        # Partnerlist is list to exclude
-        # Will clear the actions of partners that have no due payments anymore
         partner_list_ids = [partner.partner_id.id for partner in self.env[
             'followup.stat.by.partner'].browse(partner_list)]
         ids = self.env['res.partner'].search(
@@ -128,29 +125,23 @@ class FollowupPrint(models.TransientModel):
     def do_process(self):
         context = dict(self.env.context or {})
 
-        # Get partners
         tmp = self._get_partners_followp()
         partner_list = tmp['partner_ids']
         to_update = tmp['to_update']
-        # date = self.browse(cr, uid, ids, context=context)[0].date
         date = self.date
         data = self.read()[0]
         data['followup_id'] = data['followup_id'][0]
 
-        # Update partners
         self.do_update_followup_level(to_update, partner_list, date)
-        # process the partners (send mails...)
         restot_context = context.copy()
         restot = self.with_context(restot_context).process_partners(
             partner_list, data)
         context.update(restot_context)
-        # clear the manual actions if nothing is due anymore
         nbactionscleared = self.clear_manual_actions(partner_list)
         if nbactionscleared > 0:
             restot['resulttext'] = restot['resulttext'] + "<li>" + _(
                 "%s partners have no credits and as such the "
                 "action is cleared") % (str(nbactionscleared)) + "</li>"
-        # return the next action
         resource_id = self.env.ref(
             'om_account_followup.view_om_account_followup_sending_results')
         context.update({'description': restot['resulttext'],
@@ -191,9 +182,6 @@ class FollowupPrint(models.TransientModel):
                 AND (l.company_id = %s)
                 AND (l.blocked = False)
                 ORDER BY l.date''' % (company_id))
-        # l.blocked added to take litigation into account and it is not
-        # necessary to change follow-up level of account move lines
-        # without debit
         move_lines = self._cr.fetchall()
         old = None
         fups = {}
@@ -208,9 +196,6 @@ class FollowupPrint(models.TransientModel):
             WHERE followup_id=%s
             ORDER BY delay''' % (fup_id,))
 
-        # Create dictionary of tuples where first element is the date to
-        # compare with the due date and second element is the id of the
-        # next level
         for result in self._cr.dictfetchall():
             delay = datetime.timedelta(days=result['delay'])
             fups[old] = (current_date - delay, result['id'])
@@ -219,8 +204,6 @@ class FollowupPrint(models.TransientModel):
         partner_list = []
         to_update = {}
 
-        # Fill dictionary of accountmovelines to_update with the partners
-        # that need to be updated
         for partner_id, followup_line_id, date_maturity, date, id in \
                 move_lines:
             if not partner_id:

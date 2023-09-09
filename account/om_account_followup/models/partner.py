@@ -2,7 +2,6 @@
 
 from functools import reduce
 from lxml import etree
-
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import formatLang
@@ -52,18 +51,10 @@ class ResPartner(models.Model):
             partner.latest_followup_level_id_without_lit = latest_level_without_lit
 
     def do_partner_manual_action_dermanord(self, followup_line):
-        # partner_ids -> res.partner
-        # Check action: check if the action was not empty, if not add
-        action_text = ""
         action_text = followup_line.manual_action_note or ''
 
-        # Check date: only change when it did not exist already
         action_date = self.payment_next_action_date or \
             fields.Date.today()
-
-        # Check responsible: if partner has not got a responsible already,
-        # take from follow-up
-        responsible_id = False
         if self.payment_responsible_id:
             responsible_id = self.payment_responsible_id.id
         else:
@@ -74,10 +65,7 @@ class ResPartner(models.Model):
                     'payment_responsible_id': responsible_id})
 
     def do_partner_manual_action(self, partner_ids):
-        # partner_ids -> res.partner
         for partner in self.browse(partner_ids):
-            # Check action: check if the action was not empty, if not add
-            action_text = ""
             followup_without_lit = partner.latest_followup_level_id_without_lit
             if partner.payment_next_action:
                 action_text = \
@@ -86,13 +74,9 @@ class ResPartner(models.Model):
             else:
                 action_text = followup_without_lit.manual_action_note or ''
 
-            # Check date: only change when it did not exist already
             action_date = partner.payment_next_action_date or \
                 fields.Date.today()
 
-            # Check responsible: if partner has not got a responsible already,
-            # take from follow-up
-            responsible_id = False
             if partner.payment_responsible_id:
                 responsible_id = partner.payment_responsible_id.id
             else:
@@ -103,7 +87,6 @@ class ResPartner(models.Model):
                            'payment_responsible_id': responsible_id})
 
     def do_partner_print(self, wizard_partner_ids, data):
-        # wizard_partner_ids are ids from special view, not from res.partner
         if not wizard_partner_ids:
             return {}
         data['partner_ids'] = wizard_partner_ids
@@ -119,9 +102,6 @@ class ResPartner(models.Model):
     def do_partner_mail(self):
         ctx = self.env.context.copy()
         ctx['followup'] = True
-        # partner_ids are res.partner ids
-        # If not defined by latest follow-up level,
-        # it will be the default template if it can find it
         template = 'om_account_followup.email_template_om_account_followup_default'
         unknown_mails = 0
         for partner in self:
@@ -167,17 +147,8 @@ class ResPartner(models.Model):
         return unknown_mails
 
     def get_followup_table_html(self):
-        """ Build the html tables to be included in emails send to partners,
-            when reminding them their overdue invoices.
-            :param ids: [id] of the partner for whom we are building the tables
-            :rtype: string
-        """
         self.ensure_one()
         partner = self.commercial_partner_id
-        # copy the context to not change global context.
-        # Overwrite it because _() looks for the
-        # lang in local variable 'context'.
-        # Set the language to use = the partner language
         followup_table = ''
         if partner.unreconciled_aml_ids:
             company = self.env.user.company_id
@@ -278,15 +249,9 @@ class ResPartner(models.Model):
             'date': fields.date.today(),
             'followup_id': followup_ids[0].id,
         }
-        # call the print overdue report on this partner
         return self.do_partner_print(wizard_partner_ids, data)
 
     def _get_amounts_and_date(self):
-        '''
-        Function that computes values for the followup functional fields.
-        Note that 'payment_amount_due' is similar to 'credit' field on
-        res.partner except it filters on user's company.
-        '''
         company = self.env.user.company_id
         current_date = fields.Date.today()
         for partner in self:
@@ -305,24 +270,6 @@ class ResPartner(models.Model):
             partner.payment_earliest_due_date = worst_due_date
 
     def _get_followup_overdue_query(self, args, overdue_only=False):
-        '''
-        This function is used to build the query and arguments to use when
-        making a search on functional fields
-            * payment_amount_due
-            * payment_amount_overdue
-        Basically, the query is exactly the same except that for overdue
-        there is an extra clause in the WHERE.
-
-        :param args: arguments given to the search in the usual
-        domain notation (list of tuples)
-        :param overdue_only: option to add the extra argument to filter on
-        overdue accounting entries or not
-        :returns: a tuple with
-            * the query to execute as first element
-            * the arguments for the execution of this query
-        :rtype: (string, [])
-        '''
-
         company_id = self.env.user.company_id.id
         having_where_clause = ' AND '.join(
             map(lambda x: '(SUM(bal2) %s %%s)' % (x[1]), args))
@@ -390,8 +337,6 @@ class ResPartner(models.Model):
         return [('id', 'in', [x[0] for x in res])]
 
     def _get_partners(self):
-        # this function search for the partners linked to all
-        # account.move.line 'ids' that have been changed
         partners = set()
         for aml in self:
             if aml.partner_id:
@@ -412,19 +357,18 @@ class ResPartner(models.Model):
                                                 "set to the current date when the partner gets a follow-up level "
                                                 "that requires a manual action. Can be practical to set manually "
                                                 "e.g. to see if he keeps his promises.")
-    # unreconciled_aml_ids = fields.One2many('account.move.line', 'partner_id')
     unreconciled_aml_ids = fields.One2many('account.move.line', 'partner_id',
                                            domain=[('full_reconcile_id', '=', False),
                                                    ('account_id.user_type_id.type', '=', 'receivable')])
-    latest_followup_date = fields.Date(compute='_get_latest', string="Latest Follow-up Date",
+    latest_followup_date = fields.Date(compute='_get_latest', string="Latest Follow-up Date", compute_sudo=True,
                                        help="Latest date that the follow-up level of the partner was changed")
-    latest_followup_level_id = fields.Many2one('followup.line', compute='_get_latest',
+    latest_followup_level_id = fields.Many2one('followup.line', compute='_get_latest', compute_sudo=True,
                                                string="Latest Follow-up Level", help="The maximum follow-up level")
 
     latest_followup_sequence = fields.Integer('Sequence', help="Gives the sequence order when displaying a list of follow-up lines.", default=0)
 
     latest_followup_level_id_without_lit = fields.Many2one('followup.line',
-                                                           compute='_get_latest', store=True,
+                                                           compute='_get_latest', store=True, compute_sudo=True,
                                                            string="Latest Follow-up Level without litigation",
                                                            help="The maximum follow-up level without taking into "
                                                                 "account the account move lines with litigation")

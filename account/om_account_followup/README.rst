@@ -2,7 +2,7 @@
 Customer Follow Up Management
 =============================
 
-This Module will add customer follow up management in Odoo 14 Community Edition
+This Module will add customer follow up management in Odoo 15 Community Edition
 
 Installation
 ============

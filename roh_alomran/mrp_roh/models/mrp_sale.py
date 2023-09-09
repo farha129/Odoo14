@@ -177,7 +177,7 @@ class SaleOrder(models.Model):
             self.env['mrp.bom.line'].create(val)
 
             self.order_line.create({'product_id': sect_obj.final_product.id,
-                                       'name': sect_obj.name,
+                                       'name': sect_obj.description,
                                        'bom_id': bill.id,
                                        'order_id': self.id,
                                        'product_number': sect_obj.product_number,

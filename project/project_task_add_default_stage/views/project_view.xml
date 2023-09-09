@@ -21,4 +21,17 @@
             </field>
         </field>
     </record>
+
+    <record id="project_task_inherit_view_roh" model="ir.ui.view">
+            <field name="name">project task </field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="is_show_date"  invisible="1" />
+                        <field name="date_stage"   attrs="{'invisible': [('is_show_date', '=', False)],'readonly': True}" />
+                </xpath>
+            </field>
+    </record>
+
 </odoo>

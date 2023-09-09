@@ -213,6 +213,39 @@
                             <span id="journal_res"></span>
                         </div>
                         </t>
+                                <t t-if="title == 'General Ledger'">
+
+                            <div class="group_filter" style="">
+                            <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="fa fa-book"></span>
+                                Groups:
+                            </a>
+                            <select class="dropdown-menu  groups" name="states[]" multiple="multiple">
+                                <div role="separator" class="dropdown-divider"></div>
+                                <t t-foreach="filter_data.groups_list" t-as="group">
+
+                                    <t t-if="groups[0]=='divider'">
+                                            <div role="separator" class="dropdown-divider"/>
+
+                                         <option disabled="disabled" role="menuitem" t-attf-value="{{group[0]}}">
+                                            <t t-esc="group[1]"/>
+                                        </option>
+                                            <div role="separator" class="dropdown-divider"/>
+                                     </t>
+
+
+                                    <t t-else="">
+
+
+                                    <option t-attf-value="{{group[0]}}">
+                                        <t t-esc="group[1]"/>
+                                    </option>
+                                    </t>
+                                </t>
+                            </select>
+                            <span id="group_res"></span>
+                        </div>
+                        </t>
 
                         <div class="accounts_filter">
                             <a type="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -258,6 +291,21 @@
                             </select>
                             <span id="analytic_res"></span>
                         </div>
+
+<!--                 <div class="group_filter">-->
+<!--                            <a type="button" class="dropdown-toggle" data-toggle="dropdown">-->
+<!--                                <span class="fa fa-book"></span>-->
+<!--                                Groups :-->
+<!--                            </a>-->
+<!--                            <select class="dropdown-menu groups" name="states[]" multiple="multiple">-->
+<!--                                <t t-foreach="filter_data.group_list" t-as="group">-->
+<!--                                    <option >-->
+<!--                                        <t t-esc="group[1]"/>-->
+<!--                                    </option>-->
+<!--                                </t>-->
+<!--                            </select>-->
+<!--                            <span id="group_res"></span>-->
+<!--                        </div>-->
 
                         <div class="analytic_tags_filter">
                             <a type="button" class="dropdown-toggle" data-toggle="dropdown">

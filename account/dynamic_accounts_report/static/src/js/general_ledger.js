@@ -125,6 +125,10 @@ odoo.define('dynamic_cash_flow_statements.general_ledger', function (require) {
                                     self.$el.find('.account').select2({
                                         placeholder: ' Accounts...',
                                     });
+
+                                    self.$el.find('.groups').select2({
+                                        placeholder: 'Groups...',
+                                    });
                                     self.$el.find('.analytics').select2({
                                         placeholder: 'Analytic Accounts...',
                                     });
@@ -381,6 +385,8 @@ odoo.define('dynamic_cash_flow_statements.general_ledger', function (require) {
             }
             filter_data_selected.account_ids = account_ids
 
+
+
             if (self._title == "General Ledger"){
              var journal_ids = [];
             var journal_text = [];
@@ -406,6 +412,32 @@ odoo.define('dynamic_cash_flow_statements.general_ledger', function (require) {
             filter_data_selected.journal_ids = journal_ids
 
             }
+            if (self._title == "General Ledger"){
+            var group_ids = [];
+            var group_text = [];
+            var group_res = document.getElementById("group_res")
+            var group_list
+//
+            for (var i = 0; i < group_list.length; i++) {
+                if(group_list[i].element[0].selected === true){
+
+                    group_ids.push(parseInt(group_list[i].id))
+                    if(group_text.includes(group_list[i].text) === false){
+                        group_text.push(group_list[i].text)
+                    }
+                    group_res.value = group_text
+                    group_res.innerHTML=group_res.value;
+                }
+            }
+            if (group_list.length == 0){
+               group_res.value = ""
+               group_res.innerHTML="";
+
+            }
+            filter_data_selected.group_ids = group_ids
+
+            }
+
 
 
             var analytic_ids = []

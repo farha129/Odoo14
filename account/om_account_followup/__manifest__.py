@@ -2,13 +2,13 @@
 
 {
     'name': 'Customer Follow Up Management',
-    'version': '14.0.5.0.0',
+    'version': '15.0.2.3.0',
     'category': 'Accounting',
     'description': """Customer FollowUp Management""",
     'summary': """Customer FollowUp Management""",
     'author': 'Odoo Mates, Odoo S.A',
     'license': 'LGPL-3',
-    'website': '',
+    'website': 'https://www.odoomates.tech',
     'depends': ['account', 'mail'],
     'data': [
         'security/security.xml',
@@ -29,4 +29,3 @@
     'installable': True,
     'auto_install': False,
 }
-

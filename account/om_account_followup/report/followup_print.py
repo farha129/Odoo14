@@ -4,6 +4,7 @@ import time
 from collections import defaultdict
 from odoo.exceptions import ValidationError
 from odoo import api, fields, models, _
+from odoo.tools import format_date
 
 
 class ReportFollowup(models.AbstractModel):
@@ -45,7 +46,6 @@ class ReportFollowup(models.AbstractModel):
              ('company_id', '=', company_id),
              '|', ('date_maturity', '=', False),
              ('date_maturity', '<=', fields.Date.today())])
-        # lines_per_currency = {currency: [line data, ...], ...}
         lines_per_currency = defaultdict(list)
         total = 0
         for line in moveline_ids:
@@ -56,8 +56,8 @@ class ReportFollowup(models.AbstractModel):
             line_data = {
                 'name': line.move_id.name,
                 'ref': line.ref,
-                'date': line.date,
-                'date_maturity': line.date_maturity,
+                'date': format_date(self.env, line.date),
+                'date_maturity': format_date(self.env, line.date_maturity),
                 'balance': balance,
                 'blocked': line.blocked,
                 'currency_id': currency,
@@ -70,15 +70,12 @@ class ReportFollowup(models.AbstractModel):
                 lines_per_currency.items()]
 
     def _get_text(self, stat_line, followup_id, context=None):
-        context = dict(context or {}, lang=stat_line.partner_id.lang)
         fp_obj = self.env['followup.followup']
         fp_line = fp_obj.browse(followup_id).followup_line
         if not fp_line:
             raise ValidationError(
                 _("The followup plan defined for the current company does not "
                   "have any followup action."))
-        # the default text will be the first fp_line in the sequence with a
-        # description.
         default_text = ''
         li_delay = []
         for line in fp_line:
@@ -86,10 +83,6 @@ class ReportFollowup(models.AbstractModel):
                 default_text = line.description
             li_delay.append(line.delay)
         li_delay.sort(reverse=True)
-        # look into the lines of the partner that already have a
-        # followup level, and take the description of the higher level
-        # for which it is available
-
         partner_line_ids = self.env['account.move.line'].search(
             [('partner_id', '=', stat_line.partner_id.id),
              ('full_reconcile_id', '=', False),

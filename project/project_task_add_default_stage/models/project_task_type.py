@@ -11,6 +11,7 @@ class ProjectTask(models.Model):
     _inherit = "project.task.type"
 
     is_default = fields.Boolean(string="Default stage", default=False)
+    is_show_date = fields.Boolean(string="Is Show Date", default=False)
 
     @api.model
     def projects_add_defaults(self):
