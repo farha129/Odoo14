@@ -32,7 +32,7 @@ class ProductionReport(models.AbstractModel):
                 area = sum(rec.product_uom_qty for rec in obj.order_line)
                 docss.append({
                     'customer': obj.partner_id.name,
-                    'total_mater': area,
+                    'total_mater': round(area),
                     'date': (obj.date_order).strftime('%Y-%m-%d'),
                 })
 
@@ -41,7 +41,7 @@ class ProductionReport(models.AbstractModel):
             for obj in obj_cut:
                 docs_cut.append({
                     'customer': obj.partner_id.name,
-                    'total_mater': obj.total_mater,
+                    'total_mater': round(obj.total_mater),
                     'date':obj.date_stage,
                 })
 
@@ -50,7 +50,7 @@ class ProductionReport(models.AbstractModel):
             for obj in obj_gath:
                 docs_gath.append({
                     'customer': obj.partner_id.name,
-                    'total_mater': obj.total_mater,
+                    'total_mater': round(obj.total_mater),
                     'date':obj.date_stage,
                 })
 
@@ -59,7 +59,7 @@ class ProductionReport(models.AbstractModel):
             for obj in obj_glass:
                 docs_glass.append({
                     'customer': obj.partner_id.name,
-                    'total_mater': obj.total_mater,
+                    'total_mater': round(obj.total_mater),
                     'date':obj.date_stage,
                 })
 
@@ -68,7 +68,7 @@ class ProductionReport(models.AbstractModel):
             for obj in obj_install:
                 docs_install.append({
                     'customer': obj.partner_id.name,
-                    'total_mater': obj.total_mater,
+                    'total_mater': round(obj.total_mater),
                     'date':obj.date_stage,
                 })
 

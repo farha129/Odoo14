@@ -22,11 +22,15 @@ class ScheduleWork(models.AbstractModel):
             if mrp :
                 area = sum(rec.product_uom_qty for rec in obj.order_line)
                 # docs = obj_sale
+                if obj.partner_id.street or obj.partner_id.street2:
+                    address = obj.partner_id.street + ' - ' + obj.partner_id.street2
+                else:
+                    address = False
                 docs.append({
                     'customer': obj.partner_id.name,
-                    'area': area,
+                    'area':round(area),
                     'end_date_order':obj.end_date_order,
-                    'address':obj.partner_id.street + ' - '+obj.partner_id.street2,
+                    'address': address ,
                 })
 
 
