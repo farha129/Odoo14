@@ -287,6 +287,8 @@ class SaleOrder(models.Model):
                 heel = 0.0
                 side = 0.0
                 qyt = 0.0
+                alrubl_fixed = 0.0
+                alrubl = 0.0
                 val = []
                 val_with = []
                 width2 = 0.0
@@ -337,12 +339,16 @@ class SaleOrder(models.Model):
                                 side = product_hight + sect.height
                                 val.append(side)
                                 qyt = (sum / 5.80)/ 100
+                                alrubl = qyt
 
                             if sect.type == 'heel':
                                 sum += ((product_width + sect.width) / sect.division_number) * sect.nmuber
                                 heel = ((product_width + sect.width) / sect.division_number)
                                 val_with.append(heel)
                                 qyt = (sum / 5.80)/ 100
+                                alrubl += qyt
+
+
 
                             if sect.type == 'glass':
                                 if val and val_with:
@@ -381,10 +387,14 @@ class SaleOrder(models.Model):
                             if sect.type == 'tabsha':
                                 qyt += obj.tabsha
 
-                            if sect.type == 'bercluz':
+                            if sect.type == 'bercluz'  :
                                 bercluz_cutter += obj.bercluz
                                 if rec.product_id.sector_type in ('fixed', 'hinges'):
                                     qyt = bercluz_cutter + rec.product_uom_qty
+                                    print('tttttttttttttttttttttttttttttttttttttttt',qyt)
+
+                                    alrubl_fixed = qyt
+
                                 else:
                                     qyt = bercluz_cutter
 
@@ -392,9 +402,21 @@ class SaleOrder(models.Model):
                                 sum += ((product_hight * product_width) * sect.nmuber) /100
                                 qyt = sum/5.80
 
+                            if sect.type == 'silicon':
+                                qyt = rec.product_area / sect.division_number
+
                             if sect.type == 'shater':
                                 sum += ((product_hight * product_width) / sect.division_number) /100
                                 qyt = sum/5.80
+
+                            if sect.type == 'alrubl':
+                                if rec.product_id.sector_type == 'drag':
+                                    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',alrubl)
+                                    qyt = alrubl * 5.80
+
+                                else:
+                                    qyt = alrubl_fixed * 5.80
+
 
                         if qyt != 0:
                             self.dimension_supplement_ids.create({'supplement_name': sect.supplement_name.id,

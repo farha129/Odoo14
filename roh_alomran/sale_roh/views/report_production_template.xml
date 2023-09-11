@@ -6,9 +6,13 @@
        
         <t t-call="web.external_layout">
             <div >
+<!--                            <span t-if="doc.move_type == 'out_receipt' and doc.state == 'posted'">Sales Receipt</span>-->
 
-                <h2 class="text-center">
-                    <strong>جدول الانتاج :</strong>
+                <h2 t-if="report_type != 'report_production_worker'" class="text-center">
+                    <strong>تقرير الانتاج :</strong>
+                </h2>
+                <h2 t-if="report_type == 'report_production_worker'" class="text-center">
+                    <strong>جدول انتاج العمال :</strong>
                 </h2>
                 <h4 class="text-center">
                     <strong>من :</strong> <span t-esc="st_date"/>
@@ -18,57 +22,169 @@
 
 
 
+                <table  t-if="report_type != 'report_production_worker'" class="table table-sm o_main_table" style="font-family: Arial; " >
 
-                    <table  class="table table-sm o_main_table" style="font-family: Arial; ;direction:rtl" >
 
-                           <thead style="display: table-row-group ;font-family:Arial;">
+                 <thead style="display: table-row-group ;font-family:Arial;">
                     <tr style="font-family: Arial, Helvetica, sans-serif;" >
                         <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اسم العميل </th>
                         <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المساحه</th>
                         <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">تاريخ </th>
-                        
 
-                            </tr>
-                        </thead>
+                     </tr>
+                 </thead>
+                  <table  class="table table-sm o_main_table" style="font-family: Arial; ">
+
+                           <span class="text-left" >
+                                    <font style="font-family:Arial;  font-weight: bold;color:black">التوريد:</font>
+                            </span>
                         <tbody>
-                                                     <strong>من :</strong>
 
                             <t t-foreach="docss" t-as="inv" >
 
-                        <tr string="القص">
-                            <td class="text-left">
+                        <tr>
+                            <td class="text-center">
                                 <span t-esc="inv['customer']"/>
                             </td>
-                             <td class="text-left">
+                             <td class="text-right">
                                 <span t-esc="inv['total_mater']"/>
                             </td>
-
-                                        
-                                         <td class="text-left">
-                                            <span  t-esc="inv['date']"/>
-
+                                         <td class="text-center">
+                                         <span  t-esc="inv['date']"/>
                             </td>
-
 
                                      </tr>
                                 </t>
 
+                        </tbody>
+                  </table>
+                  <table  class="table table-sm o_main_table" style="font-family: Arial; " ><span class="text-left" >
+
+                                    <font style="font-family:Arial;  font-weight: bold;color:black"> القص:</font>
+                            </span>
+                      <tbody>
 
 
-                            <t t-foreach="docss" t-as="inv" string = 'التوريد'>
+                            <t t-foreach="docs_cut" t-as="inv" >
+
+                        <tr>
+                            <td class="text-center">
+                                <span t-esc="inv['customer']"/>
+                            </td>
+                             <td class="text-right">
+                                <span t-esc="inv['total_mater']"/>
+                            </td>
+                                         <td class="text-center">
+                                          <span  t-esc="inv['date']"/>
+
+                            </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+
+                    <table  class="table table-sm o_main_table" style="font-family: Arial; " ><span class="text-left" >
+
+                                    <font style="font-family:Arial;  font-weight: bold;color:black"> التجميع:</font>
+                            </span>
+                      <tbody>
+
+
+                            <t t-foreach="docs_gath" t-as="inv" >
+
+                        <tr>
+                            <td class="text-center">
+                                <span t-esc="inv['customer']"/>
+                            </td>
+                             <td class="text-right">
+                                <span t-esc="inv['total_mater']"/>
+                            </td>
+                                         <td class="text-center">
+                                          <span  t-esc="inv['date']"/>
+
+                            </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table><table  class="table table-sm o_main_table" style="font-family: Arial; " ><span class="text-left" >
+
+                                    <font style="font-family:Arial;  font-weight: bold;color:black"> الزجاج:</font>
+                            </span>
+                      <tbody>
+
+
+                            <t t-foreach="docs_glass" t-as="inv" >
+
+                        <tr>
+                            <td class="text-center">
+                                <span t-esc="inv['customer']"/>
+                            </td>
+                             <td class="text-right">
+                                <span t-esc="inv['total_mater']"/>
+                            </td>
+                                         <td class="text-center">
+                                          <span  t-esc="inv['date']"/>
+
+                            </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table><table  class="table table-sm o_main_table" style="font-family: Arial; " ><span class="text-left" >
+
+                                    <font style="font-family:Arial;  font-weight: bold;color:black"> التركيب:</font>
+                            </span>
+                      <tbody>
+
+
+                            <t t-foreach="docs_install" t-as="inv" >
+
+                        <tr>
+                            <td class="text-center">
+                                <span t-esc="inv['customer']"/>
+                            </td>
+                             <td class="text-right">
+                                <span t-esc="inv['total_mater']"/>
+                            </td>
+                                         <td class="text-center">
+                                          <span  t-esc="inv['date']"/>
+
+                            </td>
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                    </table>
+
+             </table>
+<table t-if="report_type == 'report_production_worker'"  class="table table-sm o_main_table" style="font-family: Arial; " >
+
+
+                 <thead style="display: table-row-group ;font-family:Arial;">
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اسم العامل </th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">مجمع الامتار</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">مهمة العامل</th>
+
+                     </tr>
+                 </thead>
+
+
+                        <tbody>
+
+                            <t t-foreach="docs_employee" t-as="inv" >
 
                         <tr>
                             <td class="text-left">
-                                <span t-esc="inv['customer']"/>
+                                <span t-esc="inv['employee']"/>
                             </td>
                              <td class="text-left">
-                                <span t-esc="inv['total_mater']"/>
+                                <span t-esc="inv['sum_maters']"/>
                             </td>
-
-
-                                         <td class="text-left">
-                                            <span  t-esc="inv['date']"/>
-
+                            <td class="text-left">
+                                <span t-esc="inv['tec_type']"/>
                             </td>
 
 
@@ -76,9 +192,7 @@
                                 </t>
 
                         </tbody>
-                    </table>
-
-
+                  </table>
 
 
             </div>

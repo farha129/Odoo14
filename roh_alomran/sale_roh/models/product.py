@@ -63,6 +63,6 @@ class SupplementSector(models.Model):
     is_heel = fields.Boolean(string='Is Heel')
     type = fields.Selection(
         [('side', 'Side'), ('heel', 'Heel'), ('cutter_hor', 'Cutter Hor'),('cutter_var', 'Cutter Var'),('tranzium', 'Tranzium'),('bercluz', 'Bercluz'),('tabsha', 'Tabsha'),('motor', 'Motor'),('shater', 'Shater'),
-         ('wire', 'Wire'),('glass', 'Glass'),('other','other')], string='Type')
+         ('wire', 'Wire'),('glass', 'Glass'),('silicon', 'Silicon'),('alrubl', 'Alrubl'),('other','other')], string='Type')
     division_number = fields.Integer('/', default=1)
     # dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)

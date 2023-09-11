@@ -17,9 +17,17 @@ class ScheduleWork(models.AbstractModel):
         docs = []
         obj_sale = self.env['sale.order'].search([('date_order','>=', st_date),('date_order','<=',end_date),('state','=','sale')])
         for obj in obj_sale:
+
             mrp = self.env['mrp.production'].search([('origin','=', obj.name),('state','!=','done')],limit=1)
             if mrp :
-                docs = obj_sale
+                area = sum(rec.product_uom_qty for rec in obj.order_line)
+                # docs = obj_sale
+                docs.append({
+                    'customer': obj.partner_id.name,
+                    'area': area,
+                    'end_date_order':obj.end_date_order,
+                    'address':obj.partner_id.street + ' - '+obj.partner_id.street2,
+                })
 
 
         return {

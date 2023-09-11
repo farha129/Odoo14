@@ -31,24 +31,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-foreach="docs" t-as="line">
+                            <t t-foreach="docs" t-as="inv">
                                      <tr>
                                           <td class="text-left">
-                                         <span  t-field="line.partner_id.name" />
+                                <span t-esc="inv['customer']"/>
 
                                     </td>
 
-
-
                                         <td class="text-left">
-                                            <span  t-field="line.project_id.task_ids[0].total_mater" t-if="line.project_id.task_ids"/>
+                                <span t-esc="inv['area']"/>
                                         </td>
                                          <td class="text-left">
-                                            <span  t-field="line.end_date_order"/>
+                                            <span  t-esc="inv['end_date_order']"/>
                                         </td>
                                           <td >
-                                <div t-field="line.partner_id"
-                                                 t-options='{"widget": "contact", "fields": ["address"] }'/>
+                                <div t-esc="inv['address']"
+                                                 />
 
                             </td>
 
