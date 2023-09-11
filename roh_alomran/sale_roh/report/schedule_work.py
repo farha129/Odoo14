@@ -22,8 +22,8 @@ class ScheduleWork(models.AbstractModel):
             if mrp :
                 area = sum(rec.product_uom_qty for rec in obj.order_line)
                 # docs = obj_sale
-                if obj.partner_id.street or obj.partner_id.street2:
-                    address = obj.partner_id.street + ' - ' + obj.partner_id.street2
+                if obj.partner_id.street :
+                    address = obj.partner_id.street
                 else:
                     address = False
                 docs.append({
