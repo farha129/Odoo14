@@ -52,7 +52,6 @@
         'report/partner_ledger.xml',
         'report/ageing.xml',
         'report/daybook.xml',
-
     ],
     'qweb': [
         'static/src/xml/general_ledger_view.xml',

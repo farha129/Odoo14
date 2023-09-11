@@ -38,15 +38,7 @@
                                 </div>
 
                                 <div class="col-2">
-                                        <strong>Groups:</strong>
-                                        <t t-foreach="Filters['groups']" t-as="ps">
-                                            <li>
-                                                <t t-esc="ps"/>
-                                            </li>
-                                        </t>
-                                </div>
-                                <div class="col-2">
-                                        <strong>:</strong>
+                                        <strong>Accounts:</strong>
                                         <t t-foreach="Filters['accounts']" t-as="ps">
                                             <li>
                                                 <t t-esc="ps"/>

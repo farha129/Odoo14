@@ -40,16 +40,9 @@ class GeneralView(models.TransientModel):
 
                                    string='Journals', required=True,
                                    default=[])
-                                   
-                                   
-    account_ids = fields.Many2many('account.account',
-
-                                   string='Accounts',
-                                   default=[])
-                                   
-    group_ids = fields.Many2many(
-        "account.group",
-        string="Groups",
+    account_ids = fields.Many2many(
+        "account.account",
+        string="Accounts",
     )
     account_tag_ids = fields.Many2many("account.account.tag",
                                        string="Account Tags")
@@ -86,26 +79,12 @@ class GeneralView(models.TransientModel):
         else:
             journals = self.env['account.journal'].search(
                 [('company_id', 'in', company_id)])
-
         if title == 'General Ledger' or trans_title == 'General Ledger':
             if r.journal_ids:
                 journals = r.journal_ids
             else:
                 journals = self.env['account.journal'].search(
                     [('company_id', 'in', company_id)])
-            if r.group_ids:
-                groups = r.group_ids
-            else:
-                groups = self.env['account.journal'].search(
-                    [('company_id', 'in', company_id)])
-
-            if title == 'General Ledger' or trans_title == 'General Ledger':
-                if r.group_ids:
-                    groups = r.group_ids
-                else:
-                    groups = self.env['account.journal'].search(
-                        [('company_id', 'in', company_id)])
-
             new_title = title
         if title == 'Bank Book' or trans_title == 'Bank Book':
             journals = self.env['account.journal'].search(
@@ -124,7 +103,7 @@ class GeneralView(models.TransientModel):
             'model': self,
             'journals': journals,
             'target_move': r.target_move,
-            'groups': groups,
+            'accounts': r.account_ids,
             'account_tags': r.account_tag_ids,
             'analytics': r.analytic_ids,
             'analytic_tags': r.analytic_tag_ids,
@@ -161,19 +140,11 @@ class GeneralView(models.TransientModel):
                 data.get('journal_ids')).mapped('code')
         else:
             filters['journals'] = ['All']
-
-        if data.get('group_ids'):
-            filters['groups'] = self.env['account.group'].browse(
-                data.get('group_ids')).mapped('code')
-        else:
-            filters['groups'] = ['All']
-
         if data.get('account_ids', []):
             filters['accounts'] = self.env['account.account'].browse(
                 data.get('account_ids', [])).mapped('code')
         else:
             filters['accounts'] = ['All']
-
         if data.get('account_tag_ids', []):
             filters['account_tags'] = data.get('account_tag_ids')
         else:
@@ -224,9 +195,6 @@ class GeneralView(models.TransientModel):
             'account.journal'].search(company_domain, order="company_id, name")
         accounts_ids = self.account_ids if self.account_ids else self.env[
             'account.account'].search(company_domain, order="company_id, name")
-        group_ids = self.group_ids if self.group_ids else self.env[
-            'account.group'].search(company_domain, order="company_id, name")
-
         journals = []
         o_company = False
         for j in journal_ids:
@@ -244,18 +212,8 @@ class GeneralView(models.TransientModel):
                 o_company = j.company_id
             accounts.append((j.id, j.name))
 
-        groups = []
-
-        o_company = False
-        for j in group_ids:
-            if j.company_id != o_company:
-                groups.append(('divider', j.company_id.name))
-                o_company = j.company_id
-            groups.append((j.id, j.name))
-
         filter_dict = {
             'journal_ids': r.journal_ids.ids,
-            'group_ids': r.group_ids.ids,
             'analytic_ids': r.analytic_ids.ids,
             'analytic_tag_ids': r.analytic_tag_ids.ids,
             'account_ids': r.account_ids.ids,
@@ -385,9 +343,6 @@ class GeneralView(models.TransientModel):
             if data['journals']:
                 new_filter += ' AND j.id IN %s' % str(
                     tuple(data['journals'].ids) + tuple([0]))
-            if data['groups']:
-                new_filter += ' AND j.id IN %s' % str(
-                    tuple(data['groups'].ids) + tuple([0]))
             if data.get('accounts'):
                 WHERE = "WHERE l.account_id IN %s" % str(
                     tuple(data.get('accounts').ids) + tuple([0]))
@@ -445,9 +400,6 @@ class GeneralView(models.TransientModel):
         if data['journals']:
             new_final_filter += ' AND j.id IN %s' % str(
                 tuple(data['journals'].ids) + tuple([0]))
-        if data['groups']:
-            new_final_filter += ' AND j.id IN %s' % str(
-                tuple(data['groups'].ids) + tuple([0]))
         if data.get('accounts'):
             WHERE = "WHERE l.account_id IN %s" % str(
                 tuple(data.get('accounts').ids) + tuple([0]))
