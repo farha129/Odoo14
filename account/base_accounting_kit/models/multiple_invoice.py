@@ -8,7 +8,9 @@ class MultipleInvoice(models.Model):
     _order = "sequence"
 
     sequence = fields.Integer('Sequence No')
+
     copy_name = fields.Char('Invoice Copy Name')
+
     journal_id = fields.Many2one('account.journal', string="Journal")
 
 
@@ -18,6 +20,7 @@ class AccountJournal(models.Model):
 
     multiple_invoice_ids = fields.One2many('multiple.invoice', 'journal_id',
                                            string='Multiple Invoice')
+
     multiple_invoice_type = fields.Selection(
         [('text', 'Text'), ('watermark', 'Watermark')], required=True,
         default='text', string="Display Type")

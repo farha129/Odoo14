@@ -17,11 +17,11 @@ class ReportInvoiceMultiple(models.AbstractModel):
         if layout == 'web.external_layout_boxed':
             new_layout = 'base_accounting_kit.boxed'
 
-        elif layout == 'web.external_layout_bold':
-            new_layout = 'base_accounting_kit.bold'
+        elif layout == 'web.external_layout_clean':
+            new_layout = 'base_accounting_kit.clean'
 
-        elif layout == 'web.external_layout_striped':
-            new_layout = 'base_accounting_kit.striped'
+        elif layout == 'web.external_layout_background':
+            new_layout = 'base_accounting_kit.background'
 
         else:
             new_layout = 'base_accounting_kit.standard'

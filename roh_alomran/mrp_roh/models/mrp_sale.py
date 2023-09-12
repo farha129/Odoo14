@@ -121,7 +121,11 @@ class SaleOrder(models.Model):
         return res
 
     def create_order_line(self):
+        self.sale_accessory_ids = [(5, 0)]
+        self.order_line = [(5, 0)]
+
         self._get_supp()
+
 
         # self.env['mrp.bom'].create({
         #     'product_tmpl_id': kit.product_tmpl_id.id,

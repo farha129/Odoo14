@@ -77,6 +77,8 @@ class MrpProduction(models.Model):
             mrp_object = self.env['mrp.production'].search([('origin', '=', mr.origin)])
             print('llllllllllllllllllllllllllllllllllllllxxxxxl', mrp_object)
             sale_obj = self.env['sale.order'].search([('name', '=', mr.origin)])
+            total_mater = sum(rec.product_uom_qty for rec in sale_obj.order_line)
+
             print('llllllllllllllll888888888llem', sale_obj)
             for so in sale_obj:
                 today_s = fields.Date.today()
@@ -91,7 +93,6 @@ class MrpProduction(models.Model):
                 employees_glass = []
                 employees_install = []
                 day_number_cut = 0
-                total_mater = 0
                 overtime_cut = 0
                 day_number_install = 0
                 overtime_install = 0
@@ -122,7 +123,6 @@ class MrpProduction(models.Model):
                     overtime_glass += p.overtime_glass
                     p.task_timer = True
                     p.real_date_start = datetime.now()
-                    total_mater += p.product_qty
                     ###################################################################################
                     #if the request delay must be calculated New End Date depandens real_date_start and Except fraiday
                     if p.state == 'delay':

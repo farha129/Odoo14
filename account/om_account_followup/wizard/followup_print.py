@@ -21,7 +21,7 @@ class FollowupPrint(models.TransientModel):
     date = fields.Date('Follow-up Sending Date', required=True,
                        help="This field allow you to select a forecast date "
                             "to plan your follow-ups",
-                       default=lambda *a: time.strftime('%Y-%m-%d'))
+                       )
     followup_id = fields.Many2one('followup.followup', 'Follow-Up',
                                   required=True, readonly=True,
                                   default=_get_followup)
@@ -206,21 +206,22 @@ class FollowupPrint(models.TransientModel):
 
         for partner_id, followup_line_id, date_maturity, date, id in \
                 move_lines:
+            print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjj',date)
+            print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',fups[followup_line_id][0].strftime(
+                    '%Y-%m-%d'))
             if not partner_id:
                 continue
             if followup_line_id not in fups:
                 continue
             stat_line_id = partner_id * 10000 + company_id
             if date_maturity:
-                date_maturity = fields.Date.to_string(date_maturity)
-                if date_maturity <= fups[followup_line_id][0].strftime(
-                        '%Y-%m-%d'):
+                date_maturity = date_maturity
+                if date_maturity <= fups[followup_line_id][0]:
                     if stat_line_id not in partner_list:
                         partner_list.append(stat_line_id)
                     to_update[str(id)] = {'level': fups[followup_line_id][1],
                                           'partner_id': stat_line_id}
-            elif date and date <= fups[followup_line_id][0].strftime(
-                    '%Y-%m-%d'):
+            elif date and date <= fups[followup_line_id][0]:
                 if stat_line_id not in partner_list:
                     partner_list.append(stat_line_id)
                 to_update[str(id)] = {'level': fups[followup_line_id][1],

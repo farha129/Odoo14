@@ -29,7 +29,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="after">
                         <field name="is_show_date"  invisible="1" />
-                        <field name="date_stage"   attrs="{'invisible': [('is_show_date', '=', False)],'readonly': True}" />
+                        <field name="date_stage"   attrs="{'invisible': [('is_show_date', '=', False)]}" />
                 </xpath>
             </field>
     </record>

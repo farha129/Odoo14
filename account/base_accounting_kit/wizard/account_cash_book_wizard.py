@@ -54,7 +54,7 @@ class CashBookWizard(models.TransientModel):
         journals = self.env['account.journal'].search([('type', '=', 'cash')])
         accounts = []
         for journal in journals:
-            accounts.append(journal.company_id.account_journal_payment_credit_account_id.id)
+            accounts.append(journal.payment_credit_account_id.id)
         return accounts
 
     account_ids = fields.Many2many('account.account',
@@ -76,7 +76,7 @@ class CashBookWizard(models.TransientModel):
                 [('type', '=', 'cash')])
             accounts = []
             for journal in journals:
-                accounts.append(journal.company_id.account_journal_payment_credit_account_id.id)
+                accounts.append(journal.payment_credit_account_id.id)
             domain = {'account_ids': [('id', 'in', accounts)]}
             return {'domain': domain}
 

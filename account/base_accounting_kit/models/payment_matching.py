@@ -234,7 +234,6 @@ class AccountReconciliation(models.AbstractModel):
         results = self.get_bank_statement_line_data(bank_statement_lines.ids)
         bank_statement_lines_left = self.env['account.bank.statement.line'].browse([line['st_line']['id'] for line in results['lines']])
         bank_statements_left = bank_statement_lines_left.mapped('statement_id')
-
         results.update({
             'statement_name': len(bank_statements_left) == 1 and bank_statements_left.name or False,
             'journal_id': bank_statements and bank_statements[0].journal_id.id or False,
@@ -253,7 +252,6 @@ class AccountReconciliation(models.AbstractModel):
                     'ids': results['reconciled_aml_ids'],
                 }
             })
-
         return results
 
     @api.model
@@ -358,7 +356,7 @@ class AccountReconciliation(models.AbstractModel):
                 WHERE l.account_id = a.id
                 {inner_where}
                 AND l.amount_residual > 0
-                AND move.state = 'posted'
+                AND move.state = 'posted' 
             )
             AND EXISTS (
                 SELECT NULL
@@ -368,7 +366,7 @@ class AccountReconciliation(models.AbstractModel):
                 WHERE l.account_id = a.id
                 {inner_where}
                 AND l.amount_residual < 0
-                AND move.state = 'posted'
+                AND move.state = 'posted' 
             )
         """.format(inner_where=is_partner and 'AND l.partner_id = p.id' or ' ')
         query = ("""
@@ -731,10 +729,9 @@ class AccountReconciliation(models.AbstractModel):
             amount_currency = amount
             amount_currency_str = ""
         amount_str = formatLang(self.env, abs(amount), currency_obj=st_line.currency_id or statement_currency)
-
         data = {
             'id': st_line.id,
-            'ref': st_line.ref,
+            'payment_ref': st_line.payment_ref,
             'note': st_line.narration or "",
             'name': st_line.name,
             'date': format_date(self.env, st_line.date),
@@ -756,7 +753,6 @@ class AccountReconciliation(models.AbstractModel):
         }
         if st_line.partner_id:
             data['open_balance_account_id'] = amount > 0 and st_line.partner_id.property_account_receivable_id.id or st_line.partner_id.property_account_payable_id.id
-
         return data
 
     @api.model
@@ -778,11 +774,11 @@ class AccountReconciliation(models.AbstractModel):
                  account_journal journal_a, account_journal journal_b
             WHERE a.id != b.id
             AND move_a.id = a.move_id
-            AND move_a.state = 'posted'
+            AND move_a.state = 'posted' 
             AND move_a.journal_id = journal_a.id
             AND move_b.id = b.move_id
             AND move_b.journal_id = journal_b.id
-            AND move_b.state = 'posted'
+            AND move_b.state = 'posted' 
             AND a.amount_residual = -b.amount_residual
             AND a.balance != 0.0
             AND b.balance != 0.0
@@ -1120,6 +1116,7 @@ class AccountBankStatementLine(models.Model):
                 self._check_invoice_state(counterpart_move_line.move_id)
 
             # Needs to be called manually as lines were created 1 by 1
+            self.move_id.update_lines_tax_exigibility()
             if self.move_id.state == 'draft':
                 self.move_id.with_context(skip_account_move_synchronization=True).action_post()
             # record the move name on the statement line to be able to retrieve
@@ -1128,9 +1125,8 @@ class AccountBankStatementLine(models.Model):
 
         elif self.move_name:
             raise UserError(_('Operation not allowed. Since your statement line already received a number (%s), you cannot reconcile it entirely with existing journal entries otherwise it would make a gap in the numbering. You should book an entry and make a regular revert of it in case you want to cancel it.')% (self.move_name))
-
         # create the res.partner.bank if needed
-        if self.account_number and self.partner_id and not self.bank_account_id:
+        if self.account_number and self.partner_id and not self.statement_id:
             # Search bank account without partner to handle the case the res.partner.bank already exists but is set
             # on a different partner.
             self.partner_bank_id = self._find_or_create_bank_account()

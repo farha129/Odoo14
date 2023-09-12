@@ -444,7 +444,6 @@ var StatementAction = AbstractAction.extend({
  * Widget used as action for 'account.move.line' and 'res.partner' for the
  * manual reconciliation and mark data as reconciliate
  */
-
 var ManualAction = StatementAction.extend({
     title: core._t('Journal Items to Reconcile'),
     withSearchBar: false,
@@ -498,7 +497,6 @@ var ManualAction = StatementAction.extend({
 
 core.action_registry.add('bank_statement_reconciliation_view', StatementAction);
 core.action_registry.add('manual_reconciliation_view', ManualAction);
-
 
 return {
     StatementAction: StatementAction,

@@ -431,7 +431,7 @@ class AccountAssetAsset(models.Model):
                 del (tracked_fields['method_end'])
             else:
                 del (tracked_fields['method_number'])
-            dummy, tracking_value_ids = asset._mail_track(tracked_fields,
+            dummy, tracking_value_ids = asset._message_track(tracked_fields,
                                                              dict.fromkeys(
                                                                  fields))
             asset.message_post(subject=_('Asset created'),
@@ -472,7 +472,7 @@ class AccountAssetAsset(models.Model):
                      'method_number': sequence})
                 tracked_fields = self.env['account.asset.asset'].fields_get(
                     ['method_number', 'method_end'])
-                changes, tracking_value_ids = asset._mail_track(
+                changes, tracking_value_ids = asset._message_track(
                     tracked_fields, old_values)
                 if changes:
                     asset.message_post(subject=_(
@@ -694,7 +694,7 @@ class AccountAssetDepreciationLine(models.Model):
         if post_move and created_moves:
             created_moves.filtered(lambda m: any(
                 m.asset_depreciation_ids.mapped(
-                    'asset_id.category_id.open_asset'))).action_post()
+                    'asset_id.category_id.open_asset'))).post()
         return [x.id for x in created_moves]
 
     def create_grouped_move(self, post_move=True):
@@ -742,7 +742,7 @@ class AccountAssetDepreciationLine(models.Model):
 
         if post_move and created_moves:
             self.post_lines_and_close_asset()
-            created_moves.action_post()
+            created_moves.post()
         return [x.id for x in created_moves]
 
     def post_lines_and_close_asset(self):

@@ -134,11 +134,11 @@ class MultipleInvoiceLayout(models.TransientModel):
         if self.layout == 'web.external_layout_boxed':
             new_layout = 'base_accounting_kit.boxed'
 
-        elif self.layout == 'web.external_layout_bold':
-            new_layout = 'base_accounting_kit.bold'
+        elif self.layout == 'web.external_layout_clean':
+            new_layout = 'base_accounting_kit.clean'
 
-        elif self.layout == 'web.external_layout_striped':
-            new_layout = 'base_accounting_kit.striped'
+        elif self.layout == 'web.external_layout_background':
+            new_layout = 'base_accounting_kit.background'
 
         else:
             new_layout = 'base_accounting_kit.standard'
