@@ -28,7 +28,7 @@ class DimensionSupplement(models.Model):
     _description = "Dimension Supplement"
 
     sale_id = fields.Many2one('sale.order', string = 'Dimension Sector')
-    sector_id = fields.Many2one('sector.order.line', string = 'Dimension Sector')
+    sector_id = fields.Many2one('sector.order.line', string = ' Sector')
     supplement_height = fields.Float(string='Height', digits='Supplement Height', default=0)
     supplement_width = fields.Float(string='Width', digits='Supplement Width by mater', default=0)
     dimension_one = fields.Float(string='One Dimension', digits='Product Width by mater', default=0)
@@ -805,7 +805,7 @@ class SectorOderLine(models.Model):
             "domain": [('sector_id', '=', self.id)],
             "type": "ir.actions.act_window",
             "target": "current",
-            "context": {'default_sector_id': self.id,'create':True},
+            "context": {'default_sector_id': self.id,'default_name': self.name,'create':True},
 
         }
 

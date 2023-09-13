@@ -84,6 +84,45 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     def action_confirm(self):
+        #get Bill Of material
+
+        for sect_obj in self.sector_order_line:
+            bill = self.env['mrp.bom'].create({'product_tmpl_id': sect_obj.product_template_id.id,
+                                               'product_qty': sect_obj.product_area,
+                                               # 'product_qty': sect_obj.product_number,
+                                               })
+
+            val=[]
+            # bill= [(5, 0)]
+            val.append({'product_id': sect_obj.product_id.id,
+                        'product_qty': sect_obj.product_uom_qty,
+                        'product_uom_id': sect_obj.product_uom.id,
+                        'bom_id': bill.id,
+                        })
+
+
+            for supp in self.dimension_supplement_ids:
+                if supp.sector_id == sect_obj:
+
+                   val.append({'product_id': supp.supplement_name.id,
+                         'product_qty': supp.purchase_uom_qty,
+                         'product_uom_id': supp.product_uom.id,
+                         'bom_id': bill.id,
+                     })
+            for acc in sect_obj.product_id.accessory_ids:
+
+               val.append({'product_id': acc.accessory_name.id,
+                     'product_qty': acc.accessory_uom_qty * sect_obj.product_number,
+                     'product_uom_id': acc.accessory_name.uom_id.id,
+                     'bom_id': bill.id,
+                 })
+
+            self.env['mrp.bom.line'].create(val)
+            for order in self.order_line:
+                if order.product_id == sect_obj.final_product:
+                    print('ggggggggggggggggggggggggggggggggggggggggggiiiii')
+                    order.write({"bom_id": bill.id, })
+            #
         res = super(SaleOrder, self).action_confirm()
         if  not self.project_id :
             project_id = self.env['project.project'].create({'name':self.name +'/'+ self.partner_id.name })
@@ -92,22 +131,18 @@ class SaleOrder(models.Model):
         days = self.implemented_period * (self.company_id.percent_period_date/100)
         mrp_date = fields.Date.to_string(self.date_order + timedelta(days))
         t1 = (self.date_order).strftime('%Y-%m-%d')
-        print('dte t14444444444444444444444444444444', t1)
         t1 = datetime.strptime(str(t1), '%Y-%m-%d')
         # t1 = datetime.strptime(str(self.date_order), '%Y-%m-%d')
         t2 = datetime.strptime(str(mrp_date), '%Y-%m-%d')
-        print('ttttttttttttttttttttt2',t2)
 
         delta = timedelta(days=1)
         count = 0
         while t1 <= t2 + timedelta(count):
             t1 += delta
             if t1.weekday() in [4]:
-                print('mrppppppppp', t1.strftime("%Y-%m-%d"))
                 count += 1
         mrp_date = fields.Date.to_string(
             datetime.strptime(mrp_date, "%Y-%m-%d").date() + timedelta(count))
-        print('llllllllllllasr',mrp_date)
 
         for order in self:
             pro = order.procurement_group_id.stock_move_ids.created_production_id
@@ -155,34 +190,10 @@ class SaleOrder(models.Model):
 
 
         for sect_obj in self.sector_order_line:
-            bill = self.env['mrp.bom'].create({'product_tmpl_id': sect_obj.product_template_id.id,
-                                               'product_qty': sect_obj.product_area,
-                                               # 'product_qty': sect_obj.product_number,
-                                               })
-
-            val=[]
-            # bill= [(5, 0)]
-            val.append({'product_id': sect_obj.product_id.id,
-                        'product_qty': sect_obj.product_uom_qty,
-                        'product_uom_id': sect_obj.product_uom.id,
-                        'bom_id': bill.id,
-                        })
-
-
-            for supp in self.dimension_supplement_ids:
-                if supp.sector_id == sect_obj:
-
-                   val.append({'product_id': supp.supplement_name.id,
-                         'product_qty': supp.purchase_uom_qty,
-                         'product_uom_id': supp.product_uom.id,
-                         'bom_id': bill.id,
-                     })
-
-            self.env['mrp.bom.line'].create(val)
 
             self.order_line.create({'product_id': sect_obj.final_product.id,
                                        'name': sect_obj.description,
-                                       'bom_id': bill.id,
+                                       # 'bom_id': bill.id,
                                        'order_id': self.id,
                                        'product_number': sect_obj.product_number,
                                        'product_uom_qty': sect_obj.product_area,

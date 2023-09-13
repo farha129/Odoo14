@@ -33,6 +33,7 @@
                            <field name="sector_order_line" options="{'no_open': True}" >
                                        <tree editable="bottom" options="{'no_open': True}">
                                                 <field name="product_id"/>
+                                                <field name="name" invisible="1" />
                                                 <field name="description"/>
                                                 <field name="cutter_type"  />
 <!--                                                <field name="product_widths" widget="many2many_tags"  />-->
@@ -105,7 +106,7 @@
                                      <field name="supplement_name" domain="[('is_supplement', '=',  True)]" />
                                      <field name="purchase_uom_qty" />
                                      <field name="product_uom" />
-                                     <field name="sector_id" invisible="1" />
+                                     <field name="sector_id" invisible="0" />
 
                              </tree>
                         </field>
