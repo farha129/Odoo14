@@ -34,16 +34,16 @@
                         	attrs="{'invisible': ['|',('status','=','authenticated'),('whatsapp_number','=',False)]}"/>
                         <button string="  Logout" icon="fa-power-off" type="object" class="btn-primary" name="klikapi_logout"
                         	attrs="{'invisible': [('status','!=','authenticated')]}"/>       	
-                        <field name="status" widget="statusbar"/>	
+                        <field name="status" widget="statusbar"/>	     		
                   </header>
                   <sheet>
-                    <group>
+                    <group col="4">
                         <field name="name"/>
                         <field name="message_counts"/>
                         <field name="message_response"/>
                         <field name="whatsapp_number"/>
                     </group>
-                    <group string="Connection Information">
+                    <group col="4" string="Connection Information">
                         <field name="klik_key"/>
                         <field name="klik_secret"/>
                      </group>

@@ -31,12 +31,20 @@ class Partner(models.Model):
 
     def _formatting_mobile_number(self):
         for rec in self:
+            # whatsapp = rec.whatsapp.replace('@c.us','').replace('@g.us','')
+            # module_rec = self.env['ir.module.module'].sudo().search_count([
+            #     ('name', '=', 'crm_phone_validation'),
+            #     ('state', '=', 'installed')])
+            # country_code = str(rec.country_id.phone_code) if rec.country_id else str(self.company_id.country_id.phone_code)
+            # return module_rec and re.sub("[^0-9]", '', ) or \
+            #     country_code + whatsapp[1:] if whatsapp[0] == '0' else country_code + whatsapp
             module_rec = self.env['ir.module.module'].sudo().search_count([
                 ('name', '=', 'crm_phone_validation'),
                 ('state', '=', 'installed')])
             country_code = str(rec.country_id.phone_code) if rec.country_id else str(self.company_id.country_id.phone_code)
             country_count = len(str(rec.country_id.phone_code))
-            whatsapp_number = rec.whatsapp
+            # whatsapp_number = rec.whatsapp
+            whatsapp_number = rec.whatsapp.replace('@c.us','').replace('@g.us','')
             if rec.whatsapp[:country_count] == str(rec.country_id.phone_code):
                 whatsapp_number = rec.whatsapp
             elif rec.whatsapp[0] == '0':
@@ -45,13 +53,8 @@ class Partner(models.Model):
                     whatsapp_number = rec.whatsapp[1:]
                 else:
                     whatsapp_number = country_code + rec.whatsapp[1:]
+            # print ('==whatsapp_number==',whatsapp_number)
             return whatsapp_number
-            #if rec.whatsapp == len
-            # return module_rec and re.sub("[^0-9]", '', rec.whatsapp) or \
-            #     country_code + rec.whatsapp[1:] if rec.whatsapp[0] == '0' else country_code + rec.whatsapp
-            # # return module_rec and re.sub("[^0-9]", '', rec.whatsapp) or \
-            #     str(rec.country_id.phone_code
-            #         ) + rec.whatsapp[1:] if rec.whatsapp[0] == '0' else rec.whatsapp
 
     @api.constrains('whatsapp')
     def _validate_mobile(self):
@@ -59,7 +62,7 @@ class Partner(models.Model):
             whatsapp = rec._formatting_mobile_number()
             if not whatsapp.isdigit():
                 raise ValidationError(_("Invalid whatsapp number."))
-
+            
     def check_whatsapp_number_response(self, whatsapp_ids):
         """Method to check mobile is on whatsapp."""
         number_dict = {}
@@ -78,9 +81,8 @@ class Partner(models.Model):
                 KlikApi = whatsapp_ids.klikapi()
                 KlikApi.auth()
                 numbers = rec.check_whatsapp_number_response(whatsapp_ids)
-                #print ('==company_id==',company_id,number_dict,rec.name,rec.mobile)
                 if rec.name and rec.whatsapp and numbers.get('error'):
-                    _logger.warning(_('Error: ' + rec.name + ' with number ' + rec.whatsapp +' '+numbers.get('error')))
+                    _logger.warning(_('Error: ' + rec.name + ' with number ' +  +' '+numbers.get('error')))
                     #raise UserError(_(rec.name + ' with number ' + rec.whatsapp +' '+number_dict.get('error')))
                 if numbers.get('result') == 'not exists':
                     _logger.warning('Failed added WhatsApp number ', rec.whatsapp)

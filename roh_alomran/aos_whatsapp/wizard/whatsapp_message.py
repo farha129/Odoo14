@@ -182,6 +182,7 @@ class WhatsappComposeMessage(models.TransientModel):
     def default_get(self, fields):
         result = super(WhatsappComposeMessage, self).default_get(fields)
         context = dict(self._context or {})
+        #print ('===context===',context)
         Attachment = self.env['ir.attachment']
         active_model = context.get('active_model')
         active_ids = context.get('active_ids')
@@ -193,6 +194,7 @@ class WhatsappComposeMessage(models.TransientModel):
         #=======================================================================
         WhatsappServer = self.env['ir.whatsapp_server']
         whatsapp_id = WhatsappServer.search([('status','=','authenticated')], order='sequence asc', limit=1)
+        #print ('==whatsapp_id==',whatsapp_id.message_response,active_ids)
         if active_ids and whatsapp_id and ast.literal_eval(str(whatsapp_id.message_response)) and len(active_ids) > ast.literal_eval(str(whatsapp_id.message_response))['block_limit']:
             raise UserError(_('Maximum blast message whatsapp is %s.') % str(ast.literal_eval(str(whatsapp_id.message_response))['block_limit']))
         #=======================================================================
@@ -222,10 +224,10 @@ class WhatsappComposeMessage(models.TransientModel):
             records = self.env[active_model].browse(active_ids)
             is_exists = self.env['ir.attachment']
             for record in records:
-                res_name = record.name.replace('/', '_') if active_model == 'account.move' else record.name.replace('/', '_')
+                res_name = 'Invoice_' + record.name.replace('/', '_') if active_model == 'account.move' else record.name.replace('/', '_')
                 domain = [('res_id', '=', record.id), ('name', 'like', res_name + '%'), ('res_model', '=', active_model)] 
                 is_attachment_exists = Attachment.search(domain, limit=1) if len(active_ids) == 1 else is_exists
-                print ('==sss==',is_attachment_exists)
+                #print ('==sss==',is_attachment_exists)
                 if active_model != 'sale.order.line' and not is_attachment_exists:
                     attachments = []
                     if context.get('template'):
@@ -243,34 +245,48 @@ class WhatsappComposeMessage(models.TransientModel):
                         template = self.env.ref('stock.mail_template_data_delivery_confirmation')
                     elif active_model == 'account.payment':
                         template = self.env.ref('account.mail_template_data_payment_receipt')
-                    #print ('===',report)
-                    report = template.sudo().report_template
+                    elif active_model == 'project.task':
+                        template = self.env.ref('project.mail_template_data_project_task')
+                    if not template.report_template:
+                        break
+                    report = template.report_template
+                    #print ('==report=',report)
+                    if not report:
+                        continue
                     report_service = report.report_name
     
                     if report.report_type not in ['qweb-html', 'qweb-pdf']:
                         raise UserError(_('Unsupported report type %s found.') % report.report_type)
-                    #res, format = report._render_qweb_pdf([record.id])
-                    if active_model == 'account.move':
-                        report = self.env['ir.actions.report'].sudo()._render_qweb_pdf("account.account_invoices", record.sudo().id)
-                        filename = res_name + '.' + report[1]
+                    res, format = report._render_qweb_pdf([record.id])
+                    res = base64.b64encode(res)
+                    if not res_name:
+                        res_name = 'report.' + report_service
+                    ext = "." + format
+                    if not res_name.endswith(ext):
+                        res_name += ext
+                    attachments.append((res_name, res))
+                    #print ('==wwww==',attachments)
+                    #attachment_ids = []
+                    for attachment in attachments:
                         attachment_data = {
-                            'name': filename,#attachment[0],
-                            'store_fname': filename,#attachment[0],
-                            'datas': base64.b64encode(report[0]),#attachment[1],
+                            'name': attachment[0],
+                            'store_fname': attachment[0],
+                            'datas': attachment[1],
                             'type': 'binary',
                             'res_model': active_model,
                             'res_id': active_id,
-                            'mimetype': 'application/x-pdf',
                         }
-                        is_exists = Attachment.create(attachment_data)
+                        is_exists += Attachment.create(attachment_data)
                 else:
                     is_exists += is_attachment_exists
             result['model'] = active_model or 'res.partner'
-            result['attachment_ids'] = [(6, 0, is_exists.ids)] if is_exists else []
+            result['attachment_ids'] = [(6, 0, is_exists.ids)] if is_exists else [] 
             result['partner_ids'] = [(6, 0, partners.ids)] if partners else []
+        #print ('===result==',result)
         return result
     
     def _prepare_mail_message(self, author_id, chat_id, record, model, body, data, subject, partner_ids, attachment_ids, response, status):
+        print ('===_prepare_mail_message===',data)
         #MailMessage = self.env['mail.message']
         #for active_id in active_ids:
         values = {
@@ -303,199 +319,210 @@ class WhatsappComposeMessage(models.TransientModel):
             uid, context = self.env.uid, self.env.context
             opt_out_list = context.get('mass_whatsapp_opt_out_list') or {}
             message = False
-            #with api.Environment.manage():
-            #self.env = api.Environment(new_cr, uid, context)
-            MailMessage = self.env['mail.message']
-            Partners = self.env['res.partner']
-            Countries = self.env['res.country']
-            for rec in self:
-                active_model = rec.model                    
-                active_ids = context.get('active_ids') or rec.partner_ids.ids
-                #print ('---rec---',rec,active_model,active_ids,rec.partner_ids)
-                if rec.whatsapp_type == 'post':
-                    #SEND MESSAGE
-                    #MULTI ATTACHMENT
-                    message = rec.message
-                    #print ('--message--',message)
-                    attachment_new_ids = []
-                    if rec.attachment_ids:
-                        for attach in rec.attachment_ids:
-                            vals = {'filename': attach.name}
-                            mimetype = guess_mimetype(base64.b64decode(attach.datas))
-                            if mimetype == 'application/octet-stream':
-                                mimetype = 'video/mp4'
-                            str_mimetype = 'data:' + mimetype + ';base64,'
-                            attachment = str_mimetype + str(attach.datas.decode("utf-8"))
-                            vals.update({'datas': attachment})
-                            attachment_new_ids.append(vals)
-                    #print ('===DETECT OBJECT===',rec.attachment_ids)
-                    for record in self.env[active_model].browse(active_ids):
-                        #print ('==FOR PARTNER ONLY==',record)      
-                        origin = link = ''
-                        amount_total = 0
-                        currency_id = False
-                        if active_model != 'res.partner':
-                            if active_model == 'sale.order':
-                                link = record.get_portal_url()
-                                origin = record.name
-                                currency_id = record.pricelist_id.currency_id
-                                amount_total = record.amount_total                                    
-                                partner = record.partner_id
-                            elif active_model == 'purchase.order':
-                                link = record.get_portal_url()
-                                origin = record.name
-                                currency_id = record.currency_id
-                                amount_total = record.amount_total                                    
-                                partner = record.partner_id
-                            elif active_model == 'stock.picking':
-                                link = ''
-                                origin = record.name
-                                currency_id = False
-                                amount_total = 0
-                                partner = record.partner_id
-                            elif active_model == 'pos.order':
-                                origin = record.name
-                                currency_id = record.currency_id
-                                amount_total = record.amount_total
-                                partner = record.partner_id
-                            elif active_model == 'account.move':
-                                link = record.get_portal_url()
-                                origin = record.name
-                                currency_id = record.currency_id
-                                amount_total = record.amount_total
-                                partner = record.partner_id
-                        else:
-                            partner = record
-                        #if partner.whatsapp:
-                        whatsapp = partner._formatting_mobile_number()
-                        if partner.whatsapp and partner.whatsapp != '0' and whatsapp not in opt_out_list:                          
+            with api.Environment.manage():
+                self.env = api.Environment(new_cr, uid, context)
+                MailMessage = self.env['mail.message']
+                Partners = self.env['res.partner']
+                Countries = self.env['res.country']
+                print ('==whatsapp_message_post_new==',self)
+                for rec in self:
+                    active_model = rec.model                    
+                    active_ids = context.get('active_ids') or rec.partner_ids.ids
+                    #print ('---rec---',rec,active_model,active_ids,rec.partner_ids)
+                    if rec.whatsapp_type == 'post':
+                        print ('#SEND MESSAGE')
+                        #MULTI ATTACHMENT
+                        message = rec.message
+                        #print ('--message--',message)
+                        attachment_new_ids = []
+                        if rec.attachment_ids:
+                            for attach in rec.attachment_ids:
+                                vals = {'filename': attach.name}
+                                mimetype = guess_mimetype(base64.b64decode(attach.datas))
+                                if mimetype == 'application/octet-stream':
+                                    mimetype = 'video/mp4'
+                                str_mimetype = 'data:' + mimetype + ';base64,'
+                                attachment = str_mimetype + str(attach.datas.decode("utf-8"))
+                                vals.update({'datas': attachment})
+                                attachment_new_ids.append(vals)
+                        print ('===DETECT OBJECT===',rec.attachment_ids,active_ids)
+                        for record in self.env[active_model].browse(active_ids):
+                            #print ('==FOR PARTNER ONLY==',record)         
+                            origin = link = ''
+                            amount_total = 0
+                            currency_id = False
+                            if active_model != 'res.partner':
+                                if active_model == 'sale.order':
+                                    link = record.get_portal_url()
+                                    origin = record.name
+                                    currency_id = record.pricelist_id.currency_id
+                                    amount_total = record.amount_total                                    
+                                    partner = record.partner_id
+                                elif active_model == 'purchase.order':
+                                    link = record.get_portal_url()
+                                    origin = record.name
+                                    currency_id = record.currency_id
+                                    amount_total = record.amount_total                                    
+                                    partner = record.partner_id
+                                elif active_model == 'stock.picking':
+                                    link = ''
+                                    origin = record.name
+                                    currency_id = False
+                                    amount_total = 0
+                                    partner = record.partner_id
+                                elif active_model == 'pos.order':
+                                    origin = record.name
+                                    currency_id = record.currency_id
+                                    amount_total = record.amount_total
+                                    partner = record.partner_id
+                                elif active_model == 'account.move':
+                                    link = record.get_portal_url()
+                                    origin = record.name
+                                    currency_id = record.currency_id
+                                    amount_total = record.amount_total
+                                    partner = record.partner_id
+                                else:
+                                    partner = record
+                            else:
+                                partner = record
+                            #print ('==currency===',currency_id)
+                            
                             whatsapp = partner._formatting_mobile_number()
-                            message_data = {
-                                'method': 'sendMessage',
-                                'phone': whatsapp,
-                                'chatId': partner.chat_id or '',
-                                'body': message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ').replace('"', "*").replace("'", "*"),
-                                'origin': origin,
-                                'link': link,
-                            }
-                            if partner.whatsapp == '0' and partner.chat_id:
-                                message_data.update({'phone': '','chatId': partner.chat_id})
-                            #MESSAGE SENT                            
-                            if message_data['body']:
-                                send_message = {}
-                                status = 'pending'
-                                # data_message = json.dumps(message_data)
-                                # #_logger.warning('Failed to send Message to WhatsApp number %s, No body found', whatsapp)
-                                # send_message = KlikApi.post_request(method='sendMessage', data=data_message)
-                                # if send_message.get('message')['sent']:
-                                #     status = 'send'
-                                #     _logger.warning('Success to send Message to WhatsApp number %s', whatsapp)
-                                # else:
-                                #     status = 'error'
-                                #     _logger.warning('Failed to send Message to WhatsApp number %s', whatsapp)
-                                chatID = partner.chat_id if partner.chat_id else whatsapp#send_message.get('chatID')
-                                vals = self._prepare_mail_message(self.env.user.partner_id.id, chatID, record and record.id, active_model, texttohtml.formatHtml(message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ')), message_data, rec.subject, [partner.id], [], send_message, status)
-                                MailMessage.sudo().create(vals)
-                                #partner.chat_id = chatID
-                                new_cr.commit()
-                            #ATTACHMENT SENT
-                            if attachment_new_ids:
-                                for att in attachment_new_ids:
-                                    message_attach = {
-                                        'method': 'sendFile',
-                                        'phone': whatsapp,
-                                        'chatId': partner.chat_id or '',
-                                        'body': att['datas'].split(",")[0],
-                                        'filename': att['filename'],
-                                        'caption': texttohtml.formatHtml(message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ')),#att['caption'],
-                                        'origin': origin,
-                                        'link': link,
-                                    }
-                                    #SENT ATTAHCMENT
-                                    if message_attach['body']:
-                                        send_attach = {}
-                                        status = 'pending'
-                                        # data_attach = json.dumps(message_attach)
-                                        # #_logger.warning('Failed to send Message to WhatsApp number %s, No attachment found', whatsapp)
-                                        # send_attach = KlikApi.post_request(method='sendFile', data=data_attach)
-                                        # if send_attach.get('message')['sent']:        
-                                        #     status = 'send'                
-                                        #     _logger.warning('Success to send Attachment to WhatsApp number %s', whatsapp)
-                                        # else:
-                                        #     status = 'error'
-                                        #     _logger.warning('Failed to send Attachment to WhatsApp number %s', whatsapp)
-                                        chatID = partner.chat_id if partner.chat_id else whatsapp#send_attach.get('chatID')
-                                        vals = self._prepare_mail_message(self.env.user.partner_id.id, chatID, record and record.id, active_model, '', message_attach, rec.subject, [partner.id], rec.attachment_ids, send_attach, status)
-                                        MailMessage.sudo().create(vals)
-                                        #partner.chat_id = chatID
-                                        new_cr.commit()
-                            #time.sleep(3)
-                elif rec.whatsapp_type == 'get' and rec.type in ('contact', 'group'):
-                    #CREATE GROUP OR CONTACT
-                    dialogs = {}
-                    #data_dialog = json.dumps(dialogs)
-                    get_dialog = KlikApi.get_request(method='dialogs', data=dialogs)
-                    #print ('-get_dialog--',get_dialog)
-                    if get_dialog.get('dialogs'):
-                        for dialog in get_dialog.get('dialogs'):
-                            #print ('---dialog---',dialog)
-                            if rec.type == 'contact' and dialog.get('id') and '@c.us' in dialog.get('id'):
-                                ContactsExist = Partners.sudo().search([('chat_id','=',dialog.get('id'))], limit=1)
-                                whatsapp = dialog.get('id').replace('@c.us','')
-                                country = Countries.search([('phone_code','=',whatsapp[:2])], limit=1)
-                                whatsapp_number = '0'+whatsapp[2:]
-                                if not ContactsExist:                                        
-                                    vals = {
-                                        'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name'),
-                                        'whatsapp': whatsapp_number,
-                                        'chat_id': dialog.get('id'),
-                                        'whatsapp_type': '@c.us',
-                                        #'customer': True,
-                                        'country_id':country.id,
-                                    }
-                                    Partners.create(vals)
-                                    _logger.warning('Added Whatsapp Contact %s**** to Partner Odoo', whatsapp_number[:5])                                                                 
+                            #print ('===partner==',whatsapp,opt_out_list,(opt_out_list and whatsapp not in opt_out_list))                            
+                            if partner.whatsapp and partner.whatsapp != '0' and whatsapp not in opt_out_list:    
+                                #whatsapp = partner._formatting_mobile_number()
+                                #message = message.replace('_PARTNER_', record.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '')
+                                message_data = {
+                                    'method': 'sendMessage',
+                                    'phone': whatsapp,
+                                    'chatId': partner.chat_id or '',
+                                    'body': message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ').replace('"', "*").replace("'", "*"),
+                                    'origin': origin,
+                                    'link': link,
+                                }
+                                #print ('===message===',message_data)
+                                #print ('===message===',origin,amount_total,message,message_data)
+                                if partner.whatsapp == '0' and partner.chat_id:
+                                    message_data.update({'phone': '','chatId': partner.chat_id})
+                                #MESSAGE SENT
+                                if not attachment_new_ids and message_data['body']:
+                                    print ('===MESSAGE TANPA ATTACHMENT==')
+                                    send_message = {}
+                                    status = 'pending'
+                                    # data_message = json.dumps(message_data)
+                                    # #_logger.warning('Failed to send Message to WhatsApp number %s, No body found', whatsapp)
+                                    # send_message = KlikApi.post_request(method='sendMessage', data=data_message)
+                                    # if send_message.get('message')['sent']:
+                                    #     status = 'send'
+                                    #     _logger.warning('Success to send Message to WhatsApp number %s', whatsapp)
+                                    # else:
+                                    #     status = 'error'
+                                    #     _logger.warning('Failed to send Message to WhatsApp number %s', whatsapp)
+                                    chatID = partner.chat_id if partner.chat_id else whatsapp#send_message.get('chatID')
+                                    vals = self._prepare_mail_message(self.env.user.partner_id.id, chatID, record and record.id, active_model, texttohtml.formatHtml(message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ')), message_data, rec.subject, [partner.id], [], send_message, status)
+                                    MailMessage.sudo().create(vals)
+                                    #partner.chat_id = chatID
                                     new_cr.commit()
-                                    #time.sleep(3)
-                                else:
-                                    for part in ContactsExist:
-                                        part.write({'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name')})       
-                                        _logger.warning('Updated Whatsapp Contact %s**** to Partner Odoo', whatsapp_number[:5])                                     
+                                #new_cr.commit()
+                                #ATTACHMENT SENT
+                                elif attachment_new_ids:
+                                    print ('===MESSAGE DENGAN ATTACHMENT==')
+                                    #print ('===sendFile===',attachment_new_ids)
+                                    for att in attachment_new_ids:
+                                        message_attach = {
+                                            'method': 'sendFile',
+                                            'phone': whatsapp,
+                                            'chatId': partner.chat_id or '',
+                                            'body': att['datas'].split(",")[0],
+                                            'filename': att['filename'],
+                                            'caption': message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' '),#att['caption'],
+                                            'origin': origin,
+                                            'link': link,
+                                        }
+                                        #SENT ATTAHCMENT
+                                        if message_attach['body']:
+                                            send_attach = {}
+                                            status = 'pending'
+                                            # data_attach = json.dumps(message_attach)
+                                            # #_logger.warning('Failed to send Message to WhatsApp number %s, No attachment found', whatsapp)
+                                            # send_attach = KlikApi.post_request(method='sendFile', data=data_attach)
+                                            # if send_attach.get('message')['sent']:        
+                                            #     status = 'send'                
+                                            #     _logger.warning('Success to send Attachment to WhatsApp number %s', whatsapp)
+                                            # else:
+                                            #     status = 'error'
+                                            #     _logger.warning('Failed to send Attachment to WhatsApp number %s', whatsapp)
+                                            chatID = partner.chat_id if partner.chat_id else whatsapp#send_attach.get('chatID')
+                                            vals = self._prepare_mail_message(self.env.user.partner_id.id, chatID, record and record.id, active_model, texttohtml.formatHtml(message.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' ')), message_attach, rec.subject, [partner.id], rec.attachment_ids, send_attach, status)
+                                            MailMessage.sudo().create(vals)
+                                            #partner.chat_id = chatID
+                                            new_cr.commit()
+                                #time.sleep(3)
+                    elif rec.whatsapp_type == 'get' and rec.type in ('contact', 'group'):
+                        print ('#CREATE GROUP OR CONTACT')
+                        dialogs = {}
+                        #data_dialog = json.dumps(dialogs)
+                        get_dialog = KlikApi.get_request(method='dialogs', data=dialogs)
+                        #print ('-get_dialog--',get_dialog)
+                        if get_dialog.get('dialogs'):
+                            for dialog in get_dialog.get('dialogs'):
+                                #print ('---dialog---',dialog)
+                                if rec.type == 'contact' and dialog.get('id') and '@c.us' in dialog.get('id'):
+                                    ContactsExist = Partners.sudo().search([('chat_id','=',dialog.get('id'))], limit=1)
+                                    whatsapp = dialog.get('id').replace('@c.us','')
+                                    country = Countries.search([('phone_code','=',whatsapp[:2])], limit=1)
+                                    whatsapp_number = '0'+whatsapp[2:]
+                                    if not ContactsExist:                                        
+                                        vals = {
+                                            'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name'),
+                                            'whatsapp': whatsapp_number or '',
+                                            'chat_id': dialog.get('id'),
+                                            'whatsapp_type': '@c.us',
+                                            #'customer': True,
+                                            'country_id':country.id,
+                                        }
+                                        Partners.create(vals)
+                                        _logger.warning('Added Whatsapp Contact %s**** to Partner Odoo', whatsapp_number[:5])                                                                 
                                         new_cr.commit()
                                         #time.sleep(3)
-                            elif rec.type == 'group' and dialog.get('id') and '@g.us'  in dialog.get('id'): 
-                                GroupsExist = Partners.sudo().search([('chat_id','=',dialog.get('id'))], limit=1)
-                                whatsapp = dialog.get('id')
-                                country = Countries.search([('phone_code','=',whatsapp[:2])], limit=1)
-                                if not GroupsExist:                              
-                                    vals = {
-                                        'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name'),
-                                        'whatsapp': dialog.get('id').replace('@g.us',''),
-                                        'chat_id': dialog.get('id'),
-                                        'whatsapp_type': '@g.us',
-                                        'country_id':country.id,
-                                    }
-                                    Partners.create(vals)
-                                    _logger.warning('Added Whatsapp Group *%s* to Partner Odoo', dialog.get('subject') if 'subject' in dialog else dialog.get('name'))    
-                                    new_cr.commit()
-                                    #time.sleep(3)
-                                else:
-                                    for part in GroupsExist:
-                                        part.write({'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name')})
-                                        _logger.warning('Update Whatsapp Group *%s* to Partner Odoo', dialog.get('subject') if 'subject' in dialog else dialog.get('name'))    
+                                    else:
+                                        for part in ContactsExist:
+                                            part.write({'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name')})       
+                                            _logger.warning('Updated Whatsapp Contact %s**** to Partner Odoo', whatsapp_number[:5])                                     
+                                            new_cr.commit()
+                                            #time.sleep(3)
+                                elif rec.type == 'group' and dialog.get('id') and '@g.us'  in dialog.get('id'): 
+                                    GroupsExist = Partners.sudo().search([('chat_id','=',dialog.get('id'))], limit=1)
+                                    whatsapp = dialog.get('id')
+                                    country = Countries.search([('phone_code','=',whatsapp[:2])], limit=1)
+                                    if not GroupsExist:                              
+                                        vals = {
+                                            'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name'),
+                                            'whatsapp': dialog.get('id').replace('@g.us',''),
+                                            'chat_id': dialog.get('id'),
+                                            'whatsapp_type': '@g.us',
+                                            'country_id':country.id,
+                                        }
+                                        Partners.create(vals)
+                                        _logger.warning('Added Whatsapp Group *%s* to Partner Odoo', dialog.get('subject') if 'subject' in dialog else dialog.get('name'))    
                                         new_cr.commit()
                                         #time.sleep(3)
+                                    else:
+                                        for part in GroupsExist:
+                                            part.write({'name': dialog.get('subject') if 'subject' in dialog else dialog.get('name')})
+                                            _logger.warning('Update Whatsapp Group *%s* to Partner Odoo', dialog.get('subject') if 'subject' in dialog else dialog.get('name'))    
+                                            new_cr.commit()
+                                            #time.sleep(3)
         finally:
-            pass
-            #self.env.cr.close()
+            self.env.cr.close()
 
 
     def whatsapp_message_post(self):
         """Send whatsapp message via threding."""
         WhatsappServer = self.env['ir.whatsapp_server']
         whatsapp_ids = WhatsappServer.search([('status','=','authenticated')], order='sequence asc')
-        #for wserver in whatsapp_ids.filtered(lambda ws: ast.literal_eval(str(ws.message_response))['limit_qty'] >= int(ws.message_counts)):
         for wserver in whatsapp_ids.filtered(lambda ws: not ast.literal_eval(str(ws.message_response))['block']):
+        #for wserver in whatsapp_ids.filtered(lambda ws: ast.literal_eval(str(ws.message_response))['limit_qty'] >= int(ws.message_counts)):
             if wserver.status != 'authenticated':
                 _logger.warning('Whatsapp Authentication Failed!\nConfigure Whatsapp Configuration in General Setting.')
             KlikApi = wserver.klikapi()

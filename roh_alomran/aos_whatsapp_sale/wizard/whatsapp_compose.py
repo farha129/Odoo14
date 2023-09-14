@@ -34,8 +34,7 @@ class WhatsappComposeMessage(models.TransientModel):
                     template_id = self.env.ref('aos_whatsapp_sale.sales_confirm_status', raise_if_not_found=False)
             msg = result.get('message', '')
             if active_model == 'sale.order':
-                template = template_id.generate_email(rec.id, ['body_html', 'subject'])
-                #template = self.env['mail.template'].browse(template_id)
+                template = template_id.generate_email(rec.id, ['body_html'])
                 body = template.get('body_html')
                 msg = html2text.html2text(body)
                 if not is_multi_order:

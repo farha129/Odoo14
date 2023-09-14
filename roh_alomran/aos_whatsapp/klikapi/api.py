@@ -53,17 +53,8 @@ class KlikApi(object):
         #print ('===res===',res)
         return res.get('result') and res['result'] or {}
     
-    def get_number(self):
-        data= {}
-        url = self.APIUrl + 'check/' + self.klik_key +'/' + self.klik_secret
-        data_req = requests.get(url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-        res = json.loads(data_req.text)
-        print ('===get_number===',res)
-        return res.get('result') and res['result'] or {}
-    
     def get_request(self, method, data):
         url = self.APIUrl + 'get/' + self.klik_key +'/' + self.klik_secret + '/' + method
-        print ('--get_request--',url)
         data_req = requests.get(url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
         res = json.loads(data_req.text)
         return res.get('result') and res['result'] or {}
@@ -79,15 +70,16 @@ class KlikApi(object):
         data_s = {
             'params' : data
         }
+        #print ('=post_request==',data_s,url)
         response = requests.post(url, json=data_s, headers={'Content-Type': 'application/json'})
         if response.status_code == 200:
             message1 = json.loads(response.text)
+            print ('====',message1)
             message = message1.get('result').get('message')
             chatID = message.get('id') and message.get('id').split('_')[1]
             return {'chatID': chatID, 'message': message}
         else:
             return {'message': {'sent': False, 'message': 'Error'}}
-    
     
     def get_phone(self, method, phone):
         data = {}

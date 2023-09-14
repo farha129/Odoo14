@@ -26,12 +26,13 @@ _logger = logging.getLogger(__name__)
 
 SMTP_TIMEOUT = 60
 
+
 class WaKlikodoo(models.TransientModel):
     _name = "wa.klikodoo.popup"
     _description = "Wa Klikodoo"
     
     qr_scan = fields.Binary("QR Scan")
-    
+
 class IrWhatsappServer(models.Model):
     """Represents an SMTP server, able to send outgoing emails, with SSL and TLS capabilities."""
     _name = "ir.whatsapp_server"
@@ -59,36 +60,21 @@ class IrWhatsappServer(models.Model):
         self.ensure_one()
         return KlikApi(self.klik_key, self.klik_secret)
     
-    def _get_mail_message_whatsapp(self):
+    def _get_mail_message_whatsapp(self):        
         for was in self:
             KlikApi = was.klikapi()
             KlikApi.auth()
             was.message_counts = KlikApi.get_count()
             was.message_response = KlikApi.get_limit()
-
     
     def _formatting_mobile_number(self, number):
         for rec in self:
             module_rec = self.env['ir.module.module'].sudo().search_count([
                 ('name', '=', 'crm_phone_validation'),
                 ('state', '=', 'installed')])
-            country_code = str(rec.partner_id.country_id.phone_code)# if rec.partner_id.country_id else str(self.company_id.country_id.phone_code)
-            country_count = len(str(rec.partner_id.country_id.phone_code))
-            whatsapp_number = rec.partner_id.whatsapp
-            if rec.partner_id.whatsapp[:country_count] == str(rec.partner_id.country_id.phone_code):
-                #JIKA DEPAANYA 62
-                whatsapp_number = rec.partner_id.whatsapp
-            elif rec.partner_id.whatsapp[0] == '0':
-                #JIKA DEPANNYA 0
-                if rec.partner_id.whatsapp[1:country_count+1] == str(rec.partner_id.country_id.phone_code):
-                    #COUNTRY CODE UDH DIDEPAN
-                    whatsapp_number = rec.partner_id.whatsapp[1:]
-                else:
-                    whatsapp_number = country_code + rec.partner_id.whatsapp[1:]
-            return whatsapp_number
-            # return module_rec and re.sub("[^0-9]", '', number) or \
-            #     str(rec.partner_id.country_id.phone_code
-            #         ) + number
+            #country_code = str(rec.country_id.phone_code) if rec.country_id else str(self.company_id.country_id.phone_code)
+            return module_rec and re.sub("[^0-9]", '', number) or \
+                str(rec.partner_id.country_id.phone_code) + number
 
     def klikapi(self):
         return KlikApi(self.klik_key, self.klik_secret)

@@ -43,7 +43,7 @@
                             <t t-foreach="docss" t-as="inv" >
 
                         <tr>
-                            <td class="text-center">
+                            <td class="text-left">
                                 <span t-esc="inv['customer']"/>
                             </td>
                              <td class="text-right">

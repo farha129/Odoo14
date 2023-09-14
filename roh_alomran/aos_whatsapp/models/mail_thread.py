@@ -13,8 +13,6 @@ _logger = logging.getLogger(__name__)
 class MailThread(models.AbstractModel):
     _inherit = 'mail.thread'
     
-    
-    
     def _message_whatsapp(self, body, subtype_id=False, partner_ids=False, number_field=False,
                      sms_numbers=None, sms_pid_to_number=None, **kwargs):
         """ Main method to post a message on a record using SMS-based notification
@@ -45,13 +43,28 @@ class MailThread(models.AbstractModel):
 
         if subtype_id is False:
             subtype_id = self.env['ir.model.data'].xmlid_to_res_id('mail.mt_note')
-
-        return self.message_post(
-            body=plaintext2html(html2plaintext(body)), partner_ids=partner_ids or [],  # TDE FIXME: temp fix otherwise crash mail_thread.py
-            message_type='whatsapp', subtype_id=subtype_id,
-            sms_numbers=sms_numbers, sms_pid_to_number=sms_pid_to_number,
-            **kwargs
-        )
+        partners = self.env['res.partner'].browse(partner_ids)
+        #print ('==partners==',partners)
+        for partner in partners:
+            whatsapp = partner._formatting_mobile_number()
+            #print ('===partner==',whatsapp,opt_out_list,(opt_out_list and whatsapp not in opt_out_list))                            
+            if partner.whatsapp and partner.whatsapp != '0':
+                message_data = {
+                    'method': 'sendMessage',
+                    'phone': whatsapp,
+                    'chatId': partner.chat_id or '',
+                    'body': plaintext2html(html2plaintext(body.replace('_PARTNER_', partner.name))),#.replace('_PARTNER_', partner.name).replace('_NUMBER_', origin).replace('_AMOUNT_TOTAL_', str(self.format_amount(amount_total, currency_id)) if currency_id else '').replace('\xa0', ' '),
+                    'origin': 'Calendar Meeting',
+                    'link': '',
+                }
+                self.message_post(
+                    body=plaintext2html(html2plaintext(body.replace('_PARTNER_', partner.name))), partner_ids=partner.ids or [],  # TDE FIXME: temp fix otherwise crash mail_thread.py
+                    message_type='whatsapp', subtype_id=subtype_id,
+                    sms_numbers=sms_numbers, sms_pid_to_number=sms_pid_to_number,
+                    whatsapp_data=message_data,
+                    **kwargs
+                )
+        return
     
     def _message_whatsapp_with_template(self, template=False, template_xmlid=False, template_fallback='', partner_ids=False, **kwargs):
         """ Shortcut method to perform a _message_sms with an sms.template.

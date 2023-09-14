@@ -7,11 +7,11 @@
               <field name="model">schedule.work.wizard</field>
               <field name="arch" type="xml">
                 <form > 
-			<group>
-                            <field name="date_from"/>
-                            <field name="date_to"/>
+<!--			<group>-->
+<!--                            <field name="date_from"/>-->
+<!--                            <field name="date_to"/>-->
 
-			</group>
+<!--			</group>-->
 
                  	<footer>
                    	    <button name="print_report" string="Print" type="object" class="oe_highlight"/>

@@ -33,7 +33,7 @@
 <menuitem
         id="action_wiz_production_ids"
         name="Production Report"
-        parent="sale.menu_sale_report"
+        parent="mrp.menu_mrp_reporting"
 
         action="action_wiz_production"
        />

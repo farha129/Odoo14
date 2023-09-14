@@ -12,10 +12,10 @@ class ScheduleWork(models.AbstractModel):
 
     def _get_report_values(self, docids, data=None):
        
-        st_date = data['form']['date_from']
-        end_date = data['form']['date_to']
+        # st_date = data['form']['date_from']
+        # end_date = data['form']['date_to']
         docs = []
-        obj_sale = self.env['sale.order'].search([('date_order','>=', st_date),('date_order','<=',end_date),('state','=','sale')])
+        obj_sale = self.env['sale.order'].search([('state','=','sale')])
         for obj in obj_sale:
 
             mrp = self.env['mrp.production'].search([('origin','=', obj.name),('state','!=','done')],limit=1)
@@ -38,8 +38,6 @@ class ScheduleWork(models.AbstractModel):
             'doc_ids': data['ids'],
             'doc_model': data['model'],
             'docs': docs,
-            'st_date':st_date,
-	        'end_date':end_date,
 
             }
 

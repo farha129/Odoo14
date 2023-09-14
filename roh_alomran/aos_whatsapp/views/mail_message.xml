@@ -18,7 +18,7 @@
         <field name="model">mail.message</field>
         <field name="inherit_id" ref="mail.mail_message_view_form"/>
         <field name="arch" type="xml">
-        	<field name="parent_id" position="after">
+        	<field name="moderation_status" position="after">
         		<field name="whatsapp_chat_id" attrs="{'invisible': [('message_type','!=','whatsapp')]}"/>
         		<field name="whatsapp_status" attrs="{'invisible': [('message_type','!=','whatsapp')]}"/>
         		<field name="whatsapp_server_id" attrs="{'invisible': [('message_type','!=','whatsapp')]}"/>
@@ -56,5 +56,17 @@
         <field name="domain">[('message_type','=','whatsapp')]</field>
         <field name="search_view_id" ref="mail.view_message_search"/>
     </record>
+
+
+	<record id="batch_mail_message_to_pending" model="ir.actions.server">
+		<field name="name">To Pending</field>
+		<field name="model_id" ref="mail.model_mail_message"/>
+		<field name="binding_model_id" ref="mail.model_mail_message"/>
+		<field name="state">code</field>
+		<field name="code">
+for x in records.filtered(lambda x: x.whatsapp_status == 'error'):
+	x.action_pending()
+		</field>
+	</record>
 
 </odoo>

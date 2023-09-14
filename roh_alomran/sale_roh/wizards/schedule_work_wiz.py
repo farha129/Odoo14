@@ -9,8 +9,8 @@ class ScheduleWorkWizard(models.TransientModel):
     _name = "schedule.work.wizard"
     _description = 'Schedule Work Wizard'
 
-    date_from = fields.Datetime('Start Date')
-    date_to = fields.Datetime('End Date')
+    # date_from = fields.Datetime('Start Date')
+    # date_to = fields.Datetime('End Date')
 
 
     def print_report(self):
