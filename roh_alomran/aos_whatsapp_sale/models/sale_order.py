@@ -119,10 +119,14 @@ class SaleOrder(models.Model):
                 message_data = {}
                 send_message = {}
                 status = 'error'
-                partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
+                partner_id_boolean = self.env.user.has_group('sales_team.group_sale_salesman')
+                print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm',partner_id_boolean)
                 if partner_id_boolean:
-                    group_id = rec.env.ref('sale.group_sale_salesman').users
-                    partners_ids = group_id.mapped('partner_id').ids
+                    group_id = self.env.ref('sales_team.group_sale_salesman').users
+                    partners_ids = group_id.mapped('partner_id')
+
+                    
+                    
 
                 if sale.partner_id:
                     partners = sale.partner_id
@@ -136,11 +140,16 @@ class SaleOrder(models.Model):
                 #print ('==is_attachment_exists==',is_attachment_exists)
                 if is_attachment_exists:
                     attachment_ids = is_attachment_exists
+                print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm',partners_ids)
                 for partner in partners_ids:
+                    print ('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',partner)
+                    print ('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',partner.whatsapp)
                     if partner.whatsapp:
+
                         if not attachment_ids:
                             #SEND MESSAGE
                             whatsapp = partner._formatting_mobile_number()
+                            print ('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',whatsapp)
                             message_data = {
                                 'method': 'sendMessage',
                                 'phone': whatsapp,
@@ -166,6 +175,7 @@ class SaleOrder(models.Model):
                             #print ('====attachment_ids===',attachment_ids.name)
                             status = 'pending'
                             whatsapp = partner._formatting_mobile_number()
+                            print ('nnnnnnnnnnnnnnnnnnnnnnnmmmmmmmm',whatsapp)
                             message_data = {
                                 'method': 'sendFile',
                                 'body': sale.name,#,html2text.html2text(body) + inv.get_link(),
@@ -213,8 +223,9 @@ class SaleOrder(models.Model):
                         # new_cr.commit()
                         # time.sleep(3)
                         #=======================================================
-                AllchatIDs = ';'.join(chatIDs)
-                vals = WhatsappComposeMessage._prepare_mail_message(self.env.user.partner_id.id, AllchatIDs, sale and sale.id,  'sale.order', body, message_data, subject, partners.ids, attachment_ids, send_message, status)
-                MailMessage.sudo().create(vals)
-                new_cr.commit()
+                    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',partner.ids)
+                    AllchatIDs = ';'.join(chatIDs)
+                    vals = WhatsappComposeMessage._prepare_mail_message(self.env.user.partner_id.id, AllchatIDs, sale and sale.id,  'sale.order', body, message_data, subject, partner.ids, attachment_ids, send_message, status)
+                    MailMessage.sudo().create(vals)
+                    new_cr.commit()
                 #time.sleep(3)
