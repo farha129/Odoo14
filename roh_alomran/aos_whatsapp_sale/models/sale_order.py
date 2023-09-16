@@ -119,7 +119,11 @@ class SaleOrder(models.Model):
                 message_data = {}
                 send_message = {}
                 status = 'error'
-                partners = self.env['res.partner']
+                partner_id_boolean = self.env.user.has_group('sale.group_sale_salesman')
+                if partner_id_boolean:
+                    group_id = rec.env.ref('sale.group_sale_salesman').users
+                    partners_ids = group_id.mapped('partner_id').ids
+
                 if sale.partner_id:
                     partners = sale.partner_id
                     # if sale.partner_id.child_ids:
@@ -132,7 +136,7 @@ class SaleOrder(models.Model):
                 #print ('==is_attachment_exists==',is_attachment_exists)
                 if is_attachment_exists:
                     attachment_ids = is_attachment_exists
-                for partner in partners:
+                for partner in partners_ids:
                     if partner.whatsapp:
                         if not attachment_ids:
                             #SEND MESSAGE
