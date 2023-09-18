@@ -125,6 +125,24 @@
                         <table  class="table  o_main_table" style = "color: # 555; font-size: 16px;">
                             <tbody>
                             <tr class="border-black o_total">
+                                <td  name="td_amount_untaxed_label"><strong>الخصم</strong></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center" style="color: black;">
+                                    <span t-field="doc.amount_discount"/>
+                                </td>
+                        </tr>
+                            <tr class="border-black o_total">
                                 <td  name="td_amount_untaxed_label"><strong>الاجمالي</strong></td>
 
                                 <td></td>
