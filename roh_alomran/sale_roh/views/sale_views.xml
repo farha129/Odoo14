@@ -85,7 +85,7 @@
 
                 </xpath>
                 <xpath expr="//field[@name='payment_term_id']" position="after">
-                     <field name="number_payment" />
+<!--                     <field name="number_payment" />-->
                      <field name="destination_payment" />
 
                 </xpath>

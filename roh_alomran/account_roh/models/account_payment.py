@@ -29,6 +29,9 @@ class AccountPayment(models.Model):
 
     description = fields.Char(string = 'Description' ,copy=False)
     amount_arabic_word = fields.Char(string = 'Amount Arabic Word',compute= '_get_arabic_word')
+    sale_id = fields.Many2one('sale.order',string = 'Sale Order')
+    install_id = fields.Many2one('payment.installment.line',string = 'install')
+
 
     @api.depends('currency_id', 'amount')
     def _get_arabic_word(self):

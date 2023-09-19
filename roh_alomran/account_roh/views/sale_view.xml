@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <!-- Inherit Form View to Modify it Sale order-->
+        <record id="view_order_form_inher_sale_roh" model="ir.ui.view">
+            <field name="name">view.order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_roh.view_order_form_inheriteds_id"/>
+            <field name="arch" type="xml">
+
+                <div name="button_box" position="inside">
+				<button class="oe_stat_button" type="object" name="action_get_payment" string = 'Payments'
+                        icon="fa-tasks">
+                    </button>
+                </div>
+                                    <xpath expr="//field[@name='destination_payment']" position="before">
+                                                             <field name="install_payment" />
+
+                                    </xpath>
+            </field>
+        </record>
+
+</odoo>

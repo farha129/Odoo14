@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_installment,access.payment.installment,model_payment_installment,sales_team.group_sale_manager,1,1,1,1
+access_payment_installment_line,access.payment_installment_line,model_payment_installment_line,sales_team.group_sale_manager,1,1,1,1
+access_payment_installment_line_name,access.payment_installment_line_name,model_payment_installment_line_name,sales_team.group_sale_manager,1,1,1,1

@@ -57,7 +57,7 @@ class SaleOrder(models.Model):
     is_delivery = fields.Boolean('Delivery request?')
     dimension_supplement_ids = fields.One2many('dimension.supplement', 'sale_id',string = 'Dimension' ,readonly=False)
     sale_accessory_ids = fields.One2many('sale.accessory','sale_id',string = 'Accessory',  readonly = False )
-    number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
+    #number_payment = fields.Selection([('one','One'),('two','Two'),('three','Three'),('more','More')],string='Number Of Payment' )
     destination_payment  =  fields.Text(string = 'Description Payment')
     destination_paint  =  fields.Char(string = 'Description paint')
     destination_glass  =  fields.Char(string = 'Description glass')

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+    <record id="payment_installment_view_form" model="ir.ui.view">
+            <field name="name">Payment Installment form</field>
+            <field name="model">payment.installment</field>
+            <field name="arch" type="xml">
+                <form string="Payment Installment">
+                     
+                     <sheet>
+                         <group>
+
+                                <field name="name" />
+
+                       </group>
+                        
+                         <notebook>
+                        <page string="Installments"  >
+                            <field name="line_install" >
+                                <tree string="Installments" editable="bottom" options="{'no_open': True}">
+                                    <field name="payment_name"/>
+                                    <field name="percentage"/>
+                                    <field name="apply_after"/>
+                                </tree>
+                            </field>
+
+
+                        </page>
+                    </notebook>
+                     </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="payment_installment_view_tree" model="ir.ui.view">
+            <field name="name">Payment Installment.tree</field>
+            <field name="model">payment.installment</field>
+            <field name="arch" type="xml">
+                <tree string="Loan Requests">
+                <field name="name"/>
+
+            </tree>
+            </field>
+        </record>
+
+
+
+        <record id="action_payment_installment" model="ir.actions.act_window">
+            <field name="name">Payment Installment</field>
+            <field name="res_model">payment.installment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+            <menuitem
+            id="action_payment_installment_id"
+            action="action_payment_installment"
+            parent="sale.menu_sale_config"
+                       />
+</odoo>

@@ -58,9 +58,7 @@ class MrpProduction(models.Model):
             today = today_s.strftime('%Y-%m-%d')
             if mrp.end_date:
                 end_date = mrp.end_date
-                print('ffffffffffffffffffffffffftoday', today_s)
-                print('ffffffffffffffffffffffffend', end_date)
-
+            
                 mrp.reminder_day = (end_date - today_s).days
 
     def button_mark_done(self):
