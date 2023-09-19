@@ -15,11 +15,11 @@ class ProjectTask(models.Model):
         today = fields.Date.today()
         for task in self:
             sale_obj = self.env['sale.order'].search([('project_id','=', task.project_id.id)])
-            payment_obj = self.env['account.payment'].search([('sale_id', '=', sale_obj.id)])
-            for pay in payment_obj:
-                if task.task_type == pay.install_id.apply_after and task.stage_id.is_closed:
-                    print('sssssssucecfuuullllll')
-                    pay.update({'date':today})
+            for sale in sale_obj:
+                payment_obj = self.env['account.payment'].search([('sale_id', '=', sale.id)])
+                for pay in payment_obj:
+                    if task.task_type == pay.install_id.apply_after and task.stage_id.is_closed:
+                        pay.update({'date':today})
         return res
 
 
