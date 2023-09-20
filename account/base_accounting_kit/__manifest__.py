@@ -57,7 +57,7 @@
         'data/account_financial_report_data.xml',
         'data/cash_flow_data.xml',
         'data/account_pdc_data.xml',
-
+        'data/followup_levels.xml',
         'data/account_asset_data.xml',
         'data/recurring_entry_cron.xml',
         'data/multiple_invoice_data.xml',
@@ -72,7 +72,7 @@
         'views/res_config_view.xml',
         'views/recurring_payments_view.xml',
         'views/account_followup.xml',
-
+        'views/followup_report.xml',
         'wizard/asset_depreciation_confirmation_wizard_views.xml',
         'wizard/asset_modify_views.xml',
         'views/account_asset_views.xml',
