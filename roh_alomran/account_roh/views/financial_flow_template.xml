@@ -15,7 +15,7 @@
                 <h2 t-if="report_type != 'report_finan_follow'" class="text-center">
                     <strong>دفعات العميل</strong>
                 </h2>
-            <h2 class="text-center">
+            <h2 t-if="report_type != 'report_finan_follow'" class="text-center">
                           <strong>العيمل :</strong> <span t-esc="customer_id"  class="text-center"/>
 
             </h2>
