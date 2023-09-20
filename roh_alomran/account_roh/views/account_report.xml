@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+
+     
+      <report
+            id="report_financial_flow_ids"
+            model="account.payment"
+            string="Financial Flow Report"
+            report_type="qweb-html"
+            name="account_roh.report_financial_flow_temp_id"
+            file="account_roh.report_financial_flow_temp_id"
+            menu = "False"
+
+
+           
+        />
+        
+        
+         
+
+
+</odoo>
+
+
+

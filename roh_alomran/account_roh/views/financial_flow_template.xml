@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_financial_flow_temp_id">
+    <t t-call="web.html_container">
+       
+        <t t-call="web.external_layout">
+            <div >
+<!--                            <span t-if="doc.move_type == 'out_receipt' and doc.state == 'posted'">Sales Receipt</span>-->
+
+                <h2 t-if="report_type == 'report_finan_follow'" class="text-center">
+                    <strong>التدفق المالي :</strong>
+                </h2>
+
+                <h2 t-if="report_type != 'report_finan_follow'" class="text-center">
+                    <strong>دفعات العميل</strong>
+                </h2>
+            <h2 class="text-center">
+                          <strong>العيمل :</strong> <span t-esc="customer_id"  class="text-center"/>
+
+            </h2>
+
+                <h4 class="text-center">
+                    <strong>من :</strong> <span t-esc="st_date"/>
+                    <strong>الي :</strong> <span t-esc="end_date"/>
+                </h4>
+                <br></br><br></br>
+
+
+
+                <table  t-if="report_type == 'report_finan_follow'" class="table table-sm o_main_table" style="font-family: Arial; " >
+
+
+                 <thead style="display: table-row-group ;font-family:Arial;">
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اسم العميل </th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المبلغ</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">البيان</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">تاريخ </th>
+
+                     </tr>
+                 </thead>
+
+
+                      <tbody>
+
+
+                    <t t-foreach="docs" t-as="inv" >
+
+                        <tr>
+                            <td class="text-left">
+                                <span t-esc="inv['customer']"/>
+                            </td>
+                             <td class="text-left">
+                                <span t-esc="inv['amount']"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-esc="inv['description']"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-esc="inv['date']"/>
+                            </td>
+
+                        </tr>
+                                </t>
+
+                        </tbody>
+
+             </table>
+<table t-if="report_type != 'report_finan_follow'"  class="table table-sm o_main_table" style="font-family: Arial; " >
+
+
+                  <thead style="display: table-row-group ;font-family:Arial;">
+                    <tr style="font-family: Arial, Helvetica, sans-serif;" >
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">البيان</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المبلغ</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">تاريخ </th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الحالة </th>
+
+                     </tr>
+                 </thead>
+
+                        <tbody>
+
+                            <t t-foreach="docs" t-as="inv" >
+
+                        <tr>
+                            <td class="text-left">
+                                <span t-esc="inv['description']"/>
+                            </td>
+                             <td class="text-left">
+                                <span t-esc="inv['amount']"/>
+                            </td>
+                            <td class="text-left">
+                                <span t-esc="inv['date']"/>
+                            </td>
+                          <td class="text-left">
+                                <span t-esc="inv['state']"/>
+                            </td>
+
+
+                                     </tr>
+                                </t>
+
+                        </tbody>
+                  </table>
+
+
+            </div>
+
+
+</t>
+
+</t>
+
+</template>
+
+
+
+</odoo>

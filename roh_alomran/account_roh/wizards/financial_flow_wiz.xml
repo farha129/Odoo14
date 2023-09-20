@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_wiz_financial_flow" model="ir.ui.view">
+              <field name="name">Financial Flow</field>
+              <field name="model">financial.flow.wizard</field>
+              <field name="arch" type="xml">
+                <form > 
+			<group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                             <field name="report_type" />
+                             <field name="customer_id" />
+
+			</group>
+
+                 	<footer>
+                   	    <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                   	    <button string="Cancel" special="cancel" class="oe_link"/>
+                 	</footer>
+                </form>
+              </field>
+        </record>
+
+        
+ <record id="action_wiz_financial_flow" model="ir.actions.act_window">
+            <field name="name">Financial Flow</field>
+            <field name="res_model">financial.flow.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+
+        </record>
+<menuitem
+        id="menu_report_financial_flow_id"
+        name="Financial Flow Report"
+        parent="account.menu_finance_reports"
+        action="action_wiz_financial_flow"
+        sequence="50"
+       />
+</odoo>

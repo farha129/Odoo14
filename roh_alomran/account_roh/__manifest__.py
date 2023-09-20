@@ -17,6 +17,9 @@
         'views/account_payment_view.xml',
         'views/payment_install.xml',
         'views/sale_view.xml',
+        'wizards/financial_flow_wiz.xml',
+        'views/financial_flow_template.xml',
+        'views/account_report.xml',
 
 
         

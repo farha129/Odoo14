@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_install_name1" model="payment.installment.line.name">
+        <field name="name">الدفعة الاولي</field>
+
+     
+    </record>
+    
+ <record id="payment_install_name2" model="payment.installment.line.name">
+        <field name="name">الدفعة الثانية</field>
+
+    </record>
+    
+    <record id="payment_install_name3" model="payment.installment.line.name">
+        <field name="name">الدفعة الثالثة</field>
+
+    </record>
+    
+<record id="payment_install_name4" model="payment.installment.line.name">
+        <field name="name">الدفعة الرابعة</field>
+
+    </record>
+    
+    <record id="payment_install_namelase" model="payment.installment.line.name">
+        <field name="name">الدفعة الاخيرة</field>
+
+    </record>
+    
+
+</odoo>
