@@ -141,7 +141,7 @@
                                       <field name="employee_ids" widget="many2many_tags"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            />
                                 </xpath>
                                 <xpath expr="//field[@name='parent_id']" position="before">
-                                     <field name="task_type" />
+                                     <field name="task_type" invisible="1"/>
                                 </xpath>
                         </field>
         </record>

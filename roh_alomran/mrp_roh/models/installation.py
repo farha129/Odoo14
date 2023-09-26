@@ -26,7 +26,7 @@ class installMrp(models.Model):
     sale_id = fields.Many2one('sale.order','sale order' ,readonly = True)
     company_id = fields.Many2one('res.company', 'Company', required=True, index=True,
                                  default=lambda self: self.env.company.id)
-    material_use_ids = fields.One2many('install.material_use.line','install_id',string='Material Use')
+    # material_use_ids = fields.One2many('install.material_use.line','install_id',string='Material Use')
     material_return_ids = fields.One2many('install.material_return.line','install_id',string='Material Return')
     note = fields.Text(string = 'Description')
 
@@ -47,8 +47,6 @@ class installMrp(models.Model):
     def action_done(self):
         for rec in self:
             rec.state = 'done'
-            if self.material_use_ids:
-                self._create_picking()
 
             if self.material_return_ids:
                 self._create_picking_return()
@@ -63,34 +61,6 @@ class installMrp(models.Model):
             rec.state = 'cancel'
 
 
-    def _create_picking(self):
-        stock_picking = (
-            self.env["stock.picking"].create(
-                {
-
-                    'picking_type_id': self.sale_id.warehouse_id.out_type_id.id,
-                    'partner_id': self.customer_id.id,
-                    'origin': self.name,
-                    'location_id': self.env.ref('stock.stock_location_stock').id,
-                    'location_dest_id': self.env.ref('stock.stock_location_customers').id,
-                    'install_id': self.id,
-                }
-            )
-        )
-        for rec in self.material_use_ids:
-            stock_move = self.env["stock.move"].create(
-            {
-                "name": "Test Move",
-                "product_id": rec.product_id.id,
-                "product_uom_qty": rec.product_uom_qty,
-                "product_uom": rec.product_id.uom_id.id,
-                "picking_id": stock_picking.id,
-                "state": "draft",
-                "location_id": self.env.ref('stock.stock_location_stock').id,
-                "location_dest_id": self.env.ref('stock.stock_location_customers').id,
-                'install_id': rec.install_id.id,
-            }
-        )
 
     def _create_picking_return(self):
         stock_picking = (

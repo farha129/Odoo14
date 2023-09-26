@@ -113,7 +113,7 @@ class ProductionReport(models.AbstractModel):
                     docs_employee.append({
                         'employee': obj.name,
                         'tec_type': name,
-                        'sum_maters': sum_maters,
+                        'sum_maters':  round(sum_maters),
                     })
 
             return{

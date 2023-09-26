@@ -163,7 +163,7 @@ class SaleOrder(models.Model):
                     value.append({
                         'product_id': data.product_id.id,
                         'name': data.product_id.name,
-                        'product_qty': product_quantity,
+                        'product_qty': round(product_quantity),
                         'request_id': request_id.id,
                         'product_uom': data.product_uom.id,
                     })
@@ -172,7 +172,7 @@ class SaleOrder(models.Model):
                 value.append({
                     'product_id': data.product_id.id,
                     'name': data.product_id.name,
-                    'product_qty': product_quantity,
+                    'product_qty': round(product_quantity),
                     'request_id': request_id.id,
                     'product_uom': data.product_uom.id,
                 })
@@ -190,7 +190,7 @@ class SaleOrder(models.Model):
                     value.append({
                         'product_id': data.supplement_name.id,
                         'name': data.supplement_name.name,
-                        'product_qty': product_quantity,
+                        'product_qty': round(product_quantity),
                         'request_id': request_id.id,
                         'product_uom': data.product_uom.id,
                     })
@@ -199,7 +199,7 @@ class SaleOrder(models.Model):
                 value.append({
                     'product_id': data.supplement_name.id,
                     'name': data.supplement_name.name,
-                    'product_qty': product_quantity,
+                    'product_qty': round(product_quantity),
                     'request_id': request_id.id,
                     'product_uom': data.product_uom.id,
                 })
@@ -221,7 +221,7 @@ class SaleOrder(models.Model):
                     value.append({
                         'product_id': data.accessory_name.id,
                         'name': data.accessory_name.name,
-                        'product_qty': product_quantity,
+                        'product_qty': round(product_quantity),
                         'request_id': request_id.id,
                         'product_uom': data.product_uom.id,
                     })
@@ -231,7 +231,7 @@ class SaleOrder(models.Model):
                 value.append({
                     'product_id': data.accessory_name.id,
                     'name': data.accessory_name.name,
-                    'product_qty': product_quantity,
+                    'product_qty':round(product_quantity),
                     'request_id': request_id.id,
                     'product_uom': data.product_uom.id,
                 })

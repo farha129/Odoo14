@@ -46,7 +46,7 @@
                         <field name="product_qty" sum="Total Qty" string="Quantity" readonly="1" optional="show"/>
 
 <!--                        <field name="date_deadline" widget="remaining_days" attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}" optional="hide"/>-->
-<!--                        <field name="product_id" readonly="1" optional="show"/>-->
+                        <field name="product_id" readonly="1" optional="show"/>
 <!--                        <field name="product_uom_id" string="Unit of Measure" options="{'no_open':True,'no_create':True}" groups="uom.group_uom" optional="show"/>-->
 <!--                        <field name="lot_producing_id" optional="hide"/>-->
 <!--                        <field name="bom_id" readonly="1" optional="hide"/>-->
@@ -108,9 +108,9 @@
 <!--                            <field name="duration" id="duration" widget="timesheet_uoms" style="color: red;" />-->
 <!--                        </button>-->
 <!--                    </div>-->
-                         <label for="task_timer"/>
+                         <label for="task_timer" invisible="1"/>
                     <div class="o_row" style="display: inline-block;">
-                        <field name="task_timer" widget="boolean_toggle"/>
+                        <field name="task_timer" widget="boolean_toggle" invisible="1"/>
                     </div>
 
                 </xpath>

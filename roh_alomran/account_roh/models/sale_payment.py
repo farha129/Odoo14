@@ -13,13 +13,25 @@ class SaleOrder(models.Model):
 
     install_payment  = fields.Many2one('payment.installment',string = 'Payment Method', required=True)
 
+    def action_draft(self):
+        res = super(SaleOrder, self).action_draft()
+        obj = self.env['account.payment'].search([('sale_id', '=', self.id)])
+        if obj:
+            for sale in obj:
+                sale.unlink()
+
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         for install in self.install_payment.line_install:
             amount = self.amount_untaxed * install.percentage / 100
             descreption = install.payment_name.name
+            if install.apply_after == 'in_contract':
+                date = fields.Date.today()
+            else:
+                date = self.end_date_order
 
             test_payment_1 = self.env['account.payment'].create({
+                'date': date,
                 'payment_type': 'inbound',
                 'partner_type': 'customer',
                 'partner_id': self.partner_id.id,

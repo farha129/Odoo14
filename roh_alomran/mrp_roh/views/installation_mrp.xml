@@ -42,19 +42,7 @@
 
 
                     <notebook>
-                        <page string="Material Use" name="lines_use">
-                            <field name="material_use_ids"
-                                   widget="section_and_note_one2many">
-                                <tree string="Lines" editable="bottom">
-                                    <field name="product_id" />
-                                    <field name="name" />
-                                    <field name="product_uom_qty" />
-                                    <field name="product_uom" />
-                                </tree>
-                            </field>
-
-                        </page>
-
+                       
                          <page string="Material Return" name="lines_return">
                             <field name="material_return_ids"
                                    widget="section_and_note_one2many">

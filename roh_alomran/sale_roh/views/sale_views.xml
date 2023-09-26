@@ -195,9 +195,9 @@
                         <group string = 'Other Supliment'>
                                                         <field name="total_var_cutter" invisible ="1"/>
                                                         <field name="total_hor_cutter" invisible ="1" />
-                                                        <field name="tranzium" />
-                                                        <field name="bercluz" />
-                                                        <field name="tabsha" />
+                                                        <field name="tranzium" invisible ="1"/>
+                                                        <field name="bercluz" invisible ="1"/>
+                                                        <field name="tabsha" invisible ="1" />
 
 
                         </group>
