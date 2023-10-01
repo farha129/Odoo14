@@ -192,7 +192,8 @@ class SaleOrder(models.Model):
         for sect_obj in self.sector_order_line:
 
             self.order_line.create({'product_id': sect_obj.final_product.id,
-                                       'name': sect_obj.description,
+                                       # 'name': sect_obj.final_product.name,
+                                       'description': sect_obj.description,
                                        # 'bom_id': bill.id,
                                        'order_id': self.id,
                                        'product_number': sect_obj.product_number,

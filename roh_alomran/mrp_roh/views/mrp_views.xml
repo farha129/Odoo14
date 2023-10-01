@@ -142,8 +142,11 @@
                 <button name="create_order_line"  type="object" string="Get Final Product"  attrs="{'invisible': [('state', '!=', 'draft')]}" />
             </xpath>
 
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="replace">
+                 <field name="name" readonly="1" />
+            </xpath>
             <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
-                <field
+                <field invisible="1"
                     name="bom_id"
                     context="{'default_product_id': product_id, 'default_product_tmpl_id': product_template_id}"
                 />
