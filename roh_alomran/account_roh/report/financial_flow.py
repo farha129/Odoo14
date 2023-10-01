@@ -12,8 +12,8 @@ class FinancialFlow(models.AbstractModel):
 
     def _get_report_values(self, docids, data=None):
        
-        st_date = data['form']['date_from']
-        end_date = data['form']['date_to']
+        # st_date = data['form']['date_from']
+        # end_date = data['form']['date_to']
         report_type = data['form']['report_type']
         customer_id = data['form']['customer_id']
 
@@ -21,7 +21,7 @@ class FinancialFlow(models.AbstractModel):
         if report_type == 'report_finan_follow':
             obj_sale = self.env['sale.order'].search([('state','=','sale')])
             for obj in obj_sale:
-                payment = self.env['account.payment'].search([('sale_id','=', obj.id),('state','=','draft'),('date','>=', st_date),('date','<=',end_date)],order='id',limit=1)
+                payment = self.env['account.payment'].search([('sale_id','=', obj.id),('state','=','draft')],order='id',limit=1)
                 for pay in payment:
                     if pay :
 
@@ -36,15 +36,13 @@ class FinancialFlow(models.AbstractModel):
                 'doc_ids': data['ids'],
                 'doc_model': data['model'],
                 'docs': docs,
-                'st_date': st_date,
-                'end_date': end_date,
+
                 'report_type': report_type,
             }
 
         else:
             payment = self.env['account.payment'].search(
-                [('partner_id.id', '=', customer_id[0]), ('date', '>=', st_date),
-                 ('date', '<=', end_date)],order='id')
+                [('partner_id.id', '=', customer_id[0])],order='id')
             print('kkkkkkkkkkkkkkkkkkkkk',customer_id[0])
             for pay in payment:
                 if pay:
@@ -59,8 +57,7 @@ class FinancialFlow(models.AbstractModel):
                 'doc_ids': data['ids'],
                 'doc_model': data['model'],
                 'docs': docs,
-                'st_date': st_date,
-                'end_date': end_date,
+
                 'report_type': report_type,
                 'customer_id': customer_id[1],
 

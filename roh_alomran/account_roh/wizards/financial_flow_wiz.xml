@@ -8,8 +8,8 @@
               <field name="arch" type="xml">
                 <form > 
 			<group>
-                            <field name="date_from"/>
-                            <field name="date_to"/>
+<!--                            <field name="date_from"/>-->
+<!--                            <field name="date_to"/>-->
                              <field name="report_type" />
                              <field name="customer_id" attrs="{'invisible': [('report_type', '=', 'report_finan_follow')]}"  />
 

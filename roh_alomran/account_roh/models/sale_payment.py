@@ -23,7 +23,7 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         for install in self.install_payment.line_install:
-            amount = self.amount_untaxed * install.percentage / 100
+            amount = self.amount_total * install.percentage / 100
             descreption = install.payment_name.name
             if install.apply_after == 'in_contract':
                 date = fields.Date.today()

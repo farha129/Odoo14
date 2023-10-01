@@ -9,8 +9,8 @@ class FinancialFlowkWizard(models.TransientModel):
     _name = "financial.flow.wizard"
     _description = 'Financial Flow Wizard'
 
-    date_from = fields.Datetime('Start Date')
-    date_to = fields.Datetime('End Date')
+    # date_from = fields.Datetime('Start Date')
+    # date_to = fields.Datetime('End Date')
     customer_id = fields.Many2one('res.partner',string='Customer',domin=[('customer_rank','=',True)])
     report_type = fields.Selection(
         [('statement', 'Customer Statement'), ('report_finan_follow', 'Financial Flow')],
