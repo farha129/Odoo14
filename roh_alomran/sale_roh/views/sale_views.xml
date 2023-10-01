@@ -64,6 +64,11 @@
                         <attribute name="string">Area(M2)
                         </attribute>
                 </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                                         <field name="description" />
+
+                </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                      <field name="product_number" />
                 </xpath>

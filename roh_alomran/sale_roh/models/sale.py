@@ -921,4 +921,5 @@ class SectorOderLine(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     product_number = fields.Float(string='Product Number', default=1)
+    description = fields.Char(string = 'Glass')
 
