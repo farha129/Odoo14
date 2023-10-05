@@ -1,0 +1,388 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_roh
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 11:06+0000\n"
+"PO-Revision-Date: 2023-10-03 11:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> Bank/بنك:</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> Received From</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> المستلم Receiver</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> مبلغ قدره:</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> نقدا/شيك:</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong> و ذلك مقابل:</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>For</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>The Sum Of</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>استلمنا من السيد/السادة :</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>التاريخ :</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "<strong>التدفق المالي :</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "<strong>العيمل :</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>المحاسب Accountant</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "<strong>المدير Manager</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "<strong>دفعات العميل</strong>"
+msgstr ""
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__amount_arabic_word
+msgid "Amount Arabic Word"
+msgstr "المبلع بالعربية"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__apply_after
+msgid "Apply After"
+msgstr "يدفع بعد"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.view_wiz_financial_flow
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__create_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__create_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__create_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__create_uid
+msgid "Created by"
+msgstr "انشاء بواسطة"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__create_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__create_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__create_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__create_date
+msgid "Created on"
+msgstr "انشاء في"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__customer_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__financial_flow_wizard__report_type__statement
+msgid "Customer Statement"
+msgstr "كشف دفعات العميل"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__payment_installment_line__apply_after__cut
+msgid "Cut"
+msgstr "القص"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__description
+#: model:ir.model.fields,field_description:account_roh.field_account_payment_register__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__display_name
+#: model:ir.model.fields,field_description:account_roh.field_account_payment_register__display_name
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__display_name
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__display_name
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__display_name
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__display_name
+#: model:ir.model.fields,field_description:account_roh.field_project_task__display_name
+#: model:ir.model.fields,field_description:account_roh.field_report_account_roh_report_financial_flow_temp_id__display_name
+#: model:ir.model.fields,field_description:account_roh.field_sale_order__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: account_roh
+#: model:ir.actions.act_window,name:account_roh.action_wiz_financial_flow
+#: model:ir.model.fields.selection,name:account_roh.selection__financial_flow_wizard__report_type__report_finan_follow
+msgid "Financial Flow"
+msgstr "التدفق المالي"
+
+#. module: account_roh
+#: model:ir.actions.report,name:account_roh.report_financial_flow_ids
+#: model:ir.model,name:account_roh.model_report_account_roh_report_financial_flow_temp_id
+#: model:ir.ui.menu,name:account_roh.menu_report_financial_flow_id
+msgid "Financial Flow Report"
+msgstr "تقرير التدفق المالي"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_financial_flow_wizard
+msgid "Financial Flow Wizard"
+msgstr "تقرير التدفق المالي"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__payment_installment_line__apply_after__gathering
+msgid "Gathering"
+msgstr "التجميع"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__payment_installment_line__apply_after__glass
+msgid "Glass"
+msgstr "الزجاج"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__id
+#: model:ir.model.fields,field_description:account_roh.field_account_payment_register__id
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__id
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__id
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__id
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__id
+#: model:ir.model.fields,field_description:account_roh.field_project_task__id
+#: model:ir.model.fields,field_description:account_roh.field_report_account_roh_report_financial_flow_temp_id__id
+#: model:ir.model.fields,field_description:account_roh.field_sale_order__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__payment_installment_line__apply_after__in_contract
+msgid "In Contracting"
+msgstr "بعد العقد"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__line_install
+msgid "Install Line"
+msgstr "عناصر الدفعية"
+
+#. module: account_roh
+#: model:ir.model.fields.selection,name:account_roh.selection__payment_installment_line__apply_after__installation
+msgid "Installation"
+msgstr "اقساط الدفعية"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__name
+msgid "Installment Name"
+msgstr "اسم طريقة الدفع"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.payment_installment_view_form
+msgid "Installments"
+msgstr "اقساط الدفعات"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment____last_update
+#: model:ir.model.fields,field_description:account_roh.field_account_payment_register____last_update
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard____last_update
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment____last_update
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line____last_update
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name____last_update
+#: model:ir.model.fields,field_description:account_roh.field_project_task____last_update
+#: model:ir.model.fields,field_description:account_roh.field_report_account_roh_report_financial_flow_temp_id____last_update
+#: model:ir.model.fields,field_description:account_roh.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__write_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__write_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__write_uid
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__write_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment__write_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__write_date
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.payment_installment_view_tree
+msgid "Loan Requests"
+msgstr "القسط"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__name
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line_name__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: account_roh
+#: code:addons/account_roh/models/sale_payment.py:0
+#, python-format
+msgid "Payment"
+msgstr "الدفعة"
+
+#. module: account_roh
+#: model:ir.actions.act_window,name:account_roh.action_payment_installment
+#: model:ir.model,name:account_roh.model_payment_installment
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__install_id
+#: model:ir.ui.menu,name:account_roh.action_payment_installment_id
+#: model_terms:ir.ui.view,arch_db:account_roh.payment_installment_view_form
+msgid "Payment Installment"
+msgstr "اقساط الدفعات"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_payment_installment_line
+msgid "Payment Installment Line"
+msgstr "عناصر الدفعات"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_payment_installment_line_name
+msgid "Payment Installment Name"
+msgstr "اسم اقساط الدفعية"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_sale_order__install_payment
+msgid "Payment Method"
+msgstr "طريقة الدفع"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__payment_name
+msgid "Payment Name"
+msgstr "اسم الدفعة"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_account_payment
+#: model_terms:ir.ui.view,arch_db:account_roh.view_order_form_inher_sale_roh
+msgid "Payments"
+msgstr "المدفوعات"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_payment_installment_line__percentage
+msgid "Percentage %"
+msgstr "النسبة %"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.view_wiz_financial_flow
+msgid "Print"
+msgstr "طباعة"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "Receipt Voucher"
+msgstr "سند القبض"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_account_payment_register
+msgid "Register Payment"
+msgstr "تسجيل دفعة"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_financial_flow_wizard__report_type
+msgid "Report Type"
+msgstr "نوع التقرير"
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__sale_id
+msgid "Sale Order"
+msgstr ""
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_sale_order
+msgid "Sales Order"
+msgstr "أمر العمل"
+
+#. module: account_roh
+#: model:ir.model,name:account_roh.model_project_task
+msgid "Task"
+msgstr "المهمة"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "_____________________________"
+msgstr ""
+
+#. module: account_roh
+#: model:ir.model.fields,field_description:account_roh.field_account_payment__install_id
+msgid "install"
+msgstr "اقساط الدفعية"
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "اسم العميل"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "البيان"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "الحالة"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "المبلغ"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_financial_flow_temp_id
+msgid "تاريخ"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "ريال"
+msgstr ""
+
+#. module: account_roh
+#: model_terms:ir.ui.view,arch_db:account_roh.report_payment_receipt_document_inherit
+msgid "سند قبض"
+msgstr ""

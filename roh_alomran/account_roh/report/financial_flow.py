@@ -3,6 +3,8 @@
 import time
 from odoo import api, models, _
 from odoo.exceptions import UserError,ValidationError
+import  arabic_reshaper
+
 
 
 class FinancialFlow(models.AbstractModel):
@@ -21,15 +23,24 @@ class FinancialFlow(models.AbstractModel):
         if report_type == 'report_finan_follow':
             obj_sale = self.env['sale.order'].search([('state','=','sale')])
             for obj in obj_sale:
+                all_payment = self.env['account.payment'].search([('sale_id', '=', obj.id), ('state', '=', 'draft')])
+                if all_payment:
+                    all_payment_not_payied = sum(rec.amount for rec in all_payment)
                 payment = self.env['account.payment'].search([('sale_id','=', obj.id),('state','=','draft')],order='id',limit=1)
                 for pay in payment:
                     if pay :
+                        if obj.end_date_order == pay.date and pay.install_id.apply_after != 'in_contract':
+                            state = arabic_reshaper.reshape('مهمة لم تنتهي')
+                        else:
+                            state = arabic_reshaper.reshape('يجب تأكيد الدفع')
 
                         docs.append({
                             'customer': pay.partner_id.name,
                             'date':pay.date,
                             'amount':pay.amount,
                             'description':pay.description,
+                            'all_amount':all_payment_not_payied,
+                            'state':state,
                             # 'address': address ,
                         })
             return {

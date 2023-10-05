@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* web_roh
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 08:46+0000\n"
+"PO-Revision-Date: 2023-10-03 08:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: web_roh
+#: model:ir.model.fields,help:web_roh.field_base_document_layout__report_header_english
+#: model:ir.model.fields,help:web_roh.field_res_company__report_header_english
+msgid ""
+"Appears by default on the top right corner of your printed documents (report"
+" header)."
+msgstr "يظهر بشكل افتراضي في الزاوية اليمنى العليا من مستنداتك المطبوعة (التقرير"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__city
+msgid "City"
+msgstr "مدينة"
+
+#. module: web_roh
+#: model:ir.model,name:web_roh.model_res_company
+msgid "Companies"
+msgstr "شركات"
+
+#. module: web_roh
+#: model:ir.model,name:web_roh.model_base_document_layout
+msgid "Company Document Layout"
+msgstr "تخطيط مستندات الشركة"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__company_registry
+msgid "Company Registry"
+msgstr "سجل الشؤكة"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__report_header_english
+#: model:ir.model.fields,field_description:web_roh.field_res_company__report_header_english
+msgid "Company Tagline English"
+msgstr "شعار الشركة باللغة الإنجليزية"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__display_name
+#: model:ir.model.fields,field_description:web_roh.field_res_company__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__id
+#: model:ir.model.fields,field_description:web_roh.field_res_company__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout____last_update
+#: model:ir.model.fields,field_description:web_roh.field_res_company____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__street
+msgid "Street"
+msgstr "شارع"
+
+#. module: web_roh
+#: model:ir.model.fields,field_description:web_roh.field_base_document_layout__street2
+msgid "Street2"
+msgstr "شارع 2"
+
+#. module: web_roh
+#: model_terms:ir.ui.view,arch_db:web_roh.view_inherit_base_document_layout_header_engform
+msgid "e.g. Global Business Solutions"
+msgstr ""

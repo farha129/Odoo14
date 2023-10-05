@@ -34,9 +34,12 @@
                  <thead style="display: table-row-group ;font-family:Arial;">
                     <tr style="font-family: Arial, Helvetica, sans-serif;" >
                         <th name="th_description" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">اسم العميل </th>
-                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">المبلغ</th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الدفعة التالية</th>
                         <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">البيان</th>
                         <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">تاريخ </th>
+                        <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الحالة </th>
+                                                <th name="th_unit" style = "font-family: Arial, Helvetica, sans-serif; color: # 555; font-size: 16px;" class="text-left">الاجمالي المتبقي</th>
+
 
                      </tr>
                  </thead>
@@ -54,13 +57,19 @@
                              <td class="text-left">
                                 <span t-esc="inv['amount']"/>
                             </td>
+
                             <td class="text-left">
                                 <span t-esc="inv['description']"/>
                             </td>
                             <td class="text-left">
                                 <span t-esc="inv['date']"/>
                             </td>
-
+                             <td class="text-left">
+                                <span t-esc="inv['state']"/>
+                            </td>
+                             <td class="text-left">
+                                <span t-esc="inv['all_amount']"/>
+                            </td>
                         </tr>
                                 </t>
 

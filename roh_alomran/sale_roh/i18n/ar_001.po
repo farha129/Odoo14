@@ -1,0 +1,1696 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_roh
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 08:50+0000\n"
+"PO-Revision-Date: 2023-10-03 08:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__sector_id
+msgid " Sector"
+msgstr "القطاعات"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "*الزجاج"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid ""
+"*تتم الدفعات عن طريق التحويل الى حساب المؤسسة بنك الرياض (ٍِSA4020000002362862629940)او بنك الراجحي(ٍٍِSA1080000303608016005708)على الدفعات كالآتي:\n"
+"                            <br class=\"text-left\"/>\n"
+"                                                                                             *"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "*لون الدهان"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "*مدة التنفيذ"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__is_5_80
+msgid "5.80"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<b>التاريخ/ </b>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<b>الطرف الثاني/ </b>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<b>الطرف اﻷول/ </b>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<b>الموقع/ </b>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" name=\"address_name\">\n"
+"                        <b attrs=\"{'invisible': [('partner_id', '=', False)]}\">Delivery\n"
+"                            Address\n"
+"                        </b>\n"
+"                    </span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.res_config_settings_view_form_sale_roh
+msgid "<span class=\"o_form_label\">Contract Text</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.res_config_settings_view_form_sale_roh
+msgid "<span class=\"o_form_label\">Percent For Mrp Date</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid ""
+"<span class=\"o_stat_text\">Purchase</span>\n"
+"                            <span class=\"o_stat_text\">Orders</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid ""
+"<span class=\"o_stat_text\">Request</span>\n"
+"                            <span class=\"o_stat_text\">Purchase</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid ""
+"<span class=\"text-left\">\n"
+"                                    <font style=\"font-family:Arial;  font-weight: bold;color:black\"> مواد التشطيب و الأكسسوارات :</font>\n"
+"                            </span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid ""
+"<span "
+"groups=\"account.group_show_line_subtotals_tax_excluded\">المبلغ</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "<span> days</span>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "<strong> اسم العميل :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<strong>الاجمالي مع الضريبة</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<strong>الاجمالي</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "<strong>التاريخ :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<strong>الخصم</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "<strong>الضريبة</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "<strong>المرجع :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "<strong>الي :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "<strong>تقرير الانتاج :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_schedule_work_temp_id
+msgid "<strong>جدول الاعمال :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "<strong>جدول انتاج العمال :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "<strong>رقم العقد :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "<strong>من :</strong>"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_product_accessory
+#: model:ir.model,name:sale_roh.model_sale_accessory
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__accessory_name
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__sale_id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__accessory_name
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__sale_id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__sale_accessory_ids
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_product_template_form_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_product_template_search_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Accessory"
+msgstr "الاكسسورات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__accessory_ids
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__accessory_ids
+msgid "Accessorys"
+msgstr "الاكسسورات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__alrubl
+msgid "Alrubl"
+msgstr "الربل"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Area(M2)"
+msgstr "المساحة(م2)"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_area
+msgid "Area(Mt2)"
+msgstr "المساحة(م2)"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__bercluz
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__bercluz
+msgid "Bercluz"
+msgstr "البركلوز"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__sector_order_line__cutter_type__both
+msgid "Both"
+msgstr "مع بعض"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_wiz_production
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_wiz_schedule_work
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase__state__cancel
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__cartel_roll
+msgid "Cartel Roll"
+msgstr "كارتنل رول"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__product_uom_category_id
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_uom_category_id
+msgid "Category"
+msgstr "الفئة"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_res_company
+msgid "Companies"
+msgstr "شركات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__sale_order__state__compute
+msgid "Computed"
+msgstr "محسوب"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الاعدادات"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.res_config_settings_view_form_sale_roh
+msgid "Contract"
+msgstr "العقد"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_res_company__contract_text
+#: model:ir.model.fields,field_description:sale_roh.field_res_config_settings__contract_text
+msgid "Contract Text"
+msgstr "نص العقد"
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase_line__product_uom_category_id
+#: model:ir.model.fields,help:sale_roh.field_sector_order_line__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__count
+msgid "Count"
+msgstr "عدد"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__create_uid
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__create_date
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order__customer_id
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__customer_id
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__customer_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Customer"
+msgstr "العميل"
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__cutter_hor
+msgid "Cutter Hor"
+msgstr "قاطع عمودي"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_detial_form
+msgid "Cutter Information"
+msgstr "معلومات القاطع"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__cutter_type
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__cutter_type
+msgid "Cutter Type"
+msgstr "نوع القاطع"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__cutter_var
+msgid "Cutter Var"
+msgstr "قاطع افقي"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__is_delivery
+msgid "Delivery request?"
+msgstr "طلبت توصيل"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__name
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__destination_payment
+msgid "Description Payment"
+msgstr "وصف الدفعية"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__destination_glass
+msgid "Description glass"
+msgstr "وصف الزجاج"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__destination_paint
+msgid "Description paint"
+msgstr "وصف الدهان"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__destination
+msgid "Destination"
+msgstr "الوجهة"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_ditals_sector
+msgid "Detals"
+msgstr "التفاصيل"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__detals_id
+msgid "Detils"
+msgstr "التفاصيل"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__dimension_supplement_ids
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__dimension_supplement_ids
+msgid "Dimension"
+msgstr "القياسات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__sale_id
+msgid "Dimension Sector"
+msgstr "قياسات القطاع"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_dimension_supplement
+msgid "Dimension Supplement"
+msgstr "قياسات الملحق"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__dimensions_number
+msgid "Dimensions Number"
+msgstr "رقم القياسات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_production_temp_ids__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_schedule_work_temp_id__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_res_company__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__display_name
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: sale_roh
+#: model:ir.actions.act_window,name:sale_roh.view_detial_action
+msgid "Ditals Sector"
+msgstr "تفاصيل القطاع"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase__state__done
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase_line__state_line__done
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid "Done"
+msgstr "منتهية"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__drag
+msgid "Drag"
+msgstr "سحاب"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__drag_roll
+msgid "Drag Roll"
+msgstr "سحاب رول"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__date_to
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__end_date_order
+msgid "End Date"
+msgstr "تاريخ التسليم"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__final_product
+msgid "Final Product"
+msgstr "المنتج "
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__fixed
+msgid "Fixed"
+msgstr "ثابت"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_follower_ids
+msgid "Followers"
+msgstr "المتابعين"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "قنوات المتابعين"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order_line__description
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__glass
+msgid "Glass"
+msgstr "الزجاج"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__heel
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__heel
+msgid "Heel"
+msgstr "الكعب"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_dimension_line_height
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__supplement_height
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__height
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__measured_from__height
+msgid "Height"
+msgstr "الطول"
+
+#. module: sale_roh
+#: code:addons/sale_roh/models/sale.py:0
+#, python-format
+msgid "Height And Width"
+msgstr "الطول و العرض"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__number_height
+msgid "Height Number"
+msgstr "عدد الطول"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_heights
+msgid "Height(Mt)"
+msgstr "الطول(المتر)"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__measured_from__h_w
+msgid "High and Width"
+msgstr "الطول و العرض"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__hinges
+msgid "Hinges"
+msgstr "مفصلات"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__sector_order_line__cutter_type__hor
+msgid "Horizantol"
+msgstr "قاطع عمودي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__id
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__id
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__id
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__id
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__id
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__id
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__id
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__id
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order__id
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_production_temp_ids__id
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_schedule_work_temp_id__id
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__id
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__id
+#: model:ir.model.fields,field_description:sale_roh.field_res_company__id
+#: model:ir.model.fields,field_description:sale_roh.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order_line__id
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__id
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__id
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_needaction
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_has_error
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase_line__state_line__in_order
+msgid "In Order"
+msgstr "في الامر"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid "In Purchase"
+msgstr "في الشراء"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__installation
+msgid "Installation requested?"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__is_accessory
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__is_accessory
+msgid "Is Accessory"
+msgstr "هل الاكسسورات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__is_edit
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__is_edit
+msgid "Is Edit"
+msgstr "هل هذا تعديل؟"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__is_heel
+msgid "Is Heel"
+msgstr "هل كعب"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__is_sector
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__is_sector
+msgid "Is Sector"
+msgstr "هل قطاع"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__is_side
+msgid "Is Side"
+msgstr "هل جنب"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__is_supplement
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__is_supplement
+msgid "Is supplement"
+msgstr "هل ملحق"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_product_product____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_product_template____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order_line____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_production_temp_ids____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_report_sale_roh_report_schedule_work_temp_id____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_res_company____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line____last_update
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__write_uid
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_height__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_schedule_work_wizard__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__write_date
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__line_ids
+msgid "Line"
+msgstr "عنصر"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid "Lines"
+msgstr "عناصر"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.res_config_settings_view_form_sale_roh
+msgid "MRP"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__measured_from
+msgid "Measured From"
+msgstr "تقاس من"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__motor
+msgid "Motor"
+msgstr "متور"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__name
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase_line__state_line__no
+msgid "No Order"
+msgstr "لم يتم الطلب"
+
+#. module: sale_roh
+#: model_terms:ir.actions.act_window,help:sale_roh.request_purchase
+msgid "No request  found. Let's create one!"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Notes..."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__contract_note
+msgid "Nots"
+msgstr "الملاحظات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__nmuber
+msgid "Number"
+msgstr "عدد"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__hor_cutter
+msgid "Number Horizantol"
+msgstr "عدد الافقي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__var_cutter
+msgid "Number vertical"
+msgstr "عدد راسي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__dimension_one
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__dimensions_number__one
+msgid "One Dimension"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__order_line
+msgid "Order Lines"
+msgstr "المنتجات"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_detial_form
+msgid "Other Supliment"
+msgstr "ملحقات اخري"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_res_company__percent_period_date
+#: model:ir.model.fields,field_description:sale_roh.field_res_config_settings__percent_period_date
+msgid "Percent Calculation Mrp date"
+msgstr "النسبه المحسوب منها تاريخ التصنيع"
+
+#. module: sale_roh
+#: code:addons/sale_roh/models/sale.py:0
+#, python-format
+msgid "Please Enter Width and height Togter"
+msgstr "رجاء يجب ادخال الطول و العرض مع بعض"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_wiz_production
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_wiz_schedule_work
+msgid "Print"
+msgstr "طباعة"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_product_product
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order_line__product_number
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_number
+msgid "Product Number"
+msgstr "العدد"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_report_sale_roh_report_production_temp_ids
+#: model:ir.ui.menu,name:sale_roh.action_wiz_production_ids
+msgid "Production Report"
+msgstr "تقرير الانتاج"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_production_report_wizard
+msgid "Production Report Wizard"
+msgstr "تقرير الانتاج"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_purchase_order
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase__state__in_purchase
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "بند أمر الشراء"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_order_form
+msgid "Purchase Order Lines"
+msgstr "عناصر امر الشراء"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_uom_qty
+msgid "Purchase Quantity"
+msgstr "كمية المشتريات"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__request_purchase_line__state_line__qty_no_match
+msgid "Qty No Match"
+msgstr "الكمية غير مطابقة"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Qty Purchase"
+msgstr "كمية المشتريات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__purchase_uom_qty
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__accessory_uom_qty
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__product_qty
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__accessory_uom_qty
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_qty_new
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: sale_roh
+#: model:ir.actions.server,name:sale_roh.try_agin_cron_id_ir_actions_server
+#: model:ir.actions.server,name:sale_roh.try_agin_cron_ids_ir_actions_server
+#: model:ir.cron,cron_name:sale_roh.try_agin_cron_id
+#: model:ir.cron,cron_name:sale_roh.try_agin_cron_ids
+#: model:ir.cron,name:sale_roh.try_agin_cron_id
+#: model:ir.cron,name:sale_roh.try_agin_cron_ids
+msgid "Reminder Try Again for Quotion"
+msgstr "تذكير اعادة محاولة عرض السعر"
+
+#. module: sale_roh
+#: model:ir.actions.act_window,name:sale_roh.action_wiz_schedule_work
+msgid "Report By Schedule Work"
+msgstr "تقرير جدول الاعمال"
+
+#. module: sale_roh
+#: model:ir.actions.act_window,name:sale_roh.action_wiz_production
+#: model:ir.model.fields.selection,name:sale_roh.selection__production_report_wizard__report_type__report_production
+msgid "Report Production"
+msgstr "تقرير الانتاج"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__report_type
+msgid "Report Type"
+msgstr "نوع التقرير"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.request_purchase_tree
+msgid "Request"
+msgstr "الطلب"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__date_order
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: sale_roh
+#: model:ir.actions.report,name:sale_roh.action_request_purchase
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__po_count
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__request_id
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__po_count
+msgid "Request Purchase"
+msgstr "طلبات الشراء"
+
+#. module: sale_roh
+#: model:ir.actions.act_window,name:sale_roh.request_purchase
+#: model:ir.ui.menu,name:sale_roh.menu_request_purchase
+msgid "Requests From Sale"
+msgstr "طلبات الشراء من المبيعات"
+
+#. module: sale_roh
+#: code:addons/sale_roh/models/sale.py:0
+#, python-format
+msgid "Requests Purchase"
+msgstr "طلبات الشراء"
+
+#. module: sale_roh
+#: code:addons/sale_roh/models/request_purchase.py:0
+#, python-format
+msgid "Requests for Quotation"
+msgstr "طلبات عروض الاسعار"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sale_roh
+#: model:mail.channel,name:sale_roh.channel_sale_group
+msgid "Sale"
+msgstr "المبيعات"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_detial_form
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Sale Order"
+msgstr "امر العمل"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_sale_order
+msgid "Sales Order"
+msgstr "أمر العمل"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "بند الامر "
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_sales_order_filter
+msgid "Sales Team"
+msgstr "فريق المبيعات"
+
+#. module: sale_roh
+#: model:ir.actions.report,name:sale_roh.report_schedule_Work_ids
+msgid "Schedule Work"
+msgstr "جدول الاعمال"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_report_sale_roh_report_schedule_work_temp_id
+#: model:ir.ui.menu,name:sale_roh.menu_report_schedule_work_id
+msgid "Schedule Work Report"
+msgstr "تقرير جدول الاعمال"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_schedule_work_wizard
+msgid "Schedule Work Wizard"
+msgstr "جدول الاعمال"
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_res_company__percent_period_date
+#: model:ir.model.fields,help:sale_roh.field_res_config_settings__percent_period_date
+msgid ""
+"Scheduled Date in MRP Calculation from This percent and implemented period "
+"in SO "
+msgstr "تاريخ جدول التصنيع يحسب من النسبه ومدة التنفيذ"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Search Request"
+msgstr "طلب البحث"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__sector_id
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_product_template_search_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Sector"
+msgstr "القطاعات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__sector_type
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__sector_type
+msgid "Sector Type"
+msgstr "نوع القطاع"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__sale_id
+msgid "Sectors"
+msgstr "القطاعات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__sector_order_line
+msgid "Sectors Order Lines"
+msgstr "القطاعات "
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__shater
+msgid "Shater"
+msgstr "شتر"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__side
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__side
+msgid "Side"
+msgstr "الجنب"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__measured_from__side_heel
+msgid "Side and Heel"
+msgstr "الجنب و الكعب"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__silicon
+msgid "Silicon"
+msgstr "سيلكون"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__sketchure
+msgid "Sketchure"
+msgstr "استركشر"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_production_report_wizard__date_from
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__state_line
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "State"
+msgstr "الحالة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__state
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__state
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_sales_order_filter
+msgid "Status"
+msgstr "الحالة"
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__supplement_name
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__supplement_sector_ids
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__supplement_sector_ids
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__supplement_name
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_product_template_form_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_inherit_product_template_search_id
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "Supplement"
+msgstr "الملحقات"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_supplement_sector
+msgid "Supplement Sector"
+msgstr "الملحقات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_product__supplier_company
+#: model:ir.model.fields,field_description:sale_roh.field_product_template__supplier_company
+msgid "Supplier Company"
+msgstr "الشركة المصنعة"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__dimensions_number__two
+msgid "TWO Dimensions"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__tabsha
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__tabsha
+msgid "Tabsha"
+msgstr "طبشة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_line_width__name
+msgid "Tag Name"
+msgstr "اسم الوسم"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_template_id
+msgid "Template Id of Selected Product"
+msgstr ""
+
+#. module: sale_roh
+#: code:addons/sale_roh/wizards/wizard_models.py:0
+#, python-format
+msgid "The start date must be before the end date"
+msgstr "تاريخ البداية يكون قبل تاريخ النهاية"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__tipper
+msgid "Tipper"
+msgstr "قلاب"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_request_filter
+msgid "Today"
+msgstr "اليوم"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__total_hor_cutter
+msgid "Total Horizantol"
+msgstr "مجموع الافقي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__total_var_cutter
+msgid "Total vertical"
+msgstr "مجموع الراسي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__tranzium
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__tranzium
+msgid "Tranzium"
+msgstr "الترانزوم"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__sale_order__state__again
+msgid "Try Again"
+msgstr "اعادة المحاولة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__price_unit
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__product_uom
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__product_uom
+#: model:ir.model.fields,field_description:sale_roh.field_sale_accessory__product_uom
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_uom
+msgid "Unit of Measure"
+msgstr "وحدة القياس"
+
+#. module: sale_roh
+#: model:product.product,uom_name:sale_roh.product_product_14444
+#: model:product.product,uom_name:sale_roh.product_product_14445
+#: model:product.product,uom_name:sale_roh.product_product_14446
+#: model:product.product,uom_name:sale_roh.product_product_14447
+#: model:product.product,uom_name:sale_roh.product_product_14448
+#: model:product.product,uom_name:sale_roh.product_product_14449
+#: model:product.template,uom_name:sale_roh.product_product_14444_product_template
+#: model:product.template,uom_name:sale_roh.product_product_14448_product_template
+msgid "Units"
+msgstr "وحدة"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__product_template__sector_type__upside_down
+msgid "Upside down"
+msgstr "مقلوب"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase_line__partner_id
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__sector_order_line__cutter_type__vertical
+msgid "Vertical"
+msgstr "قاطع افقي"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,help:sale_roh.field_request_purchase__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_dimension_line_width
+#: model:ir.model.fields,field_description:sale_roh.field_dimension_supplement__supplement_width
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__width
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__measured_from__width
+msgid "Width"
+msgstr "العرض"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_detial_form
+msgid "Width And height"
+msgstr "الطول و العرض"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__number_width
+msgid "Width Number"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__product_widths
+msgid "Width(Mt)"
+msgstr "العرض(متر)"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__wire
+msgid "Wire"
+msgstr "السلك"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__production_report_wizard__report_type__report_production_worker
+msgid "Worker Production"
+msgstr "انتاج العمال"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "add"
+msgstr "إضافه القياسات"
+
+#. module: sale_roh
+#: model:product.template,uom_name:sale_roh.product_product_14445_product_template
+#: model:product.template,uom_name:sale_roh.product_product_14446_product_template
+#: model:product.template,uom_name:sale_roh.product_product_14447_product_template
+msgid "column"
+msgstr "عمود"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__height
+msgid "height"
+msgstr "الطول"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sale_order__implemented_period
+#: model_terms:ir.ui.view,arch_db:sale_roh.view_order_form_inheriteds_id
+msgid "implemented period"
+msgstr "فترة التنفيذ"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__name
+msgid "name"
+msgstr "الاسم"
+
+#. module: sale_roh
+#: model:ir.model.fields.selection,name:sale_roh.selection__supplement_sector__type__other
+msgid "other"
+msgstr "اخرى"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_product_accessory__product_acc_id
+#: model:ir.model.fields,field_description:sale_roh.field_supplement_sector__product_id
+msgid "product"
+msgstr "المنتج"
+
+#. module: sale_roh
+#: model:ir.actions.report,name:sale_roh.report_production_id2
+msgid "production"
+msgstr "الانتاج"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_request_purchase
+msgid "request.purchase"
+msgstr "طلبات الشراء"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_request_purchase_line
+msgid "request.purchase.line"
+msgstr "عناصرطلبات الشراء"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_purchase_order__sale_id
+#: model:ir.model.fields,field_description:sale_roh.field_request_purchase__sale_id
+msgid "sale order"
+msgstr "امر العمل"
+
+#. module: sale_roh
+#: model:ir.model,name:sale_roh.model_sector_order_line
+msgid "sector order line"
+msgstr "القطاعات"
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_sector_order_line__hi_wi
+msgid "total_hi_wi"
+msgstr ""
+
+#. module: sale_roh
+#: model:ir.model.fields,field_description:sale_roh.field_ditals_sector__width
+msgid "width"
+msgstr "العرض"
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "اجمالي المساحه"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "اسم العامل"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_schedule_work_temp_id
+msgid "اسم العميل"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "التاريخ"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "التجميع"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "التركيب"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "التوريد"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14444
+#: model:product.template,name:sale_roh.product_product_14444_product_template
+msgid "الحلق"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14449
+#: model:product.template,name:sale_roh.product_product_14449_product_template
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "الزجاج"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14448
+#: model:product.template,name:sale_roh.product_product_14448_product_template
+msgid "السلك"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "الطرف الاول"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "الطرف الثاني"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "القص"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "الكمية"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_schedule_work_temp_id
+msgid "المساحه"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "المنتجات"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_schedule_work_temp_id
+msgid "الموقع"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "الوحدة"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_schedule_work_temp_id
+msgid "تاريخ الانتهاء"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_1000012
+msgid "تيوب 10 سم درفه 4 سم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_1000011
+msgid "حلق مفتوح درفه 4 سم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14445
+#: model:product.template,name:sale_roh.product_product_14445_product_template
+msgid "درف الجنب"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14446
+#: model:product.template,name:sale_roh.product_product_14446_product_template
+msgid "درف الشكل"
+msgstr "درف الشنكل"
+
+#. module: sale_roh
+#: model:product.product,name:sale_roh.product_product_14447
+#: model:product.template,name:sale_roh.product_product_14447_product_template
+msgid "درف الكعب"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "سعر المتر"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_request_purchase_template
+msgid "طلب شراء"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "عقد اتفاق تركيب شبابيك و قطاعات اﻻلمنيوم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100001
+msgid "قطاع 10 سم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100004
+msgid "قطاع 10 سم 3 درفه"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100002
+msgid "قطاع 12 سم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100005
+msgid "قطاع 12 سم 3 درفه"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100006
+msgid "قطاع 12 سم 4 درفه"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100003
+msgid "قطاع الرويال"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100007
+msgid "قطاع الرويال 4 درفه"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_1000010
+msgid "قطاع ثابت تيوب 10 سم"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100009
+msgid "قطاع ثابت حلق 10 سم مفتوح"
+msgstr ""
+
+#. module: sale_roh
+#: model:product.template,name:sale_roh.product_product_100008
+msgid "قطاع مجري 4 درفه"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "مجمع الامتار"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.report_production_temp_ids
+msgid "مهمة العامل"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid "مواصفات الزجاج"
+msgstr ""
+
+#. module: sale_roh
+#: model_terms:ir.ui.view,arch_db:sale_roh.sale_document_report_inherit
+msgid ""
+"يوم عمل من تاريخ أول دفعة\n"
+"                            <br class=\"text-left\"/>"
+msgstr ""

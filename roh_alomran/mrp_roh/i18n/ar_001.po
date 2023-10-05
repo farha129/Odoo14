@@ -1,0 +1,1257 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mrp_roh
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-03 08:03+0000\n"
+"PO-Revision-Date: 2023-10-03 08:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_mrp_production__state
+msgid ""
+" * Draft: The MO is not confirmed yet.\n"
+" * Confirmed: The MO is confirmed, the stock rules and the reordering of the components are trigerred.\n"
+" * In Progress: The production has started (on the MO or on the WO).\n"
+" * To Close: The production is done, the MO has to be closed.\n"
+" * Done: The MO is closed, the stock moves are posted. \n"
+" * Cancelled: The MO has been cancelled, can't be confirmed anymore."
+msgstr ""
+" * مسودة: لم يتم تأكيد أمر التصنيع بعد.\n"
+" * تم التأكيد: تم تأكيد أمر التصنيع، وتشغيل قواعد المخزون وإعادة طلب المكونات.\n"
+" * قيد العمل: لقد بدأ الإنتاج (في أمر التصنيع أو أمر العمل).\n"
+" * بانتظار الإغلاق: انتهى الإنتاج ويجب إغلاق أمر التصنيع.\n"
+" * انتهى: تم إغلاق أمر التصنيع، وترحيل حركات المخزون. \n"
+" * ملغي: تم إلغاء أمر التصنيع ولا يمكن تأكيده بعد الآن. "
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.res_config_settings_view_form_roh
+msgid "/ متر"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid ""
+"<span attrs=\"{'invisible':[('day_number_cut','=',0)]}\">Days</span>\n"
+"                             <span attrs=\"{'invisible':[('overtime_cut','=',0)]}\">OverTime</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid ""
+"<span attrs=\"{'invisible':[('day_number_gathering','=',0)]}\">Days</span>\n"
+"                             <span attrs=\"{'invisible':[('overtime_gath','=',0)]}\">OverTime</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid ""
+"<span attrs=\"{'invisible':[('day_number_glass','=',0)]}\">Days</span>\n"
+"                             <span attrs=\"{'invisible':[('overtime_glass','=',0)]}\">OverTime</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid ""
+"<span attrs=\"{'invisible':[('day_number_install','=',0)]}\">Days</span>\n"
+"                             <span attrs=\"{'invisible':[('overtime_install','=',0)]}\">OverTime</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "<span attrs=\"{'invisible':[('overtime_cut','=',0)]}\">Hours</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "<span attrs=\"{'invisible':[('overtime_gath','=',0)]}\">Hours</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "<span attrs=\"{'invisible':[('overtime_glass','=',0)]}\">Hours</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "<span attrs=\"{'invisible':[('overtime_install','=',0)]}\">Hours</span>"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.res_config_settings_view_form_roh
+msgid "<span class=\"o_form_label\">Target in Month</span>"
+msgstr "تارقت الشهر"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__access_warning
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__access_warning
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_needaction
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_needaction
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_exception_decoration
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_exception_decoration
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_state
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_state
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_type_icon
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_type_icon
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__address
+msgid "Address"
+msgstr "العنوان"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_res_company__deduction_amount
+#: model:ir.model.fields,help:mrp_roh.field_res_config_settings__deduction_amount
+msgid "An amount deducted when the request is delayed"
+msgstr "يتم خصم مبلغ عندما يتاخر الطلب"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "البند التحليلي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__user_id
+msgid "Assigned To"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_attachment_count
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_attachment_count
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order_line__bom_id
+msgid "Bill of Material"
+msgstr "مكونات"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_mrp_production_task_wizard
+msgid "CRM Task Wizard"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__install_mrp__state__cancel
+#: model:ir.model.fields.selection,name:mrp_roh.selection__overtime_mrp__state__cancel
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_res_company
+msgid "Companies"
+msgstr "شركات"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__company_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__company_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الاعدادات"
+
+#. module: mrp_roh
+#: model:ir.actions.act_window,name:mrp_roh.action_view_worker_task_id
+msgid "Configration Tasks"
+msgstr "اعدادت المهام"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__install_mrp__state__confirmed
+#: model:ir.model.fields.selection,name:mrp_roh.selection__overtime_mrp__state__confirmed
+#: model:ir.model.fields.selection,name:mrp_roh.selection__request_delay__state__confirmed
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_form
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_form
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: mrp_roh
+#: model:ir.actions.server,name:mrp_roh.ir_cron_deduction_id_ir_actions_server
+#: model:ir.cron,cron_name:mrp_roh.ir_cron_deduction_id
+#: model:ir.cron,name:mrp_roh.ir_cron_deduction_id
+msgid "Create Deduction"
+msgstr "إنشاء خصم"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.view_mrp_config_worker_task_form
+msgid "Create Task"
+msgstr "إنشاء مهمه"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__create_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__create_date
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__customer_id
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__partner_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__customer_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__customer_id
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+#: model_terms:ir.ui.view,arch_db:mrp_roh.view_mrp_production_filter_inhirit
+msgid "Customer"
+msgstr "العميل"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__access_url
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__access_url
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__config_worker_task__name__cut
+#: model:ir.model.fields.selection,name:mrp_roh.selection__project_task__task_type__cut
+msgid "Cut"
+msgstr "القص"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__date_delay
+msgid "Date Delay"
+msgstr "تاريخ التأجيل"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__date_order
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__date_order
+msgid "Date Order"
+msgstr "تاريخ الطلب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_mrp_production__real_date_start
+msgid "Date at which you plan to start the production."
+msgstr "التاريخ الفعلي لبداية المهمة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__dead_line
+msgid "Deadline"
+msgstr "الموعد النهائي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__deadline_cut
+msgid "Deadline Cut"
+msgstr "موعد النهائي للقص"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__deadline_gathering
+msgid "Deadline Gathering"
+msgstr "موعد النهائي للتجميع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__deadline_glass
+msgid "Deadline Glass"
+msgstr "موعد النهائي للزجاج"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__deadline_install
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__deadline_install
+msgid "Deadline Install"
+msgstr "موعد النهائي للتركيب"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.res_config_settings_view_form_roh
+msgid "Deduction"
+msgstr "الخصم"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_res_company__deduction_amount
+#: model:ir.model.fields,field_description:mrp_roh.field_res_config_settings__deduction_amount
+msgid "Deduction Amount"
+msgstr "مبلغ الخصم"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__mrp_production__state__delay
+msgid "Delay"
+msgstr "مؤجل"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__name
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__name
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__note
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__name
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__note
+msgid "Description"
+msgstr "الوصف"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_res_company__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_move__display_name
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__install_mrp__state__done
+#: model:ir.model.fields.selection,name:mrp_roh.selection__overtime_mrp__state__done
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_form
+msgid "Done"
+msgstr "منتهية"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__install_mrp__state__draft
+#: model:ir.model.fields.selection,name:mrp_roh.selection__overtime_mrp__state__draft
+#: model:ir.model.fields.selection,name:mrp_roh.selection__request_delay__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__employee_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__employee_ids
+msgid "Employees"
+msgstr "الموظفين"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line__date_end
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__end_date
+msgid "End Date"
+msgstr "تاريخ النهاية"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_follower_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_follower_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_follower_ids
+msgid "Followers"
+msgstr "المتابعين"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_channel_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_channel_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "قنوات المتابعين"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_partner_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_partner_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "شركاء المتابعين"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__activity_type_icon
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__activity_type_icon
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__config_worker_task__name__gathering
+#: model:ir.model.fields.selection,name:mrp_roh.selection__project_task__task_type__gathering
+msgid "Gathering"
+msgstr "التجميع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.sale_order_form
+msgid "Get Final Product"
+msgstr "إيجاد بنود الاوامر"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__config_worker_task__name__glass
+#: model:ir.model.fields.selection,name:mrp_roh.selection__project_task__task_type__glass
+msgid "Glass"
+msgstr "الزجاج"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__id
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__id
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__id
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__id
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__id
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__id
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__id
+#: model:ir.model.fields,field_description:mrp_roh.field_res_company__id
+#: model:ir.model.fields,field_description:mrp_roh.field_res_config_settings__id
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order__id
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order_line__id
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_move__id
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_picking__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_exception_icon
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_exception_icon
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__activity_exception_icon
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__activity_exception_icon
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_needaction
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_unread
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_needaction
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_unread
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_needaction
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_has_error
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_has_sms_error
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_has_error
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_has_sms_error
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_has_error
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.actions.act_window,name:mrp_roh.install_action
+#: model:ir.ui.menu,name:mrp_roh.menu_install_id
+msgid "Install MRP"
+msgstr "طلبات التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_move__install_id
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_picking__install_id
+msgid "Install mrp"
+msgstr "طلبات التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__config_worker_task__name__installation
+#: model:ir.model.fields.selection,name:mrp_roh.selection__project_task__task_type__installation
+msgid "Installation"
+msgstr "التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__is_user_working
+msgid "Is Current User Working"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_is_follower
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_is_follower
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_res_company____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_move____last_update
+#: model:ir.model.fields,field_description:mrp_roh.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__write_uid
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__write_date
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل في"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__line_ids
+msgid "Line"
+msgstr "العناصر"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_form
+msgid "Lines"
+msgstr "العناصر"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_main_attachment_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_main_attachment_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__total_day
+msgid "Manufactur Period"
+msgstr "مدة التصنيع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Manufacturing Orders"
+msgstr "اوامر التصنيع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__material_return_ids
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+msgid "Material Return"
+msgstr "المواد المرجعة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_has_error
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_has_error
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__my_activity_date_deadline
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__my_activity_date_deadline
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__name
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__name
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__name
+msgid "Name"
+msgstr "المرجع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_date_deadline
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_date_deadline
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_summary
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_summary
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_type_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_type_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.actions.act_window,help:mrp_roh.install_action
+#: model_terms:ir.actions.act_window,help:mrp_roh.overtime_action
+#: model_terms:ir.actions.act_window,help:mrp_roh.request_daley_action_id
+msgid "No request  found. Let's create one!"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.view_mrp_production_filter_inhirit
+msgid "Not Started"
+msgstr "لم تبدأ"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__number_hour
+msgid "Number Hours"
+msgstr "عدد الساعات"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__number_hours_cut
+msgid "Number Hours Cut"
+msgstr "عدد ساعات القص"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__number_hours_gathering
+msgid "Number Hours Gathering"
+msgstr "عدد ساعات التجميع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__number_hours_glass
+msgid "Number Hours Glass"
+msgstr "عدد ساعات الزجاج"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__number_hours_install
+msgid "Number Hours Install"
+msgstr "عدد ساعات التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__number_worker
+msgid "Number Worker"
+msgstr "عدد العمال"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_needaction_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_needaction_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_has_error_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_has_error_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_needaction_counter
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_needaction_counter
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_has_error_counter
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_has_error_counter
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__message_unread_counter
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__message_unread_counter
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.actions.act_window,help:mrp_roh.action_view_task_id
+msgid ""
+"Odoo's project management allows you to manage the pipeline of your tasks "
+"efficiently. You can track progress, discuss on tasks, attach documents, "
+"etc."
+msgstr ""
+
+#. module: mrp_roh
+#: model:res.groups,name:mrp_roh.group_mrp_officer
+msgid "Officer"
+msgstr "ضابط"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__one_work_in_day
+msgid "One Worker in Day"
+msgstr "العامل الواحد في اليوم"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__one_work_in_month
+msgid "One Worker in Month"
+msgstr "العامل الواحد في الشهر"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_tree
+msgid "Out Factory"
+msgstr "خارج المصنع"
+
+#. module: mrp_roh
+#: model:ir.actions.act_window,name:mrp_roh.overtime_action
+#: model:ir.ui.menu,name:mrp_roh.menu_overtime_id
+msgid "OverTime MRP"
+msgstr " ساعات العمل الاضافي"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_form
+msgid "Overtime"
+msgstr "ساعات العمل الاضافي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__overtime_cut
+msgid "Overtime Cut"
+msgstr "العمل الاضافي للقص"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__overtime_gath
+msgid "Overtime Gath"
+msgstr "العمل الاضافي للتجميع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__overtime_glass
+msgid "Overtime Glass"
+msgstr "العمل الاضافي للزجاج"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__overtime_install
+msgid "Overtime Install"
+msgstr "العمل الاضافي لتركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__period
+msgid "Period"
+msgstr "المدة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_in_factory
+msgid "Period In Factory"
+msgstr "المدة في المصنع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__period_install
+msgid "Period Install"
+msgstr "مدة التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_out_factory
+msgid "Period Out Factory"
+msgstr "المدة خارج المصنع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Plan"
+msgstr "التخطيط"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__access_url
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__access_url
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__product_id
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_mrp_production
+msgid "Production Order"
+msgstr "أمر الانتاج"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__project_id
+msgid "Project"
+msgstr "المشروع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__product_uom_qty
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__product_uom_qty
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__duration
+msgid "Real Duration"
+msgstr "المدة الفعلية"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__real_date_start
+msgid "Real Start Date"
+msgstr "تاريخ البداية الفعلي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__reason
+msgid "Reason"
+msgstr "السبب"
+
+#. module: mrp_roh
+#: model:ir.model.fields.selection,name:mrp_roh.selection__request_delay__state__reject
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_form
+msgid "Reject"
+msgstr "مرفوض"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__reminder_day
+msgid "Reminder Day"
+msgstr "الايام المتبقية"
+
+#. module: mrp_roh
+#: model:ir.actions.server,name:mrp_roh.ir_cron_reminder_day_id_ir_actions_server
+#: model:ir.cron,cron_name:mrp_roh.ir_cron_reminder_day_id
+#: model:ir.cron,name:mrp_roh.ir_cron_reminder_day_id
+msgid "Reminder MRP Day"
+msgstr "الايام المتبقية"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_tree
+#: model_terms:ir.ui.view,arch_db:mrp_roh.overtime_mrp_tree
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_tree
+msgid "Request"
+msgstr "الطلب"
+
+#. module: mrp_roh
+#: model:ir.actions.act_window,name:mrp_roh.request_daley_action_id
+#: model:ir.model,name:mrp_roh.model_request_delay
+#: model:ir.ui.menu,name:mrp_roh.menu_daley_ids
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_form
+msgid "Request Delay"
+msgstr "طلبات التأجيل"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__activity_user_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__activity_user_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_has_sms_error
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_has_sms_error
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__total_salary
+msgid "Salary"
+msgstr "المبلغ الاجمالي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__salary_hour
+msgid "Salary Hour"
+msgstr "مبلغ الساعة"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+msgid "Sale Order"
+msgstr "امر العمل"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_sale_order
+msgid "Sales Order"
+msgstr "أمر العمل"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "بند الامر "
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+msgid "Search Request"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__access_token
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__access_token
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.view_mrp_id
+msgid "Start"
+msgstr "البداية"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line__date_start
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__date_start
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__state
+#: model_terms:ir.ui.view,arch_db:mrp_roh.request_delay_fillter
+msgid "State"
+msgstr "الحالة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__state
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__state
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__state
+msgid "Status"
+msgstr "الحالات"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__activity_state
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__activity_state
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_stock_move
+msgid "Stock Move"
+msgstr "حركة المخزون"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_res_company__mrp_target_area
+#: model:ir.model.fields,field_description:mrp_roh.field_res_config_settings__mrp_target_area
+msgid "Target Area"
+msgstr "تارقت المساحة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_res_company__mrp_target_area
+#: model:ir.model.fields,help:mrp_roh.field_res_config_settings__mrp_target_area
+msgid "Target is The number of Area to be manufactured per month "
+msgstr "الترقت هو عدد الامتار التي يجب ان تنفذ في الشهر"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_project_task
+msgid "Task"
+msgstr "المهمة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__name
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production_task_wizard__name
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__task_type
+msgid "Task Name"
+msgstr "اسم المهمة"
+
+#. module: mrp_roh
+#: code:addons/mrp_roh/models/mrp_task.py:0
+#: model:ir.actions.act_window,name:mrp_roh.action_view_task_id
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__task_number
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+#, python-format
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_mrp_production__is_user_working
+msgid "Technical field indicating whether the current user is working. "
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_sale_order_line__product_template_id
+msgid "Template Id of Selected Product"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_number_gathering
+msgid "The days Of Gathering"
+msgstr "عدد ايام التجميع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_number_glass
+msgid "The days Of Glass"
+msgstr "عدد ايام الزجاج"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_number_install
+msgid "The days Of Install"
+msgstr "عدد ايام التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_number_cut
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "The days of Cut"
+msgstr "عدد ايام القص"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "The days of Gathering"
+msgstr "عدد ايام التجميع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "The days of Glass"
+msgstr "عدد ايام الزجاج"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_inherit_form
+msgid "The days of Install"
+msgstr "عدد ايام التركيب"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_account_analytic_line__timer_duration
+msgid "Time Duration (Minutes)"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__task_timer
+msgid "Timer"
+msgstr "الزمن"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Tota"
+msgstr "المجموع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Total Days"
+msgstr "مجموع الايام"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Total In Factory"
+msgstr "مجموع الايام في المصنع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__total_mater
+msgid "Total Mater"
+msgstr "محموع الامتار"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Total Out Factory"
+msgstr "مجموع الايام خارج المصنع"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Total Qty"
+msgstr "مجموع المساحة"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_stock_picking
+msgid "Transfer"
+msgstr "الشحنة"
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__activity_exception_decoration
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__activity_exception_decoration
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__product_uom
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__product_uom
+msgid "Unit of Measure"
+msgstr "وحدة القياس"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_unread
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_unread
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__message_unread_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__message_unread_counter
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.mrp_production_tree_view_inherits
+msgid "Unreserve"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__website_message_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__website_message_ids
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,help:mrp_roh.field_install_mrp__website_message_ids
+#: model:ir.model.fields,help:mrp_roh.field_overtime_mrp__website_message_ids
+#: model:ir.model.fields,help:mrp_roh.field_request_delay__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: mrp_roh
+#: code:addons/mrp_roh/models/mrp_sale.py:0
+#, python-format
+msgid "Width And Height"
+msgstr "الطول و العرض"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__worker_name
+msgid "Worker"
+msgstr "العمال"
+
+#. module: mrp_roh
+#: model:ir.ui.menu,name:mrp_roh.menu_config_task_worker
+msgid "Worker Task"
+msgstr "مهام العمال"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__workers_in_day
+msgid "Workers In Day"
+msgstr "العمال في اليوم"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_config_worker_task__workers_in_month
+msgid "Workers In Month"
+msgstr "الغمال في الشهر"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_config_worker_task
+msgid "config.worker.task"
+msgstr "اعدادات مهام العمال"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_return_line__install_id
+#: model:ir.model.fields,field_description:mrp_roh.field_install_material_use_line__install_id
+#: model_terms:ir.ui.view,arch_db:mrp_roh.install_mrp_form
+msgid "install"
+msgstr "تركيب"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_install_material_return_line
+msgid "install.material_return.line"
+msgstr "عناصر المواد المرجعة"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_install_material_use_line
+msgid "install.material_use.line"
+msgstr "عناصر المواد المستخدمة"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_install_mrp
+msgid "install.mrp"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_project_task__mrp_id
+msgid "mrp"
+msgstr "التصنيع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__day_number_work
+msgid "nu"
+msgstr ""
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_line__overtime_id
+msgid "overtime"
+msgstr "العمل الاضافي"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_overtime_line
+msgid "overtime.line"
+msgstr "عناصر العمل الاضافي"
+
+#. module: mrp_roh
+#: model:ir.model,name:mrp_roh.model_overtime_mrp
+msgid "overtime.mrp"
+msgstr "العمل الاضافي"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_mrp_production__project_id
+msgid "project"
+msgstr "المشروع"
+
+#. module: mrp_roh
+#: model:ir.model.fields,field_description:mrp_roh.field_install_mrp__sale_id
+#: model:ir.model.fields,field_description:mrp_roh.field_overtime_mrp__sale_id
+#: model:ir.model.fields,field_description:mrp_roh.field_request_delay__sale_id
+msgid "sale order"
+msgstr "امر العمل"
+
+#. module: mrp_roh
+#: model_terms:ir.ui.view,arch_db:mrp_roh.view_mrp_id
+msgid "sector"
+msgstr "القياسات"
