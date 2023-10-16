@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="invoice_document_report_inherit_roh" inherit_id="era_tax_partner.invoice_document_report_inherit">
+     <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="t-attf-style">color: black;background-image:url(&quot;/sale_roh/static/description/imgg.jpeg &quot;); background-size:200mm 200mm;font-family: Arial;</attribute>
+
+        </xpath>
+<!--                <xpath expr="//div[hasclass('page')]/div" position="before">-->
+<!--                     <div    style="font-size:20px;"  t-attf-class="text-center">-->
+
+<!--             <span t-esc="o.company_id.name"   />-->
+<!--         </div>-->
+<!--                </xpath>-->
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <p></p>
+        </xpath>
+        <xpath expr="//t[2]" position="replace">
+               <t>
+                         <span t-esc="o.company_id.name"   />
+               </t>
+
+
+
+        </xpath>
+                <xpath expr="//div[hasclass('page')]/div/div[@name= 'due_date']" position="replace">
+                    <div class="col-auto col-3 mw-100 mb-2" >
+                                                    <strong>رقم الفاتورة</strong>
+
+                              <span t-if="o.name != '/'" t-field="o.name"/>
+                        </div>
+
+                </xpath>
+                <xpath expr="//div[hasclass('page')]/div/div[1]" position="before">
+                     <div class="col-auto col-3 mw-100 mb-2" >
+                            <strong>اسم العميل</strong>
+                            <p class="m-0" t-field="o.partner_id.name"/>
+                        </div>
+                </xpath>
+                <xpath expr="//div[hasclass('page')]/div" position="after">
+<!--                    <div    style="font-size:20px;"  t-attf-class="text-center">-->
+
+<!--             <span t-esc="o.company_id.name"   />-->
+<!--         </div>-->
+
+                <div id="info" class="row mt-4 mb-4">
+
+                     <div class="col-auto col-3 mw-100 mb-2" >
+                            <strong>السجل التجاري</strong>
+                            <p class="m-0" t-field="o.company_id.company_registry"/>
+                        </div>
+                        <div class="col-auto col-3 mw-100 mb-2">
+                            <strong>الرقم الضريبي</strong>
+                            <p class="m-0" t-field="o.company_id.vat"/>
+                        </div>
+
+                </div>
+                </xpath>
+    </template>
+</odoo>
+
+
+<!-- <t t-set="address">-->
+<!--                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />-->
+<!--                    <div t-if="o.partner_id.vat" class="mt16">-->
+<!--                        <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>-->
+<!--                        <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>-->
+<!--                </t>-->

@@ -8,7 +8,7 @@
     'website': "",
     'category': 'account',
     'version': '0.1',
-    'depends': ['base_accounting_kit','sale_roh','project_task_add_default_stage'],
+    'depends': ['base_accounting_kit','sale_roh','project_task_add_default_stage','era_tax_partner'],
 
     'data': [
         'security/ir.model.access.csv',
@@ -20,6 +20,7 @@
         'wizards/financial_flow_wiz.xml',
         'views/financial_flow_template.xml',
         'views/account_report.xml',
+        'views/invoice_inhir.xml',
 
 
         
