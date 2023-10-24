@@ -26,14 +26,20 @@
                     <div class="col-auto col-3 mw-100 mb-2" >
                                                     <strong>رقم الفاتورة</strong>
 
-                              <span t-if="o.name != '/'" t-field="o.name"/>
+                              <p class="m-0"  t-if="o.name != '/'" t-field="o.name"/>
                         </div>
 
                 </xpath>
                 <xpath expr="//div[hasclass('page')]/div/div[1]" position="before">
                      <div class="col-auto col-3 mw-100 mb-2" >
-                            <strong>اسم العميل</strong>
+                            <strong  t-if="o.move_type == 'out_invoice'">اسم العميل</strong>
+                            <strong  t-if="o.move_type == 'in_invoice'">اسم المورد</strong>
                             <p class="m-0" t-field="o.partner_id.name"/>
+                        </div>
+                    <div class="col-auto col-3 mw-100 mb-2"  t-if="o.partner_id.vat" >
+                            <strong t-if="o.move_type == 'out_invoice'">رقم الضريبي للعميل</strong>
+                            <strong  t-if="o.move_type == 'in_invoice'">رقم الضريبي للمورد</strong>
+                            <p class="m-0" t-field="o.partner_id.vat"/>
                         </div>
                 </xpath>
                 <xpath expr="//div[hasclass('page')]/div" position="after">
