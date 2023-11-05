@@ -64,7 +64,7 @@ class HrPayslipBatchwiseRegisterPaymentWizard(models.TransientModel):
                         'currency_id': self.currency_id.id,
                         'date': self.payment_date,
                         'ref': self.communication,
-                        'writeoff_label': 'Payslip Payment'
+                        #'writeoff_label': 'Payslip Payment'
                     }
 
                     # Create payment and post it
