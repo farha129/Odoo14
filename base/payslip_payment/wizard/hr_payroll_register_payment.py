@@ -72,7 +72,7 @@ class HrPayslipRegisterPaymentWizard(models.TransientModel):
             'writeoff_label': 'Payslip Payment'
         }
 
-    @api.multi
+    @api.model
     def expense_post_payment(self):
         self.ensure_one()
         context = dict(self._context or {})

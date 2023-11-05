@@ -44,7 +44,7 @@ class HrPayslipBatchwiseRegisterPaymentWizard(models.TransientModel):
             return {'domain': {'payment_method_id': [('payment_type', '=', 'outbound'), ('id', 'in', payment_methods.ids)]}}
         return {}
 
-    @api.multi
+    @api.model
     def expense_post_payment(self):
         self.ensure_one()
         for batch_id in self.batch_id:

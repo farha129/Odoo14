@@ -43,7 +43,7 @@ class HrPayslip(models.Model):
                     total_amount_new+=line.total
             slip.total_amount = total_amount_new
 
-    @api.multi
+    @api.model
     def set_to_paid(self):
         self.write({'state': 'paid'})
 
@@ -58,7 +58,7 @@ class HrPayslipRun(models.Model):
     ], string='Status', index=True, readonly=True, copy=False, default='draft')
     total_amount = fields.Float(string='Total Amount', compute='compute_total_amount')
 
-    @api.multi
+    @api.model
     def batch_wise_payslip_confirm(self):
         for record in self.slip_ids:
             if record.state == 'draft':
@@ -70,7 +70,7 @@ class AccountMoveLine(models.Model):
 
     payslip_id = fields.Many2one('hr.payslip', string='Expense', copy=False, help="Expense where the move line come from")
 
-    @api.multi
+    @api.model
     def reconcile(self, writeoff_acc_id=False, writeoff_journal_id=False):
         res = super(AccountMoveLine, self).reconcile(writeoff_acc_id=writeoff_acc_id, writeoff_journal_id=writeoff_journal_id)
         account_move_ids = [l.move_id.id for l in self if float_compare(l.move_id.matched_percentage, 1, precision_digits=5) == 0]
