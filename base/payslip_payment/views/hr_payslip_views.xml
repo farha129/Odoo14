@@ -16,7 +16,7 @@
         <record id="view_hr_payslip_form_inherit_uae_payroll" model="ir.ui.view">
             <field name="name">hr.payslip.form.inherit</field>
             <field name="model">hr.payslip</field>
-            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="inherit_id" ref="hr_payroll_community.view_hr_payslip_form"/>
             <field name="arch" type="xml">
                <xpath expr="/form/header/button[@name='refund_sheet']" position="after">
                     <button name="%(payslip_payment.hr_payslip_sheet_register_payment_wizard_action)d" states="done" type="action" string="Register Payment" class="oe_highlight o_expense_sheet_pay" context="{'default_amount': total_amount}" groups="account.group_account_manager"/>
@@ -37,7 +37,7 @@
         <record id="hr_payslip_run_form_inherit" model="ir.ui.view">
             <field name="name">hr.payslip.run.form.inherit</field>
             <field name="model">hr.payslip.run</field>
-            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="inherit_id" ref="hr_payroll_community.hr_payslip_run_form"/>
             <field name="arch" type="xml">
                 <xpath expr="/form/header/button[@name='close_payslip_run']" position="after">
                         <button name="%(payslip_payment.hr_payslip_batchwise_sheet_register_payment_wizard_action)d" states="done" type="action" string="Register Payment" class="oe_highlight o_expense_sheet_pay" context="{'default_batch_id': active_id}" groups="account.group_account_manager"/>
