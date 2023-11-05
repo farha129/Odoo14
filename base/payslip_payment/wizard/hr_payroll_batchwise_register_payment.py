@@ -25,7 +25,7 @@ class HrPayslipBatchwiseRegisterPaymentWizard(models.TransientModel):
     hide_payment_method = fields.Boolean(compute='_compute_hide_payment_method',
         help="Technical field used to hide the payment method if the selected journal has only one available which is 'manual'")
 
-    @api.one
+
     @api.depends('journal_id')
     def _compute_hide_payment_method(self):
         if not self.journal_id:
