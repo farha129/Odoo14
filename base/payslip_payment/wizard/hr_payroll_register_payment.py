@@ -80,7 +80,7 @@ class HrPayslipRegisterPaymentWizard(models.TransientModel):
 
         # Create payment and post it
         payment = self.env['account.payment'].create(self._get_payment_vals())
-        payment.post()
+        payment.action_post()
         # for move in payment.move_line_ids:
         #     move.name = +
         # Log the payment in the chatter
