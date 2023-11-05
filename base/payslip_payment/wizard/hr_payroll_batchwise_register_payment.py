@@ -62,8 +62,8 @@ class HrPayslipBatchwiseRegisterPaymentWizard(models.TransientModel):
                         'payment_method_id': self.payment_method_id.id,
                         'amount': payslip.total_amount,
                         'currency_id': self.currency_id.id,
-                        'payment_date': self.payment_date,
-                        'communication': self.communication,
+                        'date': self.payment_date,
+                        'ref': self.communication,
                         'writeoff_label': 'Payslip Payment'
                     }
 
