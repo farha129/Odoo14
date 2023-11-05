@@ -71,8 +71,8 @@ class AccountMoveLine(models.Model):
     payslip_id = fields.Many2one('hr.payslip', string='Expense', copy=False, help="Expense where the move line come from")
 
     @api.model
-    def reconcile(self, writeoff_acc_id=False, writeoff_journal_id=False):
-        res = super(AccountMoveLine, self).reconcile(writeoff_acc_id=writeoff_acc_id, writeoff_journal_id=writeoff_journal_id)
+    def reconcile(self):
+        res = super(AccountMoveLine, self).reconcile()
         account_move_ids = [l.move_id.id for l in self if float_compare(l.move_id.matched_percentage, 1, precision_digits=5) == 0]
         if account_move_ids:
             payslip = self.env['hr.payslip'].search([
