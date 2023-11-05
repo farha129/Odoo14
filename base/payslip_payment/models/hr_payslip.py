@@ -5,7 +5,7 @@ import time
 import babel
 
 from odoo import _, api, fields, models, tools, _
-from odoo.addons.mail.models.mail_template import format_tz
+
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools.translate import html_translate
 
