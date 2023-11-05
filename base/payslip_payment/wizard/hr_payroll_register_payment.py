@@ -90,7 +90,7 @@ class HrPayslipRegisterPaymentWizard(models.TransientModel):
         # Reconcile the payment, i.e. lookup on the payable account move lines
         account_move_lines_to_reconcile = self.env['account.move.line']
 
-        for line in payment.move_line_ids + payslip.move_id.line_ids:
+        for line in payslip.move_id.line_ids:
             if line.account_id.internal_type == 'payable':
                 account_move_lines_to_reconcile |= line
         account_move_lines_to_reconcile.reconcile()
